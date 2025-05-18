@@ -72,7 +72,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ asset('admin/others/2/edit') }}">Footer Contact</a>
+                        <a href="{{ asset('admin/others/2/edit') }}">Contact</a>
                     </li>
 {{--                    <li>--}}
 {{--                        <a href="{{ asset('admin/others/5/edit') }}">Contact</a>--}}

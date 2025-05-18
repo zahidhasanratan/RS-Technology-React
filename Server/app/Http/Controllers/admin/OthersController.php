@@ -36,8 +36,11 @@ class OthersController extends Controller
 
         // Update the page fields
         $page->title = $request->title;
+        $page->title2 = $request->title2;
         $page->slug = $request->slug ?? str($request->title);
         $page->phone = $request->phone;
+        $page->slug2 = $request->slug2;
+        $page->working = $request->working;
         $page->description = $request->description;
 
         // Save the changes
