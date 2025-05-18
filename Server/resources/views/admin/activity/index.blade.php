@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','All Client Say')
+@section('title','All Project')
 @section('content')
 
     <div id="wrapper">
@@ -9,8 +9,8 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>All Client Say</h2>
-                        <a style="float:right" href="{{ route('activity.create') }}" class="btn btn-primary square-btn-adjust">Add Client Say</a>
+                        <h2>All Project</h2>
+                        <a style="float:right" href="{{ route('activity.create') }}" class="btn btn-primary square-btn-adjust">Add Project</a>
                         <div class="row">
 
                         </div>
@@ -24,7 +24,7 @@
                         <!-- Advanced Tables -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                All Client Say
+                                All Project
                             </div>
                             <div class="panel-body">
 
@@ -36,7 +36,7 @@
                                             <th>SL.</th>
                                             <th>Title</th>
                                             <th>Image</th>
-                                            <th>Created At</th>
+                                            <th>Category</th>
                                             <th width="17%;">Action</th>
 
                                         </tr>
@@ -47,7 +47,7 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $activity->title }}</td>
                                                 <td><img src="{{ asset('uploads/activity/'.$activity->image) }}" class="img-thumbnail" width="100" height="100" /></td>
-                                                <td class="center">{{ $activity->created_at }}</td>
+                                                <td class="center">{{ $activity->sub_title }}</td>
                                                 <td><a href="{{route('activity.edit',$activity->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                                     <form id="delete-form-{{ $activity->id }}" action="{{ route('activity.destroy',$activity->id) }}" style="display: none;" method="POST">
                                                         @csrf

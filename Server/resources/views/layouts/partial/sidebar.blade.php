@@ -153,7 +153,7 @@
 
 
             <li>
-                <a class="{{ Request::is('admin/life*') ? 'active-menu': '' }}" href="#"><i class="fa fa-tasks fa-3x"></i> Life Management <span class="fa arrow"></span></a>
+                <a class="{{ Request::is('admin/life*') ? 'active-menu': '' }}" href="#"><i class="fa fa-tasks fa-3x"></i>  Management <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ route('life.create') }}">Add Management</a>
@@ -167,13 +167,13 @@
 
 
             <li>
-                <a class="{{ Request::is('admin/activity*') ? 'active-menu': '' }}" href="#"><i class="fa fa-qrcode fa-3x"></i> Client Say <span class="fa arrow"></span></a>
+                <a class="{{ Request::is('admin/activity*') ? 'active-menu': '' }}" href="#"><i class="fa fa-qrcode fa-3x"></i> Our Projects <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                     <a href="{{ route('activity.create') }}">Add Client Say</a>
+                     <a href="{{ route('activity.create') }}">Add Projects</a>
                     </li>
                     <li>
-                        <a href="{{ route('activity.index') }}">All Client Say</a>
+                        <a href="{{ route('activity.index') }}">All Projects</a>
                     </li>
                 </ul>
             </li>

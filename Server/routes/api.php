@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/menus', [\App\Http\Controllers\Api\MenuController::class, 'index']);
 Route::get('/footermenu', [\App\Http\Controllers\Api\MenuController::class, 'menus1']);
-Route::get('/activities', [\App\Http\Controllers\Api\ActivityController::class, 'index']);
+Route::get('/projects', [\App\Http\Controllers\Api\ActivityController::class, 'index']);
 Route::get('/faq', [\App\Http\Controllers\Api\FaqController::class, 'index']);
 
 Route::get('/faq/{slug}', [\App\Http\Controllers\Api\FaqController::class, 'details']);

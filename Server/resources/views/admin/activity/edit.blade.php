@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Edit Client Say')
+@section('title','Edit Projects')
 @section('content')
 
     <div id="page-wrapper" >
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Edit Client Say</h2>
+                    <h2>Edit Projects</h2>
 
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Add Client Say
+                            Add Projects
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -36,18 +36,26 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Designation</label>
-                                            <input class="form-control" name="sub_title" value="{{ $activity->sub_title }}" placeholder="Designation" />
-
+                                            <label>Category</label>
+                                            <select class="form-control" name="sub_title">
+                                                <option value="">Select</option>
+                                                <option value="Completed" {{ $activity->sub_title == 'Completed' ? 'selected' : '' }}>Completed</option>
+                                                <option value="Upcomming" {{ $activity->sub_title == 'Upcomming' ? 'selected' : '' }}>Upcoming</option>
+                                                <option value="Running" {{ $activity->sub_title == 'Upcomming' ? 'selected' : '' }}>Upcoming</option>
+                                            </select>
                                         </div>
+
                                         <div class="form-group">
                                             <label>Short</label>
                                             <textarea class="form-control" name="short" rows="3">{{ $activity->short }}</textarea>
                                         </div>
 
-
                                         <div class="form-group">
-                                            <label>Image (Height:200px X Width:200px)</label>
+                                            <label>Description</label>
+                                            <textarea class="form-control ckeditor" name="description" rows="3">{{ $activity->description }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Image (Height:400px X Width:800px)</label>
                                             <input type="file" name="image"/></br>
                                             <img src="{{ asset('uploads/activity/'.$activity->image) }}" class="img-thumbnail" width="100" height="100" />
                                         </div>

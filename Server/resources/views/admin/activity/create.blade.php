@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Add Client Say')
+@section('title','Add Projects')
 @section('content')
 
     <div id="page-wrapper" >
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Add Client Say</h2>
+                    <h2>Add Projects</h2>
 
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           Add Client Say
+                           Add Projects
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -35,8 +35,13 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Designation</label>
-                                            <input class="form-control" name="sub_title" placeholder="Designation" />
+                                            <label>Category</label>
+                                            <select class="form-control" name="sub_title">
+                                                <option>Select</option>
+                                                <option>Completed</option>
+                                                <option>Upcomming</option>
+                                                <option>Running</option>
+                                            </select>
 
                                         </div>
                                         <div class="form-group">
@@ -44,12 +49,16 @@
                                             <textarea class="form-control" rows="3" name="short"></textarea>
                                         </div>
 
-
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea class="form-control ckeditor" rows="3" name="description"></textarea>
+                                        </div>
 
                                         <div class="form-group">
-                                            <label>Image (Height:200px X Width:200px)</label>
+                                            <label>Image (Height:400px X Width:800px)</label>
                                             <input type="file" name="image"/>
                                         </div>
+
 
 
 
