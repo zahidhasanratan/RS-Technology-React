@@ -57,4 +57,5 @@ Route::get('/object2', [\App\Http\Controllers\API\ObjectsController::class, 'obj
 Route::get('/about/{slug}', [\App\Http\Controllers\API\ObjectsController::class, 'details']);
 Route::get('/objects3', [\App\Http\Controllers\API\ObjectsController::class, 'object3']);
 Route::get('/objects5', [\App\Http\Controllers\API\ObjectsController::class, 'objects5']);
+Route::get('/objects6', [\App\Http\Controllers\API\ObjectsController::class, 'objects6']);
 Route::get('/footercontact', [\App\Http\Controllers\API\OthersController::class, 'others2']);

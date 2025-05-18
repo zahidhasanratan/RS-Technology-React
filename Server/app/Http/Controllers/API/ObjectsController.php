@@ -47,6 +47,18 @@ class ObjectsController extends Controller
 
         return response()->json($objects);  // Return the filtered data as JSON
     }
+    public function objects6()
+    {
+        // Fetch the object with id = 1, ordered by id in ascending order
+        $objects = Objects::orderBy('id', 'ASC')
+            ->where('id', 6)
+            ->get();
+        $objects->transform(function ($slider) {
+            $slider->image = url('uploads/object/' . $slider->image);
+            return $slider;
+        });
+        return response()->json($objects);
+    }
 
     public function details($slug)
     {

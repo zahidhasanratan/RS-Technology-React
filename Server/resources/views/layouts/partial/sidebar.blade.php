@@ -66,7 +66,7 @@
                         <a href="{{ asset('admin/objects/2/edit') }}">About Us</a>
                     </li>
                     <li>
-                        <a href="{{ asset('admin/objects/1/edit') }}">WHO WE ARE</a>
+                        <a href="{{ asset('admin/objects/6/edit') }}">Mission Vision</a>
                     </li><li>
                         <a href="{{ asset('admin/others/6/edit') }}">Footer About Us</a>
                     </li>

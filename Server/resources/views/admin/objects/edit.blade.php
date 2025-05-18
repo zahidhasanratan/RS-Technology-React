@@ -28,6 +28,7 @@
                                     <form role="form" method="post" action="{{ route('objects.update',$objects->id) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
+                                        @if($objects->id ==2)
 
                                         <div class="form-group">
                                             <label>Title</label>
@@ -85,7 +86,44 @@
                                                 <img src="{{ asset('uploads/object/'.$objects->image3) }}" class="img-thumbnail" width="100" />
                                             @endif
                                         </div>
+                                        @endif
+                                        @if($objects->id ==6)
 
+                                            <div class="form-group">
+                                                <label>Title</label>
+                                                <input class="form-control" name="title" value="{{ $objects->title }}" placeholder="Title" />
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label>Our Mission</label>
+                                                <textarea class="form-control" name="sub_title" rows="3">{{ $objects->sub_title }}</textarea>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label>Our Vision</label>
+                                                <textarea class="form-control" name="short" rows="3">{{ $objects->short }}</textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Our Values</label>
+                                                <textarea class="form-control" name="description" rows="3">{{ $objects->description }}</textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Image</label>
+                                                <input type="file" name="image" />
+                                                <br>
+                                                @if($objects->image)
+                                                    <img src="{{ asset('uploads/object/'.$objects->image) }}" class="img-thumbnail" width="100" />
+                                                @endif
+                                            </div>
+
+
+                                        @endif
                                         <a href="{{ route('objects.index') }}" class="btn btn-danger">Back</a>
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </form>
