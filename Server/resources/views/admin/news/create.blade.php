@@ -38,10 +38,10 @@
                                             <input type="date" class="form-control" name="sub_title" placeholder="Date" />
 
                                         </div>
-                                        <div class="form-group">
-                                            <label>Short</label>
-                                            <textarea class="form-control" rows="3" name="short"></textarea>
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>Short</label>--}}
+{{--                                            <textarea class="form-control" rows="3" name="short"></textarea>--}}
+{{--                                        </div>--}}
                                         <div class="form-group">
                                             <label>Description</label>
                                             <textarea class="form-control ckeditor" rows="3" name="description"></textarea>
@@ -51,28 +51,28 @@
 
 
                                         <div class="form-group">
-                                            <label>Image (Height:320px X Width:370px)</label>
+                                            <label>Image (Height:700px X Width:1300px)</label>
                                             <input type="file" name="image"/>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="checkbox-container">
-                                                <input type="checkbox" name="News" value="1">
-                                                <span class="checkmark"></span>
-                                                News
-                                            </label>
-                                            <label class="checkbox-container">
-                                                <input type="checkbox" name="Media" value="1">
-                                                <span class="checkmark"></span>
-                                                Media Coverage
-                                            </label>
-                                            <label class="checkbox-container">
-                                                <input type="checkbox" name="Event" value="1">
-                                                <span class="checkmark"></span>
-                                                Upcomming Events
-                                            </label>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label class="checkbox-container">--}}
+{{--                                                <input type="checkbox" name="News" value="1">--}}
+{{--                                                <span class="checkmark"></span>--}}
+{{--                                                News--}}
+{{--                                            </label>--}}
+{{--                                            <label class="checkbox-container">--}}
+{{--                                                <input type="checkbox" name="Media" value="1">--}}
+{{--                                                <span class="checkmark"></span>--}}
+{{--                                                Media Coverage--}}
+{{--                                            </label>--}}
+{{--                                            <label class="checkbox-container">--}}
+{{--                                                <input type="checkbox" name="Event" value="1">--}}
+{{--                                                <span class="checkmark"></span>--}}
+{{--                                                Upcomming Events--}}
+{{--                                            </label>--}}
 
-                                        </div>
+{{--                                        </div>--}}
 
 
                                         <a href="{{ route('news.index') }}" class="btn btn-danger">Back</a>

@@ -11,10 +11,17 @@ class NewsController extends Controller
 {
     public function index()
     {
-        // Example of fetching the latest 3 services for the slider
         $news = News::orderBy('id', 'DESC')->get();
+
+        // Update image path for each item
+        $news->map(function ($item) {
+            $item->image = url('uploads/news/' . $item->image);
+            return $item;
+        });
+
         return response()->json($news);  // Return the data as JSON
     }
+
     public function details($slug)
     {
         $news = News::where('slug', $slug)->first();
@@ -23,6 +30,10 @@ class NewsController extends Controller
             return response()->json(['message' => 'News not found'], 404);
         }
 
-        return response()->json($news); // Return the news data as JSON
+        // Manually update the image URL
+        $news->image = url('uploads/news/' . $news->image);
+
+        return response()->json($news);
     }
+
 }

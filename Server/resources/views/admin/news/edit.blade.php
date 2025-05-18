@@ -39,10 +39,10 @@
                                             <input type="date" class="form-control" name="sub_title" value="{{ $news->sub_title }}" placeholder="Date" />
 
                                         </div>
-                                        <div class="form-group">
-                                            <label>Short</label>
-                                            <textarea class="form-control" name="short" rows="3">{{ $news->short }}</textarea>
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>Short</label>--}}
+{{--                                            <textarea class="form-control" name="short" rows="3">{{ $news->short }}</textarea>--}}
+{{--                                        </div>--}}
                                         <div class="form-group">
                                             <label>Description</label>
                                             <textarea class="form-control ckeditor" name="description" rows="3">{{ $news->description }}</textarea>
@@ -50,31 +50,30 @@
 
 
                                         <div class="form-group">
-                                            <label>Image (Height:320px X Width:370px)</label>
-                                            <input type="file" name="image"/></br>
-                                            <img src="{{ asset('uploads/news/'.$news->image) }}" class="img-thumbnail" width="100" height="100" />
+                                            <label>Image (Height:700px X Width:1300px)</label>
+                                            <input type="file" name="image"/>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="checkbox-container">
+{{--                                        <div class="form-group">--}}
+{{--                                            <label class="checkbox-container">--}}
 
-                                                <input type="checkbox" name="News" value="1"  @if($news->News =='1') checked @endif>
+{{--                                                <input type="checkbox" name="News" value="1"  @if($news->News =='1') checked @endif>--}}
 
-                                                <span class="checkmark"></span>
-                                                News
-                                            </label>
-                                            <label class="checkbox-container">
-                                                <input type="checkbox" name="Media" value="1" @if($news->Media =='1') checked @endif>
-                                                <span class="checkmark"></span>
-                                                Media Coverage
-                                            </label>
-                                            <label class="checkbox-container">
-                                                <input type="checkbox" name="Event" value="1" @if($news->Event =='1') checked @endif>
-                                                <span class="checkmark"></span>
-                                                Upcomming Events
-                                            </label>
+{{--                                                <span class="checkmark"></span>--}}
+{{--                                                News--}}
+{{--                                            </label>--}}
+{{--                                            <label class="checkbox-container">--}}
+{{--                                                <input type="checkbox" name="Media" value="1" @if($news->Media =='1') checked @endif>--}}
+{{--                                                <span class="checkmark"></span>--}}
+{{--                                                Media Coverage--}}
+{{--                                            </label>--}}
+{{--                                            <label class="checkbox-container">--}}
+{{--                                                <input type="checkbox" name="Event" value="1" @if($news->Event =='1') checked @endif>--}}
+{{--                                                <span class="checkmark"></span>--}}
+{{--                                                Upcomming Events--}}
+{{--                                            </label>--}}
 
-                                        </div>
+{{--                                        </div>--}}
 
                                         <a href="{{ route('news.index') }}" class="btn btn-danger">Back</a>
                                         <button type="submit" class="btn btn-primary">Submit Button</button>
