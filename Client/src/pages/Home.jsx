@@ -8,7 +8,7 @@ const Home = () => {
             <Hero />
             <AboutHome />
             <ServiceHome title="SERVICES" subtitle="Our Product and Services" />
-            <BrandsSection title="Our Brands" />
+            <BrandsSection title="Our Clients" />
         </div>
     );
 };

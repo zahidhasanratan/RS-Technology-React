@@ -11,7 +11,8 @@ class ClientBenifitsController
 {
     public function index()
     {
-        $activities = ClientsBenifitsModel::orderBy('sl', 'asc')->get(); // Orders by 'sl' column in ascending order
+        $activities = ClientsBenifitsModel::orderBy('sl', 'asc')->get();
+
         return response()->json($activities);
     }
     public function details($slug)

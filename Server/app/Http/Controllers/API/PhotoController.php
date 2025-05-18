@@ -11,8 +11,15 @@ class PhotoController extends Controller
 {
     public function index()
     {
-        // Example of fetching all photos, you can paginate if needed
+        // Fetch all photos
         $photos = photo_gallery_table::orderBy('id', 'DESC')->get();
-        return response()->json($photos);  // Return the data as JSON
+
+        // Add full path to each image
+        $photos->transform(function ($photo) {
+            $photo->image = url('uploads/photo/' . $photo->image);
+            return $photo;
+        });
+
+        return response()->json($photos);
     }
 }
