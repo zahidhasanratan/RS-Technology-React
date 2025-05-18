@@ -152,18 +152,18 @@
 
 
 
-            {{--<li>--}}
-                {{--<a class="{{ Request::is('admin/life*') ? 'active-menu': '' }}" href="#"><i class="fa fa-tasks fa-3x"></i> Life Member <span class="fa arrow"></span></a>--}}
-                {{--<ul class="nav nav-second-level">--}}
-                    {{--<li>--}}
-                        {{--<a href="{{ route('life.create') }}">Add Member</a>--}}
-                    {{--</li>--}}
-                    {{--<li>--}}
-                        {{--<a href="{{ route('life.index') }}">All Life Member</a>--}}
-                    {{--</li>--}}
+            <li>
+                <a class="{{ Request::is('admin/life*') ? 'active-menu': '' }}" href="#"><i class="fa fa-tasks fa-3x"></i> Life Management <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('life.create') }}">Add Management</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('life.index') }}">All Life Management</a>
+                    </li>
 
-                {{--</ul>--}}
-            {{--</li>--}}
+                </ul>
+            </li>
 
 
             <li>

@@ -41,6 +41,7 @@ Route::get('/slider', [\App\Http\Controllers\Api\SliderController::class, 'index
 Route::get('/photo', [\App\Http\Controllers\Api\CategoryController::class, 'index']);
 Route::get('/photo/{slug}', [\App\Http\Controllers\Api\CategoryController::class, 'details']);
 Route::get('/video', [\App\Http\Controllers\Api\VideoController::class, 'index']);
+Route::get('/Management', [\App\Http\Controllers\Api\ManagementController::class, 'index']);
 Route::get('/solution', [\App\Http\Controllers\API\ServiceController::class, 'index']);
 Route::get('/solution/{slug}', [\App\Http\Controllers\API\ServiceController::class, 'details']);
 Route::get('/featured', [\App\Http\Controllers\API\FeatureController::class, 'index']);

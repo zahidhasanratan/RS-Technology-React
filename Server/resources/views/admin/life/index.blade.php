@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','All Life Member')
+@section('title','All Management')
 @section('content')
 
     <div id="wrapper">
@@ -9,8 +9,8 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>All Life Member</h2>
-                        <a style="float:right" href="{{ route('life.create') }}" class="btn btn-primary square-btn-adjust">Add Life Member</a>
+                        <h2>All Management</h2>
+                        <a style="float:right" href="{{ route('life.create') }}" class="btn btn-primary square-btn-adjust">Add Management</a>
                         <div class="row">
 
                         </div>
@@ -24,7 +24,7 @@
                         <!-- Advanced Tables -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                All Life Member
+                                All Management
                             </div>
                             <div class="panel-body">
 
@@ -35,9 +35,8 @@
                                         <tr>
                                             <th>SL.</th>
                                             <th>Name</th>
-                                            <th>Batch</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
+
+                                            <th>Designation</th>
                                             <th>Image</th>
 
                                             <th width="17%;">Action</th>
@@ -49,9 +48,8 @@
                                             <tr class="odd gradeX">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $news->Name }}</td>
-                                                <td>{{ $news->Batch }}</td>
+
                                                 <td>{{ $news->email }}</td>
-                                                <td>{{ $news->phone }}</td>
                                                 @if( $news->image !='')
                                                 <td><img src="{{ asset('uploads/life/'.$news->image) }}" class="img-thumbnail" width="100" height="100" /></td>
                                                 @else

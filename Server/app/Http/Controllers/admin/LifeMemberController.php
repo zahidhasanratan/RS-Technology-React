@@ -7,6 +7,7 @@ use App\News;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class LifeMemberController extends Controller
 {
@@ -44,7 +45,7 @@ class LifeMemberController extends Controller
             'title' => 'required',
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::Slug($request->title);
         if (isset($image))
         {
             $currentDate = Carbon::now()->toDateString();
@@ -116,7 +117,7 @@ class LifeMemberController extends Controller
             'title' => 'required',
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::Slug($request->title);
         $news = LifeMember::find($id);
         if (isset($image))
         {

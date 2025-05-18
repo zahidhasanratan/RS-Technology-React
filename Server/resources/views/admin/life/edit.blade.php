@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Edit Life Member')
+@section('title','Edit Management')
 @section('content')
 
     <div id="page-wrapper" >
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Edit Life Member</h2>
+                    <h2>Edit Management</h2>
 
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Life Member
+                            Life Management
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -30,44 +30,26 @@
                                         @csrf
                                         @method('PUT')
 
-                                        <div class="form-group">
-                                            <label>Life Member No.</label>
-                                            <input class="form-control" name="LM_No" placeholder="Life Member No." required value="{{ $news->LM_No }}"/>
 
-                                        </div>
 
                                         <div class="form-group">
                                             <label>Name</label>
                                             <input class="form-control" name="title" placeholder="Name" value="{{ $news->Name }}" required/>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Batch</label>
-                                            <input class="form-control" name="Batch" placeholder="Batch" value="{{ $news->Batch }}" required/>
-                                        </div>
 
 
                                         <div class="form-group">
-                                            <label>Address</label>
+                                            <label>Short</label>
                                             <textarea class="form-control" rows="3" name="Address">{{ $news->Address }}</textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Address3</label>
-                                            <textarea class="form-control" rows="3" name="Address3">{{ $news->Address3 }}</textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Address1</label>
-                                            <textarea class="form-control" rows="3" name="Address1">{{ $news->Address1 }}</textarea>
-                                        </div>
+
+
 
                                         <div class="form-group">
-                                            <label>Email</label>
-                                            <input class="form-control" type="email" name="email" placeholder="Email" value="{{ $news->email }}"/>
+                                            <label>Designation </label>
+                                            <input class="form-control" type="text" name="email" placeholder="Designation" value="{{ $news->email }}"/>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Phone</label>
-                                            <input class="form-control" type="text" name="phone" placeholder="Phone"  value="{{ $news->phone }}"/>
-                                        </div>
 
 
                                         <div class="form-group">
