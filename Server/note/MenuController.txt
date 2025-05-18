@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use App\Menu; // Adjust according to your namespace
+use Illuminate\Http\Request;
+
+class MenuController extends Controller
+{
+    public function index()
+    {
+        $mainMenus = Menu::where('root_id', null)
+            ->where('display', 1)
+            ->orderBy('sequence', 'ASC')
+            ->get();
+
+        foreach ($mainMenus as $menu) {
+            // Hardcoded submenus for testing
+            $menu->submenus = [
+                (object)[
+                    'id' => 101,
+                    'menu_name' => 'Submenu 1',
+                    'slug' => 'submenu-1',
+                    'page_type' => 'page',
+                    'external_link' => null,
+                    'submenus' => [
+                        (object)[
+                            'id' => 201,
+                            'menu_name' => 'Third Level 1',
+                            'slug' => 'third-level-1',
+                            'page_type' => 'page',
+                            'external_link' => null,
+                            'submenus' => []
+                        ]
+                    ]
+                ]
+            ];
+        }
+
+        return response()->json($mainMenus);
+    }
+
+
+}

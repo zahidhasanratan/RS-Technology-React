@@ -1,0 +1,68 @@
+* {
+    font-family: 'SolaimanLipi', sans-serif !important;
+    font-size: 14px;
+    color: #000;
+}
+
+body {
+    margin: auto;
+}
+
+table {
+    width: 100%;
+}
+
+tr,
+td {
+    border: 1px solid #333;
+}
+
+.font-weight-bold {
+    font-weight: 500 !important;
+}
+
+.fbg {
+    background-color:lightgray; 
+    padding: 5px; 
+    color: black;
+}
+
+.border-black-2 {
+    border: 2px solid #333;
+}
+
+@media print {
+    body { 
+        -webkit-print-color-adjust: exact; 
+        overflow: hidden;
+    }
+    .fbg {
+        background-color:lightgray; 
+        padding: 5px; 
+        color: black;
+    }
+
+    .no-print {
+        display: none;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+    img.logo-main {
+        width: 255px;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .mb_view {
+        max-width: 750px;
+        margin: auto;
+    }
+    .mb_pb {
+        margin-bottom: 15px;
+    }
+    
+}

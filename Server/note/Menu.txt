@@ -1,0 +1,111 @@
+<template>
+    <header class="header">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-5 col-12">
+                        <ul class="top-link">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Doctors</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-7 col-12">
+                        <ul class="top-contact">
+                            <li><i class="fa fa-phone"></i>+880 1234 56789</li>
+                            <li><i class="fa fa-envelope"></i><a href="mailto:support@yourmail.com">support@yourmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-12">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="index.html"><img src="/img/logo.png" alt="#"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-9 col-12">
+                            <!-- Main Menu -->
+                            <div class="main-menu">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <!-- Loop through menus fetched from API -->
+                                        <li v-for="menu in menus" :key="menu.id">
+                                            <a :href="getMenuLink(menu)">
+                                                {{ menu.menu_name }}
+                                                <!-- Show dropdown icon if there are submenus -->
+                                                <i v-if="menu.submenus && menu.submenus.length > 0" class="icofont-rounded-down"></i>
+                                            </a>
+                                            <!-- Render Submenus -->
+                                            <ul v-if="menu.submenus && menu.submenus.length > 0" class="dropdown">
+                                                <li v-for="submenu in menu.submenus" :key="submenu.id">
+                                                    <a :href="getMenuLink(submenu)">
+                                                        {{ submenu.menu_name }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-12">
+                            <div class="get-quote">
+                                <!-- Add a button or any other dynamic content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</template>
+
+<script>
+    import axios from 'axios';
+
+    export default {
+        name: "SiteHeader",
+        data() {
+            return {
+                menus: [] // Store fetched menu data here
+            };
+        },
+        methods: {
+            fetchMenus() {
+                // Fetch menus from the API
+                axios.get('https://vue.esoft.com.bd/login/public/api/menus')
+                    .then(response => {
+                        console.log('Fetched menus:', response.data);  // Debugging: Check the response data
+                        this.menus = response.data;  // Assign the fetched data to menus
+                    })
+                    .catch(error => {
+                        console.error('Error fetching menus:', error);
+                    });
+            },
+            getMenuLink(menu) {
+                // Determine whether to return an internal or external link
+                if (menu.page_type === 'url' && menu.external_link) {
+                    return menu.external_link;
+                }
+                return `/page/${menu.slug}`;
+            }
+        },
+        mounted() {
+            // Fetch menus when the component is mounted
+            this.fetchMenus();
+        }
+    }
+</script>
+
+<style scoped>
+    /* Add any custom styles here if necessary */
+</style>

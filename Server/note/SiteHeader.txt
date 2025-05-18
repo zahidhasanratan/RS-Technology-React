@@ -1,0 +1,135 @@
+<template>
+    <header class="header">
+        <div class="header-inner">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-12">
+                            <div class="logo">
+                                <router-link to="/">
+                                    <img src="/img/logo.png" alt="Logo">
+                                </router-link>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-9 col-12">
+                            <div class="main-menu">
+                                <nav class="navigation">
+                                    <ul class="nav menu">
+                                        <li>
+                                            <router-link to="/">Home</router-link>
+                                        </li>
+
+                                        <li v-for="menu in menus" :key="menu.id">
+                                            <template v-if="menu.page_type === 'url' && menu.external_link">
+                                                <a :href="menu.external_link">
+                                                    {{ menu.menu_name }}
+                                                    <i v-if="menu.submenus && menu.submenus.length > 0" class="icofont-rounded-down"></i>
+                                                </a>
+                                            </template>
+                                            <template v-else>
+                                                <router-link :to="`/page/${menu.slug}`">
+                                                    {{ menu.menu_name }}
+                                                    <i v-if="menu.submenus && menu.submenus.length > 0" class="icofont-rounded-down"></i>
+                                                </router-link>
+                                            </template>
+
+                                            <ul v-if="menu.submenus && menu.submenus.length > 0" class="dropdown">
+                                                <li v-for="submenu in menu.submenus" :key="submenu.id">
+                                                    <template v-if="submenu.page_type === 'url' && submenu.external_link">
+                                                        <a :href="submenu.external_link">
+                                                            {{ submenu.menu_name }}
+                                                            <i v-if="submenu.submenus && submenu.submenus.length > 0" class="icofont-rounded-down"></i>
+                                                        </a>
+                                                    </template>
+                                                    <template v-else>
+                                                        <router-link :to="`/page/${submenu.slug}`">
+                                                            {{ submenu.menu_name }}
+                                                            <i v-if="submenu.submenus && submenu.submenus.length > 0" class="icofont-rounded-down"></i>
+                                                        </router-link>
+                                                    </template>
+
+                                                    <ul v-if="submenu.submenus && submenu.submenus.length > 0" class="dropdown">
+                                                        <li v-for="thirdLevelMenu in submenu.submenus" :key="thirdLevelMenu.id">
+                                                            <template v-if="thirdLevelMenu.page_type === 'url' && thirdLevelMenu.external_link">
+                                                                <a :href="thirdLevelMenu.external_link">
+                                                                    {{ thirdLevelMenu.menu_name }}
+                                                                    <i v-if="thirdLevelMenu.submenus && thirdLevelMenu.submenus.length > 0" class="icofont-rounded-down"></i>
+                                                                </a>
+                                                            </template>
+                                                            <template v-else>
+                                                                <router-link :to="`/page/${thirdLevelMenu.slug}`">
+                                                                    {{ thirdLevelMenu.menu_name }}
+                                                                    <i v-if="thirdLevelMenu.submenus && thirdLevelMenu.submenus.length > 0" class="icofont-rounded-down"></i>
+                                                                </router-link>
+                                                            </template>
+
+                                                            <ul v-if="thirdLevelMenu.submenus && thirdLevelMenu.submenus.length > 0" class="dropdown">
+                                                                <li v-for="fourthLevelMenu in thirdLevelMenu.submenus" :key="fourthLevelMenu.id">
+                                                                    <template v-if="fourthLevelMenu.page_type === 'url' && fourthLevelMenu.external_link">
+                                                                        <a :href="fourthLevelMenu.external_link">
+                                                                            {{ fourthLevelMenu.menu_name }}
+                                                                        </a>
+                                                                    </template>
+                                                                    <template v-else>
+                                                                        <router-link :to="`/page/${fourthLevelMenu.slug}`">
+                                                                            {{ fourthLevelMenu.menu_name }}
+                                                                        </router-link>
+                                                                    </template>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-12">
+                            <div class="get-quote">
+                                <!-- Add your quote button or link here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</template>
+
+<script>
+    import axios from 'axios';
+
+    export default {
+        name: "SiteHeader",
+        data() {
+            return {
+                menus: [] // Store fetched menu data here
+            };
+        },
+        methods: {
+            fetchMenus() {
+                // Fetch menus from the API
+                axios.get('http://127.0.0.1:8000/api/menus')
+                    .then(response => {
+                        this.menus = response.data;  // Assign the fetched data to menus
+                    })
+                    .catch(error => {
+                        console.error('Error fetching menus:', error);
+                    });
+            },
+            getMenuLink(menu) {
+                // Determine whether to return an internal or external link
+                if (menu.page_type === 'url' && menu.external_link) {
+                    return menu.external_link;
+                }
+                return `/page/${menu.slug}`;
+            }
+        },
+        mounted() {
+            // Fetch menus when the component is mounted
+            this.fetchMenus();
+        }
+    }
+</script>
