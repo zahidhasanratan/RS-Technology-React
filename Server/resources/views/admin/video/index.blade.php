@@ -9,8 +9,8 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>All Product Category</h2>
-                        <a style="float:right" href="{{ route('video.create') }}" class="btn btn-primary square-btn-adjust">Add Product Category</a>
+                        <h2>All Video</h2>
+                        <a style="float:right" href="{{ route('video.create') }}" class="btn btn-primary square-btn-adjust">Add Video</a>
                         <div class="row">
 
                         </div>
@@ -24,7 +24,7 @@
                         <!-- Advanced Tables -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                All Category
+                                All Video
                             </div>
                             <div class="panel-body">
 
@@ -35,7 +35,7 @@
                                         <tr>
                                             <th>SL.</th>
                                             <th>Title</th>
-                                            <th>Image</th>
+                                            <th width="20%;">Video</th>
 
 
                                             <th width="17%;">Action</th>
@@ -47,7 +47,21 @@
                                             <tr class="odd gradeX">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $video->title }}</td>
-                                                <td><img src="{{ asset('uploads/video/'.$video->image) }}" class="img-thumbnail" width="100" height="100" /></td>
+                                                <td>
+                                                    @if(!empty($video->short))
+                                                        <iframe width="150" height="100"
+                                                                src="https://www.youtube.com/embed/{{ $video->short }}"
+                                                                title="{{ $video->title }}"
+                                                                frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                                allowfullscreen>
+                                                        </iframe>
+                                                    @else
+                                                        <span>No video</span>
+                                                    @endif
+                                                </td>
+
 
                                                 <td><a href="{{route('video.edit',$video->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                                     <form id="delete-form-{{ $video->id }}" action="{{ route('video.destroy',$video->id) }}" style="display: none;" method="POST">

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Add Product Category')
+@section('title','Add Video')
 @section('content')
 
     <div id="page-wrapper" >
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Add Product Category</h2>
+                    <h2>Add Video</h2>
 
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           Add Product Category
+                           Add Video
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -35,15 +35,12 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Short Description</label>
-                                            <textarea class="form-control" rows="3" name="description"></textarea>
+                                            <label>Youtube Video Url</label>
+                                            <input class="form-control" name="short" placeholder="Youtube Video Url" />
                                         </div>
 
 
-                                        <div class="form-group">
-                                            <label>Image (Height:280px X Width:260px)</label>
-                                            <input type="file" name="image"/>
-                                        </div>
+
 
                                         <a href="{{ route('video.index') }}" class="btn btn-danger">Back</a>
                                         <button type="submit" class="btn btn-primary">Save</button>

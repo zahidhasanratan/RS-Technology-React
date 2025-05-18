@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Edit Category')
+@section('title','Edit Video')
 @section('content')
 
     <div id="page-wrapper" >
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Edit Category</h2>
+                    <h2>Edit Video</h2>
 
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Edit Category
+                            Edit Video
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -36,16 +36,12 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Short</label>
-                                            <textarea class="form-control" name="description" rows="3">{{ $video->short }}</textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Image (Height:280px X Width:260px)</label>
-                                            <input type="file" name="image"/></br>
-                                            <img src="{{ asset('uploads/video/'.$video->image) }}" class="img-thumbnail" width="100" height="100" />
-                                        </div>
+                                            <label>Youtube Video Url</label>
+                                            <input class="form-control" name="short"
+                                                   value="https://www.youtube.com/watch?v={{ $video->short }}"
+                                                   placeholder="Youtube Video Url" />
 
-
+                                        </div>
 
 
                                         <a href="{{ route('video.index') }}" class="btn btn-danger">Back</a>

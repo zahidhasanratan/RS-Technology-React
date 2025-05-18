@@ -117,10 +117,11 @@ class CategoryController extends Controller
         ]);
 
         $image = $request->file('image');
-        $slug = Str::slug($request->name); // Use Str::slug
+        $slug = Str::slug($request->name);
         $category = Category::find($id);
 
-        if (isset($image)) {
+        // Handle single image upload
+        if ($image) {
             $currentDate = Carbon::now()->toDateString();
             $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
             if (!file_exists('uploads/category')) {
@@ -128,38 +129,49 @@ class CategoryController extends Controller
             }
             $image->move('uploads/category', $imagename);
         } else {
-            $imagename = $category->image;
+            $imagename = $category->image; // Keep existing image
         }
 
-        // Upload new images
+        // Handle multiple image uploads (gallery)
         if ($request->hasFile('images2')) {
             $images2 = $request->file('images2');
-            $imageNames2 = [];
+            $newImageNames = [];
+
             foreach ($images2 as $image2) {
-                $imageName2 = $image2->getClientOriginalName();
+                $imageName2 = uniqid() . '_' . $image2->getClientOriginalName();
                 $image2->move(public_path('images'), $imageName2);
-                $imageNames2[] = $imageName2;
+                $newImageNames[] = $imageName2;
             }
-            $category->images2 = implode(',', $imageNames2);
+
+            // Merge new images with existing images
+            $existingImages = $category->images2 ? explode(',', $category->images2) : [];
+            $mergedImages = array_merge($existingImages, $newImageNames);
+            $category->images2 = implode(',', $mergedImages);
         }
 
+        // Handle image deletions
+        if ($request->has('deleted_images')) {
+            $deletedImages = $request->input('deleted_images');
+            foreach ($deletedImages as $imageToDelete) {
+                $imagePath = public_path('images/' . $imageToDelete);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            // Update DB to remove deleted image names
+            $currentImages = explode(',', $category->images2);
+            $category->images2 = implode(',', array_diff($currentImages, $deletedImages));
+        }
+
+        // Update other fields
         $category->name = $request->name;
         $category->description = $request->description;
         $category->slug = $slug;
         $category->image = $imagename;
 
-        if ($request->has('deleted_images')) {
-            $deletedImages = $request->input('deleted_images');
-            foreach ($deletedImages as $image2) {
-                $imagePath = public_path('images/' . $image2);
-                if (file_exists($imagePath)) {
-                    unlink($imagePath);
-                }
-            }
-            $category->images2 = implode(',', array_diff(explode(',', $category->images2), $deletedImages));
-        }
-
         $category->save();
+
         return redirect()->route('category.index')->with('successMsg', 'Category Successfully Updated');
     }
 

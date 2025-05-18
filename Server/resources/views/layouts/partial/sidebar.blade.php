@@ -118,19 +118,19 @@
                     </li>
 
                     <li>
-                        <a href="#">Product <span class="fa arrow"></span></a>
+                        <a href="#">Video <span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             {{--<li>--}}
                                 {{--<a href="{{ route('video.create') }}">Add Video</a>--}}
                             {{--</li>--}}
+{{--                            <li>--}}
+{{--                             <a href="{{ route('item.create') }}">Add Product</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="{{ route('item.index') }}">All Product</a>--}}
+{{--                            </li>--}}
                             <li>
-                             <a href="{{ route('item.create') }}">Add Product</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('item.index') }}">All Product</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('video.index') }}">Product Category</a>
+                                <a href="{{ route('video.index') }}">Video</a>
                             </li>
                         </ul>
                     </li>

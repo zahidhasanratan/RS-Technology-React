@@ -37,39 +37,47 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
-
-        $this->validate($request,[
+        $this->validate($request, [
             'title' => 'required',
-            'image' => 'mimes:jpeg,jpg,bmp,png',
+            'short' => 'required', // Ensure this is required if you need the video URL
         ]);
 
-        $image = $request->file('image');
         $slug = Str::slug($request->title);
-        if (isset($image))
-        {
-            $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug .'-'. $currentDate .'-'. uniqid() .'.'. $image->getClientOriginalExtension();
-            if (!file_exists('uploads/video'))
-            {
-                mkdir('uploads/video', 0777 , true);
+
+        // Extract the video ID from YouTube URL
+        $videoId = null;
+        $url = $request->short;
+
+        if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
+            $parsedUrl = parse_url($url);
+
+            if (isset($parsedUrl['host']) && $parsedUrl['host'] === 'youtu.be') {
+                // Handle shortened youtu.be links
+                $videoId = ltrim($parsedUrl['path'], '/');
+            } elseif (isset($parsedUrl['query'])) {
+                // Handle regular YouTube links
+                parse_str($parsedUrl['query'], $queryParams);
+                $videoId = $queryParams['v'] ?? null;
             }
-            $image->move('uploads/video',$imagename);
-        }else {
-            $imagename = 'dafault.png';
         }
 
+        if (!$videoId) {
+            return redirect()->back()->with('errorMsg', 'Invalid YouTube URL format.');
+        }
 
-        $video = new video();
+        $video = new Video();
         $video->title = $request->title;
-        $video->short = $request->description;
-        $video->image = $imagename;
+        $video->short = $videoId; // store only the ID
 
         $video->save();
-        return redirect()->route('video.index')->with('successMsg','Video Successfully Saved');
 
+        return redirect()->route('video.index')->with('successMsg', 'Video Successfully Saved');
     }
+
 
     /**
      * Display the specified resource.
@@ -101,36 +109,47 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'title' => 'required',
-            'image' => 'mimes:jpeg,jpg,bmp,png',
+            'short' => 'required', // Ensure the short field is validated
         ]);
 
-        $image = $request->file('image');
         $slug = Str::slug($request->title);
-        $video = video::find($id);
-        if (isset($image))
-        {
-            $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug .'-'. $currentDate .'-'. uniqid() .'.'. $image->getClientOriginalExtension();
-            if (!file_exists('uploads/video'))
-            {
-                mkdir('uploads/video', 0777 , true);
+        $video = Video::find($id);
+
+        // Extract YouTube video ID from URL
+        $videoId = null;
+        $url = $request->short;
+
+        if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
+            $parsedUrl = parse_url($url);
+
+            if (isset($parsedUrl['host']) && $parsedUrl['host'] === 'youtu.be') {
+                // Handle youtu.be format
+                $videoId = ltrim($parsedUrl['path'], '/');
+            } elseif (isset($parsedUrl['query'])) {
+                // Handle youtube.com format
+                parse_str($parsedUrl['query'], $queryParams);
+                $videoId = $queryParams['v'] ?? null;
             }
-            $image->move('uploads/video',$imagename);
-        }else {
-            $imagename = $video->image;
         }
 
+        if (!$videoId) {
+            return redirect()->back()->with('errorMsg', 'Invalid YouTube URL format.');
+        }
 
         $video->title = $request->title;
-        $video->short = $request->description;
-        $video->image = $imagename;
+        $video->short = $videoId; // Store only the video ID
+
         $video->save();
-        return redirect()->route('video.index')->with('successMsg','Video Successfully Updated');
+
+        return redirect()->route('video.index')->with('successMsg', 'Video Successfully Updated');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -141,10 +160,7 @@ class VideoController extends Controller
     public function destroy($id)
     {
         $video = video::find($id);
-        if (file_exists('uploads/video/'.$video->image))
-        {
-            unlink('uploads/video/'.$video->image);
-        }
+
         $video->delete();
         return redirect()->back()->with('successMsg','Video Successfully Deleted');
     }
