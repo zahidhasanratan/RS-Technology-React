@@ -20,7 +20,15 @@ class OthersController extends Controller
         return response()->json($objects);  // Return the filtered data as JSON
     }
 
+    public function others6()
+    {
+        // Fetch the object with id = 1, ordered by id in ascending order
+        $objects = Others::orderBy('id', 'ASC')
+            ->where('id', 6)
+            ->get();
 
+        return response()->json($objects);  // Return the filtered data as JSON
+    }
 
     public function details($slug)
     {

@@ -66,11 +66,14 @@ const BrandsSection = ({ title = "" }) => {
                                     transition={{ duration: 0.3 }}
                                     className="flex justify-center items-center"
                                 >
-                                    <img
-                                        src={brand.image} // Use the image URL directly
-                                        alt={brand.title}
-                                        className="h-25 max-w-20 object-contain transition-all duration-300"
-                                    />
+                                    <a href={brand.designation} target="_blank" rel="noopener noreferrer">
+    <img
+        src={brand.image}
+        alt={brand.title}
+        className="h-25 max-w-20 object-contain transition-all duration-300"
+    />
+</a>
+
                                 </motion.div>
                             </div>
                         </motion.div>
