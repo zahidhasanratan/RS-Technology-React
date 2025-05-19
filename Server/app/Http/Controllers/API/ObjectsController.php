@@ -76,11 +76,15 @@ class ObjectsController extends Controller
 
         // Check if the page exists
         if (!$page) {
-            return response()->json(['message' => 'Page not found'], 404); // Return a 404 error if the page is not found
+            return response()->json(['message' => 'Page not found'], 404);
         }
 
+        // Modify the image URL
+        $page->image = url('uploads/object/' . $page->image);
+
         // Return the page data as JSON
-        return response()->json($page); // Return the page data
+        return response()->json($page);
     }
+
 
 }

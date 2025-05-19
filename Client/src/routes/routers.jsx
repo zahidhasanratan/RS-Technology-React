@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
 import { Root } from '../layouts/Root';
 import SingleSolution from '../Shared/SingleSolution';
+import About from '../pages/About';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
         },
         Component: SingleSolution,
       },
+      {
+        path: 'About',
+        Component: About
+      },
+      
     ],
   },
 ]);

@@ -7,7 +7,7 @@ import img3 from "../assets/rs-tech-asset/about-3.png";
 import contacticon from "../assets/rs-tech-asset/icon-about-contact.svg";
 import experienceticon from "../assets/rs-tech-asset/icon-about-experience.svg";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const AboutHome = () => {
     const [aboutData, setAboutData] = useState(null);
 
@@ -146,9 +146,12 @@ const AboutHome = () => {
                                     </div>
                                 </div>
 
-                                <button className="bg-indigo-950 hover:bg-indigo-900 text-white font-medium py-3 px-6 rounded-3xl transition duration-300 flex items-center gap-2">
-                                    More About Us <span><FaArrowAltCircleRight /></span>
-                                </button>
+                               <Link
+  to="/About"
+  className="bg-indigo-950 hover:bg-indigo-900 text-white font-medium py-3 px-6 rounded-3xl transition duration-300 flex items-center gap-2"
+>
+  More About Us <span><FaArrowAltCircleRight /></span>
+</Link>
                             </div>
                         </motion.div>
                     </div>

@@ -74,14 +74,14 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                         >
-                            <a href={`/Service/${service.slug}`} className="block relative group w-full h-48 overflow-hidden">
-                                <img
-                                    src={service.image}
-                                    alt={service.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-black before:rounded-full before:opacity-0 before:transition-all before:duration-700 group-hover:before:opacity-50 group-hover:before:scale-200 before:scale-0 before:origin-center mix-blend-overlay"></div>
-                            </a>
+                           <Link to={`/Service/${service.slug}`} className="block relative group w-full h-48 overflow-hidden">
+    <img
+        src={service.image}
+        alt={service.title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-black before:rounded-full before:opacity-0 before:transition-all before:duration-700 group-hover:before:opacity-50 group-hover:before:scale-200 before:scale-0 before:origin-center mix-blend-overlay"></div>
+</Link>
 
                             <div className="p-6">
                                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
