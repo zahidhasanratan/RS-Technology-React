@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import imgw from "../assets/rs-tech-asset/icon-sub-heading.svg";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ServiceHome = ({ title = "", subtitle = "" }) => {
     const [services, setServices] = useState([]);
@@ -73,7 +74,7 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                         >
-                            <a href={`/${service.slug}`} className="block relative group w-full h-48 overflow-hidden">
+                            <a href={`/Service/${service.slug}`} className="block relative group w-full h-48 overflow-hidden">
                                 <img
                                     src={service.image}
                                     alt={service.title}
@@ -90,21 +91,24 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
                                     {service.short || ""}
                                 </p>
                                 <motion.div whileHover={{ x: 5 }}>
-                                    <a
-                                        href={`/${service.slug}`}
-                                        className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
-                                    >
-                                        Discover More
-                                        <svg
-                                            className="w-4 h-4 ml-2"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </a>
+                                    
+
+<Link
+  to={`/Service/${service.slug}`}
+  className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+>
+  Discover More
+  <svg
+    className="w-4 h-4 ml-2"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+  </svg>
+</Link>
+
                                 </motion.div>
                             </div>
                         </motion.div>
