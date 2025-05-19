@@ -112,6 +112,36 @@
                                         </div>
                                     @endif
 
+                                    @if($others->id ==7)
+                                        <div class="form-group">
+                                            <label>Facebook</label>
+                                            <input class="form-control" name="title" value="{{ $others->title }}"
+                                                   placeholder="Facebook"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Twitter</label>
+                                            <input class="form-control" name="slug" value="{{ $others->slug }}"
+                                                   placeholder="Twitter"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Instagram</label>
+                                            <input class="form-control" name="title2" value="{{ $others->title2 }}"
+                                                   placeholder="Instagram"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Pinterest
+                                            </label>
+                                            <input class="form-control" name="description"
+                                                   value="{{ $others->description }}" placeholder="Pinterest"/>
+                                        </div>
+
+
+
+
+                                    @endif
+
                                     <a href="{{ route('others.index') }}" class="btn btn-danger">Back</a>
                                     <button type="submit" class="btn btn-primary">Save</button>
 

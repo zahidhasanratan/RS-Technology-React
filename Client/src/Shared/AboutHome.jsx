@@ -1,13 +1,16 @@
-import { motion } from 'framer-motion';
-import img from "../assets/rs-tech-asset/icon-sub-heading.svg"
-import img1 from "../assets/rs-tech-asset/about-img-1.jpg";
-import img2 from "../assets/rs-tech-asset/about-2.png";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import axios from "axios";
+
+import img from "../assets/rs-tech-asset/icon-sub-heading.svg";
 import img3 from "../assets/rs-tech-asset/about-3.png";
 import contacticon from "../assets/rs-tech-asset/icon-about-contact.svg";
 import experienceticon from "../assets/rs-tech-asset/icon-about-experience.svg";
-import { FaArrowAltCircleRight } from 'react-icons/fa';
+import { FaArrowAltCircleRight } from "react-icons/fa";
 
 const AboutHome = () => {
+    const [aboutData, setAboutData] = useState(null);
+
     const fadeInUp = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 }
@@ -23,13 +26,23 @@ const AboutHome = () => {
         visible: { opacity: 1, x: 0 }
     };
 
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8000/api/object2")
+            .then(res => {
+                setAboutData(res.data[0]); // Assuming you always need the first object
+            })
+            .catch(err => console.error(err));
+    }, []);
+
+    if (!aboutData) return <div className="text-center py-20">Loading...</div>;
+
     return (
         <section className="py-8">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row items-center lg:px-24">
                     {/* Images Section */}
                     <div className="w-full lg:w-1/2 relative h-[280px] sm:h-[350px] lg:h-[600px] mb-10 lg:mb-0 -mt-3 lg:-mt-24">
-                        {/* Main Image (Image 1) */}
+                        {/* Main Image */}
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -39,13 +52,13 @@ const AboutHome = () => {
                             className="absolute top-0 left-0 w-3/4 sm:w-2/3 lg:w-[75%] h-3/4 sm:h-[70%] lg:h-[80%] z-10"
                         >
                             <img
-                                src={img1}
+                                src={aboutData.image}
                                 alt="Our company"
                                 className="rounded-lg shadow-xl w-full h-full object-cover"
                             />
                         </motion.div>
 
-                        {/* Secondary Image (Image 2) */}
+                        {/* Secondary Image */}
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -55,14 +68,12 @@ const AboutHome = () => {
                             className="absolute -bottom-10 lg:-bottom-20 right-0 w-2/3 sm:w-1/2 lg:w-[65%] h-2/3 sm:h-1/2 lg:h-[70%] z-20"
                         >
                             <img
-                                src={img2}
+                                src={aboutData.image2}
                                 alt="Our team"
                                 className="rounded-3xl shadow-xl w-full h-full object-cover"
                             />
                         </motion.div>
                     </div>
-
-
 
                     {/* Text Content */}
                     <div className="w-full lg:w-1/2 lg:pl-12">
@@ -73,20 +84,16 @@ const AboutHome = () => {
                             variants={fadeInUp}
                             transition={{ duration: 0.6 }}
                         >
-                            <div className='flex mb-2 mt-10 lg:mt-5 gap-2'>
+                            <div className="flex mb-2 mt-10 lg:mt-5 gap-2">
                                 <img src={img} alt="" />
                                 <h3 className="text-lg font-medium text-indigo-950">Our Company</h3>
                             </div>
 
                             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                                <span className="text-indigo-900">Fast Growing Surveillance Solutions Provider Company</span>
+                                <span className="text-indigo-900">{aboutData.sub_title}</span>
                             </h2>
 
-                            <p className="text-gray-600 mb-8 leading-relaxed">
-                                Welcome to RS Technologies, the leading provider of innovative and reliable solutions for your enterprise needs. We are a team of passionate and experienced professionals who are committed to delivering the best value and quality to our customers.
-                                <br /><br />
-                                At RS Technologies, we understand the challenges and opportunities that enterprises face in the digital era. We offer a range of solutions and services that can help you optimize your network performance, enhance your security, and improve your collaboration. Whether you need to design, install, manage, or troubleshoot your network, we have the expertise and the tools to assist you.
-                            </p>
+                            <div className="text-gray-600 mb-8 leading-relaxed" dangerouslySetInnerHTML={{ __html: aboutData.short }}></div>
                         </motion.div>
 
                         <motion.div
@@ -100,7 +107,7 @@ const AboutHome = () => {
                             <div className="flex items-start">
                                 <div className="mr-6">
                                     <img
-                                        src={img3}
+                                        src={aboutData.image3}
                                         alt="Our experience"
                                         className="rounded-3xl shadow-xl w-80 h-36 object-cover"
                                     />
@@ -110,7 +117,7 @@ const AboutHome = () => {
                                         <img src={experienceticon} alt="Experience" className="w-6 h-6" />
                                     </div>
                                     <h3 className="text-xl font-semibold text-gray-800">
-                                        We Have More Than <span className="text-indigo-600">15+</span> Years of Communication Safety and Automation Sector
+                                        {aboutData.sub_title2}
                                     </h3>
                                 </div>
                             </div>
@@ -132,7 +139,9 @@ const AboutHome = () => {
                                     <div>
                                         <p className="text-sm text-gray-500">Call Directly 24/7</p>
                                         <h3 className="text-xl font-semibold">
-                                            <a href="tel:01916017508" className="text-indigo-600 hover:text-indigo-800">(+088) 01916017508</a>
+                                            <a href={`tel:${aboutData.phone}`} className="text-indigo-600 hover:text-indigo-800">
+                                                {aboutData.phone}
+                                            </a>
                                         </h3>
                                     </div>
                                 </div>

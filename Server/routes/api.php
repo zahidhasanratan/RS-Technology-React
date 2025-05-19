@@ -60,3 +60,4 @@ Route::get('/objects5', [\App\Http\Controllers\API\ObjectsController::class, 'ob
 Route::get('/objects6', [\App\Http\Controllers\API\ObjectsController::class, 'objects6']);
 Route::get('/footercontact', [\App\Http\Controllers\API\OthersController::class, 'others2']);
 Route::get('/footerother', [\App\Http\Controllers\API\OthersController::class, 'others6']);
+Route::get('/social', [\App\Http\Controllers\API\OthersController::class, 'others7']);

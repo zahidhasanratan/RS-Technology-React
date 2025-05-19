@@ -22,13 +22,22 @@ class ObjectsController extends Controller
 
     public function object2()
     {
-        // Fetch the object with id = 1, ordered by id in ascending order
-        $objects = Objects::orderBy('id', 'ASC')
-            ->where('id', 2)
-            ->get();
+        $objects = Objects::where('id', 2)->orderBy('id', 'ASC')->get();
 
-        return response()->json($objects);  // Return the filtered data as JSON
+        // Prepend the image path to each image field
+        $objects->transform(function ($item) {
+            $basePath = url('uploads/object'); // Generates full URL, e.g., http://yourdomain.com/uploads/object
+
+            $item->image = $item->image ? $basePath . '/' . $item->image : null;
+            $item->image2 = $item->image2 ? $basePath . '/' . $item->image2 : null;
+            $item->image3 = $item->image3 ? $basePath . '/' . $item->image3 : null;
+
+            return $item;
+        });
+
+        return response()->json($objects);
     }
+
     public function object3()
     {
         // Fetch the object with id = 1, ordered by id in ascending order
