@@ -5,6 +5,8 @@ import { Root } from '../layouts/Root';
 import SingleSolution from '../Shared/SingleSolution';
 import About from '../pages/About';
 import Clients from '../pages/Clients';
+import Management from '../pages/Management';
+import { NotFoundPage } from '../components/NotFoundPage';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,12 @@ const router = createBrowserRouter([
         path: 'Clients',
         Component: Clients
       },
+      {
+        path: 'Management',
+        Component: Management
+      },
+      { path: "*", element: <NotFoundPage></NotFoundPage> }
+
     ],
   },
 ]);
