@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import { Root } from '../layouts/Root';
 import SingleSolution from '../Shared/SingleSolution';
 import About from '../pages/About';
+import Clients from '../pages/Clients';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,10 @@ const router = createBrowserRouter([
         path: 'About',
         Component: About
       },
-      
+      {
+        path: 'Clients',
+        Component: Clients
+      },
     ],
   },
 ]);

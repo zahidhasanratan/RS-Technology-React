@@ -83,7 +83,7 @@ const Navbar = () => {
                 { id: "runningproject", path: "/products", label: "Running Projects " },
             ]
         },
-        { id: "products", path: "/products", label: "Products" },
+      
         {
             id: "solutions",
             label: "Solutions",
