@@ -5,8 +5,10 @@ import { Root } from '../layouts/Root';
 import SingleSolution from '../Shared/SingleSolution';
 import About from '../pages/About';
 import Clients from '../pages/Clients';
+import News from '../pages/News';
 import Management from '../pages/Management';
 import { NotFoundPage } from '../components/NotFoundPage';
+import NewsSingle from '../Shared/News/NewsSingle';
 
 const router = createBrowserRouter([
   {
@@ -28,18 +30,48 @@ const router = createBrowserRouter([
       },
       {
         path: 'About',
-        Component: About
+        Component: About,
       },
       {
-        path: 'Clients',
-        Component: Clients
+        path: 'clients',
+        loader: async () => {
+          const res = await fetch('http://127.0.0.1:8000/api/clients');
+          return res.json();
+        },
+        Component: Clients,
       },
       {
-        path: 'Management',
-        Component: Management
+  path: 'news',
+  loader: async () => {
+    const res = await fetch('http://127.0.0.1:8000/api/news');
+    return res.json();
+  },
+  Component: News,
+},
+  {
+  path: 'news/:slug',
+  loader: async ({ params }) => {
+    const response = await fetch(`http://127.0.0.1:8000/api/news/${params.slug}`);
+    if (!response.ok) {
+      throw new Response('News not found', { status: 404 });
+    }
+    return response.json();
+  },
+  Component: NewsSingle,
+  errorElement: <div className="p-10 text-center text-red-500">News not found (404)</div>,
+},
+      {
+        path: 'management',
+        loader: async () => {
+          const res = await fetch('http://127.0.0.1:8000/api/Management');
+          return res.json();
+        },
+        Component: Management,
       },
-      { path: "*", element: <NotFoundPage></NotFoundPage> }
-
+      {
+        path: '*',
+        Component: NotFoundPage,
+      },
     ],
   },
 ]);
