@@ -14,29 +14,33 @@ const Footer = () => {
     const [aboutData, setAboutData] = useState(null);
     const [contactData, setContactData] = useState(null);
     const [socialLinks, setSocialLinks] = useState(null);
+    const [footerMenu, setFooterMenu] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [aboutRes, contactRes, socialRes] = await Promise.all([
+                const [aboutRes, contactRes, socialRes, menuRes] = await Promise.all([
                     fetch("http://127.0.0.1:8000/api/footerother"),
                     fetch("http://127.0.0.1:8000/api/footercontact"),
-                    fetch("http://127.0.0.1:8000/api/social")
+                    fetch("http://127.0.0.1:8000/api/social"),
+                    fetch("http://127.0.0.1:8000/api/footermenu")
                 ]);
 
-                if (!aboutRes.ok || !contactRes.ok || !socialRes.ok) {
+                if (!aboutRes.ok || !contactRes.ok || !socialRes.ok || !menuRes.ok) {
                     throw new Error("Network response was not ok");
                 }
 
                 const aboutJson = await aboutRes.json();
                 const contactJson = await contactRes.json();
                 const socialJson = await socialRes.json();
+                const menuJson = await menuRes.json();
 
                 setAboutData(Array.isArray(aboutJson) && aboutJson.length > 0 ? aboutJson[0] : null);
                 setContactData(Array.isArray(contactJson) && contactJson.length > 0 ? contactJson[0] : null);
                 setSocialLinks(Array.isArray(socialJson) && socialJson.length > 0 ? socialJson[0] : null);
+                setFooterMenu(Array.isArray(menuJson) ? menuJson : []);
             } catch (err) {
                 console.error("Fetch error:", err);
                 setError(err.message);
@@ -52,6 +56,7 @@ const Footer = () => {
         <footer className="bg-indigo-950 text-white pt-10 text-md md:px-24 lg:px-24">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row flex-wrap gap-8 lg:gap-12">
+                    {/* About Section */}
                     <div className="w-full md:w-[calc(50%-16px)] lg:w-[40%] space-y-4">
                         <h3 className="text-xl font-semibold">About Us</h3>
                         {loading && <p>Loading...</p>}
@@ -60,6 +65,7 @@ const Footer = () => {
                             <p className="leading-relaxed">{aboutData.description}</p>
                         )}
 
+                        {/* Social Icons */}
                         <div className="flex space-x-4 text-xl">
                             {socialLinks?.description && (
                                 <a href={socialLinks.description} target="_blank" rel="noopener noreferrer">
@@ -84,29 +90,27 @@ const Footer = () => {
                         </div>
                     </div>
 
+                    {/* Footer Menu / Quick Links */}
                     <div className="w-full md:w-[calc(50%-16px)] lg:w-[20%] space-y-6">
                         <h3 className="text-xl font-semibold text-white mb-4">Quick Links</h3>
-                        <ul className="space-y-3">
-                            {[ 
-                                { name: "Service & Support" },
-                                { name: "FAQs" },
-                                { name: "Manufacturers" },
-                                { name: "CSR" },
-                                { name: "Career", path: "/career" },
-                                { name: "Location Map" }
-                            ].map((link, idx) => (
-                                <li key={idx}>
-                                    <Link
-                                        to={link.path || "#"}
-                                        className="text-gray-300 hover:text-indigo-300 transition-colors duration-200 flex items-center"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
+                        {loading && <p>Loading links...</p>}
+                        {!loading && (
+                            <ul className="space-y-3">
+                                {footerMenu.map((link, idx) => (
+                                    <li key={idx}>
+                                        <Link
+                                            to={`/${link.external_link}`}
+                                            className="text-gray-300 hover:text-indigo-300 transition-colors duration-200 flex items-center"
+                                        >
+                                            {link.menu_name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
 
+                    {/* Contact Section */}
                     <div className="w-full md:w-full lg:w-[30%] space-y-4">
                         <h3 className="text-xl font-semibold">Contact</h3>
                         {loading && <p>Loading contact...</p>}
