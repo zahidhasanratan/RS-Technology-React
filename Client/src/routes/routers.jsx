@@ -19,6 +19,7 @@ import Products from '../pages/Products';
 import UpcommingProducts from '../pages/UpcommingProducts';
 import ProjectDetails from '../Shared/Projects/ProjectDetails';
 import RunningProducts from '../pages/RunningProject';
+import { PageDetails } from '../pages/PageDetails';
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,18 @@ const router = createBrowserRouter([
         path: 'About',
         Component: About,
       },
+      {
+  path: 'page/:slug',
+  loader: async ({ params }) => {
+    const response = await fetch(`http://127.0.0.1:8000/api/page/${params.slug}`);
+    if (!response.ok) {
+      throw new Response('Page not found', { status: 404 });
+    }
+    return response.json();
+  },
+  Component: PageDetails,
+  errorElement: <div className="p-10 text-center text-red-500">Page not found (404)</div>,
+},
  {
         path: 'contact',
         Component: ContactUs,
