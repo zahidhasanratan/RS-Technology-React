@@ -18,6 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/menus', [\App\Http\Controllers\Api\MenuController::class, 'index']);
+Route::post('/contact', [\App\Http\Controllers\frontend\HomeController::class, 'contactmail']);
+
+
 Route::get('/footermenu', [\App\Http\Controllers\Api\MenuController::class, 'menus1']);
 Route::get('/projects', [\App\Http\Controllers\Api\ActivityController::class, 'index']);
 Route::get('/faq', [\App\Http\Controllers\Api\FaqController::class, 'index']);

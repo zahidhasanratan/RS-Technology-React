@@ -50,7 +50,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     
+
     public function index()
     {
         $sliders = Slider::all();
@@ -94,7 +94,7 @@ class HomeController extends Controller
 
         return view('frontend/home.index',compact('sliders','video','contact1','activity','service','categories','news','main','links','footer','objects','objects2','contact1','contact2','headoffice'));
     }
-    
+
     public function day()
     {
         $sliders = Slider::all();
@@ -1338,7 +1338,7 @@ class HomeController extends Controller
 
     public function contactmail(Request $request)
     {
-        $data = request()->validate([
+        $data = $request->validate([
             'name' => 'required',
             'lname' => 'required',
             'email' => 'required|email',
@@ -1346,8 +1346,10 @@ class HomeController extends Controller
             'address' => 'required',
             'message' => 'required',
         ]);
+
         Mail::to('info@zahid.com.bd')->send(new ContactFormMail($data));
-        return redirect('contact');
+
+        return response()->json(['message' => 'Message sent successfully'], 200);
     }
 
     public function dmcday(Request $request)
@@ -1412,8 +1414,8 @@ class HomeController extends Controller
     //     Mail::to($request->email)->send(new DmcMail($data));
     //     return redirect()->route('dmc.successmessage')->with('successMsg','Your Request Has Benn Successfully Submitted!');
     // }
-    
-    
+
+
      public function dmcpay(Request $request)
     {
         $career   =   Service::orderBy('id','DESC')
@@ -1488,7 +1490,7 @@ class HomeController extends Controller
 
 
     }
-    
+
 
     public function shurjopaysubmission(Request $request)
     {

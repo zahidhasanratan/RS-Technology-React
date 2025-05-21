@@ -6,6 +6,7 @@ import {
 import CommonHero from '../Shared/CommonHero';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const ContactUs = () => {
     const [captchaInput, setCaptchaInput] = useState('');
@@ -35,29 +36,33 @@ const ContactUs = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        if (parseInt(captchaInput) !== captchaAnswer) {
-            toast.error('Incorrect CAPTCHA. Please try again.', { position: "top-right" });
-            generateCaptcha(); // Regenerate CAPTCHA after wrong attempt
-            return;
-        }
-
-        // TODO: API call to Laravel backend goes here
-
-        toast.success('Your message has been submitted successfully!', { position: "top-right" });
-
-        // Reset form
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            message: ''
-        });
+    if (parseInt(captchaInput) !== captchaAnswer) {
+        toast.error('Incorrect CAPTCHA. Please try again.', { position: "top-right" });
         generateCaptcha();
-    };
+        return;
+    }
+
+    try {
+        const response = await axios.post('http://127.0.0.1:8000/api/contact', {
+            name: formData.firstName,
+            lname: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            address: "From Contact Form", // static if no field
+            message: formData.message
+        });
+
+        toast.success('Your message has been sent!', { position: "top-right" });
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+        generateCaptcha();
+    } catch (error) {
+        console.error(error);
+        toast.error('Failed to send. Please try again later.', { position: "top-right" });
+    }
+};
 
     return (
         <div>
