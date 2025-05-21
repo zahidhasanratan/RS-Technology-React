@@ -4,12 +4,21 @@ import Home from '../pages/Home';
 import { Root } from '../layouts/Root';
 import SingleSolution from '../Shared/SingleSolution';
 import About from '../pages/About';
+import Solutions from '../pages/Solutions';
 import Clients from '../pages/Clients';
+import ContactUs from '../pages/ContactUs';
 import News from '../pages/News';
 import Video from '../pages/Video';
+import Photo from '../pages/Photo';
 import Management from '../pages/Management';
 import { NotFoundPage } from '../components/NotFoundPage';
 import NewsSingle from '../Shared/News/NewsSingle';
+import SingleAlbum from '../Shared/PhotoAlbum/SingleAlbum';
+import AllProject from '../Shared/Projects/AllProject';
+import Products from '../pages/Products';
+import UpcommingProducts from '../pages/UpcommingProducts';
+import ProjectDetails from '../Shared/Projects/ProjectDetails';
+import RunningProducts from '../pages/RunningProject';
 
 
 const router = createBrowserRouter([
@@ -34,6 +43,33 @@ const router = createBrowserRouter([
         path: 'About',
         Component: About,
       },
+ {
+        path: 'contact',
+        Component: ContactUs,
+      },
+
+      {
+        path: 'upcomming-project',
+        Component: UpcommingProducts,
+      },
+{
+        path: 'completed-project',
+        Component: Products,
+      },
+      {
+        path: 'running-project',
+        Component: RunningProducts,
+      },
+
+{
+  path: 'projectdetails/:slug',
+  element: <ProjectDetails />,
+},
+
+       {
+        path: 'Solution',
+        Component: Solutions,
+      },
       {
         path: 'clients',
         loader: async () => {
@@ -50,6 +86,27 @@ const router = createBrowserRouter([
         },
         Component: Video,
       },
+
+      {
+  path: 'photo',
+  loader: async () => {
+    const res = await fetch('http://127.0.0.1:8000/api/photo');
+    return res.json();
+  },
+  Component: Photo,
+},
+{
+  path: 'photo/:slug',
+  loader: async ({ params }) => {
+    const response = await fetch(`http://127.0.0.1:8000/api/photo/${params.slug}`);
+    if (!response.ok) {
+      throw new Response('Photo album not found', { status: 404 });
+    }
+    return response.json();
+  },
+  Component: SingleAlbum,
+  errorElement: <div className="p-10 text-center text-red-500">Photo album not found (404)</div>,
+},
 
       {
         path: 'news',

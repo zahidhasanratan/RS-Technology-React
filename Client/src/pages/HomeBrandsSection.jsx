@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 
-const BrandsSection = ({ title = "", brands = [] }) => {
+const HomeBrandsSection = ({ title = "", brands = [] }) => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -71,4 +71,4 @@ const BrandsSection = ({ title = "", brands = [] }) => {
   );
 };
 
-export default BrandsSection;
+export default HomeBrandsSection;

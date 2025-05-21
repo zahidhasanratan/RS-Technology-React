@@ -41,24 +41,25 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request,[
+        $this->validate($request, [
             'title' => 'required',
             'image' => 'mimes:jpeg,jpg,bmp,png',
         ]);
+
         $image = $request->file('image');
         $slug = Str::slug($request->title);
-        if (isset($image))
-        {
+
+        if (isset($image)) {
             $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug .'-'. $currentDate .'-'. uniqid() .'.'. $image->getClientOriginalExtension();
-            if (!file_exists('uploads/activity'))
-            {
-                mkdir('uploads/activity', 0777 , true);
+            $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+            if (!file_exists('uploads/activity')) {
+                mkdir('uploads/activity', 0777, true);
             }
-            $image->move('uploads/activity',$imagename);
-        }else {
-            $imagename = 'dafault.png';
+
+            $image->move('uploads/activity', $imagename);
+        } else {
+            $imagename = 'default.png';
         }
 
         $activity = new Activity();
@@ -68,9 +69,14 @@ class ActivityController extends Controller
         $activity->sub_title = $request->sub_title;
         $activity->description = $request->description;
         $activity->image = $imagename;
-        $activity->save();
-        return redirect()->route('activity.index')->with('successMsg','Executive Committee Successfully Saved');
 
+        // Save features and technologies as JSON
+        $activity->features = json_encode($request->input('features', []));
+        $activity->technologies = json_encode($request->input('technologies', []));
+
+        $activity->save();
+
+        return redirect()->route('activity.index')->with('successMsg', 'Project Successfully Saved');
     }
 
     /**
@@ -133,7 +139,7 @@ class ActivityController extends Controller
         $activity->description = $request->description;
         $activity->image = $imagename;
         $activity->save();
-        return redirect()->route('activity.index')->with('successMsg','Clients Say Successfully Updated');
+        return redirect()->route('activity.index')->with('successMsg','Project Successfully Updated');
     }
 
     /**
@@ -150,7 +156,7 @@ class ActivityController extends Controller
             unlink('uploads/activity/'.$activity->image);
         }
         $activity->delete();
-        return redirect()->back()->with('successMsg','Slider Successfully Deleted');
+        return redirect()->back()->with('successMsg','Project Successfully Deleted');
     }
 
     public function details($slug){

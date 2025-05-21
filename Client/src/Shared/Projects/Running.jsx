@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const AllProject = () => {
+const Running = () => {
     const [projects, setProjects] = useState([]);
 
     const fadeInUp = {
@@ -18,7 +18,7 @@ const AllProject = () => {
         fetch("http://127.0.0.1:8000/api/projects")
             .then(res => res.json())
             .then(data => {
-                const completedProjects = data.filter(project => project.sub_title === "Completed");
+                const completedProjects = data.filter(project => project.sub_title === "Running");
                 setProjects(completedProjects);
             })
             .catch(err => console.error("Failed to fetch projects:", err));
@@ -83,4 +83,4 @@ const AllProject = () => {
     );
 };
 
-export default AllProject;
+export default Running;

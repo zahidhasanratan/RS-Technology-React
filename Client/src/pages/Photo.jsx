@@ -1,14 +1,14 @@
-// GallerySection.js
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import CommonHero from '../Shared/CommonHero';
 import Album from '../Shared/PhotoAlbum/Album';
+import { useLoaderData } from 'react-router-dom';
 
 const Photo = () => {
+    const albums = useLoaderData(); // <-- API data loaded here
+
     return (
         <div>
-            <CommonHero title="photo gallery" />
-            <Album />
+            <CommonHero title="Photo Gallery" />
+            <Album albums={albums} />
         </div>
     );
 };
