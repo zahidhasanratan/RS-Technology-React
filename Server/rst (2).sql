@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 06:43 AM
+-- Generation Time: May 21, 2025 at 12:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,8 @@ CREATE TABLE `activities` (
   `slug` text DEFAULT NULL,
   `sub_title` text DEFAULT NULL,
   `short` longtext DEFAULT NULL,
+  `features` text DEFAULT NULL,
+  `technologies` text DEFAULT NULL,
   `description` longtext DEFAULT NULL,
   `image` varchar(191) NOT NULL DEFAULT 'default.png',
   `sl` int(11) DEFAULT NULL,
@@ -44,9 +46,11 @@ CREATE TABLE `activities` (
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `title`, `slug`, `sub_title`, `short`, `description`, `image`, `sl`, `created_at`, `updated_at`) VALUES
-(7, 'M.M Morshed', 'mm-morshed', 'Deputy G.M', 'Carnival Offset Printers has been a cornerstone in our garment production process. Their heat seal solutions have consistently delivered on quality, durability, and design. The precision and attention to detail they bring to their work is commendable and clearly reflects in the heat seals they provide.', NULL, 'mm-morshed-chowddhury-2024-02-19-65d32ba5757ff.jpeg', NULL, '2023-03-31 23:34:14', '2025-01-04 23:49:55'),
-(8, 'Alamgir', 'alamgir', 'Executive Director', 'Working with Carnival Offset Printers has been a rewarding experience. Their heat seal solutions have greatly enhanced the appeal and durability of our tent  and Garment. The quality of their work is consistently high, demonstrating their meticulousness and commitment to excellence.', NULL, 'alamgir-mohammed-2024-02-19-65d339c42866a.jpeg', NULL, '2024-01-23 23:48:51', '2025-01-04 23:50:13');
+INSERT INTO `activities` (`id`, `title`, `slug`, `sub_title`, `short`, `features`, `technologies`, `description`, `image`, `sl`, `created_at`, `updated_at`) VALUES
+(10, 'Title', 'title', 'Completed', 'Short', NULL, NULL, '<p>Description</p>', 'title-2025-05-18-6829b3150050d.jpg', NULL, '2025-05-18 04:14:45', '2025-05-18 04:14:45'),
+(11, 'Harum sit est offic', 'harum-sit-est-offic', NULL, 'Voluptas itaque cons', NULL, NULL, '<h2>Project Overview</h2>\r\n\r\n<p>Comprehensive networking solutions for businesses of all sizes.</p>\r\n\r\n<h3>Detailed Description</h3>\r\n\r\n<p>Our enterprise network solution provides robust, scalable infrastructure...</p>', 'harum-sit-est-offic-2025-05-21-682d775fa37de.jpg', NULL, '2025-05-21 00:23:56', '2025-05-21 00:49:03'),
+(12, 'In esse adipisci ne', 'in-esse-adipisci-ne', 'Completed', 'Facilis at culpa de', '[\"Qui labore molestiae\",\"Quaerat voluptates l\",\"Atque ipsum magnam\"]', '[\"Nobis lorem anim ali\",\"sdf\",\"asf\"]', NULL, 'in-esse-adipisci-ne-2025-05-21-682d7cac3c8a3.jpg', NULL, '2025-05-21 01:11:40', '2025-05-21 01:13:18'),
+(13, 'Dignissimos beatae d', 'dignissimos-beatae-d', 'Upcomming', 'Fugit dolor et et n', '[\"Cupiditate id eos r\"]', '[\"Tempora iusto ipsa\"]', '<p>sdfa&nbsp;</p>', 'dignissimos-beatae-d-2025-05-21-682d849cee100.jpg', NULL, '2025-05-21 01:45:32', '2025-05-21 01:45:32');
 
 -- --------------------------------------------------------
 
@@ -98,10 +102,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `images2`, `created_at`, `updated_at`, `description`) VALUES
-(14, '2021', '2021', '2021-2024-02-19-65d33f72c71f2.jpg', '1706075603_1.jpg,1706075603_2.jpg,1706075603_4.jpg', '2024-01-23 23:53:23', '2024-02-19 05:45:54', NULL),
-(15, '2022', '2022', '2023-2024-02-19-65d33cba9221a.jpg', '3vc.jpg,2vc.jpg', '2024-02-19 05:29:21', '2024-02-19 05:37:29', NULL),
-(16, '2023', '2023', '2022-2024-02-19-65d33ccc914dc.jpg', '1708342184_1706075603_1.jpg,1708342184_1706075603_4.jpg', '2024-02-19 05:29:44', '2024-02-19 05:37:19', NULL),
-(17, '2024', '2024', '2021-2024-02-19-65d33cef89018.jpg', '1708342511_1706075603_1.jpg,1708342511_1706075603_4.jpg', '2024-02-19 05:35:11', '2024-02-19 05:37:05', NULL);
+(14, '2021', '2021', '2021-2025-05-18-68298091b0b6e.jpg', 'banner2.webp', '2024-01-23 23:53:23', '2025-05-18 00:39:31', NULL),
+(17, '2024', '2024', '2024-2025-05-18-6829966b071f0.jpg', '6829966b07696_post-1-CpwWbXA5.jpg,6829966b079da_service-image-1-DQVLM3eD.jpg,6829966b07ddc_slider-1-Bqr8TncW.jpg,6829966b07fdc_slider-3-6PDJJZkd.jpg', '2024-02-19 05:35:11', '2025-05-18 02:16:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -2709,711 +2711,8 @@ CREATE TABLE `lifemember` (
 --
 
 INSERT INTO `lifemember` (`id`, `LM_No`, `Name`, `Batch`, `Address`, `Address3`, `Address1`, `email`, `phone`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'LM-00001', 'Prof. Wali Ullah(Expired)', 'K-09', 'Expired', NULL, NULL, NULL, NULL, NULL, '', '2023-05-31 06:54:31'),
-(2, 'LM-00002', 'Principal, DMC', '', 'Dhaka Medical College', '', 'by virtue of the post', '', '', NULL, '', ''),
-(3, 'LM-00003', 'Prof. Golam Rasul', 'K-13', 'Prof. of Surgery(Retd.)', '', 'House- 43, Road- 13,Sector-3', '', '2.8912259E7', NULL, '', ''),
-(4, 'LM-00004', 'Prof. Khaleda Banu', 'K-17', 'Prof. of Paediatric (Retd)', '', 'House-13, Road-13,Sector-3', '', '', NULL, '', ''),
-(5, 'LM-00005', 'Prof. Farida Haq(Expired)', 'K-18', 'Expired', '', '', '', '', NULL, '', ''),
-(6, 'LM-00006', 'Prof. A H M Ahsan Ullah', 'K-15', 'Prof of Neurosurgery(Retd)', '', '64 Central Road', '', '', NULL, '', ''),
-(7, 'LM-00007', 'Prof. Fakhrun Nessa', 'K-22', 'Prof of Anestheiology', '', '64 Central Road,Dhanmondi', '', '', NULL, '', ''),
-(8, 'LM-00008', 'Prof. Shahla Khatun', 'K-15', '', '', 'House-80, Road- 11, Block-E', '', '01711528268', NULL, '', ''),
-(9, 'LM-00009', 'Prof. M N Amin', 'K-15', 'Prof of ENT', '', 'House-380, Road- 6,DOHS', '', '01817566977', NULL, '', ''),
-(10, 'LM-00010', 'Prof. Rashid Uddin Ahmed', 'K-14', 'Prof of Neurosurgery', '', 'Jahura Market, Banglamotor', '', '', NULL, '', ''),
-(11, 'LM-00011', 'Prof Ata Alahi Khan', 'K-22', '', '', '', '', '', NULL, '', ''),
-(12, 'LM-00012', 'Dr. M A Aziz', 'K-22', 'Mousumi', '', '55, Central Road, Green Road', '', '01732729822', NULL, '', ''),
-(13, 'LM-00013', 'Prof. Syed Modasser Ali', 'K-22', '', '', 'House-10A, Road- 4,Dhanmondi', '', '0.0', NULL, '', ''),
-(14, 'LM-00014', 'Prof. Zahurul Moula Chaudhury', 'K-16', 'Prof of Surgery (Retd)', '', 'House- 20, Road- 3, Sector-5', '', '01711671369', NULL, '', ''),
-(15, 'LM-00016', 'Prof. Nazmun Nahar', 'K-23', '', '', 'House- 25, Road- 6, Dhanmondi', '', '01713033098', NULL, '', ''),
-(16, 'LM-00017', 'Prof. Shafquat Hussain Khundkar', 'K-30', 'Prof of Plastic Surgery', '', 'House-20, Road-3,Block-I', 'shafquat.khundkar@gmail.com', '01711542183', NULL, '', ''),
-(17, 'LM-00018', 'Prof. Md. Shamsul Alam', 'K-17', '', '', 'House-9, Road-28, Sector-7', '', '', NULL, '', ''),
-(18, 'LM-00019', 'Prof. K M Iqbal', 'K-22', '', '', 'House-74B,Road- 127, Gulshan', '', '', NULL, '', ''),
-(19, 'LM-00020', 'Prof.Md. Khalilur Rahman', 'K-22', '', '', '124, Baro maghbazar,Ramna Estate, Flat- A-30', '', '01711528391', NULL, '', ''),
-(20, 'LM-00021', 'Prof. ASM Fazlul Karim', 'K-11', 'Prof. of Surgery', '', '27 Syed Saifuddin Khaled Road', '', '', NULL, '', ''),
-(21, 'LM-00022', 'Prof. Md. Shahid Hossain', 'K-30', '', '', '10/4, Shantibag, Malibag', '', '01731882202', NULL, '', ''),
-(22, 'LM-00023', 'Prof. Qazi Shahidul Alam', 'K-25', '', '', 'House-22B, Road-32, Dhanmondi,', '', '0.0', NULL, '', ''),
-(23, 'LM-00024', 'Dr. Nigar S.Shahid', 'K-28', '', '', 'House-22B, Road-32, Dhanmondi,', '', '01819229339', NULL, '', ''),
-(24, 'LM-00025', 'Prof. Quazi Deen Mohammad', 'K-30', 'Principal & Prof of Neuro-Medicine', '', 'Dhaka Medical College Hosp.', '', '01711565995', NULL, '', ''),
-(25, 'LM-00026', 'Prof. A.K.Azad Khan', 'K-18', 'President , DAB Birdem', '', 'BIHSH House, Darus Salam, Mirpur', '', '01711566814', NULL, '', ''),
-(26, 'LM-00027', 'Prof. Anwara Begum', 'K-18', 'Prof of Psychiatry (Retd)', '', 'House # 8, Road # 6, Gulshan', '', '01711525693', NULL, '', ''),
-(27, 'LM-00028', 'Dr. A.H. Syedur Rahman', 'K-14', 'Sr. Consultant & Head of Eye', '', 'BIRDEM Hospital.Shahbagh', '', '', NULL, '', ''),
-(28, 'LM-00029', 'Dr. Khandker M. Alamgir', 'Expired', 'Expired', '', '', '', '', NULL, '', ''),
-(29, 'LM-00030', 'Dr. A. Zaman', 'K-', '', '', '149 Nayatola, Maghbazar', '', '01190050931', NULL, '', ''),
-(30, 'LM-00031', 'Dr.Md. Anwar Hossain Ibrahim', 'K-', 'Expaired', '', 'C/o-Dr. Kiswar Azad,BIRDEM Hospital', '', '', NULL, '', ''),
-(31, 'LM-00032', 'Prof. Moniruzzman Bhuiyan', 'K-29', 'Principal', '', 'HFRC, Eskaton Garden Road', '', '01711520909', NULL, '', ''),
-(32, 'LM-00033', 'Dr. Makhduma Nargis', 'K-21', '', '', 'Annodo Dhara, H-4, R- 14, Sector- 7, Uttara', '', '01716017085', NULL, '', ''),
-(33, 'LM-00034', 'Prof. M. A Majid', 'K-22', 'Prof. of Surgery', '', 'House- 14, Road- 68, Gulshan-2', 'profmamajid@gmail.com', '01819238432', NULL, '', ''),
-(34, 'LM-00035', 'Dr. Mohammad Lutfor Rahman', 'K-', '', '', '14 South Central Road', '', '', NULL, '', ''),
-(35, 'LM-00036', 'Dr. Fauzia Moslem', 'K-23', 'Chief Medical Officer', 'Bangladesh Atomic Energy Commission', '46, R K Mission Road', '', '01552470475', NULL, '', ''),
-(36, 'LM-00037', 'Prof. Anwara Begum', 'K-27', 'Prof. of Gynae & Obs', '', '57/1 Chameli Bagh, 3rd lane,Shantinagar', '', '01711525963', NULL, '', ''),
-(37, 'LM-00038', 'Prof. Mirza Mazharul Islam', 'K-05', '', '', '14/1 Dilu Road, New Eskaton, Maghbazar', '', '01715020219', NULL, '', ''),
-(38, 'LM-00039', 'Prof. Md. Abid Hossain Mollah', 'K-34', 'Prof. of Paediatrics,DMCH', '', 'A-17, Century Estate Appt. Moghbazar', '', '01711530323', NULL, '', ''),
-(39, 'LM-00040', 'Dr.Md. Nurul Islam', 'K-22', 'Crystal Garden Flat BX-1,', '', '42 Siddeswari Road', '', '0.0', NULL, '', ''),
-(40, 'LM-00041', 'Dr. Shafiul Alam Khan', 'K-22', '1158 Malibagh Chowdhury Para', '', '', '', '', NULL, '', ''),
-(41, 'LM-00042', 'Prof. Farhana Dewan', 'K-34', 'Prof. of Gynae & Obs', '', 'House # 9, Road # 4', '', '01711529022', NULL, '', ''),
-(42, 'LM-00043', 'Dr. A T M Fazlur Rashid', 'K-', '36 Red House Lane', '', 'Kent, Da 68jd. UK.', '', '0.0', NULL, '', ''),
-(43, 'LM-00044', 'Dr. Mustafizur Rahman', 'K-', '2 Chartwell Grove', '', 'Mepperiey Plains', '', '0.0', NULL, '', ''),
-(44, 'LM-00045', 'Dr.Rumana Kazmi', 'K-23', '691 Carlyn Cort,', '', 'Bethesda', '', '0.0', NULL, '', ''),
-(45, 'LM-00046', 'Prof. A K M Mahbubur Rahman(Expired)', 'K-20', 'Expired', '', '', '', '0.0', NULL, '', ''),
-(46, 'LM-00047', 'Dr. Dulal A. J. Chowdhury', 'K-20', '8 Cammopark Way Barnton', '', 'Edinburgh HER,8 EP,', '', '0.0', NULL, '', ''),
-(47, 'LM-00048', 'Dr. Irfan Ul Haq', 'K-22', 'MD 19 Duffield Drive', '', 'West Trenton NJ08628', '', '0.0', NULL, '', ''),
-(48, 'LM-00049', 'Dr. Golam G Noaz', 'K-22', '30 Buchingham Dr ocean', '', 'NJ07712', '', '0.0', NULL, '', ''),
-(49, 'LM-00050', 'Dr. A S Hasan Sarwar', 'K-22', '73 Momingside Drive', '', 'Milford Ct 06460', '', '0.0', NULL, '', ''),
-(50, 'LM-00051', 'Dr. Md. Shah Alam', 'K-22', 'General Practioner', '', 'Appt- 204, Hs-26, Rd- 9/A', '', '0.0', NULL, '', ''),
-(51, 'LM-00052', 'Dr. Mani Lal Aich Litu', 'K-41', 'Prof. & Head of dept.', 'Midford Hospital', '209/2 Elephant Road, Best Care ENT Hospital', '', '01711617735', NULL, '', ''),
-(52, 'LM-00053', 'Prof. A K M Akhtaruzzaman', 'K-39', 'Prof of Anaesthesiology', 'Block-C, 9th floor', 'Block-C, 9th floor, BSMMU', '', '01819220195', NULL, '', ''),
-(53, 'LM-00054', 'Dr.Lutfun Aziz', 'K-36', '', '', '9-c, Gazi Bhavan, 41 Naya Paltan', 'vetkee@gmail.com', '01713040698', NULL, '', ''),
-(54, 'LM-00055', 'Professor Syed Mahbubul Alam', 'K-34', 'Prof. of Surgery', '', 'SSMC & Mitford Hospital', '', '01733529349', NULL, '', ''),
-(55, 'LM-00056', 'Dr.Sarwar Ali', 'K-18', 'Anandadhara', '', 'House# 4, Road#14, Sector# 7, Uttara Model Town', '', '01715246062', NULL, '', ''),
-(56, 'LM-00057', 'Prof. Sarder Abdun Nayeem', 'K-36', 'Consultant Surgeon', '', 'House- 21, Rd-6 Sec- 4, Uttara Model Town', '', '01819217010', NULL, '', ''),
-(57, 'LM-00058', 'Prof.Mohammad Saiful Islam', 'K-32', 'Prof of Paediatric Surgery', '', 'Uday Green, Flt- A-D2, 14 Green Square, Green Road', 'saif_214bd@yahoo.com', '01911352780', NULL, '', ''),
-(58, 'LM-00059', 'Dr. Md. Zakir Hussain Montu', 'K-37', 'Additional Secretary,', '', 'Govt of the Peopl\'s Republic of Bangladesh', 'drzakirbd@yahoo.com', '01711389180', NULL, '', ''),
-(59, 'LM-00060', 'Dr.Md. Idris Ali', 'K-33', 'Assoc prof of Orthopaedics', '', 'Flat- B-3E, House- 75, Road- 3/A,Dhanmondi', '', '01819250626', NULL, '', ''),
-(60, 'LM-00061', 'Prof Latifa Shamsuddin', 'K-21', 'Prof.of Gynae & Obs', '', 'Plot- 3, Block- G, Bornali Clinic, Mirpur- 1', '', '01711544400', NULL, '', ''),
-(61, 'LM-00062', 'Dr. AFM Saifur Rahman Mamun', 'K-32', 'Prof., ShSMCH', '', '250 New Elephan Road, New Market', 'mamunk32bd@gmail.com', '01711548545', NULL, '', ''),
-(62, 'LM-00063', 'Dr. Momenul Haque', 'K-33', 'Managing Director', '', 'General Pharmaceuticals Ltd.', '', '01711532889', NULL, '', ''),
-(63, 'LM-00064', 'Prof. AFM Ruhal Haque MP', 'K-21', '', '', 'House- 2, Road-7,Sector-9', '', '01711560370', NULL, '', ''),
-(64, 'LM-00065', 'Prof.Md. Fazlul Hoque', 'K-23', '', '', 'House- 17, Road- 13(New)', '', '01819220694', NULL, '', ''),
-(65, 'LM-00066', 'Prof. M A Taher Khan', 'K-21', 'Prof of Gyane', '', 'Chittagong Medical College', '', '0.0', NULL, '', ''),
-(66, 'LM-00067', 'Prof M A Shakur', 'K-18', 'Prof of Surgery', '', '26/G, Mitali Road, East Rayer Bazar', '', '01819461456', NULL, '', ''),
-(67, 'LM-00068', 'Dr. Mahbubur Rahman Chowdhury', 'K-33', '', '', 'A-5, Parama,Road- 01.House- 49', '', '01711523270', NULL, '', ''),
-(68, 'LM-00069', 'Dr. Mostafa Jalal Mohiuddin', 'K-29', '', '', '56 K B Rudra Road, lalbagh', '', '01711521026', NULL, '', ''),
-(69, 'LM-00070', 'Prof. M. Iqbal Arslan', 'K-30', 'Prof. & Chairman', '', 'Department of Biochemistry', '', '01713000441', NULL, '', ''),
-(70, 'LM-00071', 'Prof. Abdul Bayes Bhuiyan', 'K-16', '', '', 'House-42, Road- 4/A,', '', '0.0', NULL, '', ''),
-(71, 'LM-00072', 'Prof. Hasan Md. Abdur Rouf', 'K-29', 'Prof. of Surgery', '', 'Concord Avilash, F-5D, H- 62, R- 11A Dhanmondi R/A', 'k29108hmarouf@gmail.com', '01819323880', NULL, '', ''),
-(72, 'LM-00073', 'Dr. Yasmin Ali Haque', 'K-36', '', '', 'House- 65, Road- 7Block- F,', '', '01819218285', NULL, '', ''),
-(73, 'LM-00074', 'Dr. Ashrafun Nesa', 'K-35', '', '', 'Flat- 03-10, House- 40, Road- 3/A,', '', '01199810077', NULL, '', ''),
-(74, 'LM-00075', 'Prof. Hosne Ara Tahmin (Charu)', 'K-28', '', '', 'Flat- D/13, Basali Castle,Road- 14(New), 30 (Old)', '', '', NULL, '', ''),
-(75, 'LM-00076', 'Prof. Dr.Md. Motahar Hossain', 'K-26', '', '', 'C7, Navana Veli Star, Nou Ratan Colony', '', '1.715106683E9', NULL, '', ''),
-(76, 'LM-00077', 'Dr. Mozibur Rahman Chowdhury', 'K-22', 'University of conn.', '', '06095. USA', '', '0.0', NULL, '', ''),
-(77, 'LM-00078', 'Dr.Sayedur Rahman', 'K-21', '665 Terryville Ave.', '', 'Bristol, CT', '', '0.0', NULL, '', ''),
-(78, 'LM-00079', 'Dr.Faiza Bari Malik', 'K-16', '', '', '', '', '0.0', NULL, '', ''),
-(79, 'LM-00080', 'Dr. A M Zakir Hussain', 'K-28', '', '', 'Apt.- C/4, Fortuna, 42-E/1 Indira Road,Tejgaon', '', '0.0', NULL, '', ''),
-(80, 'LM-00081', 'Dr. Md. Azizul Hakim Comrade', 'K-26', '', '', 'Shijuka,Flat No-602, Hs No-11/A, Rd No- 14(new)', '', '01819215682', NULL, '', ''),
-(81, 'LM-00082', 'Dr.Parveen Sultana', 'K-29', '', '', 'Siza-2, Flat- 4/A, 153/3 Monipuripara,Tejgaon', '', '01730596026', NULL, '', ''),
-(82, 'LM-00083', 'Prof. AKM Md. Shahidul Islam', 'K-20', '', '', '3/E, Sheltech Niribili, 20/2, Elephant Road', '', '0.0', NULL, '', ''),
-(83, 'LM-00084', 'Dr. A K M Fazlul Haque', 'K-33', '', '', 'F-4d, H-47, R-6A, Dhanmondi', 'fazlulhq@yahoo.com', '01711525344', NULL, '', ''),
-(84, 'LM-00085', 'Dr. Tapan Kumar Saha', 'K-37', 'Consultant Surgeon', '', 'F-D4, H- 45, R-9A, Dhanmondi', '', '01713082460', NULL, '', ''),
-(85, 'LM-00086', 'Dr. Ruhul Hasan Joarder', 'K-35', '', '', '17/6 K.M. Das Lane, Tikatoli', '', '01819224219', NULL, '', ''),
-(86, 'LM-00087', 'Prof. Sultana Jahan', 'K-21', '', '', 'Mallika, House- 39/A ,Road- 4/A, Dhanmondi', '', '01552424550', NULL, '', ''),
-(87, 'LM-00088', 'Prof. Soofia Khatoon', 'K-32', '', '', 'House- 65, Road- 7, Officer\'s Res. Area', '', '01911342511', NULL, '', ''),
-(88, 'LM-00089', 'Dr. Shabnom Ferdous Chowdhury', 'K-28', '', '', 'House- 42, Road- 4/A, Dhanmondi', '', '01711521590', NULL, '', ''),
-(89, 'LM-00090', 'Dr. Moses Lee', 'K-23', '', '', '24 Jalan Beka Damansara, Kualalumpur', '', '0.0', NULL, '', ''),
-(90, 'LM-00091', 'Dr.Ayaz Ul Haque Molla', 'K-23', '', '', '777 Walter Read- 303, Suite- 303, Garland Tx 75042', '', '0.0', NULL, '', ''),
-(91, 'LM-00092', 'Dr. Aloke Kumar Saha', 'K-38', 'Consultant , Paediatrics', '', 'Sadar Hospital, Jenidha, Kabi sukanta sarak', '', '0.0', NULL, '', ''),
-(92, 'LM-00093', 'Dr. Syed Mohd. Noori', 'K-23', '4 L. Kemaris', '', '5 Bukit Bandaraya, Bancsak,', '', '0.0', NULL, '', ''),
-(93, 'LM-00094', 'Dr. Farida Jamal', 'K-23', '4 L. Kemaris', '', '5 Bukit Bandaraya, Bancsak,', '', '0.0', NULL, '', ''),
-(94, 'LM-00095', 'Dr.Mohammad Alauddin', 'K-42', 'Reg. Medicine & Gastroenterology', '', 'Limerick Regional Hospital, Ireland', '', '0.0', NULL, '', ''),
-(95, 'LM-00096', 'Dr.Quazi Rezina Naquib', 'K-37', 'Paediatrics Registrar,', '', '65 Bijoynagar, North south Road,', '', '0.0', NULL, '', ''),
-(96, 'LM-00097', 'Dr.Abdullah Al Mamun', 'K-41', 'Assoc prof of Psychiatric & Head of Dept.', '', 'Dhaka Medical College Hospital', '', '01711315968', NULL, '', ''),
-(97, 'LM-00098', 'Prof Hosne Ara Begum', 'K-28', 'Prof of Paediatrics', '', 'Shaheed Suhrawardy Hospital', '', '01817519616', NULL, '', ''),
-(98, 'LM-00099', 'Dr.Md. Habibur Rahman', 'K-07', '', '', 'House- 4, Road- 14/B, Sector- 04,Uttara', '', '01552321888', NULL, '', ''),
-(99, 'LM-00100', 'Prof.Md. Azizul Kahhar', 'K-34', '', '', 'Flat- D-8, House- 8/A/Kha, Road- 30, Dhanmondi', '', '01819250308', NULL, '', ''),
-(100, 'LM-00101', 'Dr. Tanya Ali', 'K-43', '', '', '455 Mesh Valley PKWY- 212, Cranston RI 02920', '', '0.0', NULL, '', ''),
-(101, 'LM-00102', 'Dr.Mohammad Ruhul Quddus', 'K-34', '', '', 'Flat-3/502 Eastern Tower, 20 New Eskaton', '', '0.0', NULL, '', ''),
-(102, 'LM-00103', 'Dr. Ferdousi Begum', 'K-32', '', '', '1/14 Humayun Road, Block- B, Mohammadpur', '', '01819223221', NULL, '', ''),
-(103, 'LM-00104', 'Dr. Mariam Fauqui Shathi', 'K-32', 'Consultant', '', '99/A Elephant Road, Bara Maghbazar,', '', '01819212822', NULL, '', ''),
-(104, 'LM-00105', 'Dr.Shamim Ahmed', 'K-32', 'Clinical Nutritionist', '', '99/A Elephant Road, Bara Maghbazar,', '', '01730714006', NULL, '', ''),
-(105, 'LM-00106', 'Dr. Razia Sultana Mahmud', 'K-30', 'Professor of Cardiology', '', 'Lake Valley , Apt# A-5Hs- 24, Rd#15(New)', '', '01819225454', NULL, '', ''),
-(106, 'LM-00107', 'Dr. Zubair Amin', 'K-43', 'Prof of Paediatrics', '', 'National University, Singapore', '', '', NULL, '', ''),
-(107, 'LM-00108', 'Dr.Begum Maksuda Farida Akhtar', 'K-44', 'Assistant Prof. of Gyane', '', 'SSMC & Mitford Hospital', '', '01713011399', NULL, '', ''),
-(108, 'LM-00109', 'Dr. Syed Ashrafuz Zaman', 'K-34', '', '', '10 C/5 Block- F, Joint quarters, Mohammadpur', '', '0.0', NULL, '', ''),
-(109, 'LM-00110', 'Dr.Rehana Begum', 'K-34', '', '', '10 C/5 Block- F, Joint quarters, Mohammadpur', '', '0.0', NULL, '', ''),
-(110, 'LM-00111', 'Prof. Syeda Afroza', 'K-34', 'Prof. of Paediatrics', '', 'House- 11, Road- 2/A, Banani', '', '01915326302', NULL, '', ''),
-(111, 'LM-00112', 'Dr. A K A Azharul Islam', 'K-', '', '', '', '', '01711826535', NULL, '', ''),
-(112, 'LM-00113', 'Dr Mamtaz Islam', 'K-', '', '', '', '', '0.0', NULL, '', ''),
-(113, 'LM-00114', 'Dr.Jonaid Shafiq', 'K-', 'Japan Bangladesh Friendship Hospital', '', '55 Satmajid Road', '', '01819217009', NULL, '', ''),
-(114, 'LM-00115', 'Dr. Faisal A Muazzam', 'K-', '', '', 'House- 27, Road- 114, Gulshan- 2', '', '0.0', NULL, '', ''),
-(115, 'LM-00116', 'Dr. Md. Saifullah', 'K-44', 'Asst Prof of Surgery', '', '2/Ka/14 Nabab Habibullah Road, Shahbag', '', '01819230417', NULL, '', ''),
-(116, 'LM-00117', 'Dr.Shah Habibur Rahman', 'K-46', 'Assoc. Prof. of Medicine', '', 'Lab Aid Cardiac Hospital, Dhanmondi', '', '01711138230', NULL, '', ''),
-(117, 'LM-00118', 'Dr.Md. Mazharul Shaheen', 'K-45', 'Asst Prof of ENT', '', '2/Ka/14 Nabab Habibullah Road', '', '01911352311', NULL, '', ''),
-(118, 'LM-00119', 'Dr.Md.Manir Hossain Khan', 'K-46', '', '', 'House- 42,Road- 16, Sector- 14, Uttara M/T', '', '01715024896', NULL, '', ''),
-(119, 'LM-00120', 'Dr.Jobaida Sultana', 'K-46', '', '', 'House- 42,Road- 16, Sector- 14, Uttara M/T', '', '01819250728', NULL, '', ''),
-(120, 'LM-00121', 'Dr. Md. Abdul Karim', 'K-30', '', '', '204 Estern, Lake Side Appartment, Hs- 39, Rd- 6/A,', '', '01199831612', NULL, '', ''),
-(121, 'LM-00122', 'Prof. Feroze Quader', 'K-34', 'Prof. of Surgery', '', 'House- 11, Road- 2/A,Banani', '', '01713003611', NULL, '', ''),
-(122, 'LM-00123', 'Dr.Md. Tahmimer Rahman', 'K-', '', '', 'Flat-D/3, House- 8/A/Kha, Road- 14 (New), 30(Old)', '', '0.0', NULL, '', ''),
-(123, 'LM-00124', 'Dr. Harun-Al-Rashid', 'K-34', 'Department of Anaesthesia', '', 'Holy Family Red Crescent Med.Coll.Hospital', '', '01819215089', NULL, '', ''),
-(124, 'LM-00125', 'Dr. Nilufar Shireen', 'K-', '', '', 'House-242, 17 Lake Road, New DOHS, Mohakhali', '', '0.0', NULL, '', ''),
-(125, 'LM-00126', 'Dr.Sadia Sultana', 'K-55', 'Oriental Harmony', '', 'Apt#02, House- 34/B, Road- 5', '', '0.0', NULL, '', ''),
-(126, 'LM-00127', 'Dr.Mozammel Hossain Khan', 'K-32', '', '', '196 Shahjahan Road, Mohammadpur', 'dmhkhan07@yahoo.com', '01611541780', NULL, '', ''),
-(127, 'LM-00128', 'Prof.Md. Amjad Hossain', 'K-30', 'Prof. of Orthopaedics', '', '3/18, Humayan Road, College gate, Mohammedpur', '', '01711530611', NULL, '', ''),
-(128, 'LM-00129', 'Dr.Mossadeque Hossain Biswas', 'K-33', 'Chairman', 'Renesa Hospital and Research Center', 'Hs- 60/A, Rd- 4/A,Dhanmondi.', '', '01713089550', NULL, '', ''),
-(129, 'LM-00130', 'Dr. Shudangshu Kumar Mallav', 'K-34', 'Asst Pro of ENT', '', 'Khulna Medical College Hospital', '', '0.0', NULL, '', ''),
-(130, 'LM-00131', 'Dr. Nuruddin Mohammad Eusof', 'K-37', '', '', 'Flat- B-1, (1st floor), Navana Venus, 2/3 Sukrabad', '', '01731602422', NULL, '', ''),
-(131, 'LM-00132', 'Dr. Abdul Hanif (Tablu)', 'K-40', 'Prof. of Paediatric Surgery', 'DMCH', '8/16 Sir Syed Road, Mohammadpur', '', '01715160371', NULL, '', ''),
-(132, 'LM-00133', 'Dr.Shahadat Hossain', 'K-32', 'Prof of Colorectal Surgery', '', 'House- 5, Road- 5,Dhanmondi', '', '01711525388', NULL, '', ''),
-(133, 'LM-00134', 'Dr.Alamgir Kabir', 'K-37', '', '', '10 Zigatola, 3rd floor, 4A(New), West Dhanmondi', '', '01712207330', NULL, '', ''),
-(134, 'LM-00135', 'Prof M A Matin', 'K-14', '', '', '116 Shantinagar', '', '0.0', NULL, '', ''),
-(135, 'LM-00136', 'Prof. Tashmina Matin', 'K-15', '', '', '116 Shantinagar', '', '0.0', NULL, '', ''),
-(136, 'LM-00137', 'Dr. M Nurul Islam Talukder', 'K-15', '', '', 'Four Wings, Bacup, Lancashire, oL13 19DX', '', '0.0', NULL, '', ''),
-(137, 'LM-00138', 'Dr. K A R Sayed', 'K-14', '', '', 'House- 2, Road- 28, Sector- 7, Uttara', '', '0.0', NULL, '', ''),
-(138, 'LM-00139', 'Dr.Mohammad Afzal Hossain', 'K-30', '', 'BSMMU', '115 East Testuribazar, Tejgaon', '', '01713009319', NULL, '', ''),
-(139, 'LM-00140', 'Dr.Md. Moazzam Hossain', 'K-27', '', '', 'Flat- A 10, Panthoneer, 7/3 Aurangojeb Road', '', '0.0', NULL, '', ''),
-(140, 'LM-00141', 'Dr.Suman Nazmul Hossain', 'K-42', '', '', '66/5 West Rajabazar, Tejgaon', 'heartsurgeon007@gmail.com', '01711594949', NULL, '', ''),
-(141, 'LM-00142', 'Dr.Abdullah Al Shafi Majumder', 'K-33', '', '', '3/2 Liakat Avenue, Sutrapur, Dhaka Sadar', 'm.abdullaalshafi@yahoo.com', '01819223140', NULL, '', ''),
-(142, 'LM-00143', 'Dr.Shams Munwar', 'K-36', '', '', 'House- 8, Block- B, Road- 23/A, Banani', '', '0.0', NULL, '', ''),
-(143, 'LM-00144', 'Prof. M Anwar Hussan', 'K-28', '', '', 'House- 4/A, Road- 71, Gulshan- 2', '', '0.0', NULL, '', ''),
-(144, 'LM-00145', 'Prof.Kanak Kanti Barua', 'K-29', 'Prof of Neurosurgery', '', 'BSMMU.Shahbag', 'baruakanak@yahoo.com', '01711530424', NULL, '', ''),
-(145, 'LM-00146', 'Dr.Dilder Ahmed Khan', 'K-34', '', '', '413/1 Senpara Parbata, Mirpur', '', '01712221596', NULL, '', ''),
-(146, 'LM-00147', 'Dr. Bilkis Begum', 'K-45', '', '', '278/1 Dominno, F-D5, Elephant Road, Katabonmor', '', '01711529494', NULL, '', ''),
-(147, 'LM-00148', 'Dr.Mesbah Uddin Ahmed', 'K-28', '', '', 'Haji Lodge, 160/A Baramaghbazar', '', '0.0', NULL, '', ''),
-(148, 'LM-00149', 'Dr. Gulshan Ara Karim', 'K-31', '', '', 'Haji Lodge, 160/A Baramaghbazar', '', '0.0', NULL, '', ''),
-(149, 'LM-00150', 'Dr.M Mushtuq Hussain', 'K-32', 'Suite- 17', '', 'Gazetted Officer\'s Hostel,Eskaton Garden Rd.', '', '01818363784', NULL, '', ''),
-(150, 'LM-00151', 'Dr.Salma Afrose', 'K-34', '', '', '120 A & B. Monipuripara, Domino, Flat # A2,Tejgaon', '', '01552428020', NULL, '', ''),
-(151, 'LM-00152', 'Dr. Shamim Ara', 'K-34', '', '', 'H-30, R-12, B-F, Niketon, Gulshan-1', '', '01715028346', NULL, '', ''),
-(152, 'LM-00153', 'Dr. Fahmida Naz Mustafa', 'K-45', '', '', '6/1 Lake Cirus kalabagan, North Dhanmondi,', '', '01715038881', NULL, '', ''),
-(153, 'LM-00154', 'Dr.Meshbah Uddin Ahmed', 'K-31', '', '', '41-3B, Chand Residential Area, Bashbari,', '', '01711847717', NULL, '', ''),
-(154, 'LM-00155', 'Dr.Delwar Hossain', 'K-25', '', '', 'House- 82, Road- 17/A, Block- E, Banani', '01711547868delwar@gmail.com', '01711547868', NULL, '', ''),
-(155, 'LM-00156', 'Prof. Md.Abul Kalam', 'K-35', '', 'DMCH', 'House- 45, Road- 6A,Flat- C-3, Dhanmondi,', '', '01713001059', NULL, '', ''),
-(156, 'LM-00157', 'Dr.Md. Nazim Uddin', 'K-27', 'Baitul Aman Housing Society', '', 'Road- 2, House- 300, Adabar,Shamoli', '', '01819494217', NULL, '', ''),
-(157, 'LM-00158', 'Prof. Md. Saidul Islam', 'K-39', 'Prof. of Orthopaedics', 'DMCH', '1/16 Gazzated Officers Hostel, Green Road', 'drislam63@yahoo.com', '01711465017', NULL, '', ''),
-(158, 'LM-00159', 'Dr. Mohammed Tanvir Jalal', 'K-50', 'Center for Piles and Colorectal disease,', 'BSMMU', 'AK Complex(3rd floor), 19 Green Road', '', '01712965009', NULL, '', ''),
-(159, 'LM-00160', 'Dr. Sami Ahmad', 'K-39', 'Asst.Prof of Surgery', '', 'H- 201/H, (West) R-5, Mohamodia Housing Ltd.', '', '01711600447', NULL, '', ''),
-(160, 'LM-00161', 'Prof. Md. Margub Hussain', 'K-29', 'Prof. of Surgery', '', 'Domino, Flat # A2,120 A & B. Monipuripara, Tejgaon', '', '01819342224', NULL, '', ''),
-(161, 'LM-00162', 'Dr. Md. Jahangir Kabir', 'K-46', 'Jr. Consultant Surgery', '', 'F-5B, Musa Bait, 1/1 Shipahibagh, Khilgaon,', '', '01819275151', NULL, '', ''),
-(162, 'LM-00163', 'Dr. Nurul Islam Choudhury', 'K-', 'Obstetrics & Gynaecology', '', 'Lecturer, McGill University.5785 Cotedesheiges', '', '0.0', NULL, '', ''),
-(163, 'LM-00164', 'Dr. K.M.Maqsudur Rahman, Rotarian', 'K-06', 'Chest & Tub and Betabolic', '', 'Eastern Harmony, Apt#503/A,Hs# 11/A, Rd#71', '', '01713001998', NULL, '', ''),
-(164, 'LM-00165', 'Dr.Ahmed Suparno Bahar Moni', 'K-54', 'Department of Orhtopaedics', '', 'Suvastu Sarina(5-A), 1/4 Lalmatia, Block-F', '', '01714036368', NULL, '', ''),
-(165, 'LM-00166', 'Prof. Dr. Md. Abdul Awal', 'K-14', 'Prof. of Surgery(Retd)', '', 'House- 4, Road- 34, Sector- 7,', '', '01713013862', NULL, '', ''),
-(166, 'LM-00167', 'Dr. A.M.Shamim', 'K-36', 'Managing Director', '', 'Lab Aid Group', '', '01766660100', NULL, '', ''),
-(167, 'LM-00168', 'Dr.Md.Firoz Miah', 'K-29', 'Asst. Director DGHS', '', '1/B,Paribagh,Bhaduri Tower, Flat -B13', '', '01819212902', NULL, '', ''),
-(168, 'LM-00169', 'Prof. Kazi Zulfiqur Mamun', 'K-30', 'Prof. of Microbiology', '', '36 Dhanmondi R/A, Road- 2', '', '01715094870', NULL, '', ''),
-(169, 'LM-00170', 'Prof. Dr. Khwaja Nazim Uddin', 'K-31', 'Prof of Medicine, BIRDEM', '', '10/C Green Square, Shurovi Apartment, Flat- 7B,', '', '01713005083', NULL, '', ''),
-(170, 'LM-00171', 'Dr. Suraiya Begum', 'K-35', 'Registrar, Paediatric', '', 'House # 83, Road # 7, Block#B, Bashundhara R/A', '', '01715131535', NULL, '', ''),
-(171, 'LM-00172', 'Dr. Md. Jamaluddin Chowdhury', 'K-35', 'Private Practioner (Eye)', '', 'House # 83, Road # 7, Block#B, Bashundhara R/A', 'dr.jamalchowdhury@gmail.com', '01819213223', NULL, '', ''),
-(172, 'LM-00173', 'Maj. Gen(rtd) Prof. Ziauddin Ahmed', 'K-22', '', '', '222 DOHS Baridhara, Road- 2', '', '01713015401', NULL, '', ''),
-(173, 'LM-00174', 'Prof. Zafar Ahmed Latif', 'K-27', 'BIRDEM, Hospital', '', '122 Kazi Nazrul Islam Avenue, Shahbag', '', '01713002067', NULL, '', ''),
-(174, 'LM-00175', 'Dr. Wajed-Ul Islam Khan', 'K-22', '', '', '25/B, Road- 6, Dhanmondi R/A', 'drwajedgsbtuc@yahoo.com', '01711240030', NULL, '', ''),
-(175, 'LM-00176', 'Prof.Md.Mahbub-Ul- Alam', 'K-29', '', '', 'Apt # E-3, H#22 R# 28(Old), New- 15, Dhanmondi', '', '01715015628', NULL, '', ''),
-(176, 'LM-00177', 'Dr. M.A.Alim', 'K-46', '', '', '20/2 Babor Road, F- 7D, Mohammedpur', '', '01711528367', NULL, '', ''),
-(177, 'LM-00178', 'Dr. Md. Ridwanul Islam', 'K-47', '', '', 'Room- 302, Block-B, BSMMU', '', '01711905390', NULL, '', ''),
-(178, 'LM-00179', 'Prof. Dr. A.K.M. Nurnobi Chowdhury', 'K-29', 'Prof. Head of Dept. of Anesthesiology & S.I.C.U', '', '122 Kazi Nazrul Islam Ave, Roon No. 446, BIRDEM', '', '01819228831', NULL, '', ''),
-(179, 'LM-00180', 'Prof. Dr. Humayun Kabir Chowdhury', 'K-29', '', 'BIRDEM', 'Apt.#3B, Hs-33, Rod- 10/A, Dhanmondi R/A', '', '01711520427', NULL, '', ''),
-(180, 'LM-00181', 'Dr. Md. Mazharul Huque Khan', 'K-30', '', 'BIRDEM', 'F2 Century Tower, Ispahani Building, Boromaghbazar', '', '01819215561', NULL, '', ''),
-(181, 'LM-00182', 'Dr. A K M Morshed', 'K-29', '', '', '45 Dhanmondi R/A, Road- 8, Dhanmondi', '', '01911340944', NULL, '', ''),
-(182, 'LM-00183', 'Dr. A M Nuruzzaman', 'K-29', '', '', '9/8 Lalmatia, Block-B, Flat-1/C', '', '01932003647', NULL, '', ''),
-(183, 'LM-00184', 'Dr. K M Azad', 'K-37', '', '', 'House- 1/1(1st floor), Rd- 5, Blk- C, Section -1', '', '01713117866', NULL, '', ''),
-(184, 'LM-00185', 'Dr. Pravath Chandra Biswas (Babu)', 'K-44', 'Assistant Registrar, Department of Urology', '', 'Swapna Kutir, F-C-3, H-43/C, Road#2, Chand Housing', 'biswasdr.pravath@yahoo.com', '01711600999', NULL, '', ''),
-(185, 'LM-00186', 'Dr. Dipal Krishna Adhikary', 'K-41', 'Specialist Cardiologist', '', 'Flat- E-1; House-17, Rd- 7.Sec-10, Uttara', 'dha_1965@yahoo.com', '01714019229', NULL, '', ''),
-(186, 'LM-00187', 'Prof. Khabiruddin Ahmed', 'K-36', 'Professor of ENT', '', 'Benedata, Roow- IL/A,House- 73, Flat-F-4,Dhanmondi', '', '01819239526', NULL, '', ''),
-(187, 'LM-00188', 'Prof. Dr. Md. Abdul Halim Khan', 'K-23', 'Director Cum Chief Consultant', '', '58/Ga West Rajabazar, Firmgate, Tejgaon', 'abdulhalimkhan@gmail.com', '01911360118', NULL, '', ''),
-(188, 'LM-00189', 'Dr. Mahfuz Ullah Chisti', 'K-44', 'Resident,Dept of Neurosurgery', '', 'G-7 Ground Plaza, 227 Outer Circular Road, Mogbaza', '', '01711627375', NULL, '', ''),
-(189, 'LM-00190', 'Dr. Md. Shahidul Haque', 'K-29', 'Asst. Prof. Eye', '', '7/J West Hajipara, Rampura', 'dr.shahid54@gmail.com', '01715428418', NULL, '', ''),
-(190, 'LM-00191', 'Dr. Md. Asjadur Rahman (Shovon)', 'K-49', 'Asst. Registrar, Surgery', '', 'F-2, Shanti neer, 325/5, R-7/A, West Dhanmondi', 'dr.a.rahman73@gmail.com', '01912941335', NULL, '', ''),
-(191, 'LM-00192', 'Dr. Kaniz Hasina', 'K-40', 'Assoc. Professor', '', '8/16 Sir Syed Road, Mohammadpur', '', '01711591417', NULL, '', ''),
-(192, 'LM-00193', 'Prof. Meerjady Sabrina Flora', 'K-40', 'Professor', '', 'H-1/c, R-79, Gulshan-2,', '', '01713083893', NULL, '', ''),
-(193, 'LM-00194', 'Prof. A K M Mosharraf Hossain', 'K-39', 'Prof of Respiratory Disease', '', 'Flat-C2, House-15, Road-1, Dhanomndi', 'drmosharraf_hossain@yahoo.com', '01711521898', NULL, '', ''),
-(194, 'LM-00195', 'Prof. H A M Nazmul Ahsan', 'K-33', 'Prof of Medicine', '', 'Apt. 3B, Road#5, House#47', '', '01711184509', NULL, '', ''),
-(195, 'LM-00196', 'Prof. Khan Abul Kalam Azad', 'K-35', 'Prof of Medicine', '', '2/5/A/B, Shyamoli, R-1, Shyamoli Callan Shomity', 'dr.a.rahman73@gmail.com', '01711890508', NULL, '', ''),
-(196, 'LM-00197', 'Dr. Debesh Chandra Talukder', 'K-42', 'Prof of ENT', '', 'Dept of ENT, DMCH', 'drdebeshchandratalukder@gmail.com', '01711319296', NULL, '', ''),
-(197, 'LM-00198', 'Dr. S. M. Mustafa Zaman', 'K-44', 'Asstt. Prof of Cardiology', '', 'Dept of Cardiology, BSMMU', 'drsmmzaman@yahoo.com', '01716300444', NULL, '', ''),
-(198, 'LM-00199', 'Dr. Md. Moshiur Rahman', 'K-43', 'S.L.P.P.', '', 'Dhaka Medical College Hospital', '', '01716292566', NULL, '', ''),
-(199, 'LM-00200', 'Prof.Md. Zulfiqur Rahman Khan', 'K-34', 'Prof of Hepatobiliary Surgery', '', 'Dept of Surgery. BSMMU', '', '01711544074', NULL, '', ''),
-(200, 'LM-00201', 'Dr. Md. Zaid Hossain (Himel)', 'K-45', 'Prof of Medicine, DMCH', '', 'H-8, R-2, Sector-10, Uttara', '', '01713097627', NULL, '', ''),
-(201, 'LM-00202', 'Dr. A.S.M. Abdun Noor Tushar', 'K-44', 'Secretary General,', 'Bangladesh Society of Hypertension', 'A/1, Block-B, First Colony, Mazar Road, Gabtoli,', '', '01711528427', NULL, '', ''),
-(202, 'LM-00203', 'Dr. Md. Kamrul Hasan (Milon)', 'K-44', 'Prof of Cardiac Thoracic Surgery(R.S)NICVD', '', 'HD-17, Ganobhaban Doctors Quarter', 'kamrul.dmc.44@yahoo.com', '01732070231', NULL, '', ''),
-(203, 'LM-00204', 'Dr. Md. Golam Kibria', 'K-46', 'Associate Prof of Gastroenterology', 'Dhaka Medical College Hospital', 'H-29, 6th Floor, R-18, Sec-3, Uttara', '', '01711542664', NULL, '', ''),
-(204, 'LM-00205', 'Dr. Zahir Uddin Ahmad', 'K-29', 'Prof. & Dept. Head. Dept of Psychiatry & Neurology', '', 'H#106, R#10/2, Block-D, Niketon Housing Society.', '', '01911342921', NULL, '', ''),
-(205, 'LM-00206', 'Dr. Siddiqur Rahman', 'K-32', 'Managing Director. S.R. Associates Ltd', '', 'Urban Resort, Flat-3/C, Hs#48, Rd#6A,Dhanmondi R/A', 'r_siddiq@hotmail.com', '01711522136', NULL, '', ''),
-(206, 'LM-00207', 'Dr. Fakhrul Islam Choudhury', 'K-19', '', '', 'Aptt.# B-2, House#36,Road# 5, Block-G, Banani', '', '01964667576', NULL, '', ''),
-(207, 'LM-00208', 'Dr. K.H. Haque', 'K-24', '', '', 'Garden Tulip,Apt# D3, Hs# 3, Rd# 32(Old) 11 (New)', '', '01711528616', NULL, '', ''),
-(208, 'LM-00209', 'Dr. Md. Shafiqur Rahman', 'K-24', '', '', 'Hs# 87, Rd# 12/A, Dhanmondi Res. Area', 'shafiqur_rahman1@hotmail.com', '01711526084', NULL, '', ''),
-(209, 'LM-00210', 'Dr. Zubayer Ashraf', 'K-52', '', '', '126 Rokeya Soroni,Senpara Porbata, Mirpur', '', '01819274020', NULL, '', ''),
-(210, 'LM-00211', 'Prof. Mansur Habib', 'K-35', 'Prof. of Neuromedicene, DMCH', '', 'Flat#B-3, Adel Square, H # 12, R#13(New),', '', '01711547328', NULL, '', ''),
-(211, 'LM-00212', 'Dr. Bidhan Sarker', 'K-43', 'Asst Prof of Plastic Surgery', 'NITOR', '25 Isha khan Avenue, Sec-6, Uttara', '', '01715000616', NULL, '', ''),
-(212, 'LM-00213', 'Dr. Md. Shafiqul Alam Chowdhury(Shamim)', 'K-41', 'Prof. of Urology', 'DMCH', '7/12 Lalmatia Block-B,', 'drshamimk41@yahoo.com', '01727209493', NULL, '', ''),
-(213, 'LM-00214', 'Dr. Arif Salam Khan', 'K-45', 'Assistand Prof. Surgery', 'Dhaka Medical College Hospital', 'Block-c, BSMMU, Shabagh', '', '01712044924', NULL, '', ''),
-(214, 'LM-00215', 'Dr. Md. Mizanur Rahman', 'K-41', 'Associate Prof of Cardiology', 'Comilla Medical College Hospital', 'Department of Cardiology', '', '01711345005', NULL, '', ''),
-(215, 'LM-00216', 'Prof.(Dr) Khandaker Shahid Uz Zaman', 'K-5', 'Prof of Radiolgy', '', '88 Shantinagar, Malibagh', '', '0167543222', NULL, '', ''),
-(216, 'LM-00217', 'Prof. Dr. Abdul Malek', 'K-29', 'Prof of Surgery', '', 'Flat-C-4, Hs#85, Rd# 12A, Dhanmondi R A', '', '01711739700', NULL, '', ''),
-(217, 'LM-00218', 'Dr, Md. Rafiqul Islam', 'K-48', 'Assist. Prof.', 'Vill+Post- Dhawa , P,S,Bhanduria , Dist,Pirojpur', 'F-2/904, Eastern Mofiz bagh, 106, Centerl Road', '', '01713044479', NULL, '', ''),
-(218, 'LM-00219', 'Prof. M Ekhlasur Rahman', 'K-32', 'Prof. of Paediatrics', 'Head, Department of Pediatrics', 'Dhaka Medical College', '', '01712002738', NULL, '', ''),
-(219, 'LM-00220', 'Dr. Menoka Ferdhous', 'K-46', 'R/S Gynae, ShSMCH', '', '292 Nayatola, Boromaghbazar', '', '01713174751', NULL, '', ''),
-(220, 'LM-00221', 'Dr. Chowdhury Mohammad Ehsanul Khaleque', 'K-32', '', '', 'House#138, Road#4, Block- C, Banani', 'msd@generalpharma.com', '01711606034', NULL, '', ''),
-(221, 'LM-00222', 'Professor Dr.Md. Abu Siddique', 'K-31', 'Prof & Chairman', 'Dept of Cardiology', 'Bangabandhu Sheikh Mujib Medical University', '', '01817011818', NULL, '', ''),
-(222, 'LM-00223', 'Dr.Md.Sirajul Islam Mollah', 'K-30', 'Head of the Dept. of Ophthalmology', 'Shaheed Suhrawardy Medical College Hospital', 'Sher E Banglanagar', '', '01735448811', NULL, '', ''),
-(223, 'LM-00224', 'Dr. Niaz Md. Sharif', 'K-32', '', '', 'Hs#86/A, Road#11A(New), 5 B&C, Dhanmondi', 'mro@bol-online.com', '01713033762', NULL, '', ''),
-(224, 'LM-00225', 'Dr. Ishaque Imam', 'K-32', '', '', 'Suvastu Imam Square, 65 Gulshan Avenue(7th floor)', '', '01711544618', NULL, '', ''),
-(225, 'LM-00226', 'Dr. Mohammad Khurshed Alam', 'K-42', 'Associate Prof of Orthopaedic Surgery,DMC', '', 'Flat-6/C, Nirhor, 319 Elephant Road', '', '01711682688', NULL, '', ''),
-(226, 'LM-00227', 'Dr. Ahmadul Hasan Khan (Sumon)', 'K-49', 'General Practioner & Independent Public Health Con', '', '476 Khilgaon, Block- C, Khilgaon', 'ahmadulkhan@hotmail.com', '01711782063', NULL, '', ''),
-(227, 'LM-00228', 'Prof. Shyamal Sarker', 'K-36', 'Prof of Medicine', 'SSMC & Mitford Hospital', 'Mitford', '', '01711527829', NULL, '', ''),
-(228, 'LM-00229', 'Prof. Sameena Chowdhury', 'K-27', 'Obstetrician & Bynaecology', '', 'Eastern Fortune,Apt# 301, 12/A Eskaton Garden Road', 'sameena4151@yahoo.com', '01715055175', NULL, '', ''),
-(229, 'LM-00230', 'Prof. Abul Hussain Khan Chowdhury', 'K-29', 'Prof. of Cardiology & Ex Director,NICVD', '', 'House- 68, Road-11A, Dhanmondi R/A', '', '01711560621', NULL, '', ''),
-(230, 'LM-00231', 'Dr. Md. Rafiqul Islam', 'K-48', 'Medical Officer', '', 'Dept of Surgery, BSMMU, Block-C', 'BSMMU.dr_rafiq_urology@hotmail.com', '01711125317', NULL, '', ''),
-(231, 'LM-00232', 'Prof. Md. Sabbir Quadir', 'K-36', 'Prof & Head of the Department of Ophthalmology', '', 'M.H. shamorita Medical College, Tejgaon', '', '01711403622', NULL, '', ''),
-(232, 'LM-00233', 'Dr. Shahana A Rahman', 'K-34', 'Prof of Paediatrics', '', 'Flat-F 5, House- 45, Road- 6A, Dhanmondi R/A', '', '01715244811', NULL, '', ''),
-(233, 'LM-00234', 'Dr. Ehsanul Kabir Joglul', 'K-32', 'Prof of Dermatology', '', '3/8 Lalmatia, Block- C, Apt. No- 2/A, Mohammadpur', '', '01713037855', NULL, '', ''),
-(234, 'LM-00235', 'Dr. Indrajit Prasad', 'K-50', 'Assistant Prof of Endocrinology', '', '205/1 Elephant Road, Flat- 11/f Sheltec Kheya', '', '01729094980', NULL, '', ''),
-(235, 'LM-00236', 'Dr. Abdul Wadud Chowdhury', 'K-41', 'Associate Prof of Cardiology', '', 'Flat# M/4, House# 22, Road#4, Dhanmondi R/A', 'drwadud@hotmail.com', '01819251519', NULL, '', ''),
-(236, 'LM-00237', 'Dr. Farhana Kamal Kumu', 'K-56', 'Medical Officer, Dept of Radiotherapy & Imaging', 'Dhaka Medical College Hospital', '', 'kumu56dmc@gmail.com', '01718740055', NULL, '', ''),
-(237, 'LM-00238', 'Prof. Dr. Mohammad Zubayer', 'K-25', 'President, Bangladesh Institute of Sports Sciences', '', 'House- 12, Sector-11,, Sonargaon Janapath', 'krirabiggan1978@gmail.com', '01875348133', NULL, '', ''),
-(238, 'LM-00239', 'Dr. Md. Abdullah Tareq Bhuiyan', 'K-54', 'Medical Officer', 'North Laksam, Holding no- 388', 'Ward-4, Laksam', '', '01712709709', NULL, '', ''),
-(239, 'LM-00240', 'Dr. Md. Anisur Rahman Khan', 'K-52', 'Associate Professor Radiology & Imaging', 'Colonel Malek Medical College', '', 'doc_anis@hotmail.com', '01819231354', NULL, '', ''),
-(240, 'LM-00241', 'Dr. Salahuddin Feroz', 'K-52', 'OSD, DGHS, Deputed to BSMMU', '', '8/2 Paribag Motaleb Tower-1, F-13C, Shahbag', 'ferozk52@yahoo.com', '01819273706', NULL, '', ''),
-(241, 'LM-00242', 'Dr. Quazi Shahid-Ul Alam', 'K-52', 'Assistant Prof. Pediatric orthopedic', 'DMCH', 'F-A6, 170-171, Elephant Road Dominno Univarsel Apt', 'boby52bd@yahoo.com', '01716281682', NULL, '', ''),
-(242, 'LM-00243', 'Dr. Mohammed Shahrear Farid', 'K-52', 'Consultant (Monitoring & Evaluation)', 'National Nutrition Science', 'B-6, F-4, Kallayanpur Housing Estate, Darus Salam', 'shahrear2kdmc@yahoo.com', '01716506580', NULL, '', ''),
-(243, 'LM-00244', 'Dr. Tanzia Tabassum', 'K-61', 'IMD', 'DMC', 'F-B/2, H- 11/C, Aboroni Apartments, R-14(New),', '', '01680530368', NULL, '', ''),
-(244, 'LM-00245', 'Prof. Dr. Hidayetul Islam', 'K-12', 'Chairman', 'Dhaka Monorog Clinic (Pvt.) Ltd.', 'House-45, Road-5, Dhanmondi', 'prof.hidayetul_islam@yahoo.com', '01716117995', NULL, '', ''),
-(245, 'LM-00246', 'Maj. Gen. (Dr.) Mukhlesur Rahman', 'K-12', 'Retired', 'General of Medical Science', 'H-416, Rd-30, New DOHS, Mohakhali', 'mukhles62@yahoo.com', '01713014007', NULL, '', ''),
-(246, 'LM-00247', 'Dr. Borhanuddin Ahmed', 'K-12', 'RTD Professor', 'DMCH', '  H-10, Rd-7, Gulshan-1', '', '01714069868', NULL, '', ''),
-(247, 'LM-00248', 'Dr. Md. Shahidul Islam Akon', 'K-47', 'Asst. prof. orthopaedic Surgery', 'DMC', 'F-A/2, H- 3/1, Block- E, Lalmatia', 'shahid.akon@yahoo.com', '01711149179', NULL, '', ''),
-(248, 'LM-00249', 'Dr. Tnavir Uddin Ahmed', 'K-49', 'Assistant Director', 'Central Hospital', '35/12/2, golapbag,', 'tanvir.ahmed.dmc@gmail.com', '01713328864', NULL, '', ''),
-(249, 'LM-00250', 'Dr. Rajashish Chakrabortty', 'K-48', 'Assist. Prof. Respiratory Medicine', 'BSMMU', 'apt-1406, Block- A, Motalub Plaza, 8/3, Paribag', 'drrajashish@yahoo.com', '01711827878', NULL, '', ''),
-(250, 'LM-00251', 'Prof. Dr. A.B.M. Fazlul Rahman', 'K-30', 'Prof. & Head of the Dept. of orthopaedic Surgery', 'Dhaka National Medical College & Hospital', 'D-4, Asset Shanchari, 25, Green Corner, Green Road', 'rahmanf54@yahoo.com', '01711900963', NULL, '', ''),
-(251, 'LM-00252', 'Dr. A.H.M. Afzalul Haque (Rana)', 'K-53', 'Assist. Registar (Urology)', 'DMCH', 'F-05, Casualty Building, DMCH', 'afzalranadmc@gmail.com', '01678100303', NULL, '', ''),
-(252, 'LM-00253', 'Dr. Hossain Md. Mustafijur Rahman (Rizvi)', 'K-55', 'Registrar Dept. of Respiratory Medicine', 'DMCH', 'DORM-2 DMCH Casulty Building', 'rizvi.sky@gmail.com', '01720581583', NULL, '', ''),
-(253, 'LM-00254', 'Dr. Aurobindo Roy', 'K-50', 'Asst prof (Radiology)', 'DMCH', '50, Hossaini dalan road. Lalbag', 'aubroy@gmail.com', '01734323937', NULL, '', ''),
-(254, 'LM-00255', 'Dr. Md. Ali Zulkawsar', 'K-39', 'Assistant Director', 'D.G.F.P. Under Ministry of Health & Family Welfare', 'Flat-G-13, Ever Green Salim Bhadury,1/f, Paribag', 'dr.zulkawsar@gmail.com', '01711437336', NULL, '', ''),
-(255, 'LM-00256', 'Prof. Dr. Sk Nurul Fattah Rumi', 'K-40', 'Professor. Dept. of ENT', 'DMC', '13/10, Tajmahal Road, Mohammedpur', 'rumi17dr@gmail.com', '01711452381', NULL, '', ''),
-(256, 'LM-00257', 'Dr. M.A. Mohaimen', 'K-8', 'Retd. Govt. Servany', '', 'H-30, Rd-07, Dhanmondi R/A, Flat-C-3', 'mohaiemen@gmail.com', '01711849584', NULL, '', ''),
-(257, 'LM-00258', 'Dr. Md. Nazmul Hoque masum', 'K-53', 'Assist. Prof. Surgery', 'DMC', '22-16, Khilsi Road, Maswood Garden, Flat- B1,', 'nazmul53@yahoo.com', '01717057884', NULL, '', ''),
-(258, 'LM-00259', 'Dr.Ehsanur Rahman', 'K-24', '', '', '106, St. moriz Drive, Centreville, Delware 19807', 'easerahman@aol.c0m', '', NULL, '', ''),
-(259, 'LM-00260', 'Dr. AKM Sahmsuddin', 'K-24', 'Prof. of Pathology', '', '', 'rahmanmr@gmail.com', '', NULL, '', ''),
-(260, 'LM-00261', 'Dr. Muhammad Shahidur Rahman', 'K-24', 'Retired as Chief of Army Medical Centre, Honolulu', '', '882 Nana Honua Street, Honolulu, Hi 96825', 'drakmhkabir@gmail.com', '', NULL, '', ''),
-(261, 'LM-00262', 'Dr. A.K.M. Humayon Kabir', 'K-50', 'Assist. Prof. of Medicine', 'DMC', '410, North Shahjanpur,', 'drakmhkabir@gmail.com', '01711137528', NULL, '', ''),
-(262, 'LM-00263', 'Dr. Mohammad Saiful Islam', 'K-54', 'Medical Officer', 'DMCH', '327, Jafrabad, Shankar, Mohammadpur', '', '01711154247', NULL, '', ''),
-(263, 'LM-00264', 'Dr. Kohinoor Ahmed', 'K-47', 'lecturar', 'DMC', 'Flat-C2, House-15, Road-1, Dhanomndi', '', '01787573102', NULL, '', ''),
-(264, 'LM-00265', 'Dr. Aminul Hasan', 'K-24', 'Chief Orthopaedic Surgeon', 'United Hospital', 'H-05, Road-1, Kallanpur,', 'aminul_hasan@hotmail.com', '01713129873', NULL, '', ''),
-(265, 'LM-00266', 'Dr. Gazi Shamsul Huda', 'K-24', 'Private Practitioner', '', '232/A West Dhanmondi, Rd. no. 10/A', 'drgshuda@gmail.com', '01913167879', NULL, '', ''),
-(266, 'LM-00267', 'Dr. A.Q. Mujiriddin', 'K-24', '', '', '', '', '', NULL, '', ''),
-(267, 'LM-00268', 'Dr. Rafiqul Hasan Khan', 'K-24', 'Retired Clinical Lecturer & Orthopeadic Surgeon', 'Imperial College, Londdon', '25, Cheney Street, Pinner, Middlesex HA52TC', 'jinnahmrk@gmail.com', '', NULL, '', ''),
-(268, 'LM-00269', 'Dr. Qazi Mustaque Hussain', 'K-39', 'Asscoiate Professor, radiotherapy', 'Dhaka medical College Hospital', '3B, 44/F/8-A, West Panthapath, Rajabazar,', 'qmh63@yahoo.com', '01775540335', NULL, '', ''),
-(269, 'LM-00270', 'Dr. Husna Banu', 'K-24', '', '', '362-B Khilgaon, Taltala', 'bhusna29@gmail.com', '01923115960', NULL, '', ''),
-(270, 'LM-00271', 'Dr. Kanij Fatema', 'K-51', 'Associate Professor, Pediatric Neurology', 'BSMMU', 'Flat- C-1, House- 37, Road- 10/A', 'mailmonami@gmail.com', '01713097751', NULL, '', ''),
-(271, 'LM-00272', 'Dr. Masroor Rahman Abir', 'K-57', 'Assistant Registrar, Plsatic Surgery', 'Nitor', '152/a/2, Flat no- 2/1403, Eastern Panthachhaya', 'abir_57@yahoo.com', '01711186351', NULL, '', ''),
-(272, 'LM-00273', 'Dr. Abu Saleh Md. Oli Ullah', 'K-35', 'Asst. Professor, Pediatric Surgery', 'BSMMU', '3/D, Ananda Deep Housing Complex, Outpara, Chandan', 'walisaleh@gmail.com', '01711042563', NULL, '', ''),
-(273, 'LM-00274', 'Dr. ATM Nurannabi Saha', 'K-41', 'Asst. Professor, Cardiology', '', 'Flat-D/6, House-1/1, Road-7/A,', '', '01711671514', NULL, '', ''),
-(274, 'LM-00275', 'Dr. Shahin Ferdous Shanu', 'K-39', 'Assistant Professor (Gynae & obs)', 'Pabna medical College, Pabna', 'house- Neerjhar, Lahiripara, Gopalpur', 'drshanu71@gmail.com', '01673275210', NULL, '', ''),
-(275, 'LM-00276', 'Dr. Khalifa Mahmud Tarikh', 'K-43', 'Senior Consultant, Paediatric, Cardiac Surgery', 'Dhaka Shishu hospital', 'Flat-8/J, Plat-01, Ring Road, Shyamoli, Adabor', 'khmahtarikh@yahoo.com', '01711601542', NULL, '', ''),
-(276, 'LM-00277', 'Dr. Shamsuddin Ahmed', 'K-24', '', '', '', '', '', NULL, '', ''),
-(277, 'LM-00278', 'Dr. S.M. Amir Ali', 'K-24', 'Ret. Anaesthetist', '', '51, vista Drive, Ilford Essex, UK, IG45JF', 'drsmaali@hotmail.com', '', NULL, '', ''),
-(278, 'LM-00279', 'Bri. Gen. Dr. Mizanur Rahman', 'K-38', 'Director', 'Dhaka Medical College Hospital', 'Dhaka Medical College Hospital', '', '', NULL, '', ''),
-(279, 'LM-00280', 'Prof. Salma Rouf', 'K-37', 'Professor of gynee', 'Dhaka Medical College hospital', 'Asset-Elysia, Flat A/5, House- 24, Road-6,', 'salmarouf000@gmail.com', '01711530906', NULL, '', ''),
-(280, 'LM-00281', 'Dr. kanij fatema Ishrat Zahan (Rifat)', 'K-54', 'Assistant Professor', 'Dhaka Medical College Hospital', 'Flat- A-3 3rd Floor, navana Eastern, 11/3/A', 'kfizrifat@gmail.com', '01815419671', NULL, '', ''),
-(281, 'LM-00282', 'Dr. mohammed Jahangir Ul Alam (Sohel)', 'K-49', 'Junior Consultant, medicine', 'BSMMU', 'Flat- A-3 3rd Floor, navana Eastern, 11/3/A', 'alam469@gmail.com', '01712159276', NULL, '', ''),
-(282, 'LM-00283', 'Dr. Shireen M Khaled', 'K-24', 'Pediatric Practitioner', '', '481 mendon Road, Pittsford', 'shireenkhaled@gmail.com', '0.0', NULL, '', ''),
-(283, 'LM-00284', 'Prof. Dr. Md. Moyneenuzzaman', 'K-29', 'Prof. Physical Medicine & Rehabilitation', 'BSMMU', 'A-2, Dom-inno, Abrigo-20, Gausnagar, New Eskaton', 'prof.mzaman@gmail.com', '01713409405', NULL, '', ''),
-(284, 'LM-00285', 'Dr. Hasanur Rahman', 'K-46', 'Assistant Professor, Pharmacology', 'DMC', '90, Anzuman Road, Daukatpur', '', '01819126289', NULL, '', ''),
-(285, 'LM-00286', 'Dr. Gazi Muhammad Salahuddin', 'K-54', 'Jr. Consultant (Surgery)', 'General Hospital, narayangang', 'Flat-4C, Century Majeda, Eidgah, 18', 'drgmsu@yahoo.com', '01914159006', NULL, '', ''),
-(286, 'LM-00287', 'Dr. Md. Farooque-Z-Zaman', 'K-53', '', '', 'Casualty Flat-02, DMCH', '', '01716285200', NULL, '', ''),
-(287, 'LM-00288', 'Dr. Mohammad Shayekh Abdullah', 'K-57', 'Resident Physician (General)', 'Dhaka Medical College Hospital', '', '', '01717571053', NULL, '', ''),
-(288, 'LM-00289', 'Dr. Md. Saidur Rahman', 'K-60', 'Dhaka Medical College Hospital', '', 'Room no-C6, Dormetory Building, DMCH', 'drsrahaman84@gmail.com', '01974123498', NULL, '', ''),
-(289, 'LM-00290', 'Dr. Mohammad Shohidul Islam (Rony)', 'K-56', 'Medical Officer, Dept. of Gastroentrology', 'DMCH', '', '', '01818711523', NULL, '', ''),
-(290, 'LM-00291', 'Dr. A.S.M. Tanim Anwar', 'K-54', '', '', '\"Jhinuk\" Flat- B-3, House-8, Road-13(New)', '', '01733718346', NULL, '', ''),
-(291, 'LM-00292', 'Dr. Raj Datta', 'K-56', 'Consultant, Sheikh Russel National Gastroliver Institute &  Hospital.', '57/1-4,Parveen pearl residence ,East Rajabajar, Dhaka', NULL, 'raj56dmc@gmail.com', '01716608388', NULL, '', '2023-06-01 07:17:20'),
-(292, 'LM-00293', 'Dr. Uttam Karmaker', 'K-50', 'Associate Professor (Urology)', '', '7/A/2 Girish Chakrabarty Road,', 'uttam_k50@yahoo.com', '01711395086', NULL, '', ''),
-(293, 'LM-00294', 'Dr. ATM Abedur Rahman', 'K-18', 'Retired', '', 'Road-48, House-10A, APT- 3A, Gulshan-2,', '', '01819242030', NULL, '', ''),
-(294, 'LM-00295', 'Dr. Hosne Ara Begum', 'K-17', 'Retired', '', 'Road-48, House-10A, APT- 3A, Gulshan-2,', 'hosnearanimu@gmail.com', '01847236738', NULL, '', ''),
-(295, 'LM-00296', 'Dr. Syed Rezaul Huq', 'K-41', 'Professor of Respiratory', '', '23 East Kazi Para, Kafrul, Mirpur,', 'rezanigar@gmail.com', '01711893636', NULL, '', ''),
-(296, 'LM-00297', 'Dr. Humaon Islam Sumon', 'K-66', '', '', 'H/o-79, Seroil Mothpukur, Boalia', 'sumondmc@gmail.com', '01674997659', NULL, '', ''),
-(297, 'LM-00298', 'Dr. Suvra Shaikat Biswas', 'K-62', 'Indoor Medical Officer, Medicine Unit-1', '', 'D/5 DorMitory Building, DMCH', 'suvro.saikat@gmail.com', '01717193189', NULL, '', ''),
-(298, 'LM-00299', 'Dr. Sarkar Kamrun Jahan Jhinuk', 'K-62', 'Assistant Registrar, Surgery, Unit-2,', 'DMCH', '5/A, House-168, Road-8, Block-G, Bashundhara R/A', 'skjjhinuk@gmail.com', '01762311589', NULL, '', ''),
-(299, 'LM-00300', 'Dr. Md. Muntasir Islam Chowdhury', 'K-60', 'Assistant Registrar', '', '1343/6, Eaast Shewrapara, Mirpur', 'muntasirislam2013@yahoo.com', '01790284405', NULL, '', ''),
-(300, 'LM-00301', 'Dr. Sanjoy Sinha', 'K-54', 'Junior Consultant', '', 'Flt-8/B, Sufia Villa, Concord, 11/A Naem Road', 'sinhadmc@yahoo.com', '01712036072', NULL, '', ''),
-(301, 'LM-00302', 'Dr. Md. Mostafijur Rahman Sajal', 'K-64', 'Medical Officer, Physical Medicine,', 'DMCH', 'House-98, Inusbag, Dashkhinkhan,', 'mustafizsajal@yahoo.com', '01675147279', NULL, '', ''),
-(302, 'LM-00303', 'Dr. Md. Mehfujul Hasan', 'K-64', 'Assistant Registrar Surgery Unit-5,', 'DMCH', 'House-35/1, Lake Circus, Kalabagan, Dhaka', 'mehfujulhassan@gmail.com', '01722521014', NULL, '', ''),
-(303, 'LM-00304', 'Dr. Md. Aminul Islam', 'K-59', 'Regiatrar, Surgery unit-1,', 'DMCH', '7/5, B-Block, Lalmatia', 'amin_dmc59@yahoo.com', '01711662945', NULL, '', ''),
-(304, 'LM-00305', 'Dr. Mahmud Asif Rifat', 'K-62', 'Indoor Medical Officer, ENT,', 'DMCH', 'Ka 147/1-B, Battola, Khilkhet', '', '01673918501', NULL, '', ''),
-(305, 'LM-00306', 'Dr. Tonmoy Dey', 'K-62', 'Assistant Registrar, Medicine unit-8,', 'DMCH', '49, Toyenbee, Circular Road', 'deytonmoy@ymail.com', '01625870225', NULL, '', ''),
-(306, 'LM-00307', 'Dr. Shawkat Osman', 'K-60', 'Asst. Registrar, surgery,', 'DMCH', '264/4, West Shewarapara, Mirpur', 'shawkatosman007@yahoo.com', '01771666555', NULL, '', ''),
-(307, 'LM-00308', 'Dr. Saila Parvin', 'K-41', 'Assistant Professor, Gynee,', 'NICRH', 'Flat-C2, House-4, Road-9, Dhanmondi', 'dr.saila41@gmail.com', '01711563517', NULL, '', ''),
-(308, 'LM-00309', 'Dr. Partha Sarathi Sarker', 'K-60', 'Indoor Medical Officer, Medicine,', 'DMCH', 'Flat-A1, Doctors Dormitory Building, DMCH', 'parthadmc@gmail.com', '01716370636', NULL, '', ''),
-(309, 'LM-00310', 'Dr. Ponkaj Kanti Datta', 'K-56', 'M.O. Laboratory Medicine,', 'DMCH', 'House-27 (6th floor), Green corner, Green Road', 'ponkajdatta@yahoo.com', '01711069701', NULL, '', ''),
-(310, 'LM-00311', 'Dr. Muktadir Bhuiyan', 'K-64', 'Assistand Registrar, Medicine,', 'DMCH', 'H-453,454, Road-3, Block-c, Khilgaon', '', '01716262846', NULL, '', ''),
-(311, 'LM-00312', 'Dr. K.M. Shohel Asker', 'K-56', 'Anesthesiologist,', 'DMCH', 'Vill-+Post- Garadab, Thana- Gangni, Dist- Meherpur', 'chaiondmc@gmail.com', '01727666444', NULL, '', ''),
-(312, 'LM-00313', 'Dr. Moshiur Rahman', 'K-56', 'EMO, Transfution Medicine,', 'DMCH', 'Vill- Bharai, P.O- Nikla, Upajila: Bhuyanpur,', 'moshiurdmc56@gmail.com', '01729150556', NULL, '', ''),
-(313, 'LM-00314', 'Dr. Masfique Ahmed Bhuiyan', 'K-59', 'Medical Officer, (consultant Surgery),', 'DMCH', 'Vill+P.O: Alahabad, Thana- Debiwar, Zila- Comilla', 'shimon@gmail.com', '01739981650', NULL, '', ''),
-(314, 'LM-00315', 'Dr. Azmiree Binte Aslam', 'K-64', 'Honourary Medical Officer, Skin & VD,', 'DMCH', 'Room-603-604, Illisium Building, Tikatuli', 'azmireeanonma@yahoo.com', '01723353216', NULL, '', ''),
-(315, 'LM-00316', 'Dr. Hossain Al Mahmud', 'K-57', 'Indoor Medical officer, Thorasic Saurgery,', 'DMCH', 'flat-14 (1st floor), Old Rashid Building, DMCH', 'hamahmud57@gmail.com', '01914388358', NULL, '', ''),
-(316, 'LM-00317', 'Dr. Sk. Mahmudur Rahman', 'K-60', 'Course Student MD(Gastroenterology), Thesis,', 'DMCH', '315, Dr. Milon intern hostel, Bakshibazar. Dhaka', 'tipu60_dmc@yahoo.com', '01716633272', NULL, '', ''),
-(317, 'LM-00318', 'Dr. Subrata Podder', 'K-56', 'Junior Consultant (Medicine)', '', 'Flat-4/F, Pearl Garden, 165-166, green Road', 'spchayank56dmc@gmail.com', '01727506050', NULL, '', ''),
-(318, 'LM-00319', 'Dr. Anwar Hossain', 'K-59', 'OSD, DGHS, Mohakhali, Dhaka', '', 'Flat-C-2, 58/A/2, Shahjalal Rashid lodge,', 'dranwar_1805@yahoo.com', '01711023015', NULL, '', ''),
-(319, 'LM-00320', 'Dr. Mohammed Kamrul Hasan', 'K-57', 'Md (Respiratory medicine) Thesis', 'NIDCH, Mohakhali', 'E-106, South Banasru, Eastern housing, goran', 'kamruldmc@yahoo.com', '01914123487', NULL, '', ''),
-(320, 'LM-00321', 'Dr. A.K.M Shafiqul islam', 'K-58', 'Junior Consultant (Midicine)', '', '77/3/D7, Rupayan Sinha Tower, Shahali ganj mirpur1', 'dr.qayumdmc@gmail.com', '01717459187', NULL, '', ''),
-(321, 'LM-00322', 'Dr. Md. Tofazzal Haque Chayan', 'K-64', '', '', 'House:29, Road-03, Block-E,Banasree, Rampura', 'tofazzal.b1989@gmail.com', '01511222229', NULL, '', ''),
-(322, 'LM-00323', 'Dr. Kazi Md. Saleheen Towhid', 'K-63', 'Deputy Program Manager', 'DGHS', 'Flat-B6, House-839, Road-03, Baitul Aman housing', 'saleheen.dmc.k63@gmail.com', '01715540572', NULL, '', '');
-INSERT INTO `lifemember` (`id`, `LM_No`, `Name`, `Batch`, `Address`, `Address3`, `Address1`, `email`, `phone`, `image`, `created_at`, `updated_at`) VALUES
-(323, 'LM-00324', 'Dr. Faisal Arif Chowdhury', 'K-63', 'Indoor Medical Officer, Medicine, DMCH', '', 'Flat-A5, Ali Evergreen, 8/7, Block-B, Lalmatia', 'auvychowdhury@gmail.com', '01732761848', NULL, '', ''),
-(324, 'LM-00325', 'Dr. Pratyay Hasan', 'K-63', 'Indoor Medical Officer, Medicine, DMCH', '', '19/F, South Fuller road, Dhaka University R/A', 'phasanbd@gmail.com', '01768383385', NULL, '', ''),
-(325, 'LM-00326', 'Dr. Avishek Sarker Dhruba', 'K-63', 'Resident, MS, NICVD', '', 'Flat- 4/B, plot-1295, Doctors Building, basundhara', 'acsdhruba@ymail.com', '01719925457', NULL, '', ''),
-(326, 'LM-00327', 'Dr. Md. Rajibul Haque', 'K-53', 'Assistant Professor', '', 'Flat-E New Rashid Building DMCH', 'rhronyk53@gmail.com', '01711172235', NULL, '', ''),
-(327, 'LM-00328', 'Dr. Muhammad Asaduzzaman', 'K-53', 'Jr. Consultant', '', '16/8, Baily Square Quarters, Ramna', 'asad78dmc@gmail.com', '01716672727', NULL, '', ''),
-(328, 'LM-00329', 'Dr. Md. Rashed Al Razi', 'K-63', 'Medical Advisor, Novarties Pharma', '', 'Plot-1045, Merajnagar, Kadomtoli', 'dr.razi87@yahoo.com', '01709999199', NULL, '', ''),
-(329, 'LM-00330', 'Dr. Nadira Musabbir', 'K-54', 'Medical Officer', '', '41/23 Gha, Salek Road, Jigatola', 'nadira_mou@yahoo.com', '01711287484', NULL, '', ''),
-(330, 'LM-00331', 'Prof. Humaira Naushaba', 'K-37', 'Professor & Head, Department of Anatomy', 'Dhaka Medical College Hospital', 'House-38, Apt-B2, Road-1, Old DOHS, Banani', 'humaira.naushaba@gmail.com', '01911323959', NULL, '', ''),
-(331, 'LM-00332', 'Dr. Tania Kabir', 'K-59', 'OSD, DGHS', 'BSMMU', 'House-4, Road-11, Sector-06, Uttara', 'dr.tania.kabir@gmail.com', '01716666155', NULL, '', ''),
-(332, 'LM-00333', 'Dr. Md. Monjurul Islam', 'K-57', 'Medical Officer, Dept of Ortho', 'Dhaka Medical College Hospital', 'Room no-E4, Doctors Dormetory, DMCH', 'drfuad.dmc@gmail.com', '01712400002', NULL, '', ''),
-(333, 'LM-00334', 'Dr. Md. Rezaul Islam Patwary', 'K-60', 'MD Thesis Part Student, Gestroenterology', 'Dhaka Medical College Hospital', 'Vill-baishgao, P.O- Baishgo, P.S- Monohorgonj', 'rezawdhk91@gmail.com', '01819082869', NULL, '', ''),
-(334, 'LM-00335', 'Dr. Imran Chowdhury', 'K-59', 'Registrar, Medicine', 'Dhaka Medical College Hospital', '36/4. Pallabi, mirpur 11.5,', 'dr.mran28bcs@gmail.com', '01823658030', NULL, '', ''),
-(335, 'LM-00336', 'Dr. Shariwatullah khan', 'K-62', 'Indoor medical officer, medicine', 'Dhaka Medical College hospital', '62, north Circullah road, Kolabagan', 'sabuj102k62@gmail.com', '01717228899', NULL, '', ''),
-(336, 'LM-00337', 'Dr. Palash Kumar Biswas', 'K-60', 'Regiatrar, Medicine', 'Dhaka Medical College Hospital', 'Vill- Andhar Manik, P.O- Notun Bazar. P.S- Raozan', 'palashk60@gmail.com', '01716405002', NULL, '', ''),
-(337, 'LM-00338', 'Dr. Md. Iftekhar Ali', 'K-59', 'Indoor medical officer, medicine', 'dhaka Medical College hospital', 'basua, Rajpara, Paba', 'iftiali_dwcwed@yahoo.com', '01717448891', NULL, '', ''),
-(338, 'LM-00339', 'Dr. Munjure Khoda Md. Doulatullah', 'K-57', 'Junior Consultant, ENT', 'DMCH (MS Thesis)', 'Vill- Sondharoi, P.O, Thana- Ranisonkail', 'doulatentdmc@gmail.com', '01717526941', NULL, '', ''),
-(339, 'LM-00340', 'Dr. Md. Shafiqur Rahman Bhuiyan', 'K-57', 'Junior Consultant, Surgery', 'Rajshahi medical College Hospital', '248/4, kadirazbag, East Dholaipar', 'drshovon57@gmail.com', '01914123532', NULL, '', ''),
-(340, 'LM-00341', 'Dr. Md. Abdullah Arafat', 'K-61', 'Lecturer (Anatomy)', 'Dhaka Medical College Hospital', 'Sheltch Niharica, House-7, Flat-3B, Siddeshwari', 'arafat_dmc@outlook.com', '01755577999', NULL, '', ''),
-(341, 'LM-00342', 'Dr. A.H.M. Ejrarul Alam Khan', 'K-63', 'Assistant Registrar, medicine', 'DMCH', '86, East Ramna, Dhaka', 'ejrarul_alam@yahoo.com', '01675662952', NULL, '', ''),
-(342, 'LM-00343', 'Dr. Syed Ali Imam', 'K-63', 'IMO medicine', 'DMCH', 'Flat-6B, house-01, Ring Road, Shyamoli', 'aliimam53@gmail.com', '01715255366', NULL, '', ''),
-(343, 'LM-00344', 'Dr. Farzana Aktar', 'K-63', 'IMO, Obs & gynae,', 'DMCH', '8/1, Ware Street, Wari,', 'aftabk63dmc@gmail.com', '01553476099', NULL, '', ''),
-(344, 'LM-00345', 'Dr. Kazi Ali Aftab', 'K-63', 'IMO, Medicine', 'DMCH', '8/1, Ware Street, Wari,', 'aftabk63@yahoo.com', '01795338426', NULL, '', ''),
-(345, 'LM-00346', 'Dr. Mahfooj Rahman', 'K-63', 'RMO,', 'Upazila Health Complex, Rajibpur', 'Vill- Holand, P.O- Dakshinkhan, P.S- Dakhinkhan', '', '01717230036', NULL, '', ''),
-(346, 'LM-00347', 'Dr. Md. Manjurul Islam', 'K-63', 'Lecterur, Pathology', 'DMC', '370/371, Outer Circular road, 1-B, 11th floor,', 'nadimk63dmc@gmail.com', '01742680473', NULL, '', ''),
-(347, 'LM-00348', 'Dr. Mahmud Zaman Chowdhury', 'K-63', 'Assistant Registrar, Surgery', 'DMCH', '34/2, Ambarkhana,', 'pappu.k63@gmail.com', '01717569642', NULL, '', ''),
-(348, 'LM-00349', 'Dr. Sanjida Rahman', 'K-63', 'IMO, Medicine', 'DMCH', 'House-122, Road-8, Mohammadi Housing, Mohammadpur', 'sanjidarahmanz@gmail.com', '01719610655', NULL, '', ''),
-(349, 'LM-00350', 'Dr. Mirza Mohammad Asif Adnan', 'K-63', 'Assistant registrar', 'DMCH', 'House-122, Road-8, Mohammadi Housing, Mohammadpur', 'mirza.adnan231@gmail.com', '01717558821', NULL, '', ''),
-(350, 'LM-00351', 'Dr. A.K.M. Anisur rahman', 'K-63', 'IMO,', 'DMCH', 'Plot-08, Road-01, Block-c, Bosila City Developers,', 'anis.dmc63.ar@gmail.com', '01675619519', NULL, '', ''),
-(351, 'LM-00352', 'Dr. Annapurna Paul Nipa', 'K-63', 'Assistant registrar, Obs & gynae', 'DMCH', '95, Nabappushpa, jatarpur,', 'annapurnanipa@gmail.com', '01722311181', NULL, '', ''),
-(352, 'LM-00353', 'Dr. Md. Ariful Hasan', 'K-63', 'IMO, Medicine', 'DMCH', '4 no. A.C. Roy Road, Armanitola', 'arufulhasank63@gmail.com', '01816632459', NULL, '', ''),
-(353, 'LM-00354', 'Dr. Sondipon Malaker', 'K-63', 'resident', '', 'House-15, Road-11, Uttara Sector-1', '', '01783958892', NULL, '', ''),
-(354, 'LM-00355', 'Dr. Shawtonu Kumar saha', 'K-58', 'Jr. Consultant,', 'UHC. Savar', 'House-35/A, Road-10/A, Dhanmondi', '', '01717038741', NULL, '', ''),
-(355, 'LM-00356', 'Dr. Rubaiya Akter', 'K-63', 'IMO, Medicine', 'DMCH', '86, East Rampura', 'rubaiya.akhter28@gmail.com', '01675662950', NULL, '', ''),
-(356, 'LM-00357', 'Dr. Shirin Jahan', 'K-54', 'Junior Consultant', 'BSMMU', 'Flat-B/3, Geomawla Garden, 13, Gausnagra,', 'Dshirin.dr@gmail.com', '01720157772', NULL, '', ''),
-(357, 'LM-00358', 'Dr. Arif Ahmed', 'K-33', 'Garade \"A\" BTV Artist & Radio Artist', '', 'Sheltek Rahamanmanjil 264, Free School Street,', 'arifwestend@gmail.com', '0173131638', NULL, '', ''),
-(358, 'LM-00359', 'Dr. Faroque Ahmed', 'K-44', 'Associate Professore Dept. of Hematology', 'Dhaka Medical Colleege Hospital', 'Ali Ashraf Abash, Flat-A6, H-122-B, moneswar road,', 'faroquedmc@gmail.com', '01716516278', NULL, '', ''),
-(359, 'LM-00360', 'Dr. Imran Mahmud', 'K-60', 'Registrar Dept. of Medicine', 'Dhaka Medical College Hospital', 'Flat-4/D, New Rashid Building, DMCH', '', '01717842214', NULL, '', ''),
-(360, 'LM-00361', 'Dr. Md. Mahfuze Sarkar', 'K-58', 'Asstt. Registrar, Cadiology', 'Dhaka Medical College Hospital', 'Vill- Ampal, P.O- Niamotkandi, P.S- Muradnagar,', 'md.mahfuzesarkar@yahoo.com', '01911905820', NULL, '', ''),
-(361, 'LM-00362', 'Dr. Mohammad Raisul Abedin', 'K-55', 'Consultant, Surgery', 'Dhaka Medical College Hospital', '145/2, Green Road', 'moshfeq79.ra@gmail.com', '01710392201', NULL, '', ''),
-(362, 'LM-00363', 'Dr. Mohammed Shaiful Islam (Parvej)', 'K-53', 'Medical Officer', 'DMCH', 'Shunibash, 4th Flor, 21/14, Block-c, Tajmahal road', 'dr.parvej53@yahoo.com', '01819286719', NULL, '', ''),
-(363, 'LM-00364', 'Dr. Mohammad Mamunur Rashid', 'K-62', 'Medical officer, OSD', 'DGHS', '113/c/3/A/1, 2nd Floor, West Shewrapara', 'moondmc@gmail.com', '01717573533', NULL, '', ''),
-(364, 'LM-00365', 'Dr. Belal Al Aziz', 'K-60', 'IMO, Respiratory Medicine', 'DMCH', 'Vill-North Joypara, P/O- Joypara, P/S- Dohar', 'belalalaziz@gmail.com', '01672038037', NULL, '', ''),
-(365, 'LM-00366', 'Dr. Mohammad Rafiqul Islam Khan', 'K-55', 'jr. Consultant', 'NITOR', '285, Dania Road, Dania,', 'shimulk55@gmail.com', '01711133074', NULL, '', ''),
-(366, 'LM-00367', 'Dr. Sheikh Mohammad Samsuzzaman', 'K-55', 'Jr. Consultant', '', '373/3, Free School Street, Hatirpool,', 'smsamsuzzaman@gmail.com', '01711266330', NULL, '', ''),
-(367, 'LM-00368', 'Dr. Sadia Sultana', 'K-57', 'Medical Officer', '', '373/3, Free School Street, Hatirpool,', 'sadiasultana1310@gmail.com', '01712000896', NULL, '', ''),
-(368, 'LM-00369', 'Dr. Alif Laila', 'K-55', 'Registrar, Mat-III', 'DMCH', 'Vill- Chakirtaluk, P.O- Barat, P.S- Goalanda,', '', '01922803474', NULL, '', ''),
-(369, 'LM-00370', 'Dr. Fahima Zaman', 'K-55', 'Junior Consultant', 'Bangladesh Secretariat Clinic', '20 No, Gopibag, 3rd lane', 'fzamandr@gmail.com', '01922544623', NULL, '', ''),
-(370, 'LM-00371', 'Dr. Md. Moinul islam', 'K-58', 'Assist. Registrar, neuro-surgery', 'DMCH', '6-C, 3-6, Pallabi,', 'moinul2061@gmail.com', '01552482061', NULL, '', ''),
-(371, 'LM-00372', 'Dr. Md. Abdullah Al Harun', 'K-53', 'Junior Consultant', 'Shahid Suhrawardhy Medical College Hospital', '88/1, Indira road, Sher-E-Bangla nagar', 'harun.dr99@gmail.com', '01678139788', NULL, '', ''),
-(372, 'LM-00373', 'Dr. Habibur Rahman', 'K-53', 'Pain Management Specialist', 'Atibazar Central Hospital', 'Nowaechar, Ati, Keranigonj', 'drhabib53@yahoo.com', '01749683216', NULL, '', ''),
-(373, 'LM-00374', 'Dr. Kazi Nahid Morsheda', 'K-60', 'IMO', 'DMCH', '90/A, Bashir Uddin road, kalabagan,', 'humayun81@yahoo.com', '01715997071', NULL, '', ''),
-(374, 'LM-00375', 'Dr. Md. Kamrul Hasan', 'K-61', 'IMO, Surgery', 'DMCH', '64 Malitola Road, Bongshal', 'jonyk61@gmail.com', '01716354982', NULL, '', ''),
-(375, 'LM-00376', 'Dr. Ashraful Amin Talukder', 'K-61', 'IMO, Department of Medicine', 'DMCH', '58/19, North Mugda, P.O- Basabo, P.S- Mugda', 'ashraf61dmc@gmail.com', '01706965760', NULL, '', ''),
-(376, 'LM-00377', 'Dr. Saima Azad', 'K-61', 'IMO, Dept. of medicine', 'DMCH', 'Flat-3G, House-276, Elephant Road', 'dr.saimaazad@yahoo.com', '01717336345', NULL, '', ''),
-(377, 'LM-00378', 'Dr. Shukdeb Saha', 'K-60', 'Assist. Registrar Surgery', 'DMCH', 'Vill- Madhupur (Master Para, B-Block), Madhupur', 'dr.shukdebdmc@gmail.com', '01717022348', NULL, '', ''),
-(378, 'LM-00379', 'Dr. Shohana Askary', 'K-63', 'IMO, OBS & Gynae', 'DMCH', '1st Bulding, 4th Floor, 101, Nazimuddin Road', 'sristi.askary@gmail.com', '01714466534', NULL, '', ''),
-(379, 'LM-00380', 'Dr. Mirja Sharifuzzaman', 'K-55', 'Lecturer, Pathology', 'DMCH', '23, North Dhanmondi, Kalabagan', 'sharifdmc03@yahoo.com', '01677747950', NULL, '', ''),
-(380, 'LM-00381', 'Dr. Sharmin Islam', 'K-57', 'Jr. Consultant', 'DMCH', 'Flat-A-3, House-23, North Dhanmondi, Kalabagan', 'sharmy_zm@yahoo.com', '01711186311', NULL, '', ''),
-(381, 'LM-00382', 'Dr. Monsur Ahmed', 'K-53', 'R/S, Neuro-Surgery', 'NINS', 'Urban Diganta, Flat-6G, 64, Green Road', 'monsur_dmc@yahoo.com', '01712740418', NULL, '', ''),
-(382, 'LM-00383', 'Dr. Mesbahul Alam', 'K-55', 'Asst. Professor', 'NIO', 'Flat-1, Casualty Building', 'mejbah1549@yahoo.com', '01552470256', NULL, '', ''),
-(383, 'LM-00384', 'Dr. Syed Ali Ahsan', 'K-60', 'Medical officer, ENT', 'DMCH', 'Flat-6B, House-01, ringroad, Shymoli', 'aliahasan60dmc@gmail.com', '01715297350', NULL, '', ''),
-(384, 'LM-00385', 'Dr. Aysha Begum', 'K-60', 'FCPS (Medicine)', '', 'Flat-6B, House-01, ringroad, Shymoli', '', '01675184827', NULL, '', ''),
-(385, 'LM-00386', 'Dr. Hashmi Sina', 'K-55', 'Assist. Prof. Neurology', '', 'Flat-2F, House-27, Road-8, Dhamnondi', 'hashmi.sina49@gmail.com', '01789675269', NULL, '', ''),
-(386, 'LM-00387', 'Dr. Rokhsana Sarmin', 'K-60', 'IMO, Surgery', 'DMCH', 'Nikunja: House-84, Road-1, Dhanmondi', 'sarmin.rokhsana@gmail.com', '01534869562', NULL, '', ''),
-(387, 'LM-00388', 'Dr. A.K.M. Fazle Rabbi Khan', 'K-60', 'OSD', 'DGHS', '633/1/A, khilgaon tilpara, Road no-21', 'dr_fr_khan@yahoo.com', '01819194266', NULL, '', ''),
-(388, 'LM-00389', 'Dr. A.H.M Rashid-E-Mahbub', 'K-60', 'Assistant Registrar, ENT', 'DMCH', 'Parama, House-49, Flat-2B, Road-1, Dhanmondi', 'jatisswar@gmail.com', '01717022346', NULL, '', ''),
-(389, 'LM-00390', 'Dr. Tanveer Ahmed', 'K-60', 'IMO, Surgery', 'DMCH', 'Vill- Dash Hazar, P.O- Dhewkhali, P.S- Sadarpur,', 'drsonnet.ca.bd@gmail.com', '01717108728', NULL, '', ''),
-(390, 'LM-00391', 'Dr. Farzana Alam (Toon)', 'K-53', 'Assist. Professor, Radiology & Imaging', 'BSMMU', '19/7, joint Quarter Tikkapara Block-F, Mohammadpur', 'f.alam.toon53@gmail.com', '01755682989', NULL, '', ''),
-(391, 'LM-00392', 'Dr. Abdullah Al Marjuk', 'K-63', 'OSD, DG Health', 'Attachment, DMC, Otolaryngology', 'Flat-4D4 Building no-127, Assurence City, matikata', '', '1839760086', NULL, '', ''),
-(392, 'LM-00393', 'Dr. Md. Faridul Islam', 'K-60', 'MO', 'DMCH', '38, Gulkibari Road, Mymensing Sadar', 'dr.faridul.md.islam@gmail.com', '01717022347', NULL, '', ''),
-(393, 'LM-00394', 'Dr. Ashraf-ur-Rahman (Tamal)', 'K-57', 'Asst, Registrar', 'NICDU', 'F-A2, H-28, RD-16, Block-B, Banani', '', '01819200026', NULL, '', ''),
-(394, 'LM-00395', 'Dr. sabrina Jabeen', 'K-62', 'research officer,', 'ICDDRB', 'F-A2, H-28, RD-16, Block-B, Banani', '', '01727644106', NULL, '', ''),
-(395, 'LM-00396', 'Dr. Md. Habibullah Fuad', 'K-59', 'Medical officer (ICU)', 'DMCH', 'Flat-9A, Building-08, Azimpur Govt. residential,', 'dr.fuad59@gmail.com', '01717437310', NULL, '', ''),
-(396, 'LM-00397', 'Dr. Mohammad Majharul Haque', 'K-56', '', '', 'Vill- Mamudpur, P.O- Kutubpur, P.S- Fatulla', '', '01817095643', NULL, '', ''),
-(397, 'LM-00398', 'Dr. Gazi Jahangir Hossain', 'K-56', '', '', 'Vill- Gobindopur, P.S- Sonargaon', '', '01769926792', NULL, '', ''),
-(398, 'LM-00399', 'Dr. Md. Ayub Ali Sarker', 'K-62', 'IMO, Medicine', 'DMCH', '19 No, Khilgaon Bagicha', 'ayub.dmc62@yahoo.com', '01719226705', NULL, '', ''),
-(399, 'LM-00400', 'Dr. Rashidul Haque (Rana)', 'K-53', 'Asst. Prof.', 'SSMC', '947/1, East Monipur, Mirpur-2', 'rana.dmc@gmail.com', '01916979400', NULL, '', ''),
-(400, 'LM-00401', 'Dr. Md. Mahbub Elahi', 'K-53', 'Junior Consultant of surgery', 'DMCH', 'FlatB1, 108 Central Road', 'melahi_53@yahoo.com', '01715065585', NULL, '', ''),
-(401, 'LM-00402', 'Dr. Dilruba Akhter', 'K-57', 'Junior Consultant Gynae', 'Sarkari Karmachari Hospital', 'Vill- adampur, P.O- Pearpur, thana & dist- Madarip', 'jahangirshukur@gmail.com', '01712721195', NULL, '', ''),
-(402, 'LM-00403', 'Dr. Nurun Nahar Begum (Baby)', 'K-30', '', '', 'Mohona Sunflower, Rd. No. New-14, House-8/A/4,', '', '01713007975', NULL, '', ''),
-(403, 'LM-00404', 'Dr. Bidduth Barua', 'K-51', 'Asst. Professor', 'American Int. University, bangladesh', 'R.C.C-14, Ganobhabon Complex, Shere bangla Nagar', 'bdagni@yahoo.com', '01309034100', NULL, '', ''),
-(404, 'LM-00405', 'Dr. Abdus Samad Alim', 'K-47', '', '', 'D1, Road-104, House-21, Gulshan-2', 'asalim@aiub.edu', '01713045417', NULL, '', ''),
-(405, 'LM-00406', 'Dr. Md. Suhrab Ali', 'K-21', 'Professor of Biochemistry Retd.', '', '273/4, Middle Paikpara, Mirpur', 'drsuhrabali1944@gmail.com', '01819218671', NULL, '', ''),
-(406, 'LM-00407', 'Dr. Md. Mosiqure Rahman', 'K-47', 'DGHS', '', 'Flat-B3, Barnali Appartment, RA Dokkhinkhan', 'mdmoshiqure@gmail.com', '01913000113', NULL, '', ''),
-(407, 'LM-00408', 'Dr. Mostafa Sharif', 'K-29', '687, Boro Maghbazar, Kapotakkho good earth,', '', 'Flat7/B, Dhaka-1217', '', '01711119932', NULL, '', ''),
-(408, 'LM-00409', 'Dr. Kazi Shariful Islam', 'K-39', 'Assoc. Prof. Cardiac Surgery', 'NICVD', '194/1, Shapla Housing, West Agargaon,', 'kazishariful_islam@yahoo.com', '01711370745', NULL, '', ''),
-(409, 'LM-00410', 'Dr. Dalia Rahman', 'K-45', 'Assist. Prof.', 'DMC', 'Flat-A6, House, 16, Block-c, Avenue-1, Mirpur-2', 'shaliabd1@gmail.com', '01711104479', NULL, '', ''),
-(410, 'LM-00411', 'Dr. Rajesh Majumdar', 'K-49', 'Resident Physician (Pediatrics)', 'DMCH', '260, Elephant Road, Add Zain, Flat-7A', 'rajeshmajumdar73@gmail.com', '01714223820', NULL, '', ''),
-(411, 'LM-00412', 'Dr. MD. Sanaullah Khan', 'K-65', 'Asst. Surgeon', 'DMCH', 'House-6, Circular road Area-1, hatirpool,', 'sani17k65@gmail.com', '01535492528', NULL, '', ''),
-(412, 'LM-00413', 'Dr. Md. Al-Amin', 'K-60', 'Medical Officer', 'NICVD', '33/KA, Pisci Culture Housing Society', 'alaminr4@gmail.com', '01710307151', NULL, '', ''),
-(413, 'LM-00414', 'Dr. Bijoy Dutta', 'K-51', 'Assiat. Prof. Cardiology', 'NICVD', 'Flat:11/C, Sheltech Kazi Mosharraf Tower, 3/4 Asad', 'bijoy_k51@yahoo.com', '01819844905', NULL, '', ''),
-(414, 'LM-00415', 'Dr. Sanjukta Chowdhury', 'K-58', 'Consultant Gynae & Obs', 'DGHS', 'Flat:11/C, Sheltech Kazi Mosharraf Tower, 3/4 Asad', 'sanjuktak58dmc@gmail.com', '01723849109', NULL, '', ''),
-(415, 'LM-00416', 'Dr. AKM Monwarul Islam', 'K-47', 'Assoc. Prof. Cardiology', '', '39/B/1, Flat#3E, Ring Road, Mohammadpur,', 'drmonwarbd@yahoo.com', '01712564487', NULL, '', ''),
-(416, 'LM-00417', 'Dr. Anup Kumar Howlader', 'K-52', 'Medical Officer', 'NICVD', 'Flat-B5, Navana Sobia, 12 Bakshi Bazar Road', 'anupdmc52@gmail.com', '01738744814', NULL, '', ''),
-(417, 'LM-00418', 'Dr. Syeda Shahina Subhan', 'K-39', 'Prof. & Head of Dept. Biochemistry', 'NICVD', 'Flat-2B, House-47, Road-5, Dhanmondi R/A', 'shahinasubhan69@gmail.com', '01711600469', NULL, '', ''),
-(418, 'LM-00419', 'Dr. Md,. Arifur Rahman', 'K-51', 'Junior Consultant, Cardiology', 'NICVD', '616/B, North Kafrul', '', '01715300521', NULL, '', ''),
-(419, 'LM-00420', 'Dr. Sujit Kumar Ghosh', 'K-47', 'Assist. Prof.', 'NICVD', 'Vill,post,Upozilla- Ghior, Dist- Manikganj', 'sksmanik@gmail.com', '01912916491', NULL, '', ''),
-(420, 'LM-00421', 'Dr. Mohammad Wqalidur Rahman', 'K-61', 'Asst. Registrar (Medicine)', 'NICVD', 'Globe Nibash 2A, 1st Floor 370-371, Outer Circular', 'walid.dmck61@gmail.com', '01819444345', NULL, '', ''),
-(421, 'LM-00422', 'Dr. Mohammad Saifuddin', 'K-56', 'Associate Prof. (Endocrinology)', 'DMCH', 'Suvastu Koninica, Flat-3A, H-28, Road-2, Dhanmondi', 'saifk56dmc@yahoo.com', '01716351053', NULL, '', ''),
-(422, 'LM-00423', 'Dr. Md Mushfiqur Rahman', 'K-52', 'Attending Physician', 'First Hospital Kingston, USA', '5, Anastasia court, Wilkes Barre, P.A,', 'mrahman9976@gmail.com', '', NULL, '', ''),
-(423, 'LM-00424', 'Dr. Namira Asma', 'K-66', 'IMO, Opthalmology', 'DMCH', 'Vill- Gonigati, P.O- Alongjani, P.S- Ullapara', 'namira.asma.dmch@gmail.com', '01781860608', NULL, '', ''),
-(424, 'LM-00425', 'Dr. Mohammad Fazle Rabbi', 'K-64', 'OSD, DGHS', 'MD, Phase-B, NIDCH', '256/2, Zaker Road, East Rampura', 'shaon.dmc@gmail.com', '01823460806', NULL, '', ''),
-(425, 'LM-00426', 'Dr. Hossain Md. Arafat', 'K-64', 'Registrar, Radiotherapy', 'DMCH', '271, Flat-6B, West Nakhalpaa, Tejgaon', 'arafat_k64@yahoo.com', '01765820959', NULL, '', ''),
-(426, 'LM-00427', 'Dr. Md. Shamim Hossain', 'K-64', 'Assistant Surgeon', 'DGHS', 'H-64/4, Hossainidalan Road, Baksibazar', 'shamim.uhi@gmail.com', '01757574080', NULL, '', ''),
-(427, 'LM-00428', 'Dr. Md. Hasan Juvaer Romel', 'K-64', 'Assistant Surgeon', 'Sadar Hospital, Madaripur', 'Vill- Raipura (Ramnagar Hati), P.S- Raipura', 'romelk64@yahoo.com', '01924289732', NULL, '', ''),
-(428, 'LM-00429', 'Dr. Toioba Akter', 'K-59', 'Medical Officer, Skin & VD Department', 'DMCH', 'Rizia Niloy, 97, F-5a, Boro Moghbazar', 'dr.t.akter01@gmail.com', '01711987501', NULL, '', ''),
-(429, 'LM-00430', 'Dr. Md. Rashedul Islam', 'K-58', 'Medical Officer OSD', 'DGHS', 'Vill- Uriabari, P.O- nolinbazar, P.S- Gopalpur', 'raseldmck58@gmail.com', '01712188858', NULL, '', ''),
-(430, 'LM-00431', 'Dr. Md. Rakibul Al Imran', 'K-67', 'Asst. Registrar', 'DMCH', 'Room-217, Dr. Milon Intern Hall', 'rakibalimran@gmail.com', '01727663823', NULL, '', ''),
-(431, 'LM-00432', 'Dr. Shimul Hossain', 'K-64', 'IMO, ENT', 'DMCH', 'Fair Niribili, 567, Peyarabag, Mogbazar', 'asifshimul358090@gmail.com', '01716375595', NULL, '', ''),
-(432, 'LM-00433', 'Dr. Rukshana Khanam Rupa', 'K-66', 'Asst. Registrar (Gynae & Obs)', 'Burn & Plastic Surgery', '52/4, Haji Tamij Uddin Road, Banorgati', 'rukshananiaz@gmail.com', '1787100422', NULL, '', ''),
-(433, 'LM-00434', 'Dr. Mahbuba Khan Eusuf Zai', 'K-61', 'OSD', 'DGHS', 'Flat-10, Old Rashid Building, Chankharpul Moor', 'mkeusufzai61@gmail.com', '01712697243', NULL, '', ''),
-(434, 'LM-00435', 'Dr. Arif Mahmud', 'K-44', 'Deputy Director- Medical', 'Evercare Hospital Dhaka', 'Flat-D-5, House-8, Dhanmondi R/A', 'arifbappi@gmail.com', '01713099675', NULL, '', ''),
-(435, 'LM-00436', 'Dr. Partha Sarathy Majumder', 'K-50', 'assist. Prof. pediatric surgery', 'DMCH', 'f-6A, H-376, r-6, Adabor,', 'parthafcps@gmail.com', '01712196254', NULL, '', ''),
-(436, 'LM-00437', 'Dr. MD. Mosharraf Hossain', 'K-69', 'assist. Surgeon / medical officer', 'DMCH', 'Vill- Naynabad, P.O- Naynabad,P.S-Araihazar,', 'sijan.dmc.k69@gmail.com', '01674955233', NULL, '', ''),
-(437, 'LM-00438', 'Dr. A.N.M. Nure Azam', 'K-62', 'Assistant Registrar, SU-II. Dept. of surgery', 'DMCH', 'Flat-6/A, House-28/1, Green corner, Green road', 'nashanafiz@gmail.com', '01977143340', NULL, '', ''),
-(438, 'LM-00439', 'Dr. Fazla Rabbi', 'K-66', '', '', '2C, House-38/1, Shyaol Chaya, Road-4, Shyamoli', '', '01986222444', NULL, '', ''),
-(439, 'LM-00440', 'Dr. Md. Asaduzzaman Rajib', 'K-66', 'Medical Officer', 'DMCH', 'Old Rashid building, DMCH', 'asad.dmc66@gmail.com', '01717227853', NULL, '', ''),
-(440, 'LM-00441', 'Dr. MD. Abu Daud Khan', 'K-67', 'MO, Dumuria Upazila Health Complex, Khulna', '', 'Shaidah, Thana- Chitalmari, Bagenhat', 'dauddmc06@gmail.com', '01673379502', NULL, '', ''),
-(441, 'LM-00442', 'Dr. Krishna Priya Dar', 'K-49', 'Prof. Head Reconstractive Surgery', 'BSMMU', 'Flat-9C, House-6, Road-5, Dhanmondi,', 'kpdas.bsmmu@hmail.com', '1.816356807E9', NULL, '', ''),
-(442, 'LM-00443', 'Dr. Bidhan Chandra Das', 'K-42', 'Prof . Hepatobiliary Surgery .', 'BSMMU', 'Flat-B-4, House-44, Road-11, Sector -6, uttara', 'dbidhan@Yahoo.com', '1.711889565E9', NULL, '', ''),
-(443, 'LM-00444', 'Dr. Nuruddin Mohammod Zahangir', 'K-42', 'Senior Consuitant & Thoracic Surgery', 'green life Medical College Hospital', 'R-110, Green life MCH, 32 Green Road', 'nmzahq@yahoo.com', '01818031063', NULL, '', ''),
-(444, 'LM-00445', 'Dr. Rumi Myedull Hossain', 'K-57', 'JR.Consultant Paediatrics', 'Nins oh,Sher-E-BangalaNagar', '85/A,NijhumR/A,Jigatala,1209', 'rumidmc@gmail.com', '01303144542', NULL, '', ''),
-(445, 'LM-00446', 'Dr. Samina Shams', 'K-60', 'Medical Officer', 'NINS', '85/A, Nijhum R/A, Jigatala', 'saminadmc@yahoo.com', '01715120154', NULL, '', ''),
-(446, 'LM-00447', 'Dr. Ratna Majumder', 'K-54', 'Junior Consultant', '', 'Flat-4A, H-4, Road-4, Dhanmondi', 'ratna.dmc@gmail.com', '01716033941', NULL, '', ''),
-(447, 'LM-00448', 'Dr. Kazi Nazrul Islam', 'K-54', 'Assist. Prof. Cardiology', 'DMCH', 'Sel-Reema, Flat-4B, 10, Easkaton Garden Road', 'kazinazrul69@gmail.com', '01819250762', NULL, '', ''),
-(448, 'LM-00449', 'Dr. Mohammad Ullah', 'K-45', 'Associate Professor, Cardiology', 'DMCH', 'Flat-A6, House-67/A, Dhanmondi', 'firoze1970@gmail.com', '01819443140', NULL, '', ''),
-(449, 'LM-00450', 'Dr. Sadia Sultana', 'K-45', 'Prof. Opthalmology', '', 'Flat-A6, 67/A, Dhanmondi, 8A', 'sadiasultanadr@yahoo.com', '01552329812', NULL, '', ''),
-(450, 'LM-00451', 'Dr. Kakoli Hasmina', 'K-59', 'MD Radiolagy&Imaging', 'DMCH', '49,West Matikata,Cantorment', 'kakolihasmina59@gmail.com', '01737583847', NULL, '', ''),
-(451, 'LM-00452', 'Dr. Asadul Kabir', 'K-40', 'FCPS Medlcine', 'DMC', 'Flat-E-14,72-Malibagh Advance Melinda', 'chapalk40@gmail.com', '01711231950', NULL, '', ''),
-(452, 'LM-00453', 'Dr.Abd Saleh Ahmed', 'K-47', 'Associate Prof.Nephrology', 'DMC', 'Flat -B-6,2/3, ShahjahanRoad,Momammadpur,', 'drsaleh2021@yahoo.com', '01711116210', NULL, '', ''),
-(453, 'LM-00454', 'Dr. Mohua Saha', 'K-63', 'MCPS,', 'DMCH', 'Flat-D-1,House-14,AzimpurGovt,Officers,Quarter,', 'mohuasaha128@gmail.com', '01737780244', NULL, '', ''),
-(454, 'LM-00455', 'Dr. Md Ahsan Kabir', 'K-65', 'Asst. Registar Medicine', 'Rangpur Medcal College Hospital', 'Chitli Dakkhin Para, Mithaoukur, Mithapukur', '', '01780898111', NULL, '', ''),
-(455, 'LM-00456', 'Dr. Fatima Farhana', 'K-65', 'Assist. Regiatrar Gyn & Obs', 'SSMC&MH', '11/kha, west Jatrabari', 'drffarhana15@gmail.com', '01719925049', NULL, '', ''),
-(456, 'LM-00457', 'Dr. Tamanna Bahar', 'K-59', 'OSD', 'DGHS', '5A, Suvasta Sanina, 1/4, Block-F, Lalmatia', 'tamanna.bahar@gmail.com', '01714360913', NULL, '', ''),
-(457, 'LM-00458', 'Dr. Shamima Hossain', 'K-60', 'IMO, Gynae & Obs', 'DMCH', '1, New baily Road', 'shamimaborna@gmail.com', '01956481802', NULL, '', ''),
-(458, 'LM-00459', 'Dr. Md. Liaquat Hossain', 'K-40', 'Deputy Registrar', 'BMDC', 'House-31, R-4, APT-E, Dhanmondi', 'liaquat_hossain@hotmail.com', '01819260709', NULL, '', ''),
-(459, 'LM-00460', 'Dr. Md. Arman Hossain', 'K-31', 'Registrar', 'BMDC', 'Flat-2B, house-58A,Rd-7A, Dhanmondi', 'arman.kali70@gmail.com', '01938504844', NULL, '', ''),
-(460, 'LM-00461', 'Dr.Mohammad AkwarulHoque Faraji', 'K-48', 'Assisatant Registrar,', 'BMDC', '35/10,Shekertek,Road-11,Mohammdpur', 'smo-sohel@yahoo.com', '01733067567', NULL, '', ''),
-(461, 'LM-00462', 'Dr. Mukti Rani Mitra', 'K-48', 'Assistant prof,Of Ophtalmlogy', 'DMC', 'Bangladesh Eye Hospital,Plot-27,', 'mukti707@yahoo.com', '01715164494', NULL, '', ''),
-(462, 'LM-00463', 'Dr.Bishwajit Bhowmik', 'K-48', 'AmociadeProf,Rodiology', 'BSMMU', 'House-5,FlatC-9,Road-13,DhanmondiR/A,', 'palosh48@gmail.com', '0171592414', NULL, '', ''),
-(463, 'LM-00464', 'Dr.Asif Yazdani', 'K-66', 'AssistantRegistrar,Surgery,', 'MymensinghMedical CollegeHospital', 'House#9New,Road#14nwe,DhanmondiR/A,', 'asif@gmail.com', '01720211916', NULL, '', ''),
-(464, 'LM-00465', 'Dr.Robindra Nath Sarker', 'K-45', 'Prfessor,Of Radiology', 'DMC', 'Fiat:B-7,Navana Sobia,12-BakshibazarRoad,', 'robin-sarker@eocket,mail.com', '01713039036', NULL, '', ''),
-(465, 'LM-00466', 'Dr. Abdullah-Al-QUAYYUM', 'k-58', 'Registrar,OfHepatology', 'DMCH', '845, Hossain Palace, Bazar Road,', 'dr.quayyum@gmail.com', '01741447744', NULL, '', ''),
-(466, 'LM-00467', 'Dr.TitasRoy', 'K-61', 'MS-Final Part Neursurgery', 'DMC', 'Fiat no-2/d,144,Ratnalaya,Azimpur', 'titas.61dmc@gamil.com', '01717094066', NULL, '', ''),
-(467, 'LM-00468', 'Dr.Partha Pratm Das', 'K-53', 'AssociteProf,Of Medicine,', 'DMC', 'House-35,Road-10/A,Dhanmondi', 'dmck53babun@yahoocom', '01715567241', NULL, '', ''),
-(468, 'LM-00469', 'Dr.Md. Shafiqul islam', 'K-43', 'Associt Prof,Neursurgery,', 'DMC', 'House-28,R6,S-11,Uitara', 'islamms@yahoo.com', '01715367843', NULL, '', ''),
-(469, 'LM-00470', 'Dr.Md.Mozammel Hossen opu', 'K-63', '3rdBcs,OSD,DGHS,', 'DMC', 'Flate-3B,3rdFloor,1/5 ShahjahanRoad,Mohammadpur,', 'opu.dmc63@gmail.com', '01717991825', NULL, '', ''),
-(470, 'LM-00471', 'Dr.Md.Shafiuddin Sohel', 'K-65', 'EmergenciyMedical Officer', '', 'House-13/B/2,Flat-28,Mighbazar', 'draunee110@gmail.com', '0172310465', NULL, '', ''),
-(471, 'LM-00472', 'Dr. Md. Ashfaque Alam', 'K-64', 'MedicalOfficerBangladeshShishuHospitalInstiuteDhak', '', 'House-54,Block-E,Lake ViewRoad,Sector-2Aftabnagar,', 'ashfaque.dmc062@gmail.com', '01786380043', NULL, '', ''),
-(472, 'LM-00473', 'Dr.Md.Dina Layla Hossain', 'K-58', 'junior Consntant Gyne&obs', 'DMCH', '845,HossainPalace,BazarRoad,2ndfloor,MiddleBadda,', 'dr.laboni58@gmail.com', '01752686458', NULL, '', ''),
-(473, 'LM-00474', 'Dr.Saad Ahmed Tanmoy', 'K-61', 'IMODeptOf Hepatolgy.', 'DMCH', '35/2,Shantinagar,', 'saadahmed154@gmail.com', '01717333765', NULL, '', ''),
-(474, 'LM-00475', 'Prof Dr.Md.Kamrul Alam', 'K-42', 'Professor.& HeadOf ThorocicSurgery', 'DMC', 'Ape:A/1,House8/A,9/1,Road:13 Dhanmondi', 'kamrulk42@yahoo.com', '01819297203', NULL, '', ''),
-(475, 'LM-00476', 'Dr.S.M. Khaled Jahan', 'K-58', 'Junior Consultant ENT', '', '57/L/13Wasa Road ,Moniknagar,', 'khaledjahan919@gmail.com', '01771622166', NULL, '', ''),
-(476, 'LM-00477', 'Dr.Md. Atiqul Haque', 'K-58', 'Assistan Registrar EIY', 'DMCH', 'Vill-Islam.Para,PS.BirumParaDist-', 'atiqul17pec@gmail.com', '01717432592', NULL, '', ''),
-(477, 'LM-00478', 'Dr. Asit Chandra Sarker', 'K-38', 'Professor,Head , Of Neurosurgery', 'DMC', 'Sheltech Chayaneer Apt-6/C,148,Greenroad,', 'chanorasarker@yahoo.com', '01711901296', NULL, '', ''),
-(478, 'LM-00479', 'Dr. Jannatul Ferdous', 'K-42', 'Associate ProFessor DeptOf Transfusion Medicine', 'Mugda Medical collegeMugda', '105/1 First Floor,Noyatola Maghbazar', 'jannatulferdousk42@gmail.com', '01839373487', NULL, '', ''),
-(479, 'LM-00480', 'Dr.Mita Joarder', '46.0', 'Asst. Professor ,Dept ,Of Obs & Gynae', 'DMC', 'Blio , Nam ,Ra-23 ,Block-K Banani', 'drmitajoarder@gmail', '01711395275', NULL, '', ''),
-(480, 'LM-00481', 'Dr.Md.Faridul Islam', 'K-60', 'Junior Consnltant Cardiovascular surgeruy', 'Shaheed SK Naser Specialized Hospital', 'Flat-501, H-19 (Windsor Corner) R-13, Dhanmondi', 'dr.faridul.md.islam@gmail.com', '01717022347', NULL, '', ''),
-(481, 'LM-00482', 'Dr. Fatama Akhter Chowdhury', 'K-61', 'Junior Consultant, UHC', 'UHC, Savar', 'Flat-501, House-19, Road-13, Dhanmondi', 'dr.fatama.chowdhury@gmail.com', '01710252229', NULL, '', ''),
-(482, 'LM-00483', 'Dr. Md. Baha Uddin', 'K-59', 'Senior Consultant', 'ENT And Head Neck Cancer hospital And Institute', '37, Asgar Lane, Chawk Bazar', 'bahauddinbaha@gmail.com', '01914123461', NULL, '', ''),
-(483, 'LM-00484', 'Dr. Nilofar Yesmin', 'K-59', 'Medical Officer', 'Neomatology', 'Flat-19C, Building-12, Azimpur Govt. Quarter, Azim', 'dr.nilodmc@gmail.com', '01716275150', NULL, '', ''),
-(484, 'LM-00485', 'Dr. Maimuna Hoque', 'K-59', 'Asst. Registrar', 'NICU, BRB Hospital', 'H-552, North Ibrahimpur, Mirpur-14', 'maimuna123bd@gmail.com', '01715028424', NULL, '', ''),
-(485, 'LM-00486', 'Dr. Maruf Ahmed Khan', 'K-50', 'Deputation In Maldives', '', 'Narayankhola, Nakla', '', '01715462685', NULL, '', ''),
-(486, 'LM-00487', 'Dr. Jayanta Banik', 'K-57', '', '', 'Alor Mela', 'jayantabanik57@gmail.com', '01819280858', NULL, '', ''),
-(487, 'LM-00488', 'Dr. A.K.M. Tariqul Hasan', 'K-64', 'Asst. Prof. Nephrology', '', '', '', '01723050052', NULL, '', ''),
-(488, 'LM-00489', 'Dr. Snigdha Jyoti Chowdhury', 'K-64', 'IMO, Medicine', 'DMCH', '73/a-1, Alien Continental Parcel, Central Road', '', '01672590028', NULL, '', ''),
-(489, 'LM-00490', 'Dr. Muhammad Shafiul Akram', 'K-55', 'Resident Surgeon', 'National Institute of ENT', 'H-36, R-2, Block-B, Sector-12, Mirpur', 'akram55.ent@gmail.com', '01914330930', NULL, '', ''),
-(490, 'LM-00491', 'Dr. Jayanta Malakar', 'K-58', 'Jr. Consultant', '', 'Zadabpur, Dhamrai', '', '01765869810', NULL, '', ''),
-(491, 'LM-00492', 'Dr. Md. Atiar Rahman', 'K-47', 'Assoc. Prof. Surgery', '', 'H-33, R-07, Sector-13, Uttara', 'atiqsp99@gmail.com', '01711479204', NULL, '', ''),
-(492, 'LM-00493', 'Dr. Mohammad Iqbal Hossain', 'K-56', 'Consultant', 'Sheikh Russel National Gastroliver Institute', '137/12, B-26, Priengon Housing, Mirpur-1', 'iqbal.dmc@gmail.com', '01716160441', NULL, '', ''),
-(493, 'LM-00494', 'Dr. Asif Deen Ahmed', 'K-61', 'MO', 'NITOR', 'Maya Kanon, Ka-32/4/B2, Shahjadpur, Gulshan', 'badhon61@gmail.com', '01717222273', NULL, '', ''),
-(494, 'LM-00495', 'Dr. Md. Ekram', 'K-61', 'MO', 'NITOR', 'Flat-3G2, Suvastu Edifice, 51-52, Green Road', 'ekramswapan@gmail.com', '01717333764', NULL, '', ''),
-(495, 'LM-00496', 'Dr. mahbuba Khan Eusuf Zai', 'K-61', 'Registrar', 'DMCH', 'House-8, Flat-9A, Azimpur Govt. Quarter, Azimpur', 'mkeusufzai61@gmail.com', '01712697243', NULL, '', ''),
-(496, 'LM-00497', 'Dr. Benzir Ahammad', 'K-42', 'Assist. Prof. Neurology', 'BSMMC, Faridpur', 'Nirjhoir, B-3, 9/28, Block-C, Humayun Road, Mohamm', 'ahammadbenjir@gmail.com', '01963376528', NULL, '', ''),
-(497, 'LM-00498', 'Dr. Mohammad Arifur Rahman', 'K-56', 'Consultant, Cardiology', 'BRB Hospital LTD', 'Flat-B13, Dominno Mujib Bhaban, H-60, Green Road', 'dr.arif56@gmail.com', '01790102826', NULL, '', ''),
-(498, 'LM-00499', 'Dr. Kazi Mohammad Hannanur Rahman', 'K-54', 'Assist. Prof. Ortho', 'NITOR', '499, East kaziparqa, Kafrul', 'docjewel@gmail.com', '01720213544', NULL, '', ''),
-(499, 'LM-00500', 'Dr. Shaikh Sadiul Islam', 'K-64', 'Resident Surgeon', 'NITOR', '3/14, Bailey Square Officers Quarter, Ramna', 'shaikhsadidmc@gmail.com', '01717262743', NULL, '', ''),
-(500, 'LM-00501', 'Dr. Hafiz Ahmed Nazmul Hakim', 'K-52', 'Assoc. Prof. Surgery', 'DMCH', 'Flat-B2, house-147, R-1, Mohammadi Housing Society', 'nazmulhakim75@gmail.com', '01712598407', NULL, '', ''),
-(501, 'LM-00502', 'Dr. Nasreen Farhana', 'K-54', 'Assoc. Professor', 'NIPSOM', 'Flat-10/F, Concord Regency, 19/1 West Panthapath', 'nfronok54@gmail.com', '01816520450', NULL, '', ''),
-(502, 'LM-00503', 'Dr. Deepankar Kumar Basak', 'K-56', 'Assoc. Consultant, medicine', 'SQUARE Hospital LTD.', 'House-A4, Flat-18, Road-09, Sector-09 Uttara', 'deepankorbasak@gmail.com', '01760499475', NULL, '', ''),
-(503, 'LM-00504', 'Dr. Mohammad Muntasir Maruf', 'K-56', 'Assist. Prof. Psychiatry', 'National Institute of Mental health', '273, Sultangonj Road, Rayer Bazar, Jhigatola', 'marufdmc@gmail.com', '01711339516', NULL, '', ''),
-(504, 'LM-00505', 'Dr. Mohammad Jahirul Karim', 'K-43', 'Assistant Director', 'General hospital Nilphamari', 'Flat-10A, Sel DSA Tower, 8/4 BABUPURA NILKHET', 'jahirulkarim@gmail.com', '01727007000', NULL, '', ''),
-(505, 'LM-00506', 'Dr. Zalfikar Hasan', 'K-42', 'Colonel (Professor), Eye Dept.', 'Bogura, CMH', 'Charhazari, Basurhat, Companigonj, Noakhali', 'zulfikareye@yahoo.com', '01713367898', NULL, '', ''),
-(506, 'LM-00507', 'Dr. Razeeb Hasan', 'K-56', 'Consultant, Surgery & Medical Director', 'Sheikh Fazilatunnessa Mujib Memorial KPS Specializ', 'B-241 Erastern Housing, Pallabi 2nd Phase Pallabi', 'razeebhasan@gmail.com', '01717366596', NULL, '', ''),
-(507, 'LM-00508', 'Dr. Md. Janibul Haque', 'K-58', 'Lecturer. Dept. Of Biochemistry', 'Cumillah Medical College', 'Insaf Specialized hospital, 38 Tosona Bridge', 'janibul@gmail.com', '01731442255', NULL, '', ''),
-(508, 'LM-00509', 'Dr. Farid Uddin Ahamad', 'K-51', 'Assist. Prof. Surgery', 'DMCH', 'D-3, Halicon Centre, Bakshi Bazar', 'faridfahmidadmc@gmail.com', '01712817844', NULL, '', ''),
-(509, 'LM-00510', 'Dr. Dhiman Banik', 'K-39', 'Professor Of Cardiology', 'National heart Foundation', 'Floriade, Flat-c-8, 23/10, Khilji Road Mohammadpur', 'dhimandmc@yahoo.com', '01819328053', NULL, '', ''),
-(510, 'LM-00511', 'Dr. Indira Roy', 'K-60', 'MO, Cardiology', 'Sheikh Hasina National Institute of burn & plastic', '400, Urban Center Point, New Easkaton Road', '', '01766686186', NULL, '', ''),
-(511, 'LM-00512', 'Dr. Md. Rezaul Islam', 'K-56', 'Junior Consultant, Medicine', '250 Beded General hospital Kushtia', '11/1, Jaher Ali Mia Lane, Payaratola', 'bituk56@gmail.com', '01714072840', NULL, '', ''),
-(512, 'LM-00513', 'Dr. Mohammad Ashraf Uddin Khan', 'K-51', 'Assist. Prof. Surgery', 'DMCH', 'Flat-10/F, Concord Regency, 19/1, Weat Panthapath', 'sumonashraf74@gmail.com', '01711906922', NULL, '', ''),
-(513, 'LM-00514', 'Dr. Dipankar Load', 'k-47', 'Assoc. Prof. ENT', '', 'House-517, Road-15A, Block-F, Bashundhara', 'dipankar.lodh47@gmail.com', '01711832942', NULL, '', ''),
-(514, 'LM-00515', 'Dr. SK. Shahinur hossain', 'K-47', 'Assoc. Prof. Respiratory Medicine', 'NIKDU', 'karobi, Flat-B7, Teachers Quarter, Sher-e Bangla', 'dr.parvez47@gmail.com', '01711355872', NULL, '', ''),
-(515, 'LM-00516', 'Dr. Kashfia Ahmed Keya', 'K-49', 'Medical Officer', '', 'Flat-2A, Santana Apartment, 63 Pelkhana Road,', 'kashfiakeya:bd@gmail.com', '01711789717', NULL, '', ''),
-(516, 'LM-00517', 'Dr. Shila Banik', 'K-39', 'Curator, Dept. of Anatomy', 'Shaheed Suhrawardy Medical College', 'Florida, Flat-C8, 23/10 Khilji Road, Mohammadpur', 'banik.shila@gmail.com', '01819292410', NULL, '', ''),
-(517, 'LM-00518', 'Dr. Md. Tuhin Talukder', 'K-58', 'Consultant Dept. of Surgery', 'DMCH', 'Flat-B2, H-21, Block-H, Extension Pallabi, Mirpur', '', '01796587302', NULL, '', ''),
-(518, 'LM-00519', 'Dr. Tahmina Satter', 'K-44', 'Assoc. Prof. Plastic Surgery', '', 'Flat-9C, House-29, Road-4, Dhanmondi', '', '01819284802', NULL, '', ''),
-(519, 'LM-00520', 'Dr. Asit Kumar Saha', 'K-44', 'Assoc. Prof. Neurosurgery', 'Sher-e Bangla Medical College Hospital', 'Grand Panoroma, House-42, R-11, Block-C, Mirpur-6', 'drsahaasil7860@gmail.com', '01718073099', NULL, '', ''),
-(520, 'LM-00521', 'Dr. Samaresh Chandra Saha', 'K-51', '', 'BSMMU', 'Flat-B4, House-112/GHA/UMO, Central Road, Hatirpol', 'drsamaresh51@yahoo.com', '01716248686', NULL, '', ''),
-(521, 'LM-00522', 'Dr. Fariha Bushra Matin', 'K-48', 'Radiologist', 'ICDDRB', 'B4,T1,03-02, Bijoy Rakeen City, Block-D, Sction-15', 'fariha@icddrb.org', '01712180237', NULL, '', ''),
-(522, 'LM-00523', 'Dr. Istiaq Ahmed', 'K-48', 'Assoc. Prof. & Head Cardiac Surgery', 'DMCH', 'B4,T1,03-02, Bijoy Rakeen City, Block-D, Sction-15', 'istimed48@yahoo.com', '01715380321', NULL, '', ''),
-(523, 'LM-00524', 'Dr. Mustafizur Rahman', 'K-62', 'Medical Officer', 'OSD, DGHS', 'Flat-62, House-32, Road-18, Sector-7, Uttara', 'mustafiz1885@gmail.com', '01911521189', NULL, '', ''),
-(524, 'LM-00525', 'Dr. C.M. Mosabber Rahman', 'K-62', 'Assist. Registrar, Cardiac Surgery', 'DMCH', '282/2 Ainusbag Shahi Mosque Road Dakshin Khan', 'shoovro.dmc@gmail.com', '01717067680', NULL, '', ''),
-(525, 'LM-00526', 'Dr. Manzil Ahmad', 'K-48', 'Assoc. Prof. Cardic Surgery', 'Sir Solimullah Medical College', '83/B, Indira Road', 'manzilahmed48@gmail.com', '01715036850', NULL, '', ''),
-(526, 'LM-00527', 'Dr. Madhusudan Saha', 'K-41', 'Prof. Gastroenterology', 'Sylhet Women\'s Medical College', 'Basundia, Kotwali, Jashore', 'madhunibedita@GMAIL.COM', '01711367847', NULL, '', ''),
-(527, 'LM-00528', 'Dr. A.M. Asif Rahim', 'K-43', 'Assist. Professor, Cardic Surgery', 'Chattogram Medical College', 'Central Hospital, Bahirgola, Sirajganj', '', '01812108689', NULL, '', ''),
-(528, 'LM-00529', 'Dr. Lutfunnahar Shampa', 'K-57', 'Junior Consultant', 'DMCH', 'Flat-A1, H-587, R-09, Baitul Amin Housing Society', 'drshampadmc@gmail.com', '01758933940', NULL, '', ''),
-(529, 'LM-00530', 'Dr. Paritosh Kumar Sarkar', 'K-40', 'Associate Prof. Neonatology', '', 'Flat-B1, 48/4, R.K. Mission Road', 'sparitosh@hotmail.com', '01715077002', NULL, '', ''),
-(530, 'LM-00531', 'Dr. MD. Habibur Rahman', 'K-66', 'IMO', 'SMCH', '32, Rabeya Manjil, jahidur RahmanCross Baghmara', 'dr.habibdmc66@', '', NULL, '', ''),
-(531, 'LM-00532', 'Dr. Md. Abdullah Al Alamgir', 'K-40', 'Proffesor of Neonatology', 'NINS', '3/8, Block-F, Lalmatia, Mohammadpur', '', '01819241029', NULL, '', ''),
-(532, 'LM-00533', 'Dr. Sudip Ranjan Deb', 'K-51', 'Assoc. Prof. Medicine', 'DMCH', 'Flat-B2, Mayarakshi, House-7, Road-6, Dhanmondi', 'dr.sudipranjondeb@gmail.com', '01714963196', NULL, '', ''),
-(533, 'LM-00534', 'Dr. Swapan Kumar Saha', 'K-42', 'Assoc. professor, Neonatology', 'Rajshahi Medical College', '97/19, KM Das Lane Tikatuli', '', '01812167186', NULL, '', ''),
-(534, 'LM-00535', 'Dr. Lutfan Nessa', 'K-42', 'Professor of Paediatrics', '', '1/4/A, Fernsdale Apartment, Asad Avenue, MD.pur', 'lutfan.nessa@yahoo.com', '01718174751', NULL, '', ''),
-(535, 'LM-00536', 'Dr. Afzalur Rahman', 'K-49', 'Asist. Director', 'DGHS', 'Flat-2/1004, Eastern Orchid, 8 Circuit House Road,', 'afzalur@gmail.com', '01715029614', NULL, '', ''),
-(536, 'LM-00537', 'Dr. Tania Saad', 'K-51', 'Junior Consultant, Dept. of paed. Neurology', 'DMCH', 'Urban Spring, H-19, Rd-13/A, Flat-1A, Dhanmondi', 'tania.saad24@gmail.com', '01712036316', NULL, '', ''),
-(537, 'LM-00538', 'Dr. Kaniz Sultana', 'K-50', 'Assist. Prof.', '', 'Flat-2A, 64, Central Road, Dhanmondi', 'sultana.kaniz@yahoo.com', '01727296093', NULL, '', ''),
-(538, 'LM-00539', 'Dr. Saki Md. Jakirul Alam', 'K-45', 'Prof. & Head of Medicine', 'Shaheed Suhrawardy Medical College', 'Urban Spring, H-19, Rd-13/A, Flat-1A, Dhanmondi', 'jakir20@gmail.com', '01711600892', NULL, '', ''),
-(539, 'LM-00540', 'Dr. Azm Isteakh Hossain (Milton)', 'K-32', 'Senior Consultant, Opthalmology', 'Asian Eye Hospital', '43/A, circular Road, Oriental Ershad (4th Floor)', 'isteakh_hossain@yahoo.com', '01726624824', NULL, '', ''),
-(540, 'LM-00541', 'Dr. Sharmin Tahmina Khan', 'K-59', 'Registrar', 'Sheikh Russel Gastroliver Institute & Hospital', 'Lake Valley, Flat-A2, H-24, Rd-28 (old), Dhanmondi', 'sunvee.dmc@gmail.com', '01787695904', NULL, '', ''),
-(541, 'LM-00542', 'Dr. Mohammad Manirul islam', 'K-54', 'Assoc. Prof. Borne Marrow Transplantation Unit', 'DMCH', 'Flat-4A, Sel Park, 2F/3, Nasimbag, Mirpur-2,', 'manirk-54@yahoo.com', '01715049573', NULL, '', ''),
-(542, 'LM-00543', 'Dr. Mohammad Rafiul Alam', 'K-69', 'IMO, Casulty', 'DMCH', 'Flat-2C, 393-394/C, Khilgaon, Anser head Quarter', 'rafiulalamk6913@gmail.com', '01721431799', NULL, '', ''),
-(543, 'LM-00544', 'Dr. Sumaiya Tazin', 'K-69', 'Registrar, Gaynae', 'Shaheed Suhrawardy Medical College Hospital', 'Flat-B5, House-96, Road-9/A, Dhanmondi', 'prima.tazin@gmail.com', '01757424628', NULL, '', ''),
-(544, 'LM-00545', 'Dr. Nahian Akbar', 'K-66', 'IMO, Su-vI', 'DMCH', '604/1, Eastern Panthachhaya, Panthapath', 'nahian6603@gmail.com', '01710485947', NULL, '', ''),
-(545, 'LM-00546', 'Dr. Abdullah Al Morsabbir', 'K-62', 'Registrar, Hematology', 'DMCH', 'Flat-16/C, Building-8, Azimpur Colony, Lalbag', '', '01717219670', NULL, '', ''),
-(546, 'LM-00547', 'Dr. Md. Selim Morshed', 'K-56', 'Registrar, Urology', 'Rangpur Medical College hospital', 'Registrar. Dept of Urology Rangpur Medical College', 'psuvo54@gmail.com', '01713249822', NULL, '', ''),
-(547, 'LM-00548', 'Dr. Tayeba Sultana', 'K-59', 'Medical officer', '', 'House-15, Flat-18B, New Govt. Colony, Azimpur', 'drkhbhuiyan@gmail.com', '01711027457', NULL, '', ''),
-(548, 'LM-00549', 'Dr. Md. Monjurul Kader Chowdhury', 'K-60', 'Medical officer', '', 'H-11, Old Rashid Building, Chankharpul, Shahbag', 'drjewelk60@gmail.com', '01815722956', NULL, '', ''),
-(549, 'LM-00550', 'Dr. Md. Noman Rasekh', 'K-60', 'MO', 'DGHS', 'House-161, Flat-5/B, Malibagh', 'noman.fuad@gmail.com', '01717755856', NULL, '', ''),
-(550, 'LM-00551', 'Dr. Shah Md. Nahid Aktarul islam', 'K-63', 'Resident', 'NICVD', 'H-20, F-802, Japan Garden City, Ring Road,', 'nahid.k63@gmail.com', '01775550595', NULL, '', ''),
-(551, 'LM-00552', 'Dr. Mahadi Firoz hasan Razu', 'K-63', 'Resident', 'NITOR', 'Doctors Dormitory, NITOR, Sher-E-Bangla Nagor', 'mahadik63dmc@gmail.com', '01710771516', NULL, '', ''),
-(552, 'LM-00553', 'Dr. Md. Assaduzzaman Liton', 'K-60', 'Junior Consultant, ENT', 'Kurmitola General Hospital', 'H-9/6,, Block-D, Akur Takur Muslim Para', 'asadzamank60@gmail.com', '01748975226', NULL, '', ''),
-(553, 'LM-00554', 'Dr. Uzzal Chandra Ghosh', 'K-60', 'Registrar, ENT', 'DMCH', 'F-15, Old Rashid Building, Chankharpul', 'druzzalent@gmail.com', '01717022364', NULL, '', ''),
-(554, 'LM-00555', 'Dr. Ummul Khair Mahmuda', 'K-50', 'Junior Consultant, Gaynae', 'DMCH', 'F-9/C, Concord ibrahim, H-31, R-4, Dhanmondi', 'mahmudak50@gmail.com', '01712544987', NULL, '', ''),
-(555, 'LM-00556', 'Dr. Md. Sazzad Samsad', 'K-58', 'IOM, ENT', 'DMCH', '35/6, R-11, Shekertek, Adabor', 'sazzadsagore@gmail.com', '01751592101', NULL, '', ''),
-(556, 'LM-00557', 'Dr. Asadur Rahman', 'K-45', '', '', 'Flat-A2, Building-NHB14, New Colony, Lalmatia, Moh', 'ar13764@outlook.com', '01672755508', NULL, '', ''),
-(557, 'LM-00558', 'Dr. Shafinaz Mehzabin', 'K-58', 'OSD', 'DGHS', 'Flat-B1, 108, Central Road', 'shafinaz.mehzabin@gmail.com', '01711206469', NULL, '', ''),
-(558, 'LM-00559', 'Dr. Md. Al-Amin', 'K-66', 'IMO', 'DMCH', 'Monoharpur, Shailkura, Jhenaidah', '', '01738362460', NULL, '', ''),
-(559, 'LM-00560', 'Dr. Mohammed Muradul Islam', 'K-57', 'Clinical Assistant', 'NITOR', 'H-235, Wasa Road, West Shewrapara, Mirpur', 'muraddmck57@gmail.com', '01711101138', NULL, '', ''),
-(560, 'LM-00561', 'Dr. Mashfiqul Hasan', 'K-57', 'Assist. Prof. Endocrinology', 'NINS', 'Kha-42/1, Shahjadpur, gulshan', 'mashfiq.hasan@yahoo.com', '01816268746', NULL, '', ''),
-(561, 'LM-00562', 'Dr. Mahmud Zubaaer Banda', 'K-48', 'Medical Officer', 'BSMMU', 'Room-324, Block-f, Shahbag', 'drm2banda@gmail.com', '01748381030', NULL, '', ''),
-(562, 'LM-00563', 'Dr. Md. Belal hossain sarker', 'K-47', 'Deputy Director (Hospital)', 'BSMMU', 'Room-110, Block-C, Directors (Hospital), Office,', 'd.h.sarker47@gmail.com', '01956926156', NULL, '', ''),
-(563, 'LM-00564', 'Dr. Sahed Uddin Ahmed', 'K-51', 'Resident Physician, Medicine', 'Chittagong Medical College & Hospital', 'Syed Bari, Ward-8, Rangunia Pouroshova, Rangunia', 'sahed51@gmail.com', '01621100631', NULL, '', ''),
-(564, 'LM-00565', 'Dr. Rajdeep Biswas', 'K-53', 'Jr. Consultant, Aneesthesia & ICU', '250 Bedded General Hospital', 'Flat-3D, Monoleela, 16, prabal Chowdhury Road,', 'mithu_dmc@yahoo.com', '01819476630', NULL, '', ''),
-(565, 'LM-00566', 'Dr. Nazmul Hoque Munna', 'K-56', 'Assist. Prof. Neurology', 'National Institute of Neuroscience ,Dhaka', 'Arokash, Puraton Police Quaeter', 'nazmulk56dmc@gmail.com', '01933505407', NULL, '', '2023-06-01 07:12:35'),
-(566, 'LM-00567', 'Dr. Kazi Mazharul Islam', 'K-61', 'Consultant, Surgery', 'DMCH', 'Flat-A, Sobhanbag Doctors Quarter, Dhanmondi', 'mazhar.dmc61@gmail.co9m', '01716257565', NULL, '', ''),
-(567, 'LM-00568', 'Dr. Sadruddin Al Masud', 'K-51', 'Assist. Prof. Peadiatric Surgery', 'dmch', '30, Khilgaon, Bagicha', 'dr.almasud@yahoo.com', '01711164216', NULL, '', ''),
-(568, 'LM-00569', 'Dr. Jahanara Ferdous', 'K-57', '', '', 'Flat-E5, Doric Elston, 51, West Malibag', 'suptidmc@gmail.com', '01814848471', NULL, '', ''),
-(569, 'LM-00570', 'Dr. Mohammad Arif Hossain', 'K-52', 'Assist. Prof. Surgery', '', 'Flat-E5, Doric Elston, 51, West Malibag', 'arifk52@gmail.com', '01818650463', NULL, '', ''),
-(570, 'LM-00571', 'Dr. Nuour Nahar happy', 'K-50', 'Assist. Prof. Plastic Surgery', 'Sheikh Hasina National Institute of Burn & Plastic', '', 'nnhappy09@gmail.com', '01711709604', NULL, '', ''),
-(571, 'LM-00572', 'Dr. Mohammad Mustafa Kamal', 'K-52', 'Assist Prof. Plastic Surgery', 'Sheikh Hasina National Institute of Burn & Plastic', '8/B, Mirhajirbagh, Shayampur, Faridabad', 'mustafakamalratan77@gmail.com', '01722498679', NULL, '', ''),
-(572, 'LM-00573', 'Dr. Mohammad Mahmudul Hasan (Kafi)', 'K-51', 'Assist. Prof.', '', 'R-306, Sheikh hasina national Institute Burn', 'kafimahmudul@gmail.com', '01967962701', NULL, '', ''),
-(573, 'LM-00574', 'Dr. Nusrat Sultana', 'K-51', 'Assist. Prof. Endocrinology', 'BSMMU', 'H-61, F-B101, Rd-1, Block-I, Banani', 'nusrat1229@yahoo.com', '01726427495', NULL, '', ''),
-(574, 'LM-00575', 'Dr. A.B.M. Hasan Habib', 'K-51', 'Assistian Librarian', 'BSMMU', 'Room-604, Central Library, BSMMU', 'hasanhaema@gmail.com', '01714220738', NULL, '', ''),
-(575, 'LM-00576', 'Dr. Khodeja Begum', 'K-38', 'Professor', '', 'H-363, Rd-9, Block-D, Bashundhara R/A,', 'docjhumi1987@gmail.com', '01911393318', NULL, '', ''),
-(576, 'LM-00577', 'Dr. Mosammat Shahina Begum', 'K-54', 'Consultant, Inferlity', 'BRB Hospital LTD', 'Sunibash, 21/14, Block, Tajmahal Road, Mohammadpur', 'shanta_628@yahoo.com', '01911504215', NULL, '', ''),
-(577, 'LM-00578', 'Dr. Md. Shaheen Sikder', 'K-54', 'Assist. Prof. Nephrology', 'Holy Family red Crecent medical College', 'Kapashia, Gazipur', 'shaheensikder79@gmail.com', '01716099664', NULL, '', ''),
-(578, 'LM-00579', 'Dr. Joybaer Anam Chowdhury', 'K-61', 'Junior Conssultant , medicine', 'NICVD', 'Hazipur, Subornachor', 'joybaer6106@yahoo.com', '01755093484', NULL, '', ''),
-(579, 'LM-00580', 'Dr. Md. Abdul Momin', 'K-54', 'Assoc. Prof. Surgery', '', 'F-9C, Cumilla Tower, 2nd Kandirpar, Laksham Road', 'amomin54@gmail.com', '01712132799', NULL, '', ''),
-(580, 'LM-00581', 'Dr. Mohammad Niamat Alahi', 'K-54', 'Assist Professor, Skin & VD', 'Shaheed Suhrawardy medical College', 'Flat-7/A, Lake Garden-2, 110Lake circus, Kalabagan', 'niamatalahi@gmail.com', '01711441815', NULL, '', ''),
-(581, 'LM-00582', 'Dr. Md. Atikur Rahman', 'K-68', 'IMO, MU-V', 'DMCH', 'Room-B3, Dormitory Building, DMCH', 'atik1365@gmail.com', '01617271365', NULL, '', ''),
-(582, 'LM-00583', 'Dr. Md. Abdullah Al Momen', 'K-64', 'Resident Surgeon', 'Mugda Medical College Hospital', 'Room-D8, Doctors Quarter, Chankharpool', 'momenk64@gmail.com', '01703699557', NULL, '', ''),
-(583, 'LM-00584', 'Dr. Syed Shahreor Razzaque', 'K-64', 'Registrar, Neorosurgery', 'DMCH', 'F-A6, H-86,86/1, Navana Sattar Garden, New Eskaton', 'shopnochary2004@gmail.com', '01723049111', NULL, '', ''),
-(584, 'LM-00585', 'Dr. Taslima Sultana', 'K-54', 'Jr. Consultant, Paediatrics', 'Sarkari Karmachari Hospital', '287/1, Shantibag', 'tasjharna@gmail.com', '01715116929', NULL, '', ''),
-(585, 'LM-00586', 'Dr. Rajat Shuvra Das', 'K-66', 'Assist. Prof. Pediatric Cardic Anesthesia', 'BSMMU', '9th Floor, Block-c, Dept. of Anesthesia, BSMMU', 'rajatdas1351@gmail.com', '01766940707', NULL, '', ''),
-(586, 'LM-00587', 'Dr. Farhan Imtiaz Chowdhury', 'K-61', 'Registrar, Endocrine Surgery', 'Rajshahi medical College', '43/A, West Malibagh, Shantinagar, Ramna', '', '01758577738', NULL, '', ''),
-(587, 'LM-00588', 'Dr. Hasim Reza Roctim', 'K-64', 'Medical Officer, ENT', 'DMCH', '1/G/1, Poribag, Oreantal Tower (2nd Floor)', '', '01712997951', NULL, '', ''),
-(588, 'LM-00589', 'Dr. Shamistha Ghosal', 'K-55', 'Junior Consultant, Paediatrics', '', 'House-4, RD-21, Rupnagar R/A, Mirpur', 'sharmistha58@gmail.com', '01716868645', NULL, '', ''),
-(589, 'LM-00590', 'Dr. Md. Riad Hossain', 'K-70', 'Registrar, Medicine', 'DMCH', 'Doctors Dormetory, DMCH', 'riad139916@gmail.com', '01680398476', NULL, '', ''),
-(590, 'LM-00591', 'Dr. Shahrear Khan', 'K-72', 'HMO, medicine', 'DMCH', 'Kasbamajhail, Pangsha, Rajbari', 'shahrearkhan007@gmail.com', '01746415748', NULL, '', ''),
-(591, 'LM-00592', 'Dr. Sharmin Akhter Zahan', 'K-49', 'Chief Operating Officer', 'Isntitute For Developing Science & health Initiati', 'Flat-A2, Razia Reyhana, H-152, RD-7, Block-I,', 'drszahan@gmail.com', '01730348896', NULL, '', ''),
-(592, 'LM-00593', 'Dr. Mohammad hossain', 'K-41', 'Arpa Co-ordinator', 'Managemant Science for health', '84/E, Dhalka nagar Lane, Gandaria', 'hossainmd66@gmail.com', '01730334637', NULL, '', ''),
-(593, 'LM-00594', 'Dr. Mahbuba Begum', 'K-44', 'Assoc. Prof. Surgery', 'Medical College For women & Hospital', 'flat-C1, House-6, RD-2, Sector-1, Uttara', 'mahbuba44k@gmail.com', '01712721835', NULL, '', ''),
-(594, 'LM-00595', 'Dr. Mukesh Kumar Dutta', 'K-42', 'Assoc. Prof. of Communitu Medicine', 'Chittagong Medical College', 'EaSTERN Mohajan Road, North kattali, Akbershah', 'dr.mukeshduttata@yahoo.com', '01816243167', NULL, '', '');
-INSERT INTO `lifemember` (`id`, `LM_No`, `Name`, `Batch`, `Address`, `Address3`, `Address1`, `email`, `phone`, `image`, `created_at`, `updated_at`) VALUES
-(595, 'LM-00596', 'Dr. Abdullah Al Mahmood', 'K-45', 'Assist. Prof. Hepatology', 'CMCH', 'A/6, Summer Vail, House-91, RD-5, Panchlaish R/A,', 'almahmoodhepato@yahoo.com', '01714046432', NULL, '', ''),
-(596, 'LM-00597', 'Dr. Mohammad Zakir Hossain Bhuiyan', 'K-51', 'Assist. Prof. of Thorasic surgery', 'CMC', 'Flat-A2, H-148, The hill Crest, RD-7, DEV Paharh', 'drzakirdmc@yahoo.com', '01712152051', NULL, '', ''),
-(597, 'LM-00598', 'Dr. Muhammad jabed Bin Amin Chowdhury', 'K-53', 'Assist. Prpf. Pediatrics', 'CMC', 'Flat-7B, Minar, 15, Nizam Road, Panchilaish', 'jabedbinamin@yahoo.com', '01674302839', NULL, '', ''),
-(598, 'LM-00599', 'Dr. Md. Akram Hossain', 'K-35', 'Senior Consultant, Microbiology', 'Infection Preventive Imperial hospital LTD.', 'A-34, Ramna Esatren Complex,124 Bara magbazar', 'akram.prof@gmail.com', '01714074184', NULL, '', ''),
-(599, 'LM-00600', 'Dr. Kazi Mohammad Abrar Hasan', 'K-51', 'Assoc. Prof. Medicine', 'Chittagong Medical College & Hospital', '1 no, Shah Mohammad Ali Lane Chawkbazar', 'dr.kmah@yahoo.com', '01819613251', NULL, '', ''),
-(600, 'LM-00601', 'Dr. Rabiul Alam Md. Erjan Uddin', 'K-55', 'Assist. Prof.', 'Chittagong medical College', 'House-52, RD-1,pandhlaish R/A,', 'rabi55dmc@hotmail.com', '01711129798', NULL, '', ''),
-(601, 'LM-00602', 'Dr. Mishma Islam', 'K-53', 'Assist. Registrar', 'Chittagong Medical College', 'House-2, Gate-1, Karnafuli Housing Area, Halisahar', 'drmishma77@gmail.com', '01717065483', NULL, '', ''),
-(602, 'LM-00603', 'Dr. Mirza Md. Asaduzzaman', 'K-55', 'Junior Consultant of Gayne oncology', 'NICRH', 'B-13, D-3, Shahjahanpur Govt. Officer QTR', 'ratandmc@gmail.com', '01711306128', NULL, '', ''),
-(603, 'LM-00604', 'Dr. Debasree Paul Chumki', 'K-62', 'MD Phase-A,', 'BSMMU', 'Mononom Gardenia, Rayer bazar', '', '01718050151', NULL, '', ''),
-(604, 'LM-00605', 'Dr. Khurshid Mahmood', 'K-43', 'Professor & Head Physical medicine', 'NINS', 'Flat-c/s, 1/13 Pallabi, Mirpur', 'tannibabu@yahoo.com', '01716854395', NULL, '', ''),
-(605, 'LM-00606', 'Dr. Md. Abdullah Al Farooq', 'K-47', 'Assoc. Prof. Paediatric Surgery', 'Chittagong medical College', '183/1, Kulgaon, Kalalabad, Bayzid', 'farooq71bd@yahoo.com', '01815002188', NULL, '', ''),
-(606, 'LM-00607', 'Dr. Sabuj Baran Dhar', 'K-47', 'Assist. Prof. Skin & VD', 'AMUMC', 'Nivrita Niloy, Flat-6B, 57 Buddist Tample Road,', 'sabujdhar@gmail.com', '01712041122', NULL, '', ''),
-(607, 'LM-00608', 'Dr. Nazmul Haque', 'K-51', 'Assist. Prof. Paediatric Neurology', '', 'K-13, South Badda, F-A5, Priyoprangan Lake Bridge', 'nazmulk51@gmail.com', '01830008498', NULL, '', ''),
-(608, 'LM-00609', 'Dr. Moriom Binte Haque', 'K-62', 'OSD', 'DGHS', 'East Bandaber, Savar Cantonment, Ashulia', 'drmoriom9700@gmail.com', '01686449709', NULL, '', ''),
-(609, 'LM-00610', 'Dr. Mahbub Hasan', 'K-56', 'Assist. Professor, Plastic Surgery', 'Sheikh Hasina national Institute of Burn', 'F-8C, H-13, R-7, Dhanmondi R/A,', 'mahbubk56@gmail.com', '01819459918', NULL, '', ''),
-(610, 'LM-00611', 'Dr. Shahin Rahman Chowdhury', 'K-38', 'Prof. & Head Obs & Gynae', 'HFRCHMC', '116 Shantinagar', 'shahinrahmanc@yahoo.com', '01819145492', NULL, '', ''),
-(611, 'LM-00612', 'Dr. Muztafizur Aziz', 'K-45', 'Assoc. prof. Cardiology', 'NICVD', 'B-17, E1, Gulshan', 'mazizjami@gmail.com', '01819496571', NULL, '', ''),
-(612, 'LM-00613', 'Dr. Sudhangshu Shekhar Biswas', 'K-47', 'Prof. & Head Otolaryngology & Head neck Surger', 'Birdem', 'Sheltech Deen manjil, Flat-12/D, 12, Paribagh', 'b.sudhangshu@yahoo.com', '01712113405', NULL, '', ''),
-(613, 'LM-00614', 'Dr. Ahmed Kabir Chowdhury', 'K-49', 'Assoc. Prof. Plastic Surgery', 'SSMC', 'House-15, RD-16 (new) 27 (old), Dhanmondi', 'drkabirc@hotmail.com', '01715407824', NULL, '', ''),
-(614, 'LM-00615', 'Dr. Foara Tasmim', 'K-44', 'Assoc. Prof. of Plastic Surgery', 'SSMC', '2/4, Block-D, Lalmatia, Shaptak Aka Anim', 'pamee001@gmail.com', '01817024244', NULL, '', ''),
-(615, 'LM-00616', 'Dr. Rukhsana Pavin', 'K-48', 'Assist. Prof. Paediatrics', 'SSMC', 'H-28, R-16, Sector13, Uttara', 'rukhsana7498@gmail.com', '01716827470', NULL, '', ''),
-(616, 'LM-00617', 'Dr. Md. Aminul Ehsan', 'K-38', 'Assoc. Prof. Paediatrics', 'DMC', 'Building-2, Flat-105, Eastern Panthochya, Panthopa', 'amimulehsan@gmail.com', '01711680417', NULL, '', ''),
-(617, 'LM-00618', 'Dr. Bodhrun Naher', 'K-55', 'Junior Consultant Peadiatric', '', '73/2, Central Road, Green Road', 'bodhrunnaher@gmail.com', '01712270844', NULL, '', ''),
-(618, 'LM-00619', 'Dr. Humayra Akhter', 'K-61', 'Registrar', 'bangladesh Institute of Tropical & Infections', '469, Rangdhonu, hazi Amanat Ullah Road, Noapara', 'shakila_046@yahoo.com', '01716235321', NULL, '', ''),
-(619, 'LM-00620', 'Dr. Kishwar Sultana', 'K-42', 'Professor Of OBS & GYNAE', 'Holy Family Red Crescent Medical College', '15, Queens Garden, F-C-6/7, new Eskaton Road', 'pksultana42@gmail.com', '01711626403', NULL, '', ''),
-(620, 'LM-00621', 'Dr. Farhana Nishat', 'K-61', 'Medical Officer, Darmatology & Venereology', 'DMCH', 'Kumira Chittagong', 'fnishat61@gmail.com', '01711573339', NULL, '', ''),
-(621, 'LM-00622', 'Dr. Shormistha Bain', 'K-56', 'junior Consultant (Gynae & Obs)', 'UHC', 'H-55, Sikder Villa, Flat-5C, Al-Amin Road,', 'bshormistha07@gmail.com', '01711055779', NULL, '', ''),
-(622, 'LM-00623', 'Dr. Nawzia Yasmin', 'K-43', 'Pro-Vice Chancellor', 'State university of bangladesh', 'Apt-4F, house-52, RD-27, Dhanmondi', 'yasminnawzia@yahoo.com', '01817042480', NULL, '', ''),
-(623, 'LM-00624', 'Dr. Mohammad Ibrahim Chowdhury', 'K-45', 'Assoc. Prof. Cardiology', 'Chittagong Medical College', 'A-9, Equity Lavivia, 30 Mehedibag', 'dribrahimc@yahoo.com', '01711735510', NULL, '', ''),
-(624, 'LM-00625', 'Dr. Nasima Akhter', 'K-57', 'Junior Consultant', 'UHC', 'Basa-3, RD-1/4, Keranipara', 'nasima.eva@gmail.com', '01712047202', NULL, '', ''),
-(625, 'LM-00626', 'Dr. Most. Nurunnahar Begum', 'K-57', 'Assist. Prof. Plastic Surgery', 'Sheikh hasina National Institute Of Burn', 'Flat-4C, Plot-pa-152/5, Sanshine apt. South Badda', 'lata_noor@hotmail.com', '01876288116', NULL, '', ''),
-(626, 'LM-00627', 'Dr. Mominul Islam', 'K-64', 'Assist. Reg.', 'Rangpur medical College Hospital', '33/2 Babu Khan (West Para) Babukhan, Rangpur Sadar', 'pinnudmc07@gmail.com', '01722121778', NULL, '', ''),
-(627, 'LM-00628', 'Dr. Md. Abdul matin', 'K-38', 'Prof. & Head of ENT & HNS', 'SSMC', 'Flat-804,98, New Eskaton RD, Ramna', 'matinfrcs@yahoo.com', '01725897870', NULL, '', ''),
-(628, 'LM-00629', 'Dr. Md. Mahbubul Alam', 'K-49', 'Assist. Prof. Paediatrics Surgery', 'Kushtia Medical College', 'Jantipara, Meherpur', 'mabiplob7@gmail.com', '01716855669', NULL, '', ''),
-(629, 'LM-00630', 'Dr. Mohammad Kamrul Hasan', 'K-54', 'Consultant Medicine', 'OSD,DGHS', 'kalikapur, Supua Madraka', 'drkamrul54@gmail.com', '01712863386', NULL, '', ''),
-(630, 'LM-00631', 'Dr. Nusrat hasan', 'K-52', 'Business Franchise Head', 'Novartis Limited', 'House-337, 7th Floor, Lane-23, Mohakhali DOHS', 'dr.nusrat.hasan@gmail.com', '01711438094', NULL, '', ''),
-(631, 'LM-00632', 'Dr. Taneem Mohammad', 'K-52', 'Assist Prof. Anesthesiology', 'DMC', 'House-337, 7th Floor, Lane-23, Mohakhali DOHS', 'mtaneem@yahoo.com', '01715191191', NULL, '', ''),
-(632, 'LM-00633', 'Dr. Mafruha Akhter', 'K-55', 'Assist. Prof. Hematology', '', 'Flat-9B, House-13, Road-7, Dhanmondi', 'mafruha673@gmail.com', '01912112724', NULL, '', ''),
-(633, 'LM-00634', 'Dr. Md. Shadman Shakib', 'K-71', 'Medical Officer, UHC', 'UHC', '31/ka, Uttor Alipur, Alauddin Khan Sarak', 'shawondmck71@gmail.com', '01835827786', NULL, '', ''),
-(634, 'LM-00635', 'Dr. Dabir Uddin Ahmed', 'K-34', 'CEO', 'Centre for Women & Child Health', 'Mayurakshi APT-A2, Road-6, House-7, Dhanmondi', 'dmcdabir@gmail.com', '01711541992', NULL, '', ''),
-(635, 'LM-00636', 'Dr. Mahmuda Begum', 'K-57', 'Jr. Consultant', 'NINS', 'House-ka73/4, 3rd Floor, South Mohakhali', 'munamahmuda2611@gmail.com', '01717173607', NULL, '', ''),
-(636, 'LM-00637', 'Dr. ATM Hasibul Hasan', 'K-57', 'Assist. Prof. Neorology', 'NINS', 'Flat-A5, H-6, RD_24, Sector-7, Uttara', 'parag007us@gmail.com', '01763498663', NULL, '', ''),
-(637, 'LM-00638', 'Dr. Md. Bakhtiar Azam', 'K-47', 'Assist Prof. Neorology', 'NINS', '368/3, Senpara Parbata, Mirpur-10', '', '01735649338', NULL, '', ''),
-(638, 'LM-00639', 'Dr. Md. Isma Azam Zico', 'K-59', 'Registrar Neurosurgery', 'DMCH', '98/1, Eastern Ramna View, Boro Moghbazar, Ramna', 'zicodmc@gmail.com', '01716033364', NULL, '', ''),
-(639, 'LM-00640', 'Dr. Md. Jahangir Alam', 'K-36', 'Director', 'Dhaka Shishu hospital & Institute', '98/1, Eastern Ramna View, Boro Moghbazar, Ramna', '', '01716344008', NULL, '', ''),
-(640, 'LM-00641', 'Dr. rukhsana najnin', 'K-57', 'Assoc. Prof. Medicine', 'Dr. Sirajul islam medical College', 'bolorampur, Ashutoshpur,', 'dr.sukhsana57@gmail.com', '01711585803', NULL, '', ''),
-(641, 'LM-00642', 'Dr. Nazmun Nahar', 'K-51', 'Assoc. Prof. Biochemistry', 'Ibrahim Medical College', 'House-C6, RD-2, Agarsha Nagar, Middle Badda', 'nazmunnaharritu@yahoo.com', '01829020435', NULL, '', ''),
-(642, 'LM-00643', 'Dr. Murshida Aziz', 'K-57', 'Assist. Prof. Biochemistry', 'Ibrahim Medical College', 'House-45, RD-4/A, Flat-2E, Urban Touch, Dhanmondi', 'murshidaaziz@gmail.com', '01817573694', NULL, '', ''),
-(643, 'LM-00644', 'Dr. Mohammad Ashiqul Islam', 'K-62', 'Rasident', 'NICVD', '420/2, West Velenagar Narsingdi Sadar', 'ashik.dmc@gmail.com', '01674310897', NULL, '', ''),
-(644, 'LM-00645', 'Dr. Md. Ezharul haque Kaiser', 'K-34', 'Private Practice', '', '15A/2, Azimpur Road 1st Floor, Lalbag', 'ezharulhaquekaiser@gmail.com', '01713033520', NULL, '', ''),
-(645, 'LM-00646', 'Dr. Dr. Md. Raquib Morshed', 'K-62', 'Registrar nephrology', 'NIKDU', 'House-121, F-101, Eastern Housing, West Nakhalpara', 'raquibmorshed@gmail.com', '01727620332', NULL, '', ''),
-(646, 'LM-00647', 'Dr. Samia Tasneem', 'K-61', 'Registrar Cardiology', 'NICVD', 'House-2, Naem Road, Dhanmondi', 'tasneemsamia61@gmail.com', '01748149065', NULL, '', ''),
-(647, 'LM-00648', 'Dr. Mohammad Mohiuddin', 'K-62', 'Assist Registrar Cardiology', 'NICVD', 'Room- 206, NICVD, Sher-e-bangla Nagar', 'dr.mohiuddin62@gmail.com', '01717427986', NULL, '', ''),
-(648, 'LM-00649', 'Dr. Ahmed Sami Al-Hasan', 'K-54', 'Asst. Prof. Surgery', 'National Institute Of Cancer Research & Hospital', '16/1, Shantibag', 'samidmc@gmail.com', '01819431787', NULL, '', ''),
-(649, 'LM-00650', 'Dr. Mir Rashek Alam Ovi', 'K-61', 'Jr. Consultant Surgery', '', '45 Kalabagan, 1st Lane', 'ovidmc@gmail.com', '01614077044', NULL, '', ''),
-(650, 'LM-00651', 'Dr. Shamima Nasrin', 'K-61', 'Assist. Prof. Surgery', 'Anwer Khan Modern Medical College', '45, Kalabagan, 1st Lane, Flat-701, Sel Rose Valley', 'silvidmc@gmail.com', '01717063528', NULL, '', ''),
-(651, 'LM-00652', 'Dr. Mohammad Faisal Ibn Kabir', 'K-55', 'Assist Prof. Cardiology', 'BSMMU', 'Barnali, 10, New Baily Road, Ramna', 'mfikabir1980@gmail.com', '01715002256', NULL, '', ''),
-(652, 'LM-00653', 'Dr. Mohammad Anwarul Bari', 'K-53', 'Assoc. Prof. Medicine', 'Sir Salimullah Medical College & Hospital', 'Rupayan City,', '', '01819291113', NULL, '', ''),
-(653, 'LM-00654', 'Dr. Debali Das', 'K-61', 'MO', 'Sarkari Karmochari Hospital', '144, Shantinagar, Property Estate, Building3, F-A4', 'drddk61@gmail.com', '01687689555', NULL, '', ''),
-(654, 'LM-00655', 'Dr. Md. Minhaj Uddin Bhuiyan', 'K-62', 'Medicine Specialist', 'DMCH', '6/1, New Eskaton', 'mubrussel@GMAIL.COM', '01732546483', NULL, '', ''),
-(655, 'LM-00656', 'Dr. Tasnuva Jahan', 'K-59', 'Medical Officer', 'DMCH', 'Flat-9N, House-18, Road-3, Dhanmondi', 'drdolak59@yahoo.com', '01712183547', NULL, '', ''),
-(656, 'LM-00657', 'Dr. Humayra Begum', 'K-45', 'Housewife', '', '3 & 3A Poribagh, Digonto Tower, Flat-10B, Shahbag', 'humayrayusuf@gmail.com', '01727522176', NULL, '', ''),
-(657, 'LM-00658', 'Dr. Md. Aminul Islam', 'K-38', 'Senior Consultant Neurology', 'Evercare Hospital', '4/C, Upayan, Aziz Polli, Dhaka Cantonment', 'aminulns@yahoo.com', '01710840033', NULL, '', ''),
-(658, 'LM-00659', 'Dr. Nargis Ara Begum', 'K-38', 'Senior Consultant Paediatrics', 'United Hospital', '4/C, Upayan, Aziz Polli, Dhaka Cantonment', 'nargisdr@yahoo.com', '01914001148', NULL, '', ''),
-(659, 'LM-00660', 'Dr. Abu Bakar Siddique', 'K-50', 'Assist. Prof Virology', 'NIKDU', 'Victoria Agelic, Flat-5A, h/N, 6/5, Iqbal Road,', 'abubakaruro@yahoo.com', '01914331866', NULL, '', ''),
-(660, 'LM-00661', 'Dr. Dipak Kumar Paul Chowdhury', 'K-37', 'Principal, Delta Medical College', '', 'House-716, Road-10, Avenue-3, Mirpur, DOHS', 'dipak566@yahoo.com', '01717073861', NULL, '', ''),
-(661, 'LM-00662', 'Dr. Khondaker Abul Basher', 'K-32', 'Prof. of Paediatrics (Retd)', 'U.S. Bangla medical College', '16/1, Shekh Saheb bazar, Azimpur, Dhaka-1205', 'profdrbashar@icloud.com', '01712127070', NULL, '', ''),
-(662, 'LM-00663', 'Dr. Harun Ar Rashid', 'K-40', 'Professore of Psychiatry', 'Comilla Medical College', 'Rupasdi, Banchharampur', '', '01711140191', NULL, '', ''),
-(663, 'LM-00664', 'Dr. Md. Khalequzzaman Sarker', 'K-49', 'Assist. Prof. of Gastroenterology', 'Rajshahi medical College', 'House-9, New Bilsiwla, Cantanment Road, Rajshahi', 'drkazaldmc@gmail.com', '01718256629', NULL, '', ''),
-(664, 'LM-00665', 'Dr. Md. Raiq Raihan Chowdhury', 'K-64', 'Junior Consultant', 'DGHS', 'Flat-4, 80/5, Janata Road, Middle Pirerbag, Mirpur', 'raiq579@gmail.com', '01673574552', NULL, '', ''),
-(665, 'LM-00666', 'Dr. Laila Areju Man Banu', 'K-54', 'Junior Consultant', '', 'Concord Dasmina, Rd-5, Flat-3C, H-10, Dhanmondi', 'drlailak54dmc@gmail.com', '01711451867', NULL, '', ''),
-(666, 'LM-00667', 'Dr. Abdullah Al Mukit', 'K-64', 'Registrar', 'Rajshahi medical College hospital', 'Flat-3A, Plot-508, Road-2, Padma Resident Area,', 'mukit_bd@yahoo.com', '01717496093', NULL, '', ''),
-(667, 'LM-00668', 'Prof. Md. Nurul Huda', 'K-45', 'Head of Dept. of Nephrology', 'H-60, R-03, Block-B, Chandigaon R/A,', 'Chattogram', 'huda70bd@gmail.com', '01711313992', NULL, '', ''),
-(668, 'LM-00669', 'Dr. Avizit Sarker', 'K-63', 'Lecturer, Dept. Of Microbiology', 'H-295, R-8/A, west Dhanmondi', 'Dhaka-1209', 'avizitk63.dmc@gmail.com', '01715749111', NULL, '', ''),
-(669, 'LM-00670', 'Dr. Asish Dey', 'K-44', 'Associate Professor & Head Cardiology', 'Ambia Sereve, Flat- P-2, 16, Jamal Khan Road,', 'Anderkilla, Kotowali, Chattogram', 'dey_asish@yahoo.com', '01819329449', NULL, '', ''),
-(670, 'LM-00671', 'Dr. Biplob Kumar Roy', 'K-48', 'Chief Medical Officer', 'Janir Khan Complex, Kanchpur General hospital', 'Kanchpur, Conargaon. Narayanganj', '', '01714263464', NULL, '', ''),
-(671, 'LM-00672', 'Dr. Rawshan Ara Sultana', 'K-53', '', 'Amtola Gate Quarter, Emergency gate, DMCH', 'Dhaka', 'jesmindmc@yahoo.com', '01712288682', NULL, '', ''),
-(672, 'LM-00673', 'Prof. Dr. M. Khadesul islam', 'K-30', 'Labaid Specialized Hospital', 'Ever Glades, Road-5, House-24, APT-C/4', 'Dhanmondi, Dhaka-1205.', 'k.islam.k30@gmail.com', '01711526443', NULL, '', ''),
-(673, 'LM-00674', 'Dr. Rezina Razzaq', 'K-30', '', 'Apt-B3, House-23, Road-05, Sector-04, Uttara', 'Dhaka-1230', '', '01819444239', NULL, '', ''),
-(674, 'LM-00675', 'Dr. Sudhir Chandra Banik', 'K-30', '', 'Bogura market, Galapotty, bagura sadar', 'Bagura', 'sudhir.banik@yahoo.com', '01711968905', NULL, '', ''),
-(675, 'LM-00676', 'Dr. Zafar Ullah Sikder', 'K-30', '', '5408 madison St, 1STFL West New york, NJ 0709', 'USA', '', '', NULL, '', ''),
-(676, 'LM-00677', 'Dr. Md. Rezaur Rahman Talukder', 'K-30', 'BMCH', 'Flat-2/D, House-39, Road- 11(New) Dhanmondi', 'Dhaka', 'rrt.k30@gmail.com', '01711546767', NULL, '', ''),
-(677, 'LM-00678', 'Prof. Dr. Nasir Uddin Ahmed', 'K-30', '', 'house--8/A/Kha, B-5, Road-14, Dhanmondi', 'Dhaka', 'drnasir7@gmail.com', '01711529218', NULL, '', ''),
-(678, 'LM-00679', 'Dr. Khondker Abul Awal (Rizv)', 'K-30', 'Green Life hospital', 'House-99, Road-02, Shamoly', 'Dhaka', 'kawal@dhaka.net', '01711565020', NULL, '', ''),
-(679, 'LM-00680', 'Dr. Subhash Chakma', 'K-30', '', 'Road-02, House-22, DOHS, Chittagong', 'Chittagong', '', '01979313950', NULL, '', ''),
-(680, 'LM-00681', 'Dr. Mohammad Mushtaqur', 'K-30', 'Katiadi, Kishorgonj', 'Vill-Fekamara, P.O- jalalpur, Dist-Kishorganj', 'Kishorgamj', 'uzpkatiad@gmail.com', '01734190946', NULL, '', ''),
-(681, 'LM-00682', 'Dr. Salma hassan', 'K-30', '', 'House-204/A, lane-09, New DOHS, Mohakhali', 'Dhaka-1216', '', '01741955235', NULL, '', ''),
-(682, 'LM-00683', 'Dr. Md. Nazmul Ahsan', 'K-30', '', 'House- E42, Road-04, Block-E, Sector-02, Aftab nag', 'Dhaka', 'nagmulahsan195406@gmail.com', '01707950819', NULL, '', ''),
-(683, 'LM-00684', 'Dr. Mohammad Abdur Rahman', 'K-30', '', 'P.O- Box-2330, Dubnai', 'U.A.E', 'smar1953@yahoo.com', '', NULL, '', ''),
-(684, 'LM-00685', 'Dr. Abdul Aziz', 'K-30', 'BIRDEM', 'A/25 (EXT) Housing Estate', 'Kushtia', 'azizdoctor811@gmail.com', '01711981238', NULL, '', ''),
-(685, 'LM-00686', 'Prof.Dr. Mollah Obayedullah Baki', 'K-30', 'Dr. Obayedullah-Ferdousi Foundation CaNCER hOSPITA', '413/1, South Paikpara, lake view Road, Mirpur', 'Dhaka-1216', 'profoundationcancerhospital@gmail.com', '01710941199', NULL, '', ''),
-(686, 'LM-00687', 'Dr. Khondker Shamsuzzaman (Selim)', 'K-30', 'United Medical Center', '6567, Forsy Thai St. Spningfield, VA, 22150', '', 'kmszoha@gmail.com', '', NULL, '', ''),
-(687, 'LM-00688', 'Dr. Sultana Afroza', 'K-30', '', 'House-8/A/kha, B-5, Road-14, Dhanmondi', 'Dhaka', '', '1.726548541E9', NULL, '', ''),
-(688, 'LM-00689', 'Dr. Shafiq Rahman', 'K-30', 'Lecturer, University Of Sydney, Australia', '34, Centenary Ave, Northmead, NSW 2152,', 'Australia', 'shafiqm63@gmail.com', '', NULL, '', ''),
-(689, 'LM-00690', 'Dr. Capt. (Rtd) Dr. Md. Anisur Rahman', 'K-30', 'Pacific Specialised Hospital', 'Pacific Specialised Hospital, Hospital RoadSholgar', 'Paboa', '', '01711859195', NULL, '', ''),
-(690, 'LM-00691', 'Dr. Ahmed Shahriar hasan', 'K-30', 'Private Practice', '4/9-B, Iqbal Road, Mohammadpur', 'Dhaka', 'doc_shahriyar@yahoo.com', '01763811399', NULL, '', ''),
-(691, 'LM-00692', 'Dr. Md. Belayet hossain Mollah', 'K-30', 'Holly Family Red Crecent Medical College hospital', '2/12, Iqbal Road Mohammadpur', 'Dhaka', '', '01712266359', NULL, '', ''),
-(692, 'LM-00693', 'Dr. S.M. Saiful Haq', 'K-30', '', '14 Irving Ave Floral Park', 'NY11001', 'haqsaiful@gmail.com', '', NULL, '', ''),
-(693, 'LM-00694', 'Dr. Dipak kumar Shaha', 'K-30', '', '8/2/3 Talpukur par (South West) Cumilla', 'City Corporation, Comilla', '', '01711963933', NULL, '', ''),
-(694, 'LM-00695', 'Prof. Syed Khairul Amin', 'K-30', 'Anwer Khan Modern Medical College', 'House-55, APT-B3, Road-6/A, Dhanmondi', 'Dhaka', 'drskamin@gmail.com', '01819220577', NULL, '', ''),
-(695, 'LM-00696', 'Dr. MD. Maqbul Hussain', 'K-30', '', '508 Guakhola Road', 'Chandpur', '', '01715429494', NULL, '', ''),
-(696, 'LM-00697', 'Dr. Ahmed karim', 'K-30', '', 'House-72, Road-06, Block-A, Sector-12, Mirpur', 'Dhaka-1216', 'rksdipon@gmail.com', '01819232156', NULL, '', ''),
-(697, 'LM-00698', 'Dr. N.M. Masudur Rahman', 'K-30', '', 'A-2, jahangir nagar University, Savar', 'Dhaka', '', '01922608107', NULL, '', ''),
-(698, 'LM-00699', 'Dr. M.A. Rezzaque', 'K-30', 'Savar Prime hospital', 'banu Colony, Near Sapra Masjed, H-H13, Savar', 'Dhaka', '', '01716041929', NULL, '', ''),
-(699, 'LM-00700', 'Dr. Shireen Akhter', 'K-30', 'NIPSOM', '8/2, Kadamtola 1st lane, Bashabo', 'Dhaka', 'shireen_nipsom@yahoo.com', '01819238026', NULL, '', ''),
-(700, 'LM-00701', 'Dr. Fazila-Tun-Nesa Malik', 'K-36', 'National Heart Foundation Hospital', 'Vill-Paschim Bagh, Soult Sume', 'Sylhet', 'fazilamalik@yahoo.com', '01713122379', NULL, '', ''),
-(701, 'LM-00702', 'Dr. Hasrat Ara Begum', 'K-30', '', 'House--55, APT-B8, Road-6/A,  Dhanmondi', 'Dhaka', '', '01819770916', NULL, '', ''),
-(702, 'LM-00703', 'Dr. Sultan Salahuddin Ahmed', 'K-30', 'Larkin University', '1981 SW 133 Ave, Miramar, FL 33027', 'USA', 'sahmed@jasmedical.com', '', NULL, '', ''),
-(703, 'LM-00704', 'Dr. Mostafa Nuruzzaman', 'K-39', 'BSMMU', 'Green Austral, APT-4D, 2 Outer Circular Road, Modg', 'Dhaka-1217', 'dr.nuruzzaman@gmail.com', '01712664479', NULL, '', '');
+(1, NULL, 'Name', NULL, 'short', NULL, NULL, 'desig', NULL, 'name-2025-05-18-68299f960a879.jpg', '2025-05-18 08:51:34', '2025-05-18 08:51:34'),
+(2, NULL, 'Mr. John Doe', NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat', NULL, NULL, 'Chief Executive Officer', NULL, 'mr-john-doe-2025-05-19-682ad3f8efe67.jpg', '2025-05-19 06:47:20', '2025-05-19 06:47:20');
 
 -- --------------------------------------------------------
 
@@ -3553,16 +2852,21 @@ CREATE TABLE `menus` (
 --
 
 INSERT INTO `menus` (`id`, `menu_name`, `slug`, `page_type`, `external_link`, `target`, `root_id`, `sroot_id`, `troot_id`, `sequence`, `display`, `footer1`, `footer2`, `footer3`, `footer4`, `created_at`, `updated_at`) VALUES
-(22, 'About', 'about', NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2024-12-30 01:08:15', '2024-12-30 01:08:15'),
-(23, 'Services', 'services', 'url', '#', NULL, NULL, NULL, NULL, '0', '1', '1', NULL, NULL, NULL, '2024-12-30 01:08:23', '2025-01-05 22:37:19'),
-(24, 'Product', 'product', NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2024-12-30 01:08:30', '2024-12-30 01:08:30'),
-(25, 'Portfolio', 'portfolio', NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2024-12-30 01:08:36', '2024-12-30 01:08:36'),
-(26, 'Clients', 'clients', NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2024-12-30 01:08:42', '2024-12-30 01:08:42'),
-(27, 'Blog', 'blog', NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2024-12-30 01:08:49', '2024-12-30 01:08:49'),
-(28, 'Contact Us', 'contact-us', NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2024-12-30 01:08:55', '2024-12-30 01:08:55'),
-(30, 'test', 'test', NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, '1', '1', 1, 1, '2025-01-05 03:27:07', '2025-01-05 03:34:22'),
-(31, 'footer2', 'footer2', NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, '1', NULL, NULL, '2025-01-05 22:43:20', '2025-01-05 22:43:20'),
-(32, 'submenu', 'submenu', NULL, NULL, NULL, '22', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-01-05 23:50:48', '2025-01-05 23:50:48');
+(33, 'About', 'about', 'url', '/about', NULL, '34', NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:17:18', '2025-05-21 03:24:41'),
+(34, 'About Us', 'about-us', 'url', '#', NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:24:16', '2025-05-21 03:24:16'),
+(35, 'Management Info', 'management-info', 'url', 'management', NULL, '34', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-05-21 03:25:50', '2025-05-21 03:25:50'),
+(36, 'Projects', 'projects', 'url', '#', NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:26:30', '2025-05-21 03:26:30'),
+(37, 'Completed Projects', 'completed-projects', 'url', 'completed-project', NULL, '36', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-05-21 03:27:56', '2025-05-21 03:27:56'),
+(38, 'Upcomming Projects', 'upcomming-projects', 'url', 'upcomming-project', NULL, '36', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-05-21 03:31:41', '2025-05-21 03:31:41'),
+(39, 'Running Projects', 'running-projects', 'url', 'running-project', NULL, '36', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-05-21 03:32:47', '2025-05-21 03:32:47'),
+(40, 'Solutions', 'solutions', 'url', '#', NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:33:49', '2025-05-21 03:33:49'),
+(41, 'Web Developement', 'web-developement', 'url', 'Service/web-development', NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-05-21 03:34:28', '2025-05-21 03:59:20'),
+(42, 'Our Clients', 'our-clients', 'url', 'clients', NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:34:58', '2025-05-21 03:34:58'),
+(43, 'Gallery', 'gallery', 'url', '#', NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:35:32', '2025-05-21 03:35:32'),
+(44, 'Photo Gallery', 'photo-gallery', 'url', 'photo', NULL, '43', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-05-21 03:36:30', '2025-05-21 03:36:30'),
+(45, 'Video Gallery', 'video-gallery', 'url', 'video', NULL, '43', NULL, NULL, '0', NULL, NULL, NULL, NULL, NULL, '2025-05-21 03:37:55', '2025-05-21 03:37:55'),
+(46, 'News', 'news', 'url', 'news', NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:38:29', '2025-05-21 03:38:29'),
+(47, 'Contact', 'contact', 'url', 'contact', NULL, NULL, NULL, NULL, '0', '1', NULL, NULL, NULL, NULL, '2025-05-21 03:39:47', '2025-05-21 03:39:47');
 
 -- --------------------------------------------------------
 
@@ -3827,12 +3131,9 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `slug`, `sub_title`, `short`, `description`, `image`, `created_at`, `updated_at`, `url`, `News`, `Media`, `Event`) VALUES
-(8, 'প্রথম কার্যনির্বাহী  সভায় উপস্থিত সম্মানিত সদস্যবৃন্দ', 'prthm-karznirwahee-svaz-upsthit-smmanit-sdszbrrind', '2023-02-04', 'ঢাকা মেডিকেল কলেজ অ্যালামনি ট্রাস্ট এর নবনির্বাচিত কমিটির প্রথম কার্যনির্বাহী  সভায় উপস্থিত সম্মানিত সদস্যবৃন্দ', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.<br />\r\n&nbsp;</p>', '-2023-05-25-646ee9dacac94.jpg', '2023-05-25 09:51:28', '2024-09-16 00:39:37', NULL, '1', NULL, NULL),
-(9, 'শহীদ বুদ্ধিজীবী দিবস', 'sheed-buddhijeebee-dibs', '2022-12-14', 'শহীদ বুদ্ধিজীবী দিবস ২০২২ উপলক্ষে আয়োজিত আলোচনা সভা', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.<br />\r\n​​​​​​​</p>', '-2023-05-25-646eebc5cd2dc.jpg', '2023-05-25 10:01:57', '2024-09-16 00:39:47', NULL, '1', NULL, NULL),
-(10, 'ভাষা শহীদদের প্রতি কেন্দ্রীয় শহীদ মিনারে পুষ্পস্তবক অর্পণ।', 'vasha-sheedder-prti-kendreez-sheed-minare-pushpstbk-orpn', '2023-02-21', '২১শে ফেব্রুয়ারি,২০২৩ আন্তর্জাতিক মাতৃভাষা দিবসে ভাষা শহীদদের প্রতি কেন্দ্রীয় শহীদ মিনারে পুষ্পস্তবক অর্পণ।', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.<br />\r\n​​​​​​​</p>', '-2023-05-25-646eedc3708c7.jpg', '2023-05-25 10:08:54', '2024-09-16 00:39:56', NULL, '1', '1', NULL),
-(11, 'ভাষা শহীদদের প্রতি কেন্দ্রীয় শহীদ মিনারে পুষ্পস্তবক অর্পণ।', 'vasha-sheedder-prti-kendreez-sheed-minare-pushpstbk-orpn', NULL, '২১শে ফেব্রুয়ারি,২০২৩\r\nআন্তর্জাতিক মাতৃভাষা দিবসে ভাষা শহীদদের প্রতি কেন্দ্রীয় শহীদ মিনারে পুষ্পস্তবক অর্পণ।', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.<br />\r\n​​​​​​​</p>', '-2023-05-29-6474932bca121.jpg', '2023-05-25 10:17:09', '2024-09-16 00:40:04', NULL, NULL, NULL, NULL),
-(13, '৭৮ তম ডিএমসি ডে 2023', '78-tm-diemsi-de-2023', '2023-07-10', 'ঢাকা মেডিকেল কলেজ ক্যাম্পাস \r\n১০ জুলাই ২০২৩\r\nরেজিস্ট্রেশন শেষ তারিখ ২০ জুন ২০২৩\r\nঅনলাইন রেজিস্ট্রেশনের জন্য ভিজিট করুনঃ\r\n www.dmcalumnitrust.org', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.<br />\r\n​​​​​​​</p>', '-2023-05-30-6475c2a6dce90.jpg', '2023-05-30 14:20:08', '2024-09-16 00:40:15', NULL, NULL, NULL, '1'),
-(14, '78th DMC Day 2023', '78th-dmc-day-2023', '2023-07-10', '78th DMC Day 2023\r\nDhaka Medical College Campus 10 July 2023 Registration Last Date 20 June 2023 For Online Registration Visit: www.dmcalumnitrust.org', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;</p>', '78th-dmc-day-2023-2023-05-30-6475c64e048be.jpg', '2023-05-30 14:47:58', '2024-09-16 00:38:42', NULL, NULL, NULL, '1');
+(8, 'প্রথম কার্যনির্বাহী  সভায় উপস্থিত সম্মানিত সদস্যবৃন্দ', 'prthm-karznirwahee-svaz-upsthit-smmanit-sdszbrrind', '2023-02-04', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.<br />\r\n&nbsp;</p>', 'prthm-karznirwahee-svaz-upsthit-smmanit-sdszbrrind-2025-05-18-68297d63ae037.jpg', '2023-05-25 09:51:28', '2025-05-18 00:25:39', NULL, NULL, NULL, NULL),
+(9, 'শহীদ বুদ্ধিজীবী দিবস', 'sheed-buddhijeebee-dibs', '2022-12-14', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>', 'sheed-buddhijeebee-dibs-2025-05-18-68297d6d91836.jpg', '2023-05-25 10:01:57', '2025-05-18 00:25:49', NULL, NULL, NULL, NULL),
+(10, 'ভাষা শহীদদের প্রতি কেন্দ্রীয় শহীদ মিনারে পুষ্পস্তবক অর্পণ।', 'vasha-sheedder-prti-kendreez-sheed-minare-pushpstbk-orpn', '2023-02-21', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>', 'vasha-sheedder-prti-kendreez-sheed-minare-pushpstbk-orpn-2025-05-18-68297d8fcd0c7.jpg', '2023-05-25 10:08:54', '2025-05-18 00:26:23', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3843,23 +3144,29 @@ INSERT INTO `news` (`id`, `title`, `slug`, `sub_title`, `short`, `description`, 
 CREATE TABLE `objects` (
   `id` int(10) UNSIGNED NOT NULL,
   `short` longtext DEFAULT NULL,
+  `sub_title` text DEFAULT NULL,
+  `sub_title2` text DEFAULT NULL,
+  `phone` text DEFAULT NULL,
   `description` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `title` varchar(191) NOT NULL,
   `slug` varchar(191) NOT NULL,
-  `image` varchar(191) NOT NULL DEFAULT 'default.png'
+  `image` varchar(191) NOT NULL DEFAULT 'default.png',
+  `image2` text DEFAULT NULL,
+  `image3` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `objects`
 --
 
-INSERT INTO `objects` (`id`, `short`, `description`, `created_at`, `updated_at`, `title`, `slug`, `image`) VALUES
-(1, '<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore..</p>', '<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore.</p>\r\n\r\n<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore.</p>\r\n\r\n<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore.</p>', NULL, '2025-01-04 01:11:40', 'We Are All In One IT Solution & Technology Company', 'we-are-all-in-one-it-solution-technology-company', '-2025-01-04-6778df2cc0044.png'),
-(2, '<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.</p>', '<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.</p>', NULL, '2025-01-04 02:33:45', 'We Make The Best IT Solutions', 'we-make-the-best-it-solutions', ''),
-(4, '<p>Our in-house team of designers are ready to work closely with clients</p>', '<p>Our in-house team of designers are ready to work closely with clients</p>', NULL, '2024-01-23 23:51:22', 'OUR PRODUCT', 'our-product', 'default.png'),
-(5, NULL, NULL, NULL, '2025-01-08 23:45:55', 'Web Development', 'web-development', '-2025-01-08-677e32b861547.png');
+INSERT INTO `objects` (`id`, `short`, `sub_title`, `sub_title2`, `phone`, `description`, `created_at`, `updated_at`, `title`, `slug`, `image`, `image2`, `image3`) VALUES
+(1, '<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore..</p>', NULL, NULL, NULL, '<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore.</p>\r\n\r\n<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore.</p>\r\n\r\n<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam non umy eirmod tempor invidunt ut labore.</p>', NULL, '2025-01-04 01:11:40', 'We Are All In One IT Solution & Technology Company', 'we-are-all-in-one-it-solution-technology-company', '-2025-01-04-6778df2cc0044.png', NULL, NULL),
+(2, '<p>Welcome to RS Technologies, the leading provider of innovative and reliable solutions for your enterprise needs. We are a team of passionate and experienced professionals who are committed to delivering the best value and quality to our customers.<br />\r\n<br />\r\nAt RS Technologies, we understand the challenges and opportunities that enterprises face in the digital era. We offer a range of solutions and services that can help you optimize your network performance, enhance your security, and improve your collaboration. Whether you need to design, install, manage, or troubleshoot your network, we have the expertise and the tools to assist you.</p>', 'Fast Growing Surveillance Solutions Provider Company', 'We Have More Than 15+ Years of Communication Safety and Automation Sector', '(+088) 01916017508', '<p>We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.We are leading technology solutions providing company all over the world doing over 40 years. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor.</p>', NULL, '2025-05-18 22:24:07', 'About Us', 'about-us', 'about-us-1-2025-05-17-682812c4ebf3f.jpg', 'about-us-2-2025-05-17-682812c4ec3d0.jpg', 'about-us-3-2025-05-19-682ab267b87b7.jpg'),
+(4, '<p>Our in-house team of designers are ready to work closely with clients</p>', NULL, NULL, NULL, '<p>Our in-house team of designers are ready to work closely with clients</p>', NULL, '2024-01-23 23:51:22', 'OUR PRODUCT', 'our-product', 'default.png', NULL, NULL),
+(5, NULL, NULL, NULL, NULL, NULL, NULL, '2025-05-16 21:39:36', 'About Us', 'about-us', '-2025-01-08-677e32b861547.png', NULL, NULL),
+(6, 'Our vision is to be the preferred partner of choice for our clients, providing them with the most innovative and reliable technology solutions that enhance their security, connectivity, and productivity. We aim to be the leader in the technology service industry, delivering excellence and value to our clients across various sectors and industries. We aspire to create a positive impact on the world through our solutions, which are designed to meet the current and future needs and challenges of our clients.', 'Our mission is to be the leading technology service provider company in the country, offering a comprehensive range of solutions that cater to the needs and challenges of our clients. We are passionate about delivering solutions that are innovative, efficient, and secure, and that add value to our clients\' businesses and operations. We aim to exceed client expectations through continuous innovation, exceptional service delivery, and a commitment to excellence. Our manifesto is to build relationships based on Trust, Value, Commitment and Respect.', NULL, NULL, 'Committed to conducting our business activities with integrity, honesty, and respect. Committed to putting our business partners first and building long-term partnerships. Passionate about our business partner\'s needs and support creative and progressive techniques. Dedicated toward providing a cost-effective service thus maximizing return on investment.', NULL, '2025-05-19 00:25:39', 'Our Mission and Vision', 'our-mission-and-vision', 'our-mission-and-vision-1-2025-05-19-682acee3b1549.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -3874,16 +3181,21 @@ CREATE TABLE `others` (
   `description` longtext DEFAULT NULL,
   `phone` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `slug2` text DEFAULT NULL,
+  `title2` text DEFAULT NULL,
+  `working` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `others`
 --
 
-INSERT INTO `others` (`id`, `title`, `slug`, `description`, `phone`, `created_at`, `updated_at`) VALUES
-(2, '1212', '10', '123', '42', NULL, '2025-01-05 01:56:19'),
-(5, '0088 031-2855145</br>008801740 702 702', 'support@carnivalctg.com</br>copctg@yahoo.com', 'Rana Mansion, 51 Ghatforhadbeg, Anderkilla, Chittagong.', NULL, NULL, '2024-02-19 23:32:17');
+INSERT INTO `others` (`id`, `title`, `slug`, `description`, `phone`, `created_at`, `updated_at`, `slug2`, `title2`, `working`) VALUES
+(2, 'House# 9, Road# 2C, Block# J, Baridhara, Dhaka-1212', '(+088) 01916017508', 'rejveee@gmail.com', NULL, NULL, '2025-05-18 00:15:39', 'info@gmail.com', '(+088) 01916017508', 'Saturday to Thursday 09:00 AM to 06:00 PM'),
+(5, '0088 031-2855145</br>008801740 702 702', 'support@carnivalctg.com</br>copctg@yahoo.com', 'Rana Mansion, 51 Ghatforhadbeg, Anderkilla, Chittagong.', NULL, NULL, '2024-02-19 23:32:17', NULL, NULL, NULL),
+(6, 'About Us', 'About Us', 'Welcome to RS Technologies, the leading provider of innovative and reliable solutions for your enterprise needs. We are a team of passionate and experienced professionals committed to delivering the best value and quality to our customers.', NULL, NULL, '2025-05-16 21:49:03', NULL, NULL, NULL),
+(7, 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.pinterest.com/', NULL, NULL, '2025-05-18 21:58:26', NULL, 'https://www.instagram.com/', NULL);
 
 -- --------------------------------------------------------
 
@@ -3924,13 +3236,6 @@ CREATE TABLE `pages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pages`
---
-
-INSERT INTO `pages` (`id`, `title`, `sub_title`, `title_uri`, `short`, `description`, `image`, `created_at`, `updated_at`) VALUES
-(6, 'About Us', NULL, 'about', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '', '2024-12-30 01:09:26', '2025-01-08 01:14:27');
 
 -- --------------------------------------------------------
 
@@ -4233,9 +3538,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `title`, `url`, `slug`, `sub_title`, `short`, `benifits`, `description`, `image`, `sl`, `created_at`, `updated_at`) VALUES
-(14, 'Web Development', NULL, 'web-development', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" fill=\"currentColor\" class=\"bi bi-database-check\" viewBox=\"0 0 16 16\">\r\n          <path d=\"M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514\"/>\r\n          <path d=\"M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4\"/>\r\n        </svg>', 'paradigms. Monotonectally extend open-source mvia competitive methods of empowerment dri revolutionize stand- business', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<h1>WE MIX UP /MOBILE-FRIENDLY RESPONSIVE WEBSITE DESIGN SERVICES AND EXPERIENCES</h1>\r\n\r\n<p><a href=\"\" target=\"_self\">Mobile Responsive Websites</a></p>\r\n\r\n<p><a href=\"\" target=\"_self\"> SEO Optimized</a></p>\r\n\r\n<p><a href=\"\" target=\"_self\">Improved User Experience</a></p>\r\n\r\n<p style=\"text-align:justify\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>', 'web-development-2025-01-07-677cac77b2662.webp', 12, '2025-01-04 21:33:58', '2025-01-08 23:51:42'),
-(15, 'Software Development', NULL, 'software-development', '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" fill=\"currentColor\" class=\"bi bi-database-check\" viewBox=\"0 0 16 16\">\r\n          <path d=\"M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514\"/>\r\n          <path d=\"M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4\"/>\r\n        </svg>', 'paradigms. Monotonectally extend open-source mvia competitive methods of empowerment dri revolutionize stand- business', NULL, '<p>paradigms. Monotonectally extend open-source mvia competitive methods of empowerment dri revolutionize stand- businessparadigms. Monotonectally extend open-source mvia competitive methods of empowerment dri revolutionize stand- business</p>', 'software-development-2025-01-07-677cadc956b89.webp', 14, '2025-01-04 21:35:26', '2025-01-06 22:30:01'),
-(18, 'SEO', NULL, 'seo', 'asdf', 'sadf', NULL, '<p>sad f sasa f</p>', 'saf-2025-01-07-677ca6ff09a3d.webp', NULL, '2025-01-06 22:01:03', '2025-01-07 23:30:48');
+(14, 'Web Development', NULL, 'web-development', NULL, NULL, NULL, '<p>CCTV installation is a crucial step in safeguarding homes, businesses, and public spaces. A well-placed surveillance system provides real-time monitoring, deters potential threats, and ensures a secure environment.</p>\r\n\r\n<p>A properly installed CCTV system not only helps in crime prevention but also aids in investigations by providing clear and recorded footage. Businesses benefit from increased employee and asset protection, while homeowners gain peace of mind knowing their loved ones and property are secure.</p>\r\n\r\n<h2>Service overview</h2>\r\n\r\n<p>Our comprehensive security solutions are designed to meet the unique needs of homes, businesses, and industrial spaces. From advanced CCTV installation to remote monitoring and maintenance, we ensure reliable protection with cutting-edge technology.</p>\r\n\r\n<ul>\r\n	<li>Advanced surveillance solutions to protect what matters most.</li>\r\n	<li>Committed to innovation, reliability, and peace of mind.</li>\r\n</ul>', 'web-development-2025-05-15-68257db089e3d.jpg', 12, '2025-01-04 21:33:58', '2025-05-14 23:37:52'),
+(15, 'Software Development', NULL, 'software-development', NULL, NULL, NULL, '<p>CCTV installation is a crucial step in safeguarding homes, businesses, and public spaces. A well-placed surveillance system provides real-time monitoring, deters potential threats, and ensures a secure environment.</p>\r\n\r\n<p>A properly installed CCTV system not only helps in crime prevention but also aids in investigations by providing clear and recorded footage. Businesses benefit from increased employee and asset protection, while homeowners gain peace of mind knowing their loved ones and property are secure.</p>\r\n\r\n<h2>Service overview</h2>\r\n\r\n<p>Our comprehensive security solutions are designed to meet the unique needs of homes, businesses, and industrial spaces. From advanced CCTV installation to remote monitoring and maintenance, we ensure reliable protection with cutting-edge technology.</p>\r\n\r\n<ul>\r\n	<li>Advanced surveillance solutions to protect what matters most.</li>\r\n	<li>Committed to innovation, reliability, and peace of mind.</li>\r\n</ul>', 'software-development-2025-01-07-677cadc956b89.webp', 14, '2025-01-04 21:35:26', '2025-05-18 23:27:23'),
+(18, 'SEO', NULL, 'seo', NULL, NULL, NULL, '<p>CCTV installation is a crucial step in safeguarding homes, businesses, and public spaces. A well-placed surveillance system provides real-time monitoring, deters potential threats, and ensures a secure environment.</p>\r\n\r\n<p>A properly installed CCTV system not only helps in crime prevention but also aids in investigations by providing clear and recorded footage. Businesses benefit from increased employee and asset protection, while homeowners gain peace of mind knowing their loved ones and property are secure.</p>\r\n\r\n<h2>Service overview</h2>\r\n\r\n<p>Our comprehensive security solutions are designed to meet the unique needs of homes, businesses, and industrial spaces. From advanced CCTV installation to remote monitoring and maintenance, we ensure reliable protection with cutting-edge technology.</p>\r\n\r\n<ul>\r\n	<li>Advanced surveillance solutions to protect what matters most.</li>\r\n	<li>Committed to innovation, reliability, and peace of mind.</li>\r\n</ul>', 'saf-2025-01-07-677ca6ff09a3d.webp', NULL, '2025-01-06 22:01:03', '2025-05-14 23:34:38');
 
 -- --------------------------------------------------------
 
@@ -4257,9 +3562,9 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `title`, `sub_title`, `image`, `created_at`, `updated_at`) VALUES
-(40, 'Slider 1', '#', 'slider-1-2024-09-13-66e45c2f3fda5.jpg', '2024-01-20 00:40:25', '2024-09-13 09:37:19'),
-(41, 'Slider 2', '#', 'slider-2-2024-09-13-66e45c3f716f8.jpg', '2024-09-13 09:37:35', '2024-09-13 09:37:35'),
-(43, 'Slider 4', '#', 'slider-3-2024-09-14-66e597cd54698.jpg', '2024-09-14 08:03:57', '2024-09-14 08:03:57');
+(40, 'Slider 1', '#', 'slider-1-2025-05-15-682572cf1f554.jpg', '2024-01-20 00:40:25', '2025-05-14 22:51:27'),
+(43, 'Slider 4', '#', 'slider-4-2025-05-15-68257311a884d.jpg', '2024-09-14 08:03:57', '2025-05-14 22:52:33'),
+(45, 'asdf', 'asdf', 'asdf-2025-05-21-682da6b95e9d3.webp', '2025-05-18 05:09:15', '2025-05-21 04:11:05');
 
 -- --------------------------------------------------------
 
@@ -4368,15 +3673,8 @@ CREATE TABLE `videos` (
 --
 
 INSERT INTO `videos` (`id`, `title`, `video`, `short`, `image`, `created_at`, `updated_at`) VALUES
-(8, 'HEAT TRANSFER LABELS', NULL, 'Are you looking for Heat transfer Labels for your Products? We specialize in providing durable, vibrant, and eco-friendly labels that add a unique touch to your garments. Our labels withstand numerous wash cycles, ensuring your brand’s visibility remains intact. We are committed to delivering excellence and meeting your specific needs with precision and care. Choose Carnival Offset Printer, and let your garments speak volumes about your brand’s quality and style. Experience the difference with us, because at Carnival Offset Printer, we believe in making your garments stand out.', 'heat-transfer-labels-2024-02-19-65d33f439732f.jpg', '2024-01-23 23:42:50', '2024-02-19 05:45:07'),
-(9, 'Reflective Heat Transfer Label', NULL, 'Reflective Heat Transfer Labels are a breakthrough in garment labeling, designed to enhance visibility and safety in low-light or dark environments. These labels reflect light back to its source, making them ideal for clothing, accessories, or equipment used in low-light conditions. They can be produced in various colors, including a unique reflective material that gives the impression of different colors when viewed at different angles2. These labels are not only visually stunning but also serve as an effective product authentication tool. Experience the blend of safety, authenticity, and style with our Reflective Heat Transfer Labels.', 'reflective-heat-transfer-label-2024-01-24-65b0a38364cd9.png', '2024-01-23 23:43:31', '2024-01-29 09:36:04'),
-(10, 'Heat Transfer Highdency Label', NULL, 'Heat Transfer High Density Labels are a unique and innovative method of labeling garments. Characterized by an extra thick deposition of ink, these labels are ideal for both porous and smooth surfaces. On porous surfaces, they adhere well, while on smooth surfaces, they create a raised effect. This technology is particularly favored for its tagless feature, eliminating the irritation caused by traditional sewn-in labels. They offer enhanced comfort, durability, ease of application, and versatility in design. These labels are not only long-lasting and durable but also environmentally friendly4. They are a fantastic branding solution for the fashion industry, adding a professional touch to your garments.', 'heat-transfer-highdency-label-2024-01-24-65b0a39cb3750.jpg', '2024-01-23 23:43:56', '2024-01-29 09:28:40'),
-(11, 'Garments Care Label', NULL, 'Cranival Offset Printer, your trusted partner for garment labeling solutions. We specialize in providing Garments Care Labels that are integral to the longevity of your clothing. Our labels contain internationally recognized symbols, offering essential care instructions to prevent irreversible damage during care processes. They provide information on care and maintenance costs, and processes to avoid, ensuring your garment’s useful life is maximized. Our labels also warn of possible damages, like dyes running out during care and maintenance. Choose Cranival Offset Printer for your Garments Care Labels - your guide to garment longevity, and experience the perfect blend of care, durability, and style.', 'garments-care-label-2024-01-24-65b0a3c531c00.jpg', '2024-01-23 23:44:37', '2024-01-29 09:41:34'),
-(12, 'Hang Tags', NULL, 'Carnival Offset Printer, your reliable source for premium Hang Tags. We offer custom-designed, high-quality hang tags that enhance the appeal of your garments. Our hang tags are not just labels, but a reflection of your brand’s identity and commitment to quality. Crafted with precision and attention to detail, our hang tags are designed to withstand the test of time. Choose Carnival Offset Printer for hang tags that truly represent your brand and make a lasting impression. Because at Carnival Offset Printer, we believe in adding value to your garments, one tag at a time', 'hang-tags-2024-01-24-65b0a3e690e09.png', '2024-01-23 23:45:01', '2024-01-29 09:47:49'),
-(13, 'Barcode & Price Sticker', NULL, 'Carnival Offset Printeris your solution for Barcode & Price Stickers for your garments. We provide high-quality, durable stickers that are easy to scan and offer excellent adhesion. Our stickers are designed to withstand various conditions, ensuring your product information remains clear and visible. Choose Carnival Offset Printer for your barcode and price sticker needs, and experience the perfect blend of quality, reliability, and affordability. Because at Carnival Offset Printer, we believe in enhancing your product’s value with our superior stickers.', 'barcode-price-sticker-2024-01-24-65b0a40996fc2.png', '2024-01-23 23:45:45', '2024-01-29 09:49:54'),
-(14, 'Silica Gel', NULL, 'Carnival Offset Printer is the premier provider of Silica Gel for your garment products. We offer top-quality silica gel that effectively absorbs moisture, ensuring the longevity and freshness of your garments. Our silica gel is safe, non-toxic, and designed to meet the highest standards. Choose Carnival Offset Printer for your silica gel needs, and give your products the protection they deserve. Because at Carnival Offset Printer, we believe in safeguarding your garments’ quality, one silica gel packet at a time.', 'silica-gel-2024-01-24-65b0a420b5bc1.png', '2024-01-23 23:46:08', '2024-01-29 09:51:59'),
-(15, 'Graphics Design Solution', NULL, 'Welcome to Carnival Offset Printer, your one-stop solution for Graphics Design. We offer a wide range of design services tailored to your needs. Our team of experienced designers is committed to bringing your vision to life, creating designs that capture your brand’s essence and resonate with your audience. Whether you need a logo, banner, brochure, or a complete brand identity, we’ve got you covered. Choose Carnival Offset Printer, and let us transform your ideas into compelling visuals. Because at Carnival Offset Printer, we believe in the power of design to tell your story.', 'graphics-design-solution-2024-01-24-65b0a438ad972.png', '2024-01-23 23:46:32', '2024-01-29 09:53:50'),
-(16, 'OFFSET ITEMS', NULL, 'Offset paper reigns supreme for its diverse range of printing applications. Made for high-quality, cost-effective results, it shines in:\r\n\r\nBrochures & Flyers: Crisp graphics and text pop, leaving a lasting impression.\r\nMagazines & Catalogs: Vibrant and smooth, ideal for captivating visuals and product showcases.\r\nNewspapers & Books: Excellent ink absorption ensures clear, readable content.\r\nBusiness Cards & Invitations: Make a statement with professional presentations and elegant textures.\r\nPackaging & Labels: Enhance your brand with durable, customizable options.\r\nChoose from uncoated varieties for a natural feel or coated options for glossy brilliance. Eco-conscious? No worries! Sustainable offset paper offers guilt-free printing.', 'offset-items-2024-02-19-65d3461b92148.jpg', '2024-02-19 06:14:19', '2024-02-19 06:14:19');
+(16, 'OFFSET ITEMS', NULL, 'UvgEik5fA3c', 'offset-items-2024-02-19-65d3461b92148.jpg', '2024-02-19 06:14:19', '2025-05-18 01:05:50'),
+(17, 'video', NULL, 'yqHvGbV9Hk4', NULL, '2025-05-18 00:53:51', '2025-05-18 00:53:51');
 
 -- --------------------------------------------------------
 
@@ -4705,7 +4003,7 @@ ALTER TABLE `web_process_models`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -4777,7 +4075,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `lifemember`
 --
 ALTER TABLE `lifemember`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=705;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `links`
@@ -4807,7 +4105,7 @@ ALTER TABLE `medical_sliders`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `micro_s_liders`
@@ -4849,13 +4147,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `objects`
 --
 ALTER TABLE `objects`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `others`
 --
 ALTER TABLE `others`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `outlooks`
@@ -4867,7 +4165,7 @@ ALTER TABLE `outlooks`
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pakcage_pricing_models`
@@ -4945,7 +4243,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -4969,7 +4267,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `web_process_models`
