@@ -1,5 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-import { FiMenu, FiX, FiChevronDown, FiChevronUp, FiChevronRight } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import {
+  FiMenu,
+  FiX,
+  FiChevronDown,
+  FiChevronUp,
+  FiChevronRight,
+} from "react-icons/fi";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/rs-tech-asset/logo.png";
@@ -9,12 +15,7 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openSubDropdown, setOpenSubDropdown] = useState(null);
   const [openThirdDropdown, setOpenThirdDropdown] = useState(null);
-
-  // refs for timers to control delays independently
-  const dropdownTimer = useRef(null);
-  const subDropdownTimer = useRef(null);
-  const thirdDropdownTimer = useRef(null);
-
+  const [hoverTimeout, setHoverTimeout] = useState(null);
   const [menus, setMenus] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,21 +25,29 @@ const Navbar = () => {
       try {
         const response = await fetch("https://server.rst-bd.com/api/menus");
         const data = await response.json();
-
         const mappedMenus = [
           { id: "home", path: "/", label: "Home", subItems: [] },
           ...data.map((item) => ({
             id: item.id,
             label: item.menu_name,
-            path: item.page_type === "url" ? item.external_link : `/page/${item.slug}`,
+            path:
+              item.page_type === "url"
+                ? item.external_link
+                : `/page/${item.slug}`,
             subItems: item.submenus?.map((subItem) => ({
               id: subItem.id,
               label: subItem.menu_name,
-              path: subItem.page_type === "url" ? subItem.external_link : `/page/${subItem.slug}`,
+              path:
+                subItem.page_type === "url"
+                  ? subItem.external_link
+                  : `/page/${subItem.slug}`,
               subItems: subItem.submenus?.map((thirdItem) => ({
                 id: thirdItem.id,
                 label: thirdItem.menu_name,
-                path: thirdItem.page_type === "url" ? thirdItem.external_link : `/page/${thirdItem.slug}`,
+                path:
+                  thirdItem.page_type === "url"
+                    ? thirdItem.external_link
+                    : `/page/${thirdItem.slug}`,
               })),
             })),
           })),
@@ -48,17 +57,13 @@ const Navbar = () => {
         console.error("Error fetching menus:", error);
       }
     };
+
     fetchMenus();
   }, []);
 
-  // Clear timers on unmount
   useEffect(() => {
-    return () => {
-      clearTimeout(dropdownTimer.current);
-      clearTimeout(subDropdownTimer.current);
-      clearTimeout(thirdDropdownTimer.current);
-    };
-  }, []);
+    return () => hoverTimeout && clearTimeout(hoverTimeout);
+  }, [hoverTimeout]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -80,52 +85,41 @@ const Navbar = () => {
     }
   };
 
-  // === Desktop Hover Handlers ===
-
-  // Main dropdown
-  const onDropdownMouseEnter = (id) => {
-    clearTimeout(dropdownTimer.current);
-    setOpenDropdown(id);
+  const handleDropdownHover = (id) => {
+    clearTimeout(hoverTimeout);
+    setHoverTimeout(setTimeout(() => setOpenDropdown(id), 200));
   };
 
-  const onDropdownMouseLeave = () => {
-    dropdownTimer.current = setTimeout(() => {
-      setOpenDropdown(null);
-      setOpenSubDropdown(null);
-      setOpenThirdDropdown(null);
-    }, 300);
+  const handleDropdownLeave = () => {
+    clearTimeout(hoverTimeout);
+    setHoverTimeout(
+      setTimeout(() => {
+        setOpenDropdown(null);
+        setOpenSubDropdown(null);
+        setOpenThirdDropdown(null);
+      }, 700)
+    );
   };
 
-  // Sub dropdown
-  const onSubDropdownMouseEnter = (key) => {
-    clearTimeout(subDropdownTimer.current);
-    setOpenSubDropdown(key);
+  const handleSubDropdownHover = (subIndex) => {
+    clearTimeout(hoverTimeout);
+    setHoverTimeout(setTimeout(() => setOpenSubDropdown(subIndex), 100));
   };
 
-  const onSubDropdownMouseLeave = () => {
-    subDropdownTimer.current = setTimeout(() => {
-      setOpenSubDropdown(null);
-      setOpenThirdDropdown(null);
-    }, 300);
-  };
-
-  // Third dropdown
-  const onThirdDropdownMouseEnter = (key) => {
-    clearTimeout(thirdDropdownTimer.current);
-    setOpenThirdDropdown(key);
-  };
-
-  const onThirdDropdownMouseLeave = () => {
-    thirdDropdownTimer.current = setTimeout(() => {
-      setOpenThirdDropdown(null);
-    }, 300);
+  const handleThirdDropdownHover = (thirdIndex) => {
+    clearTimeout(hoverTimeout);
+    setHoverTimeout(setTimeout(() => setOpenThirdDropdown(thirdIndex), 100));
   };
 
   return (
     <header className="bg-white rounded-4xl font-medium text-black w-full md:max-w-[85%] mt-2 lg:mt-10 mx-auto lg:mx-24 z-50 lg:absolute left-0 right-0 lg:left-auto lg:right-auto">
       <div className="container mx-auto p-2 lg:p-4 flex justify-between lg:justify-even lg:gap-10 items-center">
         <Link to="/" onClick={() => handleLinkClick("/")}>
-          <img src={logo} alt="Logo" className="h-10 sm:w-[120px] lg:w-[200px] lg:h-16" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-10 sm:w-[120px] lg:w-[200px] lg:h-16"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -134,21 +128,24 @@ const Navbar = () => {
             <div
               key={item.id}
               className="relative"
-              onMouseEnter={() => onDropdownMouseEnter(item.id)}
-              onMouseLeave={onDropdownMouseLeave}
+              onMouseEnter={() => handleDropdownHover(item.id)}
+              onMouseLeave={handleDropdownLeave}
             >
               <motion.div whileTap={{ scale: 0.95 }}>
                 <div
-                  className="hover:text-indigo-900 cursor-pointer flex items-center gap-1 select-none"
+                  className="hover:text-indigo-900 cursor-pointer flex items-center gap-1"
                   onClick={() => item.path && handleLinkClick(item.path)}
                 >
                   {item.label}
                   {item.subItems?.length > 0 &&
-                    (openDropdown === item.id ? <FiChevronUp /> : <FiChevronDown />)}
+                    (openDropdown === item.id ? (
+                      <FiChevronUp />
+                    ) : (
+                      <FiChevronDown />
+                    ))}
                 </div>
               </motion.div>
 
-              {/* First level dropdown */}
               {openDropdown === item.id && item.subItems?.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -160,18 +157,22 @@ const Navbar = () => {
                     <div
                       key={subItem.id}
                       className="relative px-4"
-                      onMouseEnter={() => onSubDropdownMouseEnter(`${item.id}-${subIndex}`)}
-                      onMouseLeave={onSubDropdownMouseLeave}
+                      onMouseEnter={() =>
+                        handleSubDropdownHover(`${item.id}-${subIndex}`)
+                      }
+                      onMouseLeave={handleDropdownLeave}
                     >
                       <div
-                        className="flex justify-between items-center w-full py-2 text-sm text-white hover:text-orange-300 cursor-pointer select-none"
-                        onClick={() => subItem.path && handleLinkClick(subItem.path)}
+                        className="flex justify-between items-center w-full py-2 text-sm text-white hover:text-orange-300 cursor-pointer"
+                        onClick={() =>
+                          subItem.path && handleLinkClick(subItem.path)
+                        }
                       >
                         <span>{subItem.label}</span>
                         {subItem.subItems?.length > 0 && <FiChevronRight />}
                       </div>
 
-                      {/* Second level dropdown */}
+                      {/* Third level dropdown */}
                       {openSubDropdown === `${item.id}-${subIndex}` &&
                         subItem.subItems?.length > 0 && (
                           <motion.div
@@ -179,14 +180,12 @@ const Navbar = () => {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.15 }}
                             className="absolute left-full top-0 ml-1 bg-indigo-950 shadow-lg rounded-md min-w-[200px] z-20"
-                            onMouseEnter={() => onThirdDropdownMouseEnter(`${item.id}-${subIndex}`)}
-                            onMouseLeave={onThirdDropdownMouseLeave}
                           >
                             {subItem.subItems.map((thirdItem) => (
                               <Link
                                 key={thirdItem.id}
                                 to={thirdItem.path}
-                                className="block px-4 py-2 text-white text-sm hover:text-orange-300 select-none"
+                                className="block px-4 py-2 text-white text-sm hover:text-orange-300"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   handleLinkClick(thirdItem.path);
@@ -235,7 +234,11 @@ const Navbar = () => {
                 >
                   {item.label}
                   {item.subItems?.length > 0 &&
-                    (openDropdown === item.id ? <FiChevronUp /> : <FiChevronDown />)}
+                    (openDropdown === item.id ? (
+                      <FiChevronUp />
+                    ) : (
+                      <FiChevronDown />
+                    ))}
                 </div>
                 {openDropdown === item.id && item.subItems?.length > 0 && (
                   <ul className="pl-4 space-y-1">
@@ -245,7 +248,9 @@ const Navbar = () => {
                           className="flex justify-between items-center text-white py-1 cursor-pointer"
                           onClick={() =>
                             setOpenSubDropdown(
-                              openSubDropdown === subItem.id ? null : subItem.id
+                              openSubDropdown === subItem.id
+                                ? null
+                                : subItem.id
                             )
                           }
                         >
