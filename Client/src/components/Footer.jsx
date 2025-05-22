@@ -22,10 +22,10 @@ const Footer = () => {
         const fetchData = async () => {
             try {
                 const [aboutRes, contactRes, socialRes, menuRes] = await Promise.all([
-                    fetch("http://127.0.0.1:8000/api/footerother"),
-                    fetch("http://127.0.0.1:8000/api/footercontact"),
-                    fetch("http://127.0.0.1:8000/api/social"),
-                    fetch("http://127.0.0.1:8000/api/footermenu")
+                    fetch("https://server.rst-bd.com/api/footerother"),
+                    fetch("https://server.rst-bd.com/api/footercontact"),
+                    fetch("https://server.rst-bd.com/api/social"),
+                    fetch("https://server.rst-bd.com/api/footermenu")
                 ]);
 
                 if (!aboutRes.ok || !contactRes.ok || !socialRes.ok || !menuRes.ok) {

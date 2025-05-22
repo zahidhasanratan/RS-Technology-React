@@ -9,7 +9,7 @@ const Home = () => {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/clients")
+    fetch("https://server.rst-bd.com/api/clients")
       .then((res) => res.json())
       .then((data) => setClients(data))
       .catch((err) => console.error("Failed to fetch clients:", err));

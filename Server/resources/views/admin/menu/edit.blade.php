@@ -40,7 +40,7 @@
                                              <div class="col-sm-11">
                                                 <select name="root_id" class="form-control"   onchange="ajaxSearch(this.value,'subcatid','root_id')">
                                                     @if (!(empty($parent_id_for->menu_name)))
-                                                    <option value="">{{$parent_id_for->menu_name}}</option>
+                                                    <option value="{{$parent_id_for->id}}">{{$parent_id_for->menu_name}}</option>
 
                                                     @else
                                                         <option value="">Select Menu</option>

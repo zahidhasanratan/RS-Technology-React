@@ -8,7 +8,7 @@ const MissionVision = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/objects6')
+        fetch('https://server.rst-bd.com/api/objects6')
             .then(response => response.json())
             .then(data => setData(data[0])) // assuming it's an array with one object
             .catch(error => console.error("API Error:", error));

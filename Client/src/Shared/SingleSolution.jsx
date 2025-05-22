@@ -15,7 +15,7 @@ const SingleSolution = () => {
     useEffect(() => {
         const fetchSolutions = async () => {
             try {
-                const res = await fetch("http://127.0.0.1:8000/api/solution");
+                const res = await fetch("https://server.rst-bd.com/api/solution");
                 const data = await res.json();
                 setSolutions(data);
             } catch (error) {
@@ -30,7 +30,7 @@ const SingleSolution = () => {
         const fetchSolutionBySlug = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`http://127.0.0.1:8000/api/solution/${serviceSlug}`);
+                const res = await fetch(`https://server.rst-bd.com/api/solution/${serviceSlug}`);
                 if (!res.ok) {
                     throw new Error("Service not found");
                 }

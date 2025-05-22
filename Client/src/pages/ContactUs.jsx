@@ -12,6 +12,7 @@ const ContactUs = () => {
     const [captchaInput, setCaptchaInput] = useState('');
     const [captchaQuestion, setCaptchaQuestion] = useState('');
     const [captchaAnswer, setCaptchaAnswer] = useState(null);
+    const [contactInfo, setContactInfo] = useState(null);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -22,6 +23,7 @@ const ContactUs = () => {
 
     useEffect(() => {
         generateCaptcha();
+        fetchContactInfo();
     }, []);
 
     const generateCaptcha = () => {
@@ -32,37 +34,48 @@ const ContactUs = () => {
         setCaptchaInput('');
     };
 
+    const fetchContactInfo = async () => {
+        try {
+            const response = await axios.get('https://server.rst-bd.com/api/footercontact');
+            if (response.data && response.data.length > 0) {
+                setContactInfo(response.data[0]);
+            }
+        } catch (error) {
+            console.error('Failed to fetch contact info:', error);
+        }
+    };
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    if (parseInt(captchaInput) !== captchaAnswer) {
-        toast.error('Incorrect CAPTCHA. Please try again.', { position: "top-right" });
-        generateCaptcha();
-        return;
-    }
+        if (parseInt(captchaInput) !== captchaAnswer) {
+            toast.error('Incorrect CAPTCHA. Please try again.', { position: "top-right" });
+            generateCaptcha();
+            return;
+        }
 
-    try {
-        const response = await axios.post('http://127.0.0.1:8000/api/contact', {
-            name: formData.firstName,
-            lname: formData.lastName,
-            email: formData.email,
-            phone: formData.phone,
-            address: "From Contact Form", // static if no field
-            message: formData.message
-        });
+        try {
+            await axios.post('https://server.rst-bd.com/api/contact', {
+                name: formData.firstName,
+                lname: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                address: "From Contact Form",
+                message: formData.message
+            });
 
-        toast.success('Your message has been sent!', { position: "top-right" });
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
-        generateCaptcha();
-    } catch (error) {
-        console.error(error);
-        toast.error('Failed to send. Please try again later.', { position: "top-right" });
-    }
-};
+            toast.success('Your message has been sent!', { position: "top-right" });
+            setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+            generateCaptcha();
+        } catch (error) {
+            console.error(error);
+            toast.error('Failed to send. Please try again later.', { position: "top-right" });
+        }
+    };
 
     return (
         <div>
@@ -80,12 +93,17 @@ const ContactUs = () => {
                         >
                             <div className="p-6 rounded-lg shadow-md bg-white">
                                 <h2 className="text-2xl font-bold mb-4 text-indigo-800">Get in Touch</h2>
-                                <div className="space-y-4 text-gray-700">
-                                    <div className="flex items-center"><BiMap className="mr-2" /> 123 Street, Dhaka</div>
-                                    <div className="flex items-center"><BiEnvelope className="mr-2" /> contact@example.com</div>
-                                    <div className="flex items-center"><BiPhone className="mr-2" /> +880 1234-567890</div>
-                                    <div className="flex items-center"><BiTimeFive className="mr-2" /> Mon-Fri, 9am - 5pm</div>
-                                </div>
+                                {contactInfo ? (
+                                    <div className="space-y-4 text-gray-700">
+                                        <div className="flex items-center"><BiMap className="mr-2" /> {contactInfo.title}</div>
+                                        <div className="flex items-center"><BiEnvelope className="mr-2" /> {contactInfo.description}</div>
+                                        <div className="flex items-center"><BiPhone className="mr-2" /> {contactInfo.slug}</div>
+                                        <div className="flex items-center"><BiEnvelope className="mr-2" /> {contactInfo.slug2}</div>
+                                        <div className="flex items-center"><BiTimeFive className="mr-2" /> {contactInfo.working}</div>
+                                    </div>
+                                ) : (
+                                    <p className="text-gray-500">Loading contact info...</p>
+                                )}
                             </div>
                         </motion.div>
 

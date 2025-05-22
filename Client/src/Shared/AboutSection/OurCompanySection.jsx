@@ -7,7 +7,7 @@ const OurCompanySection = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/about/about-us")
+        axios.get("https://server.rst-bd.com/api/about/about-us")
             .then((res) => setData(res.data))
             .catch((err) => console.error("Failed to fetch about data:", err));
     }, []);

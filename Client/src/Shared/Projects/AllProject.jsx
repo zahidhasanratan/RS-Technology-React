@@ -15,7 +15,7 @@ const AllProject = () => {
     };
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/projects")
+        fetch("https://server.rst-bd.com/api/projects")
             .then(res => res.json())
             .then(data => {
                 const completedProjects = data.filter(project => project.sub_title === "Completed");

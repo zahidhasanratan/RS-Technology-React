@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/menus");
+        const response = await fetch("https://server.rst-bd.com/api/menus");
         const data = await response.json();
         // Map API data to match the original navItems structure
         const mappedMenus = [

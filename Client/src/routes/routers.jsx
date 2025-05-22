@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: 'Service/:serviceSlug',
         loader: async ({ params }) => {
-          const response = await fetch(`http://127.0.0.1:8000/api/solution/${params.serviceSlug}`);
+          const response = await fetch(`https://server.rst-bd.com/api/solution/${params.serviceSlug}`);
           if (!response.ok) {
             throw new Response('Service not found', { status: 404 });
           }
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
       {
   path: 'page/:slug',
   loader: async ({ params }) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/page/${params.slug}`);
+    const response = await fetch(`https://server.rst-bd.com/api/page/${params.slug}`);
     if (!response.ok) {
       throw new Response('Page not found', { status: 404 });
     }
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
       {
         path: 'clients',
         loader: async () => {
-          const res = await fetch('http://127.0.0.1:8000/api/clients');
+          const res = await fetch('https://server.rst-bd.com/api/clients');
           return res.json();
         },
         Component: Clients,
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
       {
         path: 'video',
         loader: async () => {
-          const res = await fetch('http://127.0.0.1:8000/api/video');
+          const res = await fetch('https://server.rst-bd.com/api/video');
           return res.json();
         },
         Component: Video,
@@ -103,7 +103,7 @@ const router = createBrowserRouter([
       {
   path: 'photo',
   loader: async () => {
-    const res = await fetch('http://127.0.0.1:8000/api/photo');
+    const res = await fetch('https://server.rst-bd.com/api/photo');
     return res.json();
   },
   Component: Photo,
@@ -111,7 +111,7 @@ const router = createBrowserRouter([
 {
   path: 'photo/:slug',
   loader: async ({ params }) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/photo/${params.slug}`);
+    const response = await fetch(`https://server.rst-bd.com/api/photo/${params.slug}`);
     if (!response.ok) {
       throw new Response('Photo album not found', { status: 404 });
     }
@@ -124,7 +124,7 @@ const router = createBrowserRouter([
       {
         path: 'news',
         loader: async () => {
-          const res = await fetch('http://127.0.0.1:8000/api/news');
+          const res = await fetch('https://server.rst-bd.com/api/news');
           return res.json();
         },
         Component: News,
@@ -132,7 +132,7 @@ const router = createBrowserRouter([
     {
     path: 'news/:slug',
     loader: async ({ params }) => {
-      const response = await fetch(`http://127.0.0.1:8000/api/news/${params.slug}`);
+      const response = await fetch(`https://server.rst-bd.com/api/news/${params.slug}`);
       if (!response.ok) {
         throw new Response('News not found', { status: 404 });
       }
@@ -144,7 +144,7 @@ const router = createBrowserRouter([
       {
         path: 'management',
         loader: async () => {
-          const res = await fetch('http://127.0.0.1:8000/api/Management');
+          const res = await fetch('https://server.rst-bd.com/api/Management');
           return res.json();
         },
         Component: Management,

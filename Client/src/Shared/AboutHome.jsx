@@ -27,7 +27,7 @@ const AboutHome = () => {
     };
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/object2")
+        axios.get("https://server.rst-bd.com/api/object2")
             .then(res => {
                 setAboutData(res.data[0]); // Assuming you always need the first object
             })

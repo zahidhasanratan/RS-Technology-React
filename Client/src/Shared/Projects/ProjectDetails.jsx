@@ -23,7 +23,7 @@ const ProjectDetails = () => {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/projects");
+                const response = await fetch("https://server.rst-bd.com/api/projects");
                 const data = await response.json();
 
                 const found = data.find(p => p.slug === slug);

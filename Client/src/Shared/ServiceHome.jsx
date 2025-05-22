@@ -20,7 +20,7 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
     };
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/solution')
+        axios.get('https://server.rst-bd.com/api/solution')
             .then(response => {
                 if (Array.isArray(response.data)) {
                     setServices(response.data);
