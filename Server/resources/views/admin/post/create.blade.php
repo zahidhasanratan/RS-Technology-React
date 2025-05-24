@@ -44,15 +44,23 @@
                                             <label>Location</label>
                                             <input class="form-control" name="location" placeholder="Location" />
                                         </div>
+                                        <div class="form-group">
+                                            <label>Job Function</label>
+                                            <input class="form-control" name="jobFunction" placeholder="Job Function" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Job Type</label>
+                                            <input class="form-control" name="jobType" placeholder="Job Type" />
+                                        </div>
 
                                         <div class="form-group">
                                             <label>Url (If Any)</label>
                                             <input class="form-control" name="link" placeholder="Url" />
                                         </div>
-                                        <div class="form-group">
-                                            <label>Image</label>
-                                            <input type="file" name="image"/>
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>Image</label>--}}
+{{--                                            <input type="file" name="image"/>--}}
+{{--                                        </div>--}}
                                         <a href="{{ route('post.index') }}" class="btn btn-danger">Back</a>
                                         <button type="submit" class="btn btn-primary">Submit Button</button>
 

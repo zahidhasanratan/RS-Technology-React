@@ -33,29 +33,38 @@
                                             <label>Title</label>
                                             <input class="form-control" name="title" value="{{ $news->title }}" placeholder="Title" />
                                         </div>
-
-                                        <div class="form-group">
-                                            <label>Location</label>
-                                            <input class="form-control" name="location" value="{{ $news->location }}" placeholder="Location" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Url (If Any)</label>
-                                            <input class="form-control" name="link" value="{{ $news->link }}" placeholder="Url" />
-                                        </div>
                                         <div class="form-group">
                                             <label>Description</label>
                                             <textarea class="form-control ckeditor" rows="3" name="description">{{ $news->description }}</textarea>
                                         </div>
                                         <div class="form-group">
+                                            <label>Job Summary</label>
+                                            <textarea class="form-control ckeditor" rows="3" name="job_summery">{{ $news->job_summery }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Location</label>
+                                            <input class="form-control" name="location" value="{{ $news->location }}" placeholder="Location" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Job Function</label>
+                                            <input class="form-control" name="jobFunction" value="{{ $news->jobFunction }}" placeholder="Job Function" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Job Type</label>
+                                            <input class="form-control" name="jobType" value="{{ $news->jobType }}" placeholder="Job Type" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Url (If Any)</label>
+                                            <input class="form-control" name="link" value="{{ $news->link }}" placeholder="Url" />
+                                        </div>
+
+                                        <div class="form-group">
                                             <label>Sequence</label>
                                             <input class="form-control" name="sequence" value="{{ $news->sequence }}" placeholder="Sequence" />
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Image</label>
-                                            <input type="file" name="image"/></br>
-                                            <img src="{{ asset('uploads/post/'.$news->image) }}" class="img-thumbnail" width="80" height="150" />
-                                        </div>
+
+
                                         <a href="{{ route('post.index') }}" class="btn btn-danger">Back</a>
                                         <button type="submit" class="btn btn-primary">Submit Button</button>
 

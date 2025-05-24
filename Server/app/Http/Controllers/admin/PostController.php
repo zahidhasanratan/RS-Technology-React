@@ -10,6 +10,8 @@ use App\Research;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+
 
 class PostController extends Controller
 {
@@ -48,7 +50,7 @@ class PostController extends Controller
             'image' => 'mimes:jpeg,jpg,bmp,png,gif,svg,webp',
         ]);
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::slug($request->title);
         if (isset($image))
         {
             $currentDate = Carbon::now()->toDateString();
@@ -65,6 +67,9 @@ class PostController extends Controller
         $news->title = $request->title;
         $news->slug = $slug;
         $news->location = $request->location;
+        $news->job_summery = $request->job_summery;
+        $news->jobFunction = $request->jobFunction;
+        $news->jobType = $request->jobType;
         $news->link = $request->link;
         $news->description = $request->description;
         $news->image = $imagename;
@@ -125,13 +130,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request,[
             'title' => 'required',
             'image' => 'mimes:jpeg,jpg,bmp,png,gif,svg,webp',
         ]);
 
         $image = $request->file('image');
-        $slug = str_slug($request->title);
+        $slug = Str::slug($request->title);
         $news = Post::find($id);
 
         if (isset($image))
@@ -150,6 +156,9 @@ class PostController extends Controller
         $news->slug = $slug;
         $news->location = $request->location;
         $news->link = $request->link;
+        $news->job_summery = $request->job_summery;
+        $news->jobFunction = $request->jobFunction;
+        $news->jobType = $request->jobType;
         $news->sequence = $request->sequence;
         $news->description = $request->description;
         $news->image = $imagename;
