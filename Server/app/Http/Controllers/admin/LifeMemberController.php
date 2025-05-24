@@ -113,6 +113,7 @@ class LifeMemberController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request,[
             'title' => 'required',
         ]);
@@ -140,6 +141,7 @@ class LifeMemberController extends Controller
         $news->Address1 = $request->Address1;
         $news->email = $request->email;
         $news->phone = $request->phone;
+        $news->sl = $request->sl;
         $news->image = $imagename;
         $news->save();
         return redirect()->route('life.index')->with('successMsg','Life Member Successfully Updated');

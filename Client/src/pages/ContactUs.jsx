@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 import { motion } from 'framer-motion';
-import {
-    BiPhone, BiEnvelope, BiMap, BiTimeFive, BiUser, BiSend
-} from 'react-icons/bi';
-import CommonHero from '../Shared/CommonHero';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import {
+    BiPhone, BiEnvelope, BiMap, BiTimeFive,
+    BiUser, BiSend
+} from 'react-icons/bi';
+import CommonHero from '../Shared/CommonHero';
 
 const ContactUs = () => {
     const [captchaInput, setCaptchaInput] = useState('');
@@ -20,6 +21,7 @@ const ContactUs = () => {
         phone: '',
         message: ''
     });
+    const captchaRef = useRef(null);
 
     useEffect(() => {
         generateCaptcha();
@@ -52,170 +54,250 @@ const ContactUs = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (parseInt(captchaInput) !== captchaAnswer) {
-            toast.error('Incorrect CAPTCHA. Please try again.', { position: "top-right" });
+        if (parseInt(captchaInput.trim(), 10) !== captchaAnswer) {
+            toast.error('Incorrect CAPTCHA. Please try again.');
             generateCaptcha();
+            captchaRef.current?.focus();
             return;
         }
 
         try {
             await axios.post('https://server.rst-bd.com/api/contact', {
-                name: formData.firstName,
-                lname: formData.lastName,
-                email: formData.email,
-                phone: formData.phone,
+                name: formData.firstName.trim(),
+                lname: formData.lastName.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
                 address: "From Contact Form",
-                message: formData.message
+                message: formData.message.trim()
             });
 
-            toast.success('Your message has been sent!', { position: "top-right" });
-            setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+            toast.success('Your message has been sent!');
+            setFormData({
+                firstName: '', lastName: '', email: '', phone: '', message: ''
+            });
             generateCaptcha();
         } catch (error) {
-            console.error(error);
-            toast.error('Failed to send. Please try again later.', { position: "top-right" });
+            console.error('Form submission error:', error);
+            toast.error('Failed to send message. Try again later.');
         }
     };
 
     return (
         <div>
-            <CommonHero title="Contact Us" />
             <ToastContainer />
+            <CommonHero title="Contact Us" />
+
             <section className="py-10 px-4 sm:px-6 lg:px-8 bg-[#f0f4f7]">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
 
-                        {/* Contact Info */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <div className="p-6 rounded-lg shadow-md bg-white">
-                                <h2 className="text-2xl font-bold mb-4 text-indigo-800">Get in Touch</h2>
-                                {contactInfo ? (
-                                    <div className="space-y-4 text-gray-700">
-                                        <div className="flex items-center"><BiMap className="mr-2" /> {contactInfo.title}</div>
-                                        <div className="flex items-center"><BiEnvelope className="mr-2" /> {contactInfo.description}</div>
-                                        <div className="flex items-center"><BiPhone className="mr-2" /> {contactInfo.slug}</div>
-                                        <div className="flex items-center"><BiEnvelope className="mr-2" /> {contactInfo.slug2}</div>
-                                        <div className="flex items-center"><BiTimeFive className="mr-2" /> {contactInfo.working}</div>
-                                    </div>
-                                ) : (
-                                    <p className="text-gray-500">Loading contact info...</p>
-                                )}
-                            </div>
-                        </motion.div>
+                    {/* Contact Info */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-white"
+                    >
+                        <h2 className="text-xl font-bold text-white text-center p-2 bg-indigo-950">
+                            Get In Touch With Us Now!
+                        </h2>
+                        <div className="p-6">
+    {/* First Row: Phone & Email */}
+    <div className="flex">
+        {/* Phone Section */}
+        <div className="flex-1 p-4 relative">
+            <div className="flex flex-col items-center text-center">
+                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                    <BiPhone className="fill-current" />
+                </div>
+                <h3 className="font-bold text-gray-500 mb-2">Phone Number</h3>
+                <div className="space-y-1 text-sm text-gray-400">
+                    <a href={`tel:${contactInfo?.slug || ''}`} className="block">
+                        <span className="font-medium">Sales Query:</span> {contactInfo?.slug || 'N/A'}
+                    </a>
+                    <a href={`tel:${contactInfo?.title2 || ''}`} className="block">
+                        <span className="font-medium">Service Query:</span> {contactInfo?.title2 || 'N/A'}
+                    </a>
+                </div>
+            </div>
+            <div className="absolute bottom-0 left-0 right-[10%] h-[2px] bg-gray-300"></div>
+        </div>
 
-                        {/* Contact Form */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <h2 className="text-xl font-bold text-white text-center p-2 bg-indigo-950">Contact Us</h2>
-                            <form onSubmit={handleSubmit} className="p-6 space-y-4 bg-[#dddddd] rounded">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
-                                            <BiUser />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            name="firstName"
-                                            placeholder="First Name *"
-                                            value={formData.firstName}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full pl-10 pr-4 py-2 bg-white rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                        />
-                                    </div>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
-                                            <BiUser />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            name="lastName"
-                                            placeholder="Last Name"
-                                            value={formData.lastName}
-                                            onChange={handleChange}
-                                            className="w-full pl-10 pr-4 py-2 bg-white rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                        />
-                                    </div>
-                                </div>
+        {/* Vertical Divider */}
+        <div className="relative">
+            <div className="absolute top-[10%] bottom-[10%] left-0 w-[2px] bg-gray-300"></div>
+        </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
-                                            <BiPhone />
-                                        </div>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            placeholder="Mobile No *"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full pl-10 pr-4 py-2 bg-white rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                        />
-                                    </div>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
-                                            <BiEnvelope />
-                                        </div>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            placeholder="Email ID *"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full pl-10 pr-4 py-2 bg-white rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                        />
-                                    </div>
-                                </div>
+        {/* Email Section */}
+        <div className="flex-1 p-4 relative">
+            <div className="flex flex-col items-center text-center">
+                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                    <BiEnvelope className="fill-current" />
+                </div>
+                <h3 className="font-bold text-gray-500 mb-2">Email</h3>
+                <div className="space-y-1 text-sm text-gray-400">
+                    <a href={`mailto:${contactInfo?.description || ''}`} className="block">
+                        {contactInfo?.description || 'N/A'}
+                    </a>
+                    {contactInfo?.slug2 && (
+                        <a href={`mailto:${contactInfo?.slug2}`} className="block">
+                            {contactInfo?.slug2}
+                        </a>
+                    )}
+                </div>
+            </div>
+            <div className="absolute bottom-0 left-[10%] right-0 h-[2px] bg-gray-300"></div>
+        </div>
+    </div>
 
-                                <div>
-                                    <textarea
-                                        rows="4"
-                                        name="message"
-                                        placeholder="Your Message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-2 bg-white rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                    ></textarea>
-                                </div>
+    {/* Second Row: Location & Hours */}
+    <div className="flex">
+        {/* Location Section */}
+        <div className="flex-1 p-4">
+            <div className="flex flex-col items-center text-center">
+                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                    <BiMap className="fill-current" />
+                </div>
+                <h3 className="font-bold text-gray-500 mb-2">Location</h3>
+                <p className="text-sm text-gray-400">{contactInfo?.title || 'N/A'}</p>
+            </div>
+        </div>
 
-                                <div className="rounded-lg">
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        What is: <span className="font-bold">{captchaQuestion}</span>
-                                    </label>
+        {/* Vertical Divider */}
+        <div className="relative">
+            <div className="absolute top-[10%] bottom-[10%] right-0 w-[2px] bg-gray-300"></div>
+        </div>
+
+        {/* Working Hours Section */}
+        <div className="flex-1 p-4">
+            <div className="flex flex-col items-center text-center">
+                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                    <BiTimeFive className="fill-current" />
+                </div>
+                <h3 className="font-bold text-gray-500 mb-2">Working Hours</h3>
+                <p className="text-sm text-gray-400">
+                    {contactInfo?.working?.split('\n').map((line, index) => (
+                        <span key={index}>{line}<br /></span>
+                    )) || 'N/A'}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    </motion.div>
+
+                    {/* Contact Form */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <h2 className="text-xl font-bold text-white text-center p-2 bg-indigo-950">Contact Us</h2>
+                        <form onSubmit={handleSubmit} className="p-6 bg-[#dddddd] rounded space-y-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {/* First Name */}
+                                <div className="relative">
+                                    <label htmlFor="firstName" className="sr-only">First Name</label>
+                                    <BiUser className="absolute left-3 top-3 text-gray-500" />
                                     <input
+                                        id="firstName"
+                                        name="firstName"
                                         type="text"
+                                        placeholder="First Name *"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
                                         required
-                                        value={captchaInput}
-                                        onChange={(e) => setCaptchaInput(e.target.value)}
-                                        className="w-full px-4 py-2 rounded-lg border bg-white border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                        className="w-full pl-10 pr-4 py-2 rounded border border-gray-300 bg-white"
                                     />
-                                    <p className="mt-1 text-xs text-gray-500">
-                                        Simple human check to prevent spam.
-                                    </p>
                                 </div>
+                                {/* Last Name */}
+                                <div className="relative">
+                                    <label htmlFor="lastName" className="sr-only">Last Name</label>
+                                    <BiUser className="absolute left-3 top-3 text-gray-500" />
+                                    <input
+                                        id="lastName"
+                                        name="lastName"
+                                        type="text"
+                                        placeholder="Last Name"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
+                                        className="w-full pl-10 pr-4 py-2 rounded border border-gray-300 bg-white"
+                                    />
+                                </div>
+                            </div>
 
-                                <div className="text-center pt-2">
-                                    <motion.button
-                                        whileHover={{ scale: 1.03 }}
-                                        whileTap={{ scale: 0.97 }}
-                                        type="submit"
-                                        className="bg-indigo-950 hover:bg-indigo-900 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 inline-flex items-center shadow-md"
-                                    >
-                                        Submit <BiSend className="ml-2" />
-                                    </motion.button>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {/* Phone */}
+                                <div className="relative">
+                                    <label htmlFor="phone" className="sr-only">Phone</label>
+                                    <BiPhone className="absolute left-3 top-3 text-gray-500" />
+                                    <input
+                                        id="phone"
+                                        name="phone"
+                                        type="tel"
+                                        placeholder="Phone *"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full pl-10 pr-4 py-2 rounded border border-gray-300 bg-white"
+                                    />
                                 </div>
-                            </form>
-                        </motion.div>
-                    </div>
+                                {/* Email */}
+                                <div className="relative">
+                                    <label htmlFor="email" className="sr-only">Email</label>
+                                    <BiEnvelope className="absolute left-3 top-3 text-gray-500" />
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        placeholder="Email *"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full pl-10 pr-4 py-2 rounded border border-gray-300 bg-white"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Message */}
+                            <div>
+                                <label htmlFor="message" className="sr-only">Message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="4"
+                                    placeholder="Your Message *"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full px-4 py-2 rounded border border-gray-300 bg-white"
+                                />
+                            </div>
+
+                            {/* CAPTCHA */}
+                            <div className="flex items-center gap-4">
+                                <label htmlFor="captcha" className="text-gray-700">{captchaQuestion}</label>
+                                <input
+                                    id="captcha"
+                                    type="text"
+                                    value={captchaInput}
+                                    onChange={(e) => setCaptchaInput(e.target.value)}
+                                    ref={captchaRef}
+                                    required
+                                    className="w-24 px-2 py-1 border border-gray-300 rounded bg-white"
+                                />
+                            </div>
+
+                            {/* Submit */}
+                            <button
+                                type="submit"
+                                className="w-full bg-indigo-950 text-white font-semibold py-2 px-4 rounded hover:bg-indigo-800"
+                            >
+                                <BiSend className="inline-block mr-2" />
+                                Send Message
+                            </button>
+                        </form>
+                    </motion.div>
                 </div>
             </section>
         </div>

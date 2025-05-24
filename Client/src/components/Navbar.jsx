@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { FiMenu, FiX, FiChevronDown, FiChevronUp, FiChevronRight } from "react-icons/fi";
+import {
+  FiMenu,
+  FiX,
+  FiChevronDown,
+  FiChevronUp,
+  FiChevronRight,
+} from "react-icons/fi";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/rs-tech-asset/logo.png";
@@ -9,13 +15,8 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openSubDropdown, setOpenSubDropdown] = useState(null);
   const [openThirdDropdown, setOpenThirdDropdown] = useState(null);
-
-  // refs for timers to control delays independently
-  const dropdownTimer = useRef(null);
-  const subDropdownTimer = useRef(null);
-  const thirdDropdownTimer = useRef(null);
-
   const [menus, setMenus] = useState([]);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,21 +25,29 @@ const Navbar = () => {
       try {
         const response = await fetch("https://server.rst-bd.com/api/menus");
         const data = await response.json();
-
         const mappedMenus = [
           { id: "home", path: "/", label: "Home", subItems: [] },
           ...data.map((item) => ({
             id: item.id,
             label: item.menu_name,
-            path: item.page_type === "url" ? item.external_link : `/page/${item.slug}`,
+            path:
+              item.page_type === "url"
+                ? item.external_link
+                : `/page/${item.slug}`,
             subItems: item.submenus?.map((subItem) => ({
               id: subItem.id,
               label: subItem.menu_name,
-              path: subItem.page_type === "url" ? subItem.external_link : `/page/${subItem.slug}`,
+              path:
+                subItem.page_type === "url"
+                  ? subItem.external_link
+                  : `/page/${subItem.slug}`,
               subItems: subItem.submenus?.map((thirdItem) => ({
                 id: thirdItem.id,
                 label: thirdItem.menu_name,
-                path: thirdItem.page_type === "url" ? thirdItem.external_link : `/page/${thirdItem.slug}`,
+                path:
+                  thirdItem.page_type === "url"
+                    ? thirdItem.external_link
+                    : `/page/${thirdItem.slug}`,
               })),
             })),
           })),
@@ -50,22 +59,6 @@ const Navbar = () => {
     };
     fetchMenus();
   }, []);
-
-  // Clear timers on unmount
-  useEffect(() => {
-    return () => {
-      clearTimeout(dropdownTimer.current);
-      clearTimeout(subDropdownTimer.current);
-      clearTimeout(thirdDropdownTimer.current);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    setOpenDropdown(null);
-    setOpenSubDropdown(null);
-    setOpenThirdDropdown(null);
-  };
 
   const handleLinkClick = (path) => {
     setOpenDropdown(null);
@@ -80,52 +73,60 @@ const Navbar = () => {
     }
   };
 
-  // === Desktop Hover Handlers ===
-
-  // Main dropdown
-  const onDropdownMouseEnter = (id) => {
-    clearTimeout(dropdownTimer.current);
-    setOpenDropdown(id);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    setOpenDropdown(null);
+    setOpenSubDropdown(null);
+    setOpenThirdDropdown(null);
   };
 
-  const onDropdownMouseLeave = () => {
-    dropdownTimer.current = setTimeout(() => {
-      setOpenDropdown(null);
-      setOpenSubDropdown(null);
-      setOpenThirdDropdown(null);
-    }, 300);
-  };
+  const renderMenuItems = (items, level = 0, parentKey = "") =>
+    items.map((item, index) => {
+      const key = `${parentKey}-${item.id}`;
+      const isOpen =
+        level === 0
+          ? openDropdown === key
+          : level === 1
+          ? openSubDropdown === key
+          : openThirdDropdown === key;
 
-  // Sub dropdown
-  const onSubDropdownMouseEnter = (key) => {
-    clearTimeout(subDropdownTimer.current);
-    setOpenSubDropdown(key);
-  };
+      const setOpenFn =
+        level === 0
+          ? setOpenDropdown
+          : level === 1
+          ? setOpenSubDropdown
+          : setOpenThirdDropdown;
 
-  const onSubDropdownMouseLeave = () => {
-    subDropdownTimer.current = setTimeout(() => {
-      setOpenSubDropdown(null);
-      setOpenThirdDropdown(null);
-    }, 300);
-  };
-
-  // Third dropdown
-  const onThirdDropdownMouseEnter = (key) => {
-    clearTimeout(thirdDropdownTimer.current);
-    setOpenThirdDropdown(key);
-  };
-
-  const onThirdDropdownMouseLeave = () => {
-    thirdDropdownTimer.current = setTimeout(() => {
-      setOpenThirdDropdown(null);
-    }, 300);
-  };
+      return (
+        <li key={key} className={`text-white pl-${level * 4}`}>
+          <div
+            className="flex justify-between items-center py-2 cursor-pointer hover:text-orange-300"
+            onClick={() =>
+              item.subItems?.length
+                ? setOpenFn(isOpen ? null : key)
+                : handleLinkClick(item.path)
+            }
+          >
+            <span>{item.label}</span>
+            {item.subItems?.length > 0 &&
+              (isOpen ? <FiChevronUp /> : <FiChevronDown />)}
+          </div>
+          {isOpen && item.subItems?.length > 0 && (
+            <ul className="pl-2">{renderMenuItems(item.subItems, level + 1, key)}</ul>
+          )}
+        </li>
+      );
+    });
 
   return (
     <header className="bg-white rounded-4xl font-medium text-black w-full md:max-w-[85%] mt-2 lg:mt-10 mx-auto lg:mx-24 z-50 lg:absolute left-0 right-0 lg:left-auto lg:right-auto">
       <div className="container mx-auto p-2 lg:p-4 flex justify-between lg:justify-even lg:gap-10 items-center">
         <Link to="/" onClick={() => handleLinkClick("/")}>
-          <img src={logo} alt="Logo" className="h-10 sm:w-[120px] lg:w-[200px] lg:h-16" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-10 sm:w-[120px] lg:w-[200px] lg:h-16"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -134,72 +135,56 @@ const Navbar = () => {
             <div
               key={item.id}
               className="relative"
-              onMouseEnter={() => onDropdownMouseEnter(item.id)}
-              onMouseLeave={onDropdownMouseLeave}
+              onMouseEnter={() => setOpenDropdown(item.id)}
+              onMouseLeave={() => {
+                setOpenDropdown(null);
+                setOpenSubDropdown(null);
+                setOpenThirdDropdown(null);
+              }}
             >
-              <motion.div whileTap={{ scale: 0.95 }}>
-                <div
-                  className="hover:text-indigo-900 cursor-pointer flex items-center gap-1 select-none"
-                  onClick={() => item.path && handleLinkClick(item.path)}
-                >
-                  {item.label}
-                  {item.subItems?.length > 0 &&
-                    (openDropdown === item.id ? <FiChevronUp /> : <FiChevronDown />)}
-                </div>
-              </motion.div>
+              <div
+                className="hover:text-indigo-900 cursor-pointer flex items-center gap-1 select-none"
+                onClick={() => handleLinkClick(item.path)}
+              >
+                {item.label}
+                {item.subItems?.length > 0 &&
+                  (openDropdown === item.id ? <FiChevronUp /> : <FiChevronDown />)}
+              </div>
 
-              {/* First level dropdown */}
+              {/* Desktop Dropdowns */}
               {openDropdown === item.id && item.subItems?.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 bg-indigo-950 shadow-lg rounded-md mt-2 min-w-[250px] py-2 z-10"
-                >
-                  {item.subItems.map((subItem, subIndex) => (
+                <div className="absolute top-full left-0 bg-indigo-950 shadow-lg rounded-md mt-2 min-w-[250px] py-2 z-10">
+                  {item.subItems.map((subItem, i) => (
                     <div
                       key={subItem.id}
                       className="relative px-4"
-                      onMouseEnter={() => onSubDropdownMouseEnter(`${item.id}-${subIndex}`)}
-                      onMouseLeave={onSubDropdownMouseLeave}
+                      onMouseEnter={() => setOpenSubDropdown(`${item.id}-${i}`)}
+                      onMouseLeave={() => setOpenSubDropdown(null)}
                     >
                       <div
-                        className="flex justify-between items-center w-full py-2 text-sm text-white hover:text-orange-300 cursor-pointer select-none"
-                        onClick={() => subItem.path && handleLinkClick(subItem.path)}
+                        className="flex justify-between items-center w-full py-2 text-sm text-white hover:text-orange-300 cursor-pointer"
+                        onClick={() => handleLinkClick(subItem.path)}
                       >
-                        <span>{subItem.label}</span>
+                        {subItem.label}
                         {subItem.subItems?.length > 0 && <FiChevronRight />}
                       </div>
-
-                      {/* Second level dropdown */}
-                      {openSubDropdown === `${item.id}-${subIndex}` &&
+                      {openSubDropdown === `${item.id}-${i}` &&
                         subItem.subItems?.length > 0 && (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.15 }}
-                            className="absolute left-full top-0 ml-1 bg-indigo-950 shadow-lg rounded-md min-w-[200px] z-20"
-                            onMouseEnter={() => onThirdDropdownMouseEnter(`${item.id}-${subIndex}`)}
-                            onMouseLeave={onThirdDropdownMouseLeave}
-                          >
+                          <div className="absolute left-full top-0 ml-1 bg-indigo-950 shadow-lg rounded-md min-w-[200px] z-20">
                             {subItem.subItems.map((thirdItem) => (
-                              <Link
+                              <div
                                 key={thirdItem.id}
-                                to={thirdItem.path}
-                                className="block px-4 py-2 text-white text-sm hover:text-orange-300 select-none"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  handleLinkClick(thirdItem.path);
-                                }}
+                                className="px-4 py-2 text-white text-sm hover:text-orange-300 cursor-pointer"
+                                onClick={() => handleLinkClick(thirdItem.path)}
                               >
                                 {thirdItem.label}
-                              </Link>
+                              </div>
                             ))}
-                          </motion.div>
+                          </div>
                         )}
                     </div>
                   ))}
-                </motion.div>
+                </div>
               )}
             </div>
           ))}
@@ -217,67 +202,14 @@ const Navbar = () => {
         </motion.button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown - Reusing same logic */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="lg:hidden bg-indigo-950 text-sm shadow-md px-4 pb-4"
         >
-          <ul className="space-y-1">
-            {menus.map((item) => (
-              <li key={`mobile-${item.id}`}>
-                <div
-                  className="flex justify-between items-center text-white py-2 cursor-pointer"
-                  onClick={() =>
-                    setOpenDropdown(openDropdown === item.id ? null : item.id)
-                  }
-                >
-                  {item.label}
-                  {item.subItems?.length > 0 &&
-                    (openDropdown === item.id ? <FiChevronUp /> : <FiChevronDown />)}
-                </div>
-                {openDropdown === item.id && item.subItems?.length > 0 && (
-                  <ul className="pl-4 space-y-1">
-                    {item.subItems.map((subItem) => (
-                      <li key={`mobile-${subItem.id}`}>
-                        <div
-                          className="flex justify-between items-center text-white py-1 cursor-pointer"
-                          onClick={() =>
-                            setOpenSubDropdown(
-                              openSubDropdown === subItem.id ? null : subItem.id
-                            )
-                          }
-                        >
-                          {subItem.label}
-                          {subItem.subItems?.length > 0 && <FiChevronDown />}
-                        </div>
-                        {openSubDropdown === subItem.id &&
-                          subItem.subItems?.length > 0 && (
-                            <ul className="pl-4 space-y-1">
-                              {subItem.subItems.map((thirdItem) => (
-                                <li key={`mobile-${thirdItem.id}`}>
-                                  <Link
-                                    to={thirdItem.path}
-                                    className="block text-white py-1 hover:text-indigo-300"
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      handleLinkClick(thirdItem.path);
-                                    }}
-                                  >
-                                    {thirdItem.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
+          <ul>{renderMenuItems(menus)}</ul>
         </motion.div>
       )}
     </header>

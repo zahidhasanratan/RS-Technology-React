@@ -20,7 +20,7 @@ const Home = () => {
       <Hero />
       <AboutHome />
       <ServiceHome title="SOLUTIONS" subtitle="Our Services and Solutions" />
-      <HomeBrandsSection title="Our Clients" brands={clients} />
+      <HomeBrandsSection title="Our Brands" brands={clients} />
     </div>
   );
 };

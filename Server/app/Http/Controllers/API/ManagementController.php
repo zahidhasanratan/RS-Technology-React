@@ -14,7 +14,7 @@ class ManagementController extends Controller
     public function index()
     {
         // Fetch all sliders ordered by ID descending
-        $sliders = LifeMember::orderBy('id', 'DESC')->get();
+        $sliders = LifeMember::orderBy('sl', 'asc')->get();
 
         // Update image path to full URL
         $sliders->transform(function ($slider) {

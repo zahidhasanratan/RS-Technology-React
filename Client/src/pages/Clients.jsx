@@ -8,7 +8,7 @@ const Clients = () => {
 
   return (
     <div>
-      <CommonHero title="Clients" />
+      <CommonHero title="Brands" />
       <div className="-my-12">
         <BrandSection title="" brands={brands} />
       </div>

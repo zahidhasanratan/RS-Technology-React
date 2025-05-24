@@ -62,7 +62,10 @@
                                             @endif
                                         </div>
 
-
+                                        <div class="form-group">
+                                            <label>Sequence</label>
+                                            <input class="form-control" name="sl" value="{{ $news->sl }}" placeholder="Sequence" />
+                                        </div>
 
                                         <a href="{{ route('news.index') }}" class="btn btn-danger">Back</a>
                                         <button type="submit" class="btn btn-primary">Submit Button</button>
