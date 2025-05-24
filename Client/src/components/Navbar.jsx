@@ -20,6 +20,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Ref for close timer to manage delay on mouse leave
+  const closeTimeout = useRef(null);
+
   useEffect(() => {
     const fetchMenus = async () => {
       try {
@@ -80,6 +83,23 @@ const Navbar = () => {
     setOpenThirdDropdown(null);
   };
 
+  // Functions to handle delayed closing on hover leave and cancel closing on hover enter
+  const handleMouseEnter = (setOpenFn, id) => {
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+      closeTimeout.current = null;
+    }
+    setOpenFn(id);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => {
+      setOpenDropdown(null);
+      setOpenSubDropdown(null);
+      setOpenThirdDropdown(null);
+    }, 250); // Delay in ms
+  };
+
   const renderMenuItems = (items, level = 0, parentKey = "") =>
     items.map((item, index) => {
       const key = `${parentKey}-${item.id}`;
@@ -135,12 +155,8 @@ const Navbar = () => {
             <div
               key={item.id}
               className="relative"
-              onMouseEnter={() => setOpenDropdown(item.id)}
-              onMouseLeave={() => {
-                setOpenDropdown(null);
-                setOpenSubDropdown(null);
-                setOpenThirdDropdown(null);
-              }}
+              onMouseEnter={() => handleMouseEnter(setOpenDropdown, item.id)}
+              onMouseLeave={handleMouseLeave}
             >
               <div
                 className="hover:text-indigo-900 cursor-pointer flex items-center gap-1 select-none"
@@ -158,8 +174,10 @@ const Navbar = () => {
                     <div
                       key={subItem.id}
                       className="relative px-4"
-                      onMouseEnter={() => setOpenSubDropdown(`${item.id}-${i}`)}
-                      onMouseLeave={() => setOpenSubDropdown(null)}
+                      onMouseEnter={() =>
+                        handleMouseEnter(setOpenSubDropdown, `${item.id}-${i}`)
+                      }
+                      onMouseLeave={handleMouseLeave}
                     >
                       <div
                         className="flex justify-between items-center w-full py-2 text-sm text-white hover:text-orange-300 cursor-pointer"
