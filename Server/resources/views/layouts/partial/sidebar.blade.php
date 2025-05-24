@@ -195,15 +195,15 @@
             {{--</li>--}}
 
             <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i> Valuable Clients<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-sitemap fa-3x"></i> Our Brands<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
 
 
                     <li>
-                        <a href="{{ route('photo.create') }}">Add Valuable Clients</a>
+                        <a href="{{ route('photo.create') }}">Add Our Brands</a>
                     </li>
                     <li>
-                        <a href="{{ route('photo.index') }}">All Valuable Clients</a>
+                        <a href="{{ route('photo.index') }}">All Our Brands</a>
                     </li>
 
 

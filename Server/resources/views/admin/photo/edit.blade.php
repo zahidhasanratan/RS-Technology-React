@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title','Edit Valuable Clients')
+@section('title','Edit Our Brands')
 @section('content')
 
     <div id="page-wrapper" >
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Edit Clients</h2>
+                    <h2>Edit Our Brands</h2>
 
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Add Clients
+                            Add Our Brands
                         </div>
                         <div class="panel-body">
                             <div class="row">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','All Clients')
+@section('title','All Our Brands')
 @section('content')
 
     <div id="wrapper">
@@ -9,7 +9,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>All Clients</h2>
+                        <h2>All Our Brands</h2>
                         <a style="float:right" href="{{ route('photo.create') }}" class="btn btn-primary square-btn-adjust">Add Clients</a>
                         <div class="row">
 
@@ -24,7 +24,7 @@
                         <!-- Advanced Tables -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                All Valuable Clients
+                                All Our Brands
                             </div>
                             <div class="panel-body">
 
