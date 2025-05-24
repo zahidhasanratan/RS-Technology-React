@@ -20,7 +20,9 @@ import UpcommingProducts from '../pages/UpcommingProducts';
 import ProjectDetails from '../Shared/Projects/ProjectDetails';
 import RunningProducts from '../pages/RunningProject';
 import { PageDetails } from '../pages/PageDetails';
-
+import { Career } from '../pages/Career';
+import { JobDetails } from '../Shared/CareerJob/JobDetails';
+import { Apply } from '../Shared/CareerJob/Apply';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
     Component: Root,
     children: [
       { index: true, Component: Home },
+
       {
         path: 'Service/:serviceSlug',
         loader: async ({ params }) => {
@@ -35,54 +38,32 @@ const router = createBrowserRouter([
           if (!response.ok) {
             throw new Response('Service not found', { status: 404 });
           }
-          const data = await response.json();
-          return data;
+          return response.json();
         },
         Component: SingleSolution,
-      },
-      {
-        path: 'About',
-        Component: About,
-      },
-      {
-  path: 'page/:slug',
-  loader: async ({ params }) => {
-    const response = await fetch(`https://server.rst-bd.com/api/page/${params.slug}`);
-    if (!response.ok) {
-      throw new Response('Page not found', { status: 404 });
-    }
-    return response.json();
-  },
-  Component: PageDetails,
-  errorElement: <div className="p-10 text-center text-red-500">Page not found (404)</div>,
-},
- {
-        path: 'contact',
-        Component: ContactUs,
+        errorElement: <div className="p-10 text-center text-red-500">Service not found (404)</div>,
       },
 
+      { path: 'About', Component: About },
+      { path: 'contact', Component: ContactUs },
+      { path: 'upcomming-project', Component: UpcommingProducts },
+      { path: 'completed-project', Component: Products },
+      { path: 'running-project', Component: RunningProducts },
+      { path: 'Solution', Component: Solutions },
+
       {
-        path: 'upcomming-project',
-        Component: UpcommingProducts,
-      },
-{
-        path: 'completed-project',
-        Component: Products,
-      },
-      {
-        path: 'running-project',
-        Component: RunningProducts,
+        path: 'page/:slug',
+        loader: async ({ params }) => {
+          const response = await fetch(`https://server.rst-bd.com/api/page/${params.slug}`);
+          if (!response.ok) {
+            throw new Response('Page not found', { status: 404 });
+          }
+          return response.json();
+        },
+        Component: PageDetails,
+        errorElement: <div className="p-10 text-center text-red-500">Page not found (404)</div>,
       },
 
-{
-  path: 'projectdetails/:slug',
-  element: <ProjectDetails />,
-},
-
-       {
-        path: 'Solution',
-        Component: Solutions,
-      },
       {
         path: 'clients',
         loader: async () => {
@@ -91,6 +72,7 @@ const router = createBrowserRouter([
         },
         Component: Clients,
       },
+
       {
         path: 'video',
         loader: async () => {
@@ -101,25 +83,26 @@ const router = createBrowserRouter([
       },
 
       {
-  path: 'photo',
-  loader: async () => {
-    const res = await fetch('https://server.rst-bd.com/api/photo');
-    return res.json();
-  },
-  Component: Photo,
-},
-{
-  path: 'photo/:slug',
-  loader: async ({ params }) => {
-    const response = await fetch(`https://server.rst-bd.com/api/photo/${params.slug}`);
-    if (!response.ok) {
-      throw new Response('Photo album not found', { status: 404 });
-    }
-    return response.json();
-  },
-  Component: SingleAlbum,
-  errorElement: <div className="p-10 text-center text-red-500">Photo album not found (404)</div>,
-},
+        path: 'photo',
+        loader: async () => {
+          const res = await fetch('https://server.rst-bd.com/api/photo');
+          return res.json();
+        },
+        Component: Photo,
+      },
+
+      {
+        path: 'photo/:slug',
+        loader: async ({ params }) => {
+          const response = await fetch(`https://server.rst-bd.com/api/photo/${params.slug}`);
+          if (!response.ok) {
+            throw new Response('Photo album not found', { status: 404 });
+          }
+          return response.json();
+        },
+        Component: SingleAlbum,
+        errorElement: <div className="p-10 text-center text-red-500">Photo album not found (404)</div>,
+      },
 
       {
         path: 'news',
@@ -129,18 +112,25 @@ const router = createBrowserRouter([
         },
         Component: News,
       },
-    {
-    path: 'news/:slug',
-    loader: async ({ params }) => {
-      const response = await fetch(`https://server.rst-bd.com/api/news/${params.slug}`);
-      if (!response.ok) {
-        throw new Response('News not found', { status: 404 });
-      }
-      return response.json();
-    },
-  Component: NewsSingle,
-  errorElement: <div className="p-10 text-center text-red-500">News not found (404)</div>,
-},
+
+      {
+        path: 'news/:slug',
+        loader: async ({ params }) => {
+          const response = await fetch(`https://server.rst-bd.com/api/news/${params.slug}`);
+          if (!response.ok) {
+            throw new Response('News not found', { status: 404 });
+          }
+          return response.json();
+        },
+        Component: NewsSingle,
+        errorElement: <div className="p-10 text-center text-red-500">News not found (404)</div>,
+      },
+
+      {
+        path: 'projectdetails/:slug',
+        Component: ProjectDetails,
+      },
+
       {
         path: 'management',
         loader: async () => {
@@ -149,6 +139,31 @@ const router = createBrowserRouter([
         },
         Component: Management,
       },
+
+      {
+        path: 'career',
+        loader: async () => {
+          const res = await fetch('http://127.0.0.1:8000/api/career');
+          return res.json();
+        },
+        Component: Career,
+      },
+
+      {
+        path: 'careerDetails/:slugOrId',
+        loader: async ({ params }) => {
+          const res = await fetch(`http://127.0.0.1:8000/api/careerDetails/${params.slugOrId}`);
+          return res.json();
+        },
+        Component: JobDetails,
+        errorElement: <div className="p-10 text-center text-red-500">Career details not found (404)</div>,
+      },
+{
+  path: 'apply/:slugOrId',
+  Component: Apply,
+}
+,
+
       {
         path: '*',
         Component: NotFoundPage,

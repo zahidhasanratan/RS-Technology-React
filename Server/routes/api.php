@@ -42,6 +42,7 @@ Route::get('/page/{slug}', [\App\Http\Controllers\Api\PageController::class, 'de
 
 Route::get('/slider', [\App\Http\Controllers\Api\SliderController::class, 'index']);
 Route::get('/career', [\App\Http\Controllers\Api\CareerController::class, 'index']);
+Route::get('/careerDetails/{slug}', [\App\Http\Controllers\Api\CareerController::class, 'details']);
 Route::get('/photo', [\App\Http\Controllers\Api\CategoryController::class, 'index']);
 Route::get('/photo/{slug}', [\App\Http\Controllers\Api\CategoryController::class, 'details']);
 Route::get('/video', [\App\Http\Controllers\Api\VideoController::class, 'index']);

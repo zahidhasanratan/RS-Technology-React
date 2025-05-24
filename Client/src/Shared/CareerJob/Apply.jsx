@@ -1,16 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import CommonHero from '../CommonHero';
 import { FaArrowRight } from 'react-icons/fa';
 
-const Apply = () => {
+export const Apply = () => {
+    const { slugOrId } = useParams();
+
+    // Simulate fetching job data by slugOrId or id here:
+    // For now, just set position to slugOrId (you can replace with actual fetch)
+    const [position, setPosition] = useState('');
+
+    useEffect(() => {
+        // Fetch job by slugOrId here and set position dynamically
+        // For example:
+        // fetch(`/api/jobs/${slugOrId}`).then(...).then(data => setPosition(data.title));
+
+        // Temporary demo:
+        setPosition(slugOrId);
+    }, [slugOrId]);
+
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
         phone: '',
-        position: '',
+        position: '', // will be set to job position on load
         resume: null,
         message: ''
     });
+
+    // Update formData.position whenever position changes
+    useEffect(() => {
+      setFormData(prev => ({ ...prev, position }));
+    }, [position]);
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -22,9 +43,8 @@ const Apply = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         console.log('Form submitted:', formData);
-
+        // TODO: Add your form submit logic here
     };
 
     return (
@@ -93,6 +113,7 @@ const Apply = () => {
                                                 value={formData.position}
                                                 onChange={handleChange}
                                                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                                readOnly
                                             />
                                         </div>
                                     </div>
@@ -108,17 +129,17 @@ const Apply = () => {
                                             onChange={handleChange}
                                             accept=".pdf,.doc,.docx"
                                             className="block w-full text-sm text-gray-800 border border-gray-300 rounded-md
-                      file:mr-4 file:py-2 file:px-4
-                      file:rounded-md file:border-0
-                      file:text-sm 
-                      file:bg-blue-50 file:text-gray-800
-                      hover:file:bg-blue-100"
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-md file:border-0
+                        file:text-sm 
+                        file:bg-blue-50 file:text-gray-800
+                        hover:file:bg-blue-100"
                                             required
                                         />
                                     </div>
 
                                     <div>
-                                        <label htmlFor="message" className="block text-md  text-gray-500 mb-1">
+                                        <label htmlFor="message" className="block text-md text-gray-500 mb-1">
                                             Cover Letter / Message
                                         </label>
                                         <textarea
@@ -131,8 +152,9 @@ const Apply = () => {
                                         ></textarea>
                                     </div>
 
-                                    <div className="flex ">
+                                    <div className="flex">
                                         <button
+                                            type="submit"
                                             className="flex items-center gap-2 px-6 py-2 bg-indigo-950 text-md text-white font-semibold rounded-4xl hover:bg-indigo-900 transition-colors md:self-center"
                                         >
                                             Submit Application
@@ -140,7 +162,6 @@ const Apply = () => {
                                                 <FaArrowRight />
                                             </span>
                                         </button>
-
                                     </div>
                                 </form>
                             </div>
@@ -151,5 +172,3 @@ const Apply = () => {
         </div>
     );
 };
-
-export default Apply;

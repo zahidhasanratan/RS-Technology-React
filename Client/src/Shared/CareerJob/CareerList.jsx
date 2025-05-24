@@ -1,38 +1,9 @@
 import { FaArrowRight } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLoaderData } from "react-router-dom";
 
 const CareerList = () => {
     const navigate = useNavigate();
-    const jobOpenings = [
-        {
-            id: 1,
-            title: "Executive, MIS",
-            location: "Head Office",
-            function: "Data Analysis",
-            type: "Permanent",
-        },
-        {
-            id: 2,
-            title: "Product Executive",
-            location: "Head Office",
-            function: "Marketing",
-            type: "Permanent",
-        },
-        {
-            id: 3,
-            title: "Officer, Qualification & Validation",
-            location: "Plant, Rajendrapur, Gazipur",
-            function: "Manufacturing",
-            type: "Permanent",
-        },
-        {
-            id: 4,
-            title: "Sr. Executive/Assistant Manager, R&D",
-            location: "Plant, Rajendrapur, Gazipur",
-            function: "Research & Development",
-            type: "Permanent",
-        }
-    ];
+    const jobOpenings = useLoaderData(); // Getting API data here
 
     return (
         <section className="py-6 px-6 lg:px-40 bg-gray-50">
@@ -45,25 +16,24 @@ const CareerList = () => {
                                     <div className="flex-1">
                                         <h3 className="text-3xl mb-3 text-gray-800">{job.title}</h3>
                                         <p className="text-gray-600 mb-3">{job.location}</p>
-                                        <div className="flex gap-4 mb-3 px-4">
-                                            <li className="pr-3 py-1 list-disc text-gray-600 text-sm ">
-                                                Job Function : {job.function}
+                                        <ul className="flex gap-4 mb-3 px-4 list-disc list-inside">
+                                            <li className="text-gray-600 text-sm">
+                                                Job Function: {job.jobFunction || job.function}
                                             </li>
-                                            <li className="pr-3 py-1 list-disc text-gray-600 text-sm">
-                                                Job Type : {job.type}
-                                            </li >
-                                        </div>
+                                            <li className="text-gray-600 text-sm">
+                                                Job Type: {job.jobType || job.type}
+                                            </li>
+                                        </ul>
                                     </div>
                                     <button
-                                        onClick={() => navigate("/jobdetails")}
-                                        className="flex items-center gap-2 px-6 py-2 bg-indigo-950 text-lg text-white font-semibold rounded-4xl hover:bg-indigo-900 transition-colors md:self-center"
+                                        onClick={() => navigate(`/careerDetails/${job.slug || job.id}`)}
+                                        className="flex items-center gap-2 px-6 py-2 bg-indigo-950 text-lg text-white font-semibold rounded-xl hover:bg-indigo-900 transition-colors md:self-center"
                                     >
                                         View Details
                                         <span className="text-base">
                                             <FaArrowRight />
                                         </span>
                                     </button>
-
                                 </div>
                             </li>
                         ))}
