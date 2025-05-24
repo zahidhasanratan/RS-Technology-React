@@ -39,7 +39,6 @@ use App\Http\Controllers\admin\RatingListController;
 use App\Http\Controllers\admin\OutlookController;
 use App\Http\Controllers\admin\AdminUser;
 use App\Http\Controllers\admin\UserController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -197,7 +196,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('outlook', OutlookController::class);
     Route::resource('adminuser', AdminUser::class);
     Route::resource('user', UserController::class);
-
+    Route::resource('post', \App\Http\Controllers\admin\PostController::class);
+    Route::resource('applicant',\App\Http\Controllers\admin\ApplicantController::class);
     Route::get('/approve', [AdminUser::class, 'pending'])->name('adminuser.approve');
     Route::get('edituser/{slug}', [AdminUser::class, 'edituser'])->name('adminuser.edituser');
     Route::put('deactive/{id}', [AdminUser::class, 'updatedeactive'])->name('adminuser.updatedeactive');

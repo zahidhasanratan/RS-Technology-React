@@ -210,7 +210,17 @@
                 </ul>
             </li>
 
-
+            <li>
+                <a class="{{ Request::is('admin/post*') ? 'active-menu': '' }}" href="#"><i class="fa fa-newspaper-o fa-3x"></i> Career <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('post.create') }}">Add Post</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('post.index') }}">All Post</a>
+                    </li>
+                </ul>
+            </li>
             <li>
                 <a onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                    href="{{ route('logout') }}"><i class="fa fa-sign-out fa-3x"></i> Logout</a>

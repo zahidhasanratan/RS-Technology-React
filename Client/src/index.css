@@ -4,3 +4,9 @@
 @theme {
   --font-barlow: Barlow, "sans-serif";
 }
+
+.prose ul, 
+.prose ol {
+    list-style: disc !important;
+    padding-left: 1.5em; /* Optional: ensures indentation */
+}
