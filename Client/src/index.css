@@ -17,3 +17,8 @@
     list-style: disc !important;
     padding-left: 1.5em; /* Optional: ensures indentation */
 }
+.space-y-6 ul, 
+.space-y-2 ol {
+    list-style: disc !important;
+    padding-left: 1.5em; /* Optional: ensures indentation */
+}

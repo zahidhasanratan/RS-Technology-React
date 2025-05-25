@@ -46,7 +46,7 @@ export const Apply = () => {
         formPayload.append('message', formData.message);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/apply', {
+            const response = await fetch('https://server.rst-bd.com/api/apply', {
                 method: 'POST',
                 body: formPayload,
             });
@@ -72,7 +72,6 @@ export const Apply = () => {
 
                 document.getElementById('resume').value = '';
 
-                // Redirect after 2 seconds
                 setTimeout(() => {
                     navigate('/');
                 }, 2000);
@@ -164,10 +163,22 @@ export const Apply = () => {
                                         </div>
                                     </div>
 
+                                    {/* Modified Upload Resume Field */}
                                     <div>
                                         <label htmlFor="resume" className="block text-md text-gray-500 mb-1">
                                             Upload Resume
                                         </label>
+                                        <div className="flex items-center gap-4">
+                                            <label
+                                                htmlFor="resume"
+                                                className="cursor-pointer inline-block px-4 py-2 bg-indigo-950 text-white text-sm font-medium rounded-md hover:bg-indigo-900 transition-colors"
+                                            >
+                                                Choose File
+                                            </label>
+                                            <span className="text-gray-600 text-sm truncate">
+                                                {formData.resume ? formData.resume.name : 'No file selected'}
+                                            </span>
+                                        </div>
                                         <input
                                             type="file"
                                             id="resume"
@@ -175,7 +186,7 @@ export const Apply = () => {
                                             onChange={handleChange}
                                             accept=".pdf,.doc,.docx"
                                             required
-                                            className="block w-full text-sm text-gray-800 border border-gray-300 rounded-md"
+                                            className="hidden"
                                         />
                                     </div>
 

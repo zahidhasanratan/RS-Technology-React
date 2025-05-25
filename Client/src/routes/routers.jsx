@@ -144,7 +144,7 @@ const router = createBrowserRouter([
       {
         path: 'career',
         loader: async () => {
-          const res = await fetch('http://127.0.0.1:8000/api/career');
+          const res = await fetch('https://server.rst-bd.com/api/career');
           return res.json();
         },
         Component: Career,
@@ -153,7 +153,7 @@ const router = createBrowserRouter([
       {
         path: 'careerDetails/:slugOrId',
         loader: async ({ params }) => {
-          const res = await fetch(`http://127.0.0.1:8000/api/careerDetails/${params.slugOrId}`);
+          const res = await fetch(`https://server.rst-bd.com/api/careerDetails/${params.slugOrId}`);
           return res.json();
         },
         Component: JobDetails,

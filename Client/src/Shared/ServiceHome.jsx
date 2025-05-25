@@ -32,10 +32,10 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
     }, []);
 
     return (
-        <section className="py-2 md:px-24 lg:px-24 bg-white">
+        <section className="py-8 md:px-24 lg:px-24 bg-[#F6F6F6]">
             <div className="container mx-auto px-4">
                 {/* Section Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-16 ">
                     <motion.div
                         initial="hidden"
                         whileInView="visible"

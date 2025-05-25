@@ -58,7 +58,7 @@ const BrandsSection = ({ title = "", brands = [] }) => {
                     <img
                       src={brand.image}
                       alt={brand.title}
-                      className="h-25 max-w-20 object-contain transition-all duration-300"
+                      className="h-25 max-w-30 object-contain transition-all duration-300"
                     />
                   </a>
                 </motion.div>
