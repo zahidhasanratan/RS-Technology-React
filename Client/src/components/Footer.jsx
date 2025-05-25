@@ -95,18 +95,23 @@ const Footer = () => {
                         <h3 className="text-xl font-semibold text-white mb-4">Quick Links</h3>
                         {loading && <p>Loading links...</p>}
                         {!loading && (
-                            <ul className="space-y-3">
-                                {footerMenu.map((link, idx) => (
-                                    <li key={idx}>
-                                        <Link
-                                            to={`/${link.external_link}`}
-                                            className="text-gray-300 hover:text-indigo-300 transition-colors duration-200 flex items-center"
-                                        >
-                                            {link.menu_name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                           <ul className="space-y-3">
+  {footerMenu.map((link, idx) => (
+    <li key={idx}>
+      <Link
+        to={
+          link.page_type === "url"
+            ? link.external_link
+            : `/page/${link.slug}`
+        }
+        className="text-gray-300 hover:text-indigo-300 transition-colors duration-200 flex items-center"
+      >
+        {link.menu_name}
+      </Link>
+    </li>
+  ))}
+</ul>
+
                         )}
                     </div>
 

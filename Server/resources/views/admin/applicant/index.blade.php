@@ -34,11 +34,11 @@
                                         <thead>
                                         <tr>
                                             <th>SL.</th>
-                                            <th>Name</th>
+                                            <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Post Name</th>
-                                            <th>Subject</th>
+
+
                                             <th width="17%;">Action</th>
 
                                         </tr>
@@ -47,13 +47,12 @@
                                         @foreach($news as $key=>$news)
                                             <tr class="odd gradeX">
                                                 <td>{{ $key + 1 }}</td>
-                                                <td>{{ $news->name }}</td>
+                                                <td>{{ $news->fullName }}</td>
                                                 <td>{{ $news->email }}</td>
                                                 <td>{{ $news->phone }}</td>
-                                                <td>{{ $news->postname }}</td>
-                                                <td>{{ $news->subject }}</td>
 
-                                                <td><a href="{{ asset('') }}uploads/application/{{ $news->image }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Download CV</a>
+
+                                                <td><a href="{{ asset('') }}{{ $news->resume }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Download CV</a>
                                                     <form id="delete-form-{{ $news->id }}" action="{{ route('applicant.destroy',$news->id) }}" style="display: none;" method="POST">
                                                         @csrf
                                                         @method('DELETE')

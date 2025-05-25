@@ -48,8 +48,9 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
+
         $title = Post::find($id);
-        $news = Application::where('post_id', $id)->get();
+        $news = Application::where('position', $title->slug)->get();
         return view('admin.applicant.index', compact('news','title'));
     }
 

@@ -23,13 +23,14 @@ import { PageDetails } from '../pages/PageDetails';
 import { Career } from '../pages/Career';
 import { JobDetails } from '../Shared/CareerJob/JobDetails';
 import { Apply } from '../Shared/CareerJob/Apply';
+import { homeLoader } from '../components/homeLoader';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: Root,
     children: [
-      { index: true, Component: Home },
+     { index: true, Component: Home, loader: homeLoader },
 
       {
         path: 'Service/:serviceSlug',

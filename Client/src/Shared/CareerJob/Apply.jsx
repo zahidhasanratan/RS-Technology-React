@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import CommonHero from '../CommonHero';
 import { FaArrowRight } from 'react-icons/fa';
 
 export const Apply = () => {
     const { slugOrId } = useParams();
+    const navigate = useNavigate();
     const [position, setPosition] = useState('');
 
     useEffect(() => {
-        setPosition(slugOrId); // Simulate fetch
+        setPosition(slugOrId);
     }, [slugOrId]);
 
     const [formData, setFormData] = useState({
@@ -56,9 +57,10 @@ export const Apply = () => {
                     icon: 'success',
                     title: 'Application Submitted!',
                     text: data.message,
+                    timer: 2000,
+                    showConfirmButton: false
                 });
 
-                // Clear the form
                 setFormData({
                     fullName: '',
                     email: '',
@@ -68,8 +70,12 @@ export const Apply = () => {
                     message: ''
                 });
 
-                // Reset file input manually (React doesn't control file input value)
                 document.getElementById('resume').value = '';
+
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000);
             } else {
                 Swal.fire({
                     icon: 'error',
