@@ -66,3 +66,4 @@ Route::get('/objects6', [\App\Http\Controllers\Api\ObjectsController::class, 'ob
 Route::get('/footercontact', [\App\Http\Controllers\Api\OthersController::class, 'others2']);
 Route::get('/footerother', [\App\Http\Controllers\Api\OthersController::class, 'others6']);
 Route::get('/social', [\App\Http\Controllers\Api\OthersController::class, 'others7']);
+Route::post('/apply', [\App\Http\Controllers\Api\ApplicationController::class, 'store']);

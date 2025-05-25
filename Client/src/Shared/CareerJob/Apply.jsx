@@ -1,36 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import CommonHero from '../CommonHero';
 import { FaArrowRight } from 'react-icons/fa';
 
 export const Apply = () => {
     const { slugOrId } = useParams();
-
-    // Simulate fetching job data by slugOrId or id here:
-    // For now, just set position to slugOrId (you can replace with actual fetch)
     const [position, setPosition] = useState('');
 
     useEffect(() => {
-        // Fetch job by slugOrId here and set position dynamically
-        // For example:
-        // fetch(`/api/jobs/${slugOrId}`).then(...).then(data => setPosition(data.title));
-
-        // Temporary demo:
-        setPosition(slugOrId);
+        setPosition(slugOrId); // Simulate fetch
     }, [slugOrId]);
 
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
         phone: '',
-        position: '', // will be set to job position on load
+        position: '',
         resume: null,
         message: ''
     });
 
-    // Update formData.position whenever position changes
     useEffect(() => {
-      setFormData(prev => ({ ...prev, position }));
+        setFormData(prev => ({ ...prev, position }));
     }, [position]);
 
     const handleChange = (e) => {
@@ -41,10 +33,58 @@ export const Apply = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        // TODO: Add your form submit logic here
+
+        const formPayload = new FormData();
+        formPayload.append('fullName', formData.fullName);
+        formPayload.append('email', formData.email);
+        formPayload.append('phone', formData.phone);
+        formPayload.append('position', formData.position);
+        formPayload.append('resume', formData.resume);
+        formPayload.append('message', formData.message);
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/apply', {
+                method: 'POST',
+                body: formPayload,
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Application Submitted!',
+                    text: data.message,
+                });
+
+                // Clear the form
+                setFormData({
+                    fullName: '',
+                    email: '',
+                    phone: '',
+                    position: formData.position,
+                    resume: null,
+                    message: ''
+                });
+
+                // Reset file input manually (React doesn't control file input value)
+                document.getElementById('resume').value = '';
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Submission Failed',
+                    text: data.message || 'Please try again.',
+                });
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Server Error',
+                text: 'An error occurred while submitting the form.',
+            });
+        }
     };
 
     return (
@@ -55,7 +95,7 @@ export const Apply = () => {
                     <div className="flex justify-center">
                         <div className="w-full max-w-2xl">
                             <div className="bg-white p-8 rounded-lg shadow-md">
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                <form onSubmit={handleSubmit} className="space-y-6" encType="multipart/form-data">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label htmlFor="fullName" className="block text-md text-gray-500 mb-1">
@@ -67,8 +107,8 @@ export const Apply = () => {
                                                 name="fullName"
                                                 value={formData.fullName}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                                 required
+                                                className="w-full px-4 py-2 border border-gray-300 rounded-md"
                                             />
                                         </div>
 
@@ -82,8 +122,8 @@ export const Apply = () => {
                                                 name="email"
                                                 value={formData.email}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                                 required
+                                                className="w-full px-4 py-2 border border-gray-300 rounded-md"
                                             />
                                         </div>
 
@@ -97,8 +137,8 @@ export const Apply = () => {
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                                 required
+                                                className="w-full px-4 py-2 border border-gray-300 rounded-md"
                                             />
                                         </div>
 
@@ -112,8 +152,8 @@ export const Apply = () => {
                                                 name="position"
                                                 value={formData.position}
                                                 onChange={handleChange}
-                                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                                 readOnly
+                                                className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100"
                                             />
                                         </div>
                                     </div>
@@ -128,13 +168,8 @@ export const Apply = () => {
                                             name="resume"
                                             onChange={handleChange}
                                             accept=".pdf,.doc,.docx"
-                                            className="block w-full text-sm text-gray-800 border border-gray-300 rounded-md
-                        file:mr-4 file:py-2 file:px-4
-                        file:rounded-md file:border-0
-                        file:text-sm 
-                        file:bg-blue-50 file:text-gray-800
-                        hover:file:bg-blue-100"
                                             required
+                                            className="block w-full text-sm text-gray-800 border border-gray-300 rounded-md"
                                         />
                                     </div>
 
@@ -148,14 +183,14 @@ export const Apply = () => {
                                             rows="5"
                                             value={formData.message}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                            className="w-full px-4 py-2 border border-gray-300 rounded-md"
                                         ></textarea>
                                     </div>
 
                                     <div className="flex">
                                         <button
                                             type="submit"
-                                            className="flex items-center gap-2 px-6 py-2 bg-indigo-950 text-md text-white font-semibold rounded-4xl hover:bg-indigo-900 transition-colors md:self-center"
+                                            className="flex items-center gap-2 px-6 py-2 bg-indigo-950 text-md text-white font-semibold rounded-4xl hover:bg-indigo-900 transition-colors"
                                         >
                                             Submit Application
                                             <span className="text-base">
