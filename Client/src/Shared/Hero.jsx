@@ -1,76 +1,73 @@
 import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const Hero = () => {
   const [slides, setSlides] = useState([]);
 
   useEffect(() => {
-    // Fetch slider data from API
     fetch('https://server.rst-bd.com/api/slider')
       .then((res) => res.json())
-      .then((data) => {
-        setSlides(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching slider data:', error);
-      });
+      .then((data) => setSlides(data))
+      .catch((error) => console.error('Error fetching slider data:', error));
   }, []);
 
+  const NextArrow = ({ onClick }) => (
+    <div
+      className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer text-white text-3xl bg-black bg-opacity-40 rounded-full p-2"
+      onClick={onClick}
+    >
+      <FaChevronRight />
+    </div>
+  );
+
+  const PrevArrow = ({ onClick }) => (
+    <div
+      className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer text-white text-3xl bg-black bg-opacity-40 rounded-full p-2"
+      onClick={onClick}
+    >
+      <FaChevronLeft />
+    </div>
+  );
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    fade: true,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: false,
+    swipe: true,
+    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    appendDots: (dots) => (
+      <div className="absolute bottom-5 w-full text-center">
+        <ul className="inline-flex justify-center space-x-2">{dots}</ul>
+      </div>
+    ),
+    customPaging: () => (
+      <div className="w-3 h-3 bg-white rounded-full opacity-70 hover:opacity-100"></div>
+    ),
+  };
+
   return (
-    <div className="relative">
-      <Swiper
-        spaceBetween={30}
-        effect="fade"
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        pagination={{ clickable: true }}
-        loop={true}
-        modules={[EffectFade, Navigation, Pagination]}
-        className="h-[30vh] lg:min-h-screen w-full"
-      >
+    <div className="relative w-full h-[30vh] sm:h-[40vh] lg:h-screen overflow-hidden">
+      <Slider {...settings}>
         {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
+          <div key={slide.id} className="w-full h-full">
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full lg:h-screen sm:h-[30vh] object-cover"
+              className="w-full h-[30vh] sm:h-[40vh] lg:h-screen object-cover"
+              draggable={false}
             />
-          </SwiperSlide>
+          </div>
         ))}
-
-        {/* Custom navigation buttons (larger, no background) */}
-        <div className="swiper-button-prev !w-12 !h-12 sm:!w-16 sm:!h-16"></div>
-        <div className="swiper-button-next !w-12 !h-12 sm:!w-16 sm:!h-16"></div>
-      </Swiper>
-
-      {/* Custom CSS (larger arrows, transparent) */}
-      <style jsx global>{`
-        .swiper-button-prev,
-        .swiper-button-next {
-          --swiper-navigation-size: 32px; /* Larger default size */
-          --swiper-navigation-color: #000; /* Black arrows */
-          background: transparent !important; /* No background */
-          width: var(--swiper-navigation-button-width, 48px);
-          height: var(--swiper-navigation-button-height, 48px);
-        }
-
-        /* Mobile adjustments (slightly smaller) */
-        @media (max-width: 640px) {
-          .swiper-button-prev,
-          .swiper-button-next {
-            --swiper-navigation-size: 24px;
-            --swiper-navigation-button-width: 36px;
-            --swiper-navigation-button-height: 36px;
-          }
-        }
-      `}</style>
+      </Slider>
     </div>
   );
 };

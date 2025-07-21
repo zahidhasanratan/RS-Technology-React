@@ -17,7 +17,6 @@
                 <br /><br />
                 <h2> Login</h2>
 
-                {{--<h5>( Login yourself to get access )</h5>--}}
                 <br />
             </div>
         </div>
@@ -59,14 +58,6 @@
                                 <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
                                 <input type="password" name="password" class="form-control"  placeholder="Your Password" />
                             </div>
-                            {{--<div class="form-group">--}}
-                            {{--<label class="checkbox-inline">--}}
-                            {{--<input type="checkbox" /> Remember me--}}
-                            {{--</label>--}}
-                            {{--<span class="pull-right">--}}
-                            {{--<a href="#" >Forget password ? </a>--}}
-                            {{--</span>--}}
-                            {{--</div>--}}
 
                             <input type="submit" name="login" class="btn btn-primary " value="Login">
                             <hr />

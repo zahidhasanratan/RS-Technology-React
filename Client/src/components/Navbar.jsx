@@ -139,7 +139,7 @@ const Navbar = () => {
     });
 
   return (
-    <header className="bg-white rounded-4xl font-medium text-black w-full md:max-w-[85%] mt-2 lg:mt-10 mx-auto lg:mx-24 z-50 lg:absolute left-0 right-0 lg:left-auto lg:right-auto">
+    <header className="bg-white rounded-4xl font-medium text-black w-full md:max-w-[95%] mt-2 lg:mt-10 z-50 lg:absolute left-1/2 top-0 transform -translate-x-1/2">
       <div className="container mx-auto p-2 lg:p-4 flex justify-between lg:justify-even lg:gap-10 items-center">
         <Link to="/" onClick={() => handleLinkClick("/")}>
           <img
@@ -150,7 +150,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex gap-8 py-4 px-8 items-center">
+        <nav className="hidden lg:flex gap-8 py- px-8 items-center">
           {menus.map((item) => (
             <div
               key={item.id}
@@ -159,7 +159,7 @@ const Navbar = () => {
               onMouseLeave={handleMouseLeave}
             >
               <div
-                className="hover:text-indigo-900 cursor-pointer flex items-center gap-1 select-none"
+                className="text-[16px] text-[#393939] hover:text-indigo-900 cursor-pointer flex items-center gap-1 select-none"
                 onClick={() => handleLinkClick(item.path)}
               >
                 {item.label}
