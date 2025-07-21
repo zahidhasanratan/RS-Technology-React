@@ -17,7 +17,7 @@ const OurCompanySection = () => {
     return (
         <section className="py-10 md:py-16 bg-white">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-center gap-12">
+                <div className="flex flex-col lg:flex-row items-top gap-12">
                     {/* Image Section */}
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
@@ -72,7 +72,7 @@ const OurCompanySection = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, delay: 0.3 }}
                                 className="text-gray-600 leading-relaxed space-y-3"
-                                dangerouslySetInnerHTML={{ __html: data.short }}
+                                dangerouslySetInnerHTML={{ __html: data.description }}
                             />
                         </div>
                     </motion.div>
