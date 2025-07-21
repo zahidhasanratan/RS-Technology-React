@@ -16,7 +16,7 @@ const Hero = () => {
 
   const NextArrow = ({ onClick }) => (
     <div
-      className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer text-white text-3xl bg-black bg-opacity-40 rounded-full p-2"
+      className="absolute top-1/2 right-4 transform -translate-y-1/2 z-20 cursor-pointer text-white text-3xl bg-black bg-opacity-40 rounded-full p-2"
       onClick={onClick}
     >
       <FaChevronRight />
@@ -25,7 +25,7 @@ const Hero = () => {
 
   const PrevArrow = ({ onClick }) => (
     <div
-      className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer text-white text-3xl bg-black bg-opacity-40 rounded-full p-2"
+      className="absolute top-1/2 left-4 transform -translate-y-1/2 z-20 cursor-pointer text-white text-3xl bg-black bg-opacity-40 rounded-full p-2"
       onClick={onClick}
     >
       <FaChevronLeft />
@@ -45,24 +45,22 @@ const Hero = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     appendDots: (dots) => (
-      <div className="absolute bottom-5 w-full text-center">
-        <ul className="inline-flex justify-center space-x-2">{dots}</ul>
+      <div className="absolute bottom-6 left-0 w-full flex justify-center z-30">
+        <ul className="flex space-x-2">{dots}</ul>
       </div>
     ),
-    customPaging: () => (
-      <div className="w-3 h-3 bg-white rounded-full opacity-70 hover:opacity-100"></div>
-    ),
+    customPaging: () => <div className="custom-dot"></div>, // 👈 Dot class
   };
 
   return (
-    <div className="relative w-full h-[30vh] sm:h-[40vh] lg:h-screen overflow-hidden">
+    <div className="relative w-full h-[30vh] sm:h-[40vh] lg:h-screen">
       <Slider {...settings}>
         {slides.map((slide) => (
-          <div key={slide.id} className="w-full h-full">
+          <div key={slide.id} className="relative w-full h-[30vh] sm:h-[40vh] lg:h-screen">
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-[30vh] sm:h-[40vh] lg:h-screen object-cover"
+              className="w-full h-full object-cover"
               draggable={false}
             />
           </div>

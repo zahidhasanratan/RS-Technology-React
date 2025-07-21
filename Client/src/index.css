@@ -22,3 +22,59 @@
     list-style: disc !important;
     padding-left: 1.5em; /* Optional: ensures indentation */
 }
+
+/* Add this to your global CSS */
+.slick-dots {
+  position: absolute !important;
+  bottom: 24px !important;
+  left: 0;
+  width: 100%;
+  display: flex !important;
+  justify-content: center;
+  z-index: 30;
+  padding: 0;
+  margin: 0;
+}
+
+.slick-dots li {
+  margin: 0 6px;
+}
+
+.slick-dots li button {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+/* Override the default slick dot style */
+.slick-dots li button::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: black; /* Inactive color */
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Active dot override */
+.slick-dots li.slick-active button::before {
+  background-color: white;
+  opacity: 1;
+}
+.custom-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: black;
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+}
+
+.slick-dots li.slick-active .custom-dot {
+  background-color: white;
+  opacity: 1;
+}
