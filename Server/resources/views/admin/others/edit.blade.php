@@ -112,6 +112,53 @@
                                         </div>
                                     @endif
 
+                                    @if($others->id ==9)
+
+                                        <div class="form-group">
+                                            <label>Title 1</label>
+                                            <input class="form-control" name="title" value="{{ $others->title }}"
+                                                   placeholder="Title 1"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description 1</label>
+                                            <input class="form-control" name="description" value="{{ $others->description }}"
+                                                   placeholder="Description 1"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Title 2</label>
+                                            <input class="form-control" name="title2" value="{{ $others->title2 }}"
+                                                   placeholder="Title 2"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description 2</label>
+                                            <input class="form-control" name="designation2" value="{{ $others->designation2 }}"
+                                                   placeholder="Description 2"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Title 3</label>
+                                            <input class="form-control" name="title3" value="{{ $others->title3 }}"
+                                                   placeholder="Title 3"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description 3</label>
+                                            <input class="form-control" name="designation3" value="{{ $others->designation3 }}"
+                                                   placeholder="Description 3"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Title 4</label>
+                                            <input class="form-control" name="title4" value="{{ $others->title4 }}"
+                                                   placeholder="Title 4"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description 4</label>
+                                            <input class="form-control" name="designation4" value="{{ $others->designation4 }}"
+                                                   placeholder="Description 4"/>
+                                        </div>
+                                    @endif
+
                                     @if($others->id ==7)
                                         <div class="form-group">
                                             <label>Facebook</label>

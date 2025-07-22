@@ -38,6 +38,16 @@ class OthersController extends Controller
 
         return response()->json($objects);  // Return the filtered data as JSON
     }
+    public function others9()
+    {
+        // Fetch the object with id = 1, ordered by id in ascending order
+        $objects = Others::orderBy('id', 'ASC')
+            ->where('id', 9)
+            ->get();
+
+        return response()->json($objects);  // Return the filtered data as JSON
+    }
+
 
     public function details($slug)
     {

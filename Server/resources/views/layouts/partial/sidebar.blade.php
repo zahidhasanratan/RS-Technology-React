@@ -84,9 +84,9 @@
                     <li>
                         <a href="{{ asset('admin/others/7/edit') }}">Social Link</a>
                     </li>
-                    {{--                    <li>--}}
-                    {{--                        <a href="{{ asset('admin/others/5/edit') }}">Contact</a>--}}
-                    {{--                    </li>--}}
+                                        <li>
+                                            <a href="{{ asset('admin/others/9/edit') }}">Statistics</a>
+                                        </li>
                 </ul>
             </li>
             {{--<li>--}}

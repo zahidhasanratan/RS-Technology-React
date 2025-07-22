@@ -43,6 +43,15 @@ class OthersController extends Controller
         $page->working = $request->working;
         $page->description = $request->description;
 
+        $page->title2 = $request->title2;
+        $page->designation2 = $request->designation2;
+
+        $page->title3 = $request->title3;
+        $page->designation3 = $request->designation3;
+
+        $page->title4 = $request->title4;
+        $page->designation4 = $request->designation4;
+
         // Save the changes
         $page->save();
 
