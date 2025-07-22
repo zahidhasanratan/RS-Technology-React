@@ -39,25 +39,36 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'category' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,bmp,png',
+        $request->validate([
+            'category' => 'required|exists:sub_categories,id',
+            'name' => 'required|string|max:255',
+            'sub_title' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,jpg,bmp,png,webp|max:2048',
+            'title1' => 'nullable|string|max:255',
+            'details1' => 'nullable|string',
+            'title2' => 'nullable|string|max:255',
+            'details2' => 'nullable|string',
+            'title3' => 'nullable|string|max:255',
+            'details3' => 'nullable|string',
+            'title4' => 'nullable|string|max:255',
+            'details4' => 'nullable|string',
         ]);
 
         $image = $request->file('image');
-        $slug = Str::slug($request->name); // Use Str::slug
+        $slug = Str::slug($request->name);
 
-        if (isset($image)) {
+        if ($image) {
             $currentDate = Carbon::now()->toDateString();
             $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
             if (!file_exists('uploads/item')) {
                 mkdir('uploads/item', 0777, true);
             }
+
             $image->move('uploads/item', $imagename);
         } else {
             $imagename = "default.png";
@@ -66,11 +77,21 @@ class ItemController extends Controller
         $item = new Item();
         $item->category_id = $request->category;
         $item->name = $request->name;
+        $item->slug = $slug;
+        $item->sub_title = $request->sub_title;
         $item->description = $request->description;
+        $item->title1 = $request->title1;
+        $item->details1 = $request->details1;
+        $item->title2 = $request->title2;
+        $item->details2 = $request->details2;
+        $item->title3 = $request->title3;
+        $item->details3 = $request->details3;
+        $item->title4 = $request->title4;
+        $item->details4 = $request->details4;
         $item->image = $imagename;
         $item->save();
 
-        return redirect()->route('item.index')->with('successMsg', 'Item Successfully Saved');
+        return redirect()->route('item.index')->with('successMsg', 'Product Successfully Saved');
     }
 
     /**
@@ -104,42 +125,67 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'category' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'image' => 'mimes:jpeg,jpg,bmp,png',
+        $request->validate([
+            'category' => 'required|exists:sub_categories,id',
+            'name' => 'required|string|max:255',
+            'sub_title' => 'nullable|string|max:255',
+            'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,jpg,bmp,png,webp|max:2048',
+            'title1' => 'nullable|string|max:255',
+            'details1' => 'nullable|string',
+            'title2' => 'nullable|string|max:255',
+            'details2' => 'nullable|string',
+            'title3' => 'nullable|string|max:255',
+            'details3' => 'nullable|string',
+            'title4' => 'nullable|string|max:255',
+            'details4' => 'nullable|string',
         ]);
 
-        $item = Item::find($id);
+        $item = Item::findOrFail($id);
         $image = $request->file('image');
-        $slug = Str::slug($request->name); // Use Str::slug
+        $slug = Str::slug($request->name);
 
-        if (isset($image)) {
+        if ($image) {
             $currentDate = Carbon::now()->toDateString();
             $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
             if (!file_exists('uploads/item')) {
                 mkdir('uploads/item', 0777, true);
             }
-            // Delete the old image if it exists
-            if (file_exists('uploads/item/' . $item->image)) {
+
+            // Delete old image if it's not the default
+            if ($item->image && file_exists('uploads/item/' . $item->image) && $item->image !== 'default.png') {
                 unlink('uploads/item/' . $item->image);
             }
+
             $image->move('uploads/item', $imagename);
         } else {
             $imagename = $item->image;
         }
 
+        // Update all fields
         $item->category_id = $request->category;
         $item->name = $request->name;
+        $item->slug = $slug;
+        $item->sub_title = $request->sub_title;
         $item->description = $request->description;
+        $item->title1 = $request->title1;
+        $item->details1 = $request->details1;
+        $item->title2 = $request->title2;
+        $item->details2 = $request->details2;
+        $item->title3 = $request->title3;
+        $item->details3 = $request->details3;
+        $item->title4 = $request->title4;
+        $item->details4 = $request->details4;
         $item->image = $imagename;
+
         $item->save();
 
-        return redirect()->route('item.index')->with('successMsg', 'Item Successfully Updated');
+        return redirect()->route('item.index')->with('successMsg', 'Product Successfully Updated');
     }
 
     /**

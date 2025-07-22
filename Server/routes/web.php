@@ -26,6 +26,8 @@ use App\Http\Controllers\admin\LifeMemberController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\PreviousProgramController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ParentCategoryController;
+use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\ItemController;
 use App\Http\Controllers\admin\PhotoGalleryController;
 use App\Http\Controllers\admin\ClientsController;
@@ -180,6 +182,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('previous', PreviousProgramController::class);
     Route::resource('publication', PublicationController::class);
     Route::resource('category', CategoryController::class);
+    Route::resource('pcategory', ParentCategoryController::class);
+    Route::resource('subcategory', SubCategoryController::class);
     Route::resource('item', ItemController::class);
     Route::resource('photo', PhotoGalleryController::class);
     Route::resource('client', ClientsController::class);

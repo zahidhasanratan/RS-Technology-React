@@ -149,6 +149,26 @@
             </li>
 
             <li>
+                <a href="#"><i class="fa fa-qrcode fa-3x"></i> Product<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="#">Product Gallery<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a href="{{ route('item.index') }}">All Product</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('subcategory.index') }}">Sub Category</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('pcategory.index') }}">Parent Category</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
                 <a class="{{ Request::is('admin/news*') ? 'active-menu': '' }}" href="#"><i
                         class="fa fa-newspaper-o fa-3x"></i> News <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
