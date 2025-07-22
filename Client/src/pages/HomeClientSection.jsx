@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const HomeBrandsSection = ({ title = "", brands = [] }) => {
+const HomeClientSection = ({ title = "", brands = [] }) => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
 
-  const displayedBrands = brands.slice(0, 18); // 👈 Only show first 20 brands
+  const displayedBrands = brands.slice(0, 18); 
 
   if (!brands.length) {
     return (
@@ -72,10 +72,10 @@ const HomeBrandsSection = ({ title = "", brands = [] }) => {
         {/* See All Button */}
         <div className="mt-10 text-center">
           <Link
-            to="/brands"
+            to="/clients"
             className="inline-block bg-indigo-900 text-white text-sm font-semibold px-6 py-3 rounded-full shadow-md hover:bg-indigo-800 transition duration-300"
           >
-            See All Brands
+            See All Clients
           </Link>
         </div>
       </div>
@@ -83,4 +83,4 @@ const HomeBrandsSection = ({ title = "", brands = [] }) => {
   );
 };
 
-export default HomeBrandsSection;
+export default HomeClientSection;

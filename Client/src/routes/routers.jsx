@@ -24,6 +24,8 @@ import { Career } from '../pages/Career';
 import { JobDetails } from '../Shared/CareerJob/JobDetails';
 import { Apply } from '../Shared/CareerJob/Apply';
 import { homeLoader } from '../components/homeLoader';
+import AllBrandsPage from '../pages/AllBrandsPage';
+import AllClientsPage from '../pages/AllClientsPage';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +53,8 @@ const router = createBrowserRouter([
       { path: 'completed-project', Component: Products },
       { path: 'running-project', Component: RunningProducts },
       { path: 'Solution', Component: Solutions },
+      { path: 'brands', Component: AllBrandsPage },
+      { path: 'clients', Component: AllClientsPage },
 
       {
         path: 'page/:slug',
@@ -65,14 +69,7 @@ const router = createBrowserRouter([
         errorElement: <div className="p-10 text-center text-red-500">Page not found (404)</div>,
       },
 
-      {
-        path: 'clients',
-        loader: async () => {
-          const res = await fetch('https://server.rst-bd.com/api/clients');
-          return res.json();
-        },
-        Component: Clients,
-      },
+   
 
       {
         path: 'video',

@@ -1275,6 +1275,7 @@ class HomeController extends Controller
 
         return view('frontend/home.successmessage',compact('objects','objects2','initative','main','contactus','footer','career','allprnews','links','contact1','contact2','headoffice','factory','branch1','branch2','branch3','branch4','it'));
     }
+
     public function failed()
     {
         $career   =   Service::orderBy('id','DESC')

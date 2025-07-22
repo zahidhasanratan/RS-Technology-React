@@ -36,6 +36,7 @@ Route::get('/webprocess/{slug}', [\App\Http\Controllers\Api\WebProcessController
 Route::get('/clientbenifits', [\App\Http\Controllers\Api\ClientBenifitsController::class, 'index']);
 Route::get('/clientbenifits/{slug}', [\App\Http\Controllers\Api\ClientBenifitsController::class, 'details']);
 Route::get('/clients', [\App\Http\Controllers\Api\PhotoController::class, 'index']);
+Route::get('/clientsphoto', [\App\Http\Controllers\Api\ClientsPhotoController::class, 'index']);
 Route::get('/news', [\App\Http\Controllers\Api\NewsController::class, 'index']);
 Route::get('/news/{slug}', [\App\Http\Controllers\Api\NewsController::class, 'details']);
 Route::get('/page/{slug}', [\App\Http\Controllers\Api\PageController::class, 'details']);

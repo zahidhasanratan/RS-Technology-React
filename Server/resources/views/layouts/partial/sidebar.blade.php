@@ -190,23 +190,28 @@
                 </ul>
             </li>
 
-            {{--<li>--}}
-            {{--<a class="{{ Request::is('admin/others*') ? 'active-menu': '' }}" href="{{ route('others.index') }}"><i class="fa fa-tasks fa-3x"></i> Our Goal</a>--}}
-            {{--</li>--}}
 
             <li>
                 <a href="#"><i class="fa fa-sitemap fa-3x"></i> Our Brands<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-
-
                     <li>
                         <a href="{{ route('photo.create') }}">Add Our Brands</a>
                     </li>
                     <li>
                         <a href="{{ route('photo.index') }}">All Our Brands</a>
                     </li>
+                </ul>
+            </li>
 
-
+            <li>
+                <a href="#"><i class="fa fa-sitemap fa-3x"></i> Our Clients<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('client.create') }}">Add Our Clients</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('client.index') }}">All Our Clients</a>
+                    </li>
                 </ul>
             </li>
 

@@ -28,6 +28,7 @@ use App\Http\Controllers\admin\PreviousProgramController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ItemController;
 use App\Http\Controllers\admin\PhotoGalleryController;
+use App\Http\Controllers\admin\ClientsController;
 use App\Http\Controllers\admin\VideoController;
 use App\Http\Controllers\admin\CompanyManagementController;
 use App\Http\Controllers\admin\LinkController;
@@ -181,6 +182,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('category', CategoryController::class);
     Route::resource('item', ItemController::class);
     Route::resource('photo', PhotoGalleryController::class);
+    Route::resource('client', ClientsController::class);
     Route::resource('video', VideoController::class);
     Route::resource('company', CompanyManagementController::class);
     Route::resource('link', LinkController::class);
