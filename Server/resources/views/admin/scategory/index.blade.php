@@ -45,7 +45,7 @@
                                             <td>
                                                 <img src="{{ asset('uploads/scategory/'.$category->image) }}" class="img-thumbnail" width="100" height="100" />
                                             </td>
-                                            <td class="center">{{ $category->slug ?? 'N/A' }}</td>
+                                            <td class="center">https://rst-bd.com/scategory/{{ $category->id ?? 'N/A' }}</td>
                                             <td class="center">{{ $category->parentCategory->name ?? 'N/A' }}</td>
                                             <td>
                                                 <a href="{{ route('subcategory.edit', $category->id) }}" class="btn btn-info btn-sm">

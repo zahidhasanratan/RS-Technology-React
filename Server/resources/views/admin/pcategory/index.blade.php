@@ -35,6 +35,7 @@
                                         <tr>
                                             <th>SL.</th>
                                             <th>Title</th>
+                                            <th>Url</th>
 
                                             <th width="17%;">Action</th>
 
@@ -45,6 +46,7 @@
                                             <tr class="odd gradeX">
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $category->name }}</td>
+                                                <td>https://rst-bd.com/pcategory/{{ $category->id }}</td>
 
                                                 <td><a href="{{route('pcategory.edit',$category->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Edit</a>
                                                     <form id="delete-form-{{ $category->id }}" action="{{ route('pcategory.destroy',$category->id) }}" style="display: none;" method="POST">

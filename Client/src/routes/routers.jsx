@@ -26,6 +26,9 @@ import { Apply } from '../Shared/CareerJob/Apply';
 import { homeLoader } from '../components/homeLoader';
 import AllBrandsPage from '../pages/AllBrandsPage';
 import AllClientsPage from '../pages/AllClientsPage';
+import  PCategory  from '../pages/PCategory';
+import SCategory from '../pages/SCategory';
+import  { ProductDetails }  from '../pages/ProductDetails';
 
 const router = createBrowserRouter([
   {
@@ -69,7 +72,35 @@ const router = createBrowserRouter([
         errorElement: <div className="p-10 text-center text-red-500">Page not found (404)</div>,
       },
 
-   
+   {
+  path: 'pcategory/:id',
+  loader: async ({ params }) => {
+    const response = await fetch(`http://127.0.0.1:8000/api/pcategory/${params.id}`);
+    if (!response.ok) {
+      throw new Response('Page not found', { status: 404 });
+    }
+    return response.json();
+  },
+  Component: PCategory,
+  errorElement: <div className="p-10 text-center text-red-500">Page not found (404)</div>,
+},
+{
+  path: 'scategory/:id',
+  loader: async ({ params }) => {
+    const response = await fetch(`http://127.0.0.1:8000/api/scategory`);
+    if (!response.ok) {
+      throw new Response('Page not found', { status: 404 });
+    }
+    return response.json(); // 👈 returns all subcategories
+  },
+  element: <SCategory />,
+  errorElement: <div className="p-10 text-center text-red-500">Page not found (404)</div>,
+},
+
+    {
+        path: 'product/:slug',
+        element: <ProductDetails />,
+      },
 
       {
         path: 'video',

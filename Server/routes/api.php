@@ -69,3 +69,9 @@ Route::get('/footerother', [\App\Http\Controllers\Api\OthersController::class, '
 Route::get('/statistics', [\App\Http\Controllers\Api\OthersController::class, 'others9']);
 Route::get('/social', [\App\Http\Controllers\Api\OthersController::class, 'others7']);
 Route::post('/apply', [\App\Http\Controllers\Api\ApplicationController::class, 'store']);
+Route::get('/pcategory', [\App\Http\Controllers\Api\ParentCategoryController::class, 'index']);
+Route::get('/pcategory/{id}', [\App\Http\Controllers\Api\ParentCategoryController::class, 'show']);
+Route::get('/scategory', [\App\Http\Controllers\Api\SubCategoryController::class, 'index']);
+Route::get('/scategory/{id}', [\App\Http\Controllers\Api\SubCategoryController::class, 'show']);
+Route::get('/item', [\App\Http\Controllers\Api\ItemController::class, 'index']);
+Route::get('/item/{slug}', [\App\Http\Controllers\Api\ItemController::class, 'show']);
