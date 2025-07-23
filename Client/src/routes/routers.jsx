@@ -75,7 +75,7 @@ const router = createBrowserRouter([
    {
   path: 'pcategory/:id',
   loader: async ({ params }) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/pcategory/${params.id}`);
+    const response = await fetch(`https://server.rst-bd.com/api/pcategory/${params.id}`);
     if (!response.ok) {
       throw new Response('Page not found', { status: 404 });
     }
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
 {
   path: 'scategory/:id',
   loader: async ({ params }) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/scategory`);
+    const response = await fetch(`https://server.rst-bd.com/api/scategory`);
     if (!response.ok) {
       throw new Response('Page not found', { status: 404 });
     }

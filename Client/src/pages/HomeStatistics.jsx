@@ -6,7 +6,7 @@ export const HomeStatistics = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/statistics');
+        const res = await fetch('https://server.rst-bd.com/api/statistics');
         const data = await res.json();
         setStats(data[0]); // assuming only one object in the array
       } catch (err) {

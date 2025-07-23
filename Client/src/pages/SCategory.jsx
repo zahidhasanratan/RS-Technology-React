@@ -3,11 +3,11 @@ import { useParams, Link, useLoaderData } from 'react-router-dom';
 import CommonHero from '../Shared/CommonHero';
 
 const SCategory = () => {
-  const { id } = useParams(); // category_id from URL
-  const subcategories = useLoaderData(); // all subcategories from loader
+  const { id } = useParams(); // From /scategory/:id
+  const subcategories = useLoaderData(); // All subcategories from loader
   const [items, setItems] = useState([]);
 
-  // Get subcategory title for display (optional)
+  // Find subcategory name for display
   const matchedSubcategory = subcategories.find(
     (cat) => String(cat.id) === String(id)
   );
@@ -16,12 +16,14 @@ const SCategory = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/item/`);
+        const res = await fetch(`https://server.rst-bd.com/api/item`);
         const data = await res.json();
-        // Filter items where category_id matches URL id
+
+        // Filter by category_id from URL
         const filteredItems = data.filter(
-          (item) => String(item.category_id) === String(id)
+          (item) => Number(item.category_id) === Number(id)
         );
+
         setItems(filteredItems);
       } catch (error) {
         console.error('Error fetching item data:', error);
@@ -47,13 +49,13 @@ const SCategory = () => {
                   className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                 >
                   <Link
-                    className="block relative group w-full h-[220px] overflow-hidden"
                     to={`/product/${item.slug || item.id}`}
+                    className="block relative group w-full h-[220px] overflow-hidden"
                   >
                     <img
+                      src={item.image}
                       alt={item.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      src={item.image}
                     />
                     <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-black before:rounded-full before:opacity-0 before:transition-all before:duration-700 group-hover:before:opacity-50 group-hover:before:scale-200 before:scale-0 before:origin-center mix-blend-overlay"></div>
                   </Link>

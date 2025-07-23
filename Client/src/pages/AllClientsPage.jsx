@@ -17,7 +17,7 @@ const AllBrandsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/clientsphoto")
+    fetch("https://server.rst-bd.com/api/clientsphoto")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);

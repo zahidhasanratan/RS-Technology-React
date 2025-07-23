@@ -10,7 +10,7 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/item/${slug}`)
+      .get(`https://server.rst-bd.com/api/item/${slug}`)
       .then((res) => {
         setProduct(res.data[0]);
       })
@@ -50,7 +50,7 @@ export const ProductDetails = () => {
           <div className="md:w-1/2 w-full md:pl-10">
             <div className="bg-white p-6">
               <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-              {/* <p className="text-gray-700 mb-4">{product.sub_title}</p> */}
+              <p className="text-gray-700 mb-4">{product.sub_title}</p>
               <div
                 className="text-sm text-gray-600 space-y-2"
                 dangerouslySetInnerHTML={{ __html: product.description }}

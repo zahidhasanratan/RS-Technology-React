@@ -16,7 +16,7 @@ const PCategory = () => {
   useEffect(() => {
     const fetchSubCategories = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/scategory/${id}`);
+        const res = await fetch(`https://server.rst-bd.com/api/scategory/${id}`);
         const data = await res.json();
         setSubCategories(data);
       } catch (error) {
@@ -26,7 +26,7 @@ const PCategory = () => {
 
     const fetchPageTitle = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/pcategory/${id}`);
+        const res = await fetch(`https://server.rst-bd.com/api/pcategory/${id}`);
         const data = await res.json();
         setCategoryTitle(data.name || 'Category');
       } catch (error) {
