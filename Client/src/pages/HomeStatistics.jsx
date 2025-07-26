@@ -29,8 +29,12 @@ export const HomeStatistics = () => {
 
       const timer = setInterval(() => {
         start++;
-        el.textContent = start.toLocaleString(); // commas
-        if (start >= end) clearInterval(timer);
+        if (start >= end) {
+          el.textContent = `${end.toLocaleString()}+`;
+          clearInterval(timer);
+        } else {
+          el.textContent = start.toLocaleString();
+        }
       }, stepTime);
     }
 
