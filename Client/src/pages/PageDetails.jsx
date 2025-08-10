@@ -11,11 +11,14 @@ export const PageDetails = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  // Construct image URL only if image is not null
+  const imageUrl = page.image
+    ? `https://server.rst-bd.com/uploads/page/${page.image}`
+    : null;
+
   return (
     <div>
       <CommonHero title={page.title} />
-
-     
 
       {/* Page Content Section */}
       <section className="py-10 md:py-12 bg-white">
@@ -29,6 +32,7 @@ export const PageDetails = () => {
               className="w-full"
             >
               <div className="space-y-6">
+
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -38,6 +42,20 @@ export const PageDetails = () => {
                 >
                   <span className="text-indigo-900">{page.title}</span>
                 </motion.h2>
+
+                {/* Conditionally Render Image */}
+                {imageUrl && (
+                  <motion.img
+                    src={imageUrl}
+                    alt={page.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.25 }}
+                    className="w-1/2 mx-auto max-h-[500px] object-cover rounded-lg shadow"
+
+                  />
+                )}
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -55,4 +73,3 @@ export const PageDetails = () => {
     </div>
   );
 };
-
