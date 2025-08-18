@@ -77,17 +77,17 @@ export const HomeStatistics = () => {
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all p-6">
-          <h3 className="text-4xl font-bold text-[#1e1b4b] counter" data-count={stats.designation2}>0</h3>
+          <h3 className="text-4xl font-bold text-[#1e1b4b] counter" data-count={stats.designation2}>+0</h3>
           <p className="mt-2 font-medium text-gray-600 dark:text-gray-300">{stats.title2}</p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all p-6">
-          <h3 className="text-4xl font-bold text-[#1e1b4b] counter" data-count={stats.designation3}>0</h3>
+          <h3 className="text-4xl font-bold text-[#1e1b4b] counter" data-count={stats.designation3}>+0</h3>
           <p className="mt-2 font-medium text-gray-600 dark:text-gray-300">{stats.title3}</p>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all p-6">
-          <h3 className="text-4xl font-bold text-[#1e1b4b] counter" data-count={stats.designation4}>0</h3>
+          <h3 className="text-4xl font-bold text-[#1e1b4b] counter" data-count={stats.designation4}>+0</h3>
           <p className="mt-2 font-medium text-gray-600 dark:text-gray-300">{stats.title4}</p>
         </div>
       </div>

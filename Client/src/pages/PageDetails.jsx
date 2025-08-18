@@ -52,7 +52,7 @@ export const PageDetails = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.25 }}
-                    className="w-1/2 mx-auto max-h-[500px] object-cover rounded-lg shadow"
+                    className="w-full mx-auto max-h-[300px] object-cover rounded-lg shadow"
 
                   />
                 )}

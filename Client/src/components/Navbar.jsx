@@ -10,6 +10,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "../assets/rs-tech-asset/logo.png";
 
+const WEBMAIL_URL = "https://162.241.117.134:2096";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -211,6 +213,17 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+
+            {/* Desktop Webmail link (parent-level, no submenu) */}
+            <motion.a
+              whileTap={{ scale: 0.95 }}
+              href={WEBMAIL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[16px] text-[#393939] hover:text-indigo-900 cursor-pointer select-none"
+            >
+              Webmail
+            </motion.a>
           </nav>
 
           {/* Mobile Toggle Button */}
@@ -233,7 +246,21 @@ const Navbar = () => {
           animate={{ opacity: 1 }}
           className="lg:hidden bg-indigo-950 text-sm shadow-md px-4 pb-4"
         >
-          <ul>{renderMenuItems(menus)}</ul>
+          <ul>
+            {renderMenuItems(menus)}
+
+            {/* Mobile Webmail link (parent-level, no submenu) */}
+            <li key="mobile-webmail" className="text-white">
+              <a
+                href={WEBMAIL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block py-2 hover:text-orange-300"
+              >
+                Webmail
+              </a>
+            </li>
+          </ul>
         </motion.div>
       )}
     </header>

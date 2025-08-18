@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   FaFacebookF,
-  // FaInstagram, // ← uncomment if you decide to show Instagram again
+  // FaInstagram,
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaEnvelope,
@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { FaArrowUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -18,6 +19,7 @@ const Footer = () => {
   const [footerMenu, setFooterMenu] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,8 +55,26 @@ const Footer = () => {
     fetchData();
   }, []);
 
+  // Scroll-to-top visibility toggle
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Smooth scroll function
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-indigo-950 text-white pt-10 text-md md:px-24 lg:px-24">
+    <footer className="bg-indigo-950 text-white pt-10 text-md md:px-24 lg:px-24 relative">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row flex-wrap gap-8 lg:gap-12">
           {/* About Section */}
@@ -68,62 +88,28 @@ const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex space-x-4 text-xl">
-              {/* Home */}
               <Link to="/" aria-label="Home">
                 <FaHome className="border text-4xl rounded-full p-2 hover:text-yellow-900 hover:border-yellow-900 transition-colors" />
               </Link>
-
-              {/* Facebook */}
               {socialLinks?.title && (
-                <a
-                  href={socialLinks.title}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
+                <a href={socialLinks.title} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <FaFacebookF className="border text-4xl rounded-full p-2 hover:text-yellow-900 hover:border-yellow-900 transition-colors" />
                 </a>
               )}
-
-              {/* LinkedIn */}
               {socialLinks?.description && (
-                <a
-                  href={socialLinks.description}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
+                <a href={socialLinks.description} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <FaLinkedinIn className="border text-4xl rounded-full p-2 hover:text-yellow-900 hover:border-yellow-900 transition-colors" />
                 </a>
               )}
-
-              {/* X (Twitter) */}
               {socialLinks?.slug && (
-                <a
-                  href={socialLinks.slug}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X (Twitter)"
-                >
+                <a href={socialLinks.slug} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
                   <FaXTwitter className="border text-4xl rounded-full p-2 hover:text-yellow-900 hover:border-yellow-900 transition-colors" />
                 </a>
               )}
-
-              {/* Instagram (optional) */}
-              {/* {socialLinks?.title2 && (
-                <a
-                  href={socialLinks.title2}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram className="border text-4xl rounded-full p-2 hover:text-yellow-900 hover:border-yellow-900 transition-colors" />
-                </a>
-              )} */}
             </div>
           </div>
 
-          {/* Footer Menu / Quick Links */}
+          {/* Quick Links */}
           <div className="w-full md:w-[calc(50%-16px)] lg:w-[20%] space-y-6">
             <h3 className="text-xl font-semibold text-white mb-4">Quick Links</h3>
             {loading && <p>Loading links...</p>}
@@ -132,7 +118,6 @@ const Footer = () => {
                 {footerMenu.map((link, idx) => {
                   const isExternal = link.page_type === "url";
                   const href = isExternal ? link.external_link : `/page/${link.slug}`;
-
                   return (
                     <li key={idx}>
                       {isExternal ? (
@@ -159,7 +144,7 @@ const Footer = () => {
             )}
           </div>
 
-          {/* Contact Section */}
+          {/* Contact */}
           <div className="w-full md:w-full lg:w-[30%] space-y-4">
             <h3 className="text-xl font-semibold">Contact</h3>
             {loading && <p>Loading contact...</p>}
@@ -170,7 +155,6 @@ const Footer = () => {
                     href="https://maps.app.goo.gl/CEnWDHVQTrvs9N5y6"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Open in Google Maps"
                   >
                     <div className="border bg-[#FFFFFF1A] text-2xl p-3 rounded-full flex items-center justify-center hover:bg-indigo-950 hover:border-white transition-colors">
                       <FaMapMarkerAlt />
@@ -180,7 +164,7 @@ const Footer = () => {
                 </div>
 
                 <div className="flex items-start gap-3 group">
-                  <a href={`tel:${contactData.slug}`} aria-label="Call phone number">
+                  <a href={`tel:${contactData.slug}`}>
                     <div className="border bg-[#FFFFFF1A] text-2xl p-3 rounded-full flex items-center justify-center hover:bg-indigo-950 hover:border-white transition-colors">
                       <FaPhoneAlt />
                     </div>
@@ -191,18 +175,12 @@ const Footer = () => {
                 </div>
 
                 <div className="flex items-start gap-3 group">
-                  <a
-                    href={`mailto:${contactData.description}`}
-                    aria-label="Send email"
-                  >
+                  <a href={`mailto:${contactData.description}`}>
                     <div className="border bg-[#FFFFFF1A] text-2xl p-3 rounded-full flex items-center justify-center hover:bg-indigo-950 hover:border-white transition-colors">
                       <FaEnvelope />
                     </div>
                   </a>
-                  <a
-                    href={`mailto:${contactData.description}`}
-                    className="hover:text-indigo-300 lowercase"
-                  >
+                  <a href={`mailto:${contactData.description}`} className="hover:text-indigo-300 lowercase">
                     {contactData.description}
                   </a>
                 </div>
@@ -231,6 +209,17 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
+      {/* Scroll-to-Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 bg-indigo-700 hover:bg-indigo-900 text-white p-3 rounded-full shadow-lg transition-all"
+          aria-label="Scroll to top"
+        >
+          <FaArrowUp className="text-2xl" />
+        </button>
+      )}
     </footer>
   );
 };
