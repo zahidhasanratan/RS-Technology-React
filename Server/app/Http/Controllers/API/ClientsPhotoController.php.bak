@@ -13,7 +13,7 @@ class ClientsPhotoController extends Controller
     public function index()
     {
         // Fetch all photos
-        $photos = ClientsPhoto::orderBy('id', 'ASC')->get();
+        $photos = ClientsPhoto::orderBy('id', 'DESC')->get();
 
         // Add full path to each image
         $photos->transform(function ($photo) {
