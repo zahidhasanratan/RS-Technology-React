@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
   FaFacebookF,
-  // FaInstagram,
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaEnvelope,
   FaHome,
   FaLinkedinIn,
+  FaWhatsapp, // NEW
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa";
@@ -20,6 +20,10 @@ const Footer = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Your WhatsApp number (no plus for wa.me format)
+  const WHATSAPP_NUMBER = "8801894440091";
+  const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,11 +62,7 @@ const Footer = () => {
   // Scroll-to-top visibility toggle
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 200);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -210,14 +210,28 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Floating FABs */}
+      {/* WhatsApp FAB (above scroll-to-top) */}
+      <a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-24 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all"
+        title={`WhatsApp: +${WHATSAPP_NUMBER}`}
+      >
+        <FaWhatsapp className="text-2xl" />
+      </a>
+
       {/* Scroll-to-Top Button */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-indigo-700 hover:bg-indigo-900 text-white p-3 rounded-full shadow-lg transition-all"
+          className="fixed bottom-6 right-6 z-50 bg-indigo-700 hover:bg-indigo-900 text-white p-3 rounded-full shadow-lg transition-all"
           aria-label="Scroll to top"
+          title="Scroll to top"
         >
-          <FaArrowUp className="text-2xl" />
+        <FaArrowUp className="text-2xl" />
         </button>
       )}
     </footer>
