@@ -18,6 +18,7 @@ const Navbar = () => {
   const [openSubDropdown, setOpenSubDropdown] = useState(null);  // `${parentId}-${index}`
   const [openThirdDropdown, setOpenThirdDropdown] = useState(null); // mobile only
   const [menus, setMenus] = useState([]);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -78,6 +79,15 @@ const Navbar = () => {
       }
     };
     fetchMenus();
+  }, []);
+
+  // Detect scroll for shadow
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleLinkClick = (path) => {
@@ -149,7 +159,15 @@ const Navbar = () => {
     });
 
   return (
-    <header className="bg-white rounded-4xl font-medium text-black w-full md:max-w-[95%] mt-2 lg:mt-10 z-50 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
+    <header
+      className={`
+        bg-white rounded-4xl font-medium text-black w-full md:max-w-[95%]
+        mt-2 lg:mt-10 z-50
+        fixed top-0 left-1/2 -translate-x-1/2
+        transition-shadow duration-300
+        ${isScrolled ? "shadow-md" : ""}
+      `}
+    >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1280px] mx-auto flex items-center justify-between py-2">
           {/* Logo */}
@@ -186,7 +204,6 @@ const Navbar = () => {
                 {openDropdown === item.id && item.subItems?.length > 0 && (
                   <div
                     className="absolute top-full left-0 bg-indigo-950 shadow-lg rounded-md mt-2 min-w-[260px] py-2 z-20"
-                    // Keep the dropdown "hot" while pointer is anywhere inside
                     onMouseEnter={clearCloseTimer}
                     onMouseLeave={armCloseTimer}
                   >
@@ -194,7 +211,6 @@ const Navbar = () => {
                       <div
                         key={subItem.id}
                         className="relative px-4"
-                        // Hovering a row selects it; DO NOT arm timer here
                         onMouseEnter={() => {
                           clearCloseTimer();
                           setOpenSubDropdown(subItem.rowKey);
@@ -213,9 +229,7 @@ const Navbar = () => {
                           subItem.subItems?.length > 0 && (
                             <div
                               className="absolute left-full top-0 bg-indigo-950 shadow-lg rounded-md min-w-[220px] z-30"
-                              // overlap to eliminate any dead gap
                               style={{ marginLeft: -2 }}
-                              // keep alive while in level-3
                               onMouseEnter={() => {
                                 clearCloseTimer();
                                 setOpenSubDropdown(subItem.rowKey);
