@@ -87,6 +87,7 @@ const ContactUs = () => {
             <ToastContainer />
             <CommonHero title="Contact Us" />
 
+            {/* Contact Info + Form */}
             <section className="py-10 px-4 sm:px-6 lg:px-8 bg-[#f0f4f7]">
                 <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
 
@@ -101,89 +102,88 @@ const ContactUs = () => {
                             Get In Touch With Us Now!
                         </h2>
                         <div className="p-6">
-    {/* First Row: Phone & Email */}
-    <div className="flex">
-        {/* Phone Section */}
-        <div className="flex-1 p-4 relative">
-            <div className="flex flex-col items-center text-center">
-                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
-                    <BiPhone className="fill-current" />
-                </div>
-                <h3 className="font-bold text-gray-500 mb-2">Phone Number</h3>
-                <div className="space-y-1 text-sm text-gray-400">
-                    <a href={`tel:${contactInfo?.slug || ''}`} className="block">
-                        <span className="font-medium">Sales Query:</span> {contactInfo?.slug || 'N/A'}
-                    </a>
-                    <a href={`tel:${contactInfo?.title2 || ''}`} className="block">
-                        <span className="font-medium">Service Query:</span> {contactInfo?.title2 || 'N/A'}
-                    </a>
-                </div>
-            </div>
-            <div className="absolute bottom-0 left-0 right-[10%] h-[2px] bg-gray-300"></div>
-        </div>
+                            {/* First Row: Phone & Email */}
+                            <div className="flex">
+                                {/* Phone Section */}
+                                <div className="flex-1 p-4 relative">
+                                    <div className="flex flex-col items-center text-center">
+                                        <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                                            <BiPhone className="fill-current" />
+                                        </div>
+                                        <h3 className="font-bold text-gray-500 mb-2">Phone Number</h3>
+                                        <div className="space-y-1 text-sm text-gray-400">
+                                            <a href={`tel:${contactInfo?.slug || ''}`} className="block">
+                                                <span className="font-medium">Sales Query:</span> {contactInfo?.slug || 'N/A'}
+                                            </a>
+                                            <a href={`tel:${contactInfo?.title2 || ''}`} className="block">
+                                                <span className="font-medium">Service Query:</span> {contactInfo?.title2 || 'N/A'}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-0 right-[10%] h-[2px] bg-gray-300"></div>
+                                </div>
 
-        {/* Vertical Divider */}
-        <div className="relative">
-            <div className="absolute top-[10%] bottom-[10%] left-0 w-[2px] bg-gray-300"></div>
-        </div>
+                                {/* Vertical Divider */}
+                                <div className="relative">
+                                    <div className="absolute top-[10%] bottom-[10%] left-0 w-[2px] bg-gray-300"></div>
+                                </div>
 
-        {/* Email Section */}
-        <div className="flex-1 p-4 relative">
-            <div className="flex flex-col items-center text-center">
-                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
-                    <BiEnvelope className="fill-current" />
-                </div>
-                <h3 className="font-bold text-gray-500 mb-2">Email</h3>
-                <div className="space-y-1 text-sm text-gray-400">
-                    <a href={`mailto:${contactInfo?.description || ''}`} className="block">
-                        {contactInfo?.description || 'N/A'}
-                    </a>
-                    {contactInfo?.slug2 && (
-                        <a href={`mailto:${contactInfo?.slug2}`} className="block">
-                            {contactInfo?.slug2}
-                        </a>
-                    )}
-                </div>
-            </div>
-            <div className="absolute bottom-0 left-[10%] right-0 h-[2px] bg-gray-300"></div>
-        </div>
-    </div>
+                                {/* Email Section */}
+                                <div className="flex-1 p-4 relative">
+                                    <div className="flex flex-col items-center text-center">
+                                        <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                                            <BiEnvelope className="fill-current" />
+                                        </div>
+                                        <h3 className="font-bold text-gray-500 mb-2">Email</h3>
+                                        <div className="space-y-1 text-sm text-gray-400">
+                                            <a href={`mailto:${contactInfo?.description || ''}`} className="block">
+                                                {contactInfo?.description || 'N/A'}
+                                            </a>
+                                            {contactInfo?.slug2 && (
+                                                <a href={`mailto:${contactInfo?.slug2}`} className="block">
+                                                    {contactInfo?.slug2}
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-0 left-[10%] right-0 h-[2px] bg-gray-300"></div>
+                                </div>
+                            </div>
 
-    {/* Second Row: Location & Hours */}
-    <div className="flex">
-        {/* Location Section */}
-        <div className="flex-1 p-4">
-            <div className="flex flex-col items-center text-center">
-                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
-                    <BiMap className="fill-current" />
-                </div>
-                <h3 className="font-bold text-gray-500 mb-2">Location</h3>
-                <p className="text-sm text-gray-400">{contactInfo?.title || 'N/A'}</p>
-            </div>
-        </div>
+                            {/* Second Row: Location & Hours */}
+                            <div className="flex">
+                                {/* Location Section */}
+                                <div className="flex-1 p-4">
+                                    <div className="flex flex-col items-center text-center">
+                                        <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                                            <BiMap className="fill-current" />
+                                        </div>
+                                        <h3 className="font-bold text-gray-500 mb-2">Location</h3>
+                                        <p className="text-sm text-gray-400">{contactInfo?.title || 'N/A'}</p>
+                                    </div>
+                                </div>
 
-        {/* Vertical Divider */}
-        <div className="relative">
-            <div className="absolute top-[10%] bottom-[10%] right-0 w-[2px] bg-gray-300"></div>
-        </div>
+                                {/* Vertical Divider */}
+                                <div className="relative">
+                                    <div className="absolute top-[10%] bottom-[10%] right-0 w-[2px] bg-gray-300"></div>
+                                </div>
 
-        {/* Working Hours Section */}
-        <div className="flex-1 p-4">
-            <div className="flex flex-col items-center text-center">
-                <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
-                    <BiTimeFive className="fill-current" />
-                </div>
-                <h3 className="font-bold text-gray-500 mb-2">Working Hours</h3>
-                <p className="text-sm text-gray-400">
-                    {contactInfo?.working?.split('\n').map((line, index) => (
-                        <span key={index}>{line}<br /></span>
-                    )) || 'N/A'}
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
+                                {/* Working Hours Section */}
+                                <div className="flex-1 p-4">
+                                    <div className="flex flex-col items-center text-center">
+                                        <div className="mb-4 inline-flex items-center justify-center bg-indigo-950 text-white text-2xl p-3 rounded-full">
+                                            <BiTimeFive className="fill-current" />
+                                        </div>
+                                        <h3 className="font-bold text-gray-500 mb-2">Working Hours</h3>
+                                        <p className="text-sm text-gray-400">
+                                            {contactInfo?.working?.split('\n').map((line, index) => (
+                                                <span key={index}>{line}<br /></span>
+                                            )) || 'N/A'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </motion.div>
 
                     {/* Contact Form */}
@@ -299,6 +299,20 @@ const ContactUs = () => {
                         </form>
                     </motion.div>
                 </div>
+            </section>
+
+            {/* Google Map Section */}
+            <section className="w-full h-[350px]">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.6740437023714!2d90.42321316718137!3d23.794618900000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7d18aab3129%3A0xa2ec9a276a866b38!2sRS%20TECHNOLOGIES%20LIMITED!5e0!3m2!1sen!2sbd!4v1756611436105!5m2!1sen!2sbd"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="RS Technologies Location"
+                ></iframe>
             </section>
         </div>
     );
