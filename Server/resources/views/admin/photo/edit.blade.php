@@ -40,7 +40,11 @@
 
                                         </div>
 
+                                        <div class="form-group">
+                                            <label>SL</label>
+                                            <input class="form-control" name="sl" value="{{ $photo->sl }}" placeholder="Sl" />
 
+                                        </div>
                                         <div class="form-group">
                                             <label>Image (Height:235px X width:80px)</label>
                                             <input type="file" name="image"/></br>

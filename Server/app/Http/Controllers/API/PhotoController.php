@@ -12,7 +12,7 @@ class PhotoController extends Controller
     public function index()
     {
         // Fetch all photos
-        $photos = photo_gallery_table::orderBy('id', 'DESC')->get();
+        $photos = photo_gallery_table::orderBy('sl', 'ASC')->get();
 
         // Add full path to each image
         $photos->transform(function ($photo) {

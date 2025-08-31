@@ -110,6 +110,7 @@ class ClientsController extends Controller
         ]);
         $image = $request->file('image');
         $slug = Str::slug($request->title);
+        $sl = $request->sl;
         $photo= ClientsPhoto::find($id);
         if (isset($image))
         {
@@ -127,6 +128,7 @@ class ClientsController extends Controller
         $photo->title = $request->title;
         $photo->designation = $request->designation;
         $photo->slug = $slug;
+        $photo->sl = $sl;
         $photo->image = $imagename;
         $photo->save();
         return redirect()->route('client.index')->with('successMsg','Clients Photo Successfully Updated');

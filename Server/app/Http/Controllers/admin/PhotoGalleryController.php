@@ -109,6 +109,7 @@ class PhotoGalleryController extends Controller
         ]);
         $image = $request->file('image');
         $slug = Str::slug($request->title);
+        $sl= $request->sl;
         $photo= photo_gallery_table::find($id);
         if (isset($image))
         {
@@ -126,6 +127,7 @@ class PhotoGalleryController extends Controller
         $photo->title = $request->title;
         $photo->designation = $request->designation;
         $photo->slug = $slug;
+        $photo->sl = $sl;
         $photo->image = $imagename;
         $photo->save();
         return redirect()->route('photo.index')->with('successMsg','Photo Successfully Updated');
