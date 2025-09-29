@@ -20,16 +20,18 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
     };
 
     useEffect(() => {
-        axios.get('https://server.rst-bd.com/api/solution')
-            .then(response => {
-                if (Array.isArray(response.data)) {
-                    setServices(response.data);
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching services:", error);
-            });
-    }, []);
+    axios.get('https://server.rst-bd.com/api/solution')
+        .then(response => {
+            if (Array.isArray(response.data)) {
+                // Sort the services by the 'sl' field to maintain the correct order as integers
+                const sortedServices = response.data.sort((a, b) => parseInt(a.sl) - parseInt(b.sl));
+                setServices(sortedServices);
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching services:", error);
+        });
+}, []);
 
     return (
         <section className="py-8 md:px-24 lg:px-24 bg-[#F6F6F6]">
@@ -74,14 +76,14 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                         >
-                           <Link to={`/Service/${service.slug}`} className="block relative group w-full h-48 overflow-hidden">
-    <img
-        src={service.image}
-        alt={service.title}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-    />
-    <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-black before:rounded-full before:opacity-0 before:transition-all before:duration-700 group-hover:before:opacity-50 group-hover:before:scale-200 before:scale-0 before:origin-center mix-blend-overlay"></div>
-</Link>
+                            <Link to={`/Service/${service.slug}`} className="block relative group w-full h-48 overflow-hidden">
+                                <img
+                                    src={service.image}
+                                    alt={service.title}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-black before:rounded-full before:opacity-0 before:transition-all before:duration-700 group-hover:before:opacity-50 group-hover:before:scale-200 before:scale-0 before:origin-center mix-blend-overlay"></div>
+                            </Link>
 
                             <div className="p-6">
                                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
@@ -91,24 +93,21 @@ const ServiceHome = ({ title = "", subtitle = "" }) => {
                                     {service.short || ""}
                                 </p>
                                 <motion.div whileHover={{ x: 5 }}>
-                                    
-
-<Link
-  to={`/Service/${service.slug}`}
-  className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
->
-  Discover More
-  <svg
-    className="w-4 h-4 ml-2"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-  </svg>
-</Link>
-
+                                    <Link
+                                        to={`/Service/${service.slug}`}
+                                        className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+                                    >
+                                        Discover More
+                                        <svg
+                                            className="w-4 h-4 ml-2"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </Link>
                                 </motion.div>
                             </div>
                         </motion.div>

@@ -201,55 +201,56 @@ const Navbar = () => {
                 </div>
 
                 {/* Level-1 dropdown */}
-                {openDropdown === item.id && item.subItems?.length > 0 && (
-                  <div
-                    className="absolute top-full left-0 bg-indigo-950 shadow-lg rounded-md mt-2 min-w-[260px] py-2 z-20"
-                    onMouseEnter={clearCloseTimer}
-                    onMouseLeave={armCloseTimer}
-                  >
-                    {item.subItems.map((subItem) => (
-                      <div
-                        key={subItem.id}
-                        className="relative px-4"
-                        onMouseEnter={() => {
-                          clearCloseTimer();
-                          setOpenSubDropdown(subItem.rowKey);
-                        }}
-                      >
-                        <div
-                          className="flex justify-between items-center w-full py-2 text-sm text-white hover:text-orange-300 cursor-pointer"
-                          onClick={() => handleLinkClick(subItem.path)}
-                        >
-                          {subItem.label}
-                          {subItem.subItems?.length > 0 && <FiChevronRight />}
-                        </div>
+{openDropdown === item.id && item.subItems?.length > 0 && (
+  <div
+    className="absolute top-full left-0 bg-indigo-950 shadow-lg rounded-md mt-2 min-w-[260px] py-2 z-20"
+    onMouseEnter={clearCloseTimer}
+    onMouseLeave={armCloseTimer}
+  >
+    {item.subItems.map((subItem) => (
+      <div
+        key={subItem.id}
+        className="relative px-4 submenu" // Add class 'submenu' for hover effect
+        onMouseEnter={() => {
+          clearCloseTimer();
+          setOpenSubDropdown(subItem.rowKey);
+        }}
+      >
+        <div
+          className="flex justify-between items-center w-full py-2 text-sm text-white hover:text-orange-300 cursor-pointer"
+          onClick={() => handleLinkClick(subItem.path)}
+        >
+          {subItem.label}
+          {subItem.subItems?.length > 0 && <FiChevronRight />}
+        </div>
 
-                        {/* Level-2 -> Level-3 */}
-                        {openSubDropdown === subItem.rowKey &&
-                          subItem.subItems?.length > 0 && (
-                            <div
-                              className="absolute left-full top-0 bg-indigo-950 shadow-lg rounded-md min-w-[220px] z-30"
-                              style={{ marginLeft: -2 }}
-                              onMouseEnter={() => {
-                                clearCloseTimer();
-                                setOpenSubDropdown(subItem.rowKey);
-                              }}
-                            >
-                              {subItem.subItems.map((thirdItem) => (
-                                <div
-                                  key={thirdItem.id}
-                                  className="px-4 py-2 text-white text-sm hover:text-orange-300 cursor-pointer whitespace-nowrap"
-                                  onClick={() => handleLinkClick(thirdItem.path)}
-                                >
-                                  {thirdItem.label}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                      </div>
-                    ))}
-                  </div>
-                )}
+        {/* Level-2 -> Level-3 */}
+        {openSubDropdown === subItem.rowKey && subItem.subItems?.length > 0 && (
+          <div
+            className="absolute left-full top-0 bg-indigo-950 shadow-lg rounded-md min-w-[220px] z-30 submenu" // Apply submenu class here too
+            style={{ marginLeft: -2 }}
+            onMouseEnter={() => {
+              clearCloseTimer();
+              setOpenSubDropdown(subItem.rowKey);
+            }}
+          >
+            {subItem.subItems.map((thirdItem) => (
+              <div
+                key={thirdItem.id}
+                className="px-4 py-2 text-white text-sm hover:text-orange-300 cursor-pointer whitespace-nowrap"
+                onClick={() => handleLinkClick(thirdItem.path)}
+              >
+                {thirdItem.label}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+)}
+
+
               </div>
             ))}
 
