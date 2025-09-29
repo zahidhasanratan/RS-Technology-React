@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  FaFacebookF,
-  FaPhoneAlt,
-  FaMapMarkerAlt,
-  FaEnvelope,
-  FaHome,
-  FaLinkedinIn,
-  FaWhatsapp, // NEW
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebookMessenger, FaFacebookF, FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaHome, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+
 import { FaArrowUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -73,6 +65,25 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    // Load the Facebook Messenger SDK script dynamically when the component is mounted
+    const script = document.createElement('script');
+    script.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+    script.async = true;
+    script.onload = () => {
+      window.FB.init({
+        xfbml: true, // parse social plugins on this page
+        version: "v12.0", // use the latest Facebook SDK version
+      });
+    };
+    document.body.appendChild(script);
+
+    return () => {
+      // Clean up the script when the component unmounts
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <footer className="bg-indigo-950 text-white pt-10 text-md md:px-24 lg:px-24 relative">
       <div className="container mx-auto px-4">
@@ -99,11 +110,6 @@ const Footer = () => {
               {socialLinks?.description && (
                 <a href={socialLinks.description} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <FaLinkedinIn className="border text-4xl rounded-full p-2 hover:text-yellow-900 hover:border-yellow-900 transition-colors" />
-                </a>
-              )}
-              {socialLinks?.slug && (
-                <a href={socialLinks.slug} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                  <FaXTwitter className="border text-4xl rounded-full p-2 hover:text-yellow-900 hover:border-yellow-900 transition-colors" />
                 </a>
               )}
             </div>
@@ -194,34 +200,34 @@ const Footer = () => {
       <div className="border-t border-indigo-800 mt-10 py-6">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-indigo-100">
           <p>Copyright © 2025 RS Technologies Ltd. All Rights Reserved.</p>
-          <p className="mt-2 md:mt-0">
-            <a
-              href="https://esoft.com.bd/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-indigo-300"
-            >
-              Web Design Company:{" "}
-              <span className="font-cursive">
-                e-<span className="text-red-400">S</span>oft
-              </span>
-            </a>
-          </p>
         </div>
       </div>
 
       {/* Floating FABs */}
-      {/* WhatsApp FAB (above scroll-to-top) */}
-      <a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-24 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all"
-        title={`WhatsApp: +${WHATSAPP_NUMBER}`}
-      >
-        <FaWhatsapp className="text-2xl" />
-      </a>
+      {/* Facebook Messenger Direct Message FAB */}
+     <a
+  href="https://m.me/RS-Technologies-100076216622934" // Facebook Messenger link
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on Facebook Messenger"
+  className="fixed bottom-36 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all"
+  title="Chat on Facebook Messenger"
+>
+  <FaFacebookMessenger className="text-2xl" />
+</a>
+
+{/* WhatsApp FAB */}
+<a
+  href={WHATSAPP_LINK}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on WhatsApp"
+  className="fixed bottom-24 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all"
+  title={`WhatsApp: +${WHATSAPP_NUMBER}`}
+>
+  <FaWhatsapp className="text-2xl" />
+</a>
+
 
       {/* Scroll-to-Top Button */}
       {showScrollTop && (
@@ -231,7 +237,7 @@ const Footer = () => {
           aria-label="Scroll to top"
           title="Scroll to top"
         >
-        <FaArrowUp className="text-2xl" />
+          <FaArrowUp className="text-2xl" />
         </button>
       )}
     </footer>
